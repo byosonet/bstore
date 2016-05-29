@@ -16,7 +16,8 @@ public class TestHibernate {
  
     public static void main(String[] args) throws Exception
     {
-        ApplicationContext context = new FileSystemXmlApplicationContext("C:\\temporal\\god\\god-web\\src\\main\\java\\com\\cprigus\\services\\test\\applicationContextHibernate.xml");
+        @SuppressWarnings("resource")
+		ApplicationContext context = new FileSystemXmlApplicationContext("C:\\temporal\\god\\god-web\\src\\main\\java\\com\\cprigus\\services\\test\\applicationContextHibernate.xml");
         UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDao");
         MailTemplateDaoImpl mailTemplateDaoImpl = (MailTemplateDaoImpl) context.getBean("mailTemplateDao");
         

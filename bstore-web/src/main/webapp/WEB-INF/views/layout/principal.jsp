@@ -1,6 +1,9 @@
 <%@ include file="../layout/taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
+<c:set var="urlhref"><spring:message code="url.menu.href"/></c:set>
+
+
 <html>
 <head>
     <meta charset="utf-8">
@@ -10,6 +13,46 @@
     <meta name="author" content="">
     <title><tiles:insertAttribute name="title"/></title>
     <jsp:include page="staticResources.jsp"></jsp:include>
+    
+    	<script type="text/javascript">
+            $(document).ready(function() {                               
+                    $('a#exit').click(function(){
+                        $.ajax({
+                            type: 'POST',
+                            url:  '${contextpath}'+'/sistema/salir',
+                            data: $('form#regresar').serialize(),
+                             success: function (data) {
+                                   muestraMsjSistemaSuccessIndex("Gracias por tu visita, vuelve pronto.");
+                            }  
+                          });
+                    });          
+                              
+                    function muestraMsjSistemaSuccessIndex(msjStatus){
+                       BootstrapDialog.show({
+                        size: BootstrapDialog.SIZE_SMALL,
+                        title: 'Mensaje del Sistema',
+                        closable: false,
+                        message: msjStatus,
+                        type: BootstrapDialog.TYPE_SUCCESS,
+                        cssClass: 'login-dialog',
+                        buttons: [{
+                            icon: 'glyphicon glyphicon-ok',
+                            label: 'ACEPTAR',
+                            cssClass: 'btn-primary',
+                            action: function(dialog) {
+                                dialog.close();
+                               $.blockUI();
+                               var urlAction = '${urlhref}';
+                               document.getElementById('index').action = urlAction;
+                               document.getElementById('index').method = 'GET';
+                               document.getElementById('index').submit();
+                            }
+                        }]
+                    });
+                    }   
+                }          
+            );
+        </script>
 </head>
 <body>
     <div id="wrapper">
@@ -37,7 +80,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>${user}</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -52,7 +95,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>${user}</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -67,7 +110,7 @@
                                         <img class="media-object" src="http://placehold.it/50x50" alt="">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        <h5 class="media-heading"><strong>${user}</strong>
                                         </h5>
                                         <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
                                         <p>Lorem ipsum dolor sit amet, consectetur...</p>
@@ -108,7 +151,7 @@
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${user} <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
@@ -121,7 +164,7 @@
                         </li>
                         <li class="divider"></li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                            <a href="#" id="exit"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                         </li>
                     </ul>
                 </li>
@@ -172,9 +215,9 @@
             <div class="container-fluid">
                 <!-- Page Heading -->
                 <div class="row">
-                    <div class="col-lg-12">
+                    <div class="col-lg-12" style="text-align: center;">
                         <h1 class="page-header">
-                            Bienvenido<small> a tu portal</small>
+                            <!--Bienvenido--><small>Bienvenido</small>
                         </h1>
                     </div>
                 </div>
@@ -186,5 +229,11 @@
             </div>
         </div>
     </div>
+    
+<form id="regresar">
+   <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
+</form>
+<form id="index">
+</form>
 </body>
 </html>

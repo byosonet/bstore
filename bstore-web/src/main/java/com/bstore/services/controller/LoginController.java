@@ -2,16 +2,12 @@ package com.bstore.services.controller;
 
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
-import com.bstore.services.persistence.dto.ConsultaCoro;
-import com.bstore.services.persistence.hbm.Changeset;
-import com.bstore.services.persistence.hbm.Coro;
 import com.bstore.services.persistence.hbm.DeliveryFailed;
 import com.bstore.services.persistence.hbm.PropiedadSistema;
 import com.bstore.services.persistence.hbm.TipoMovimientoEnum;
 import com.bstore.services.persistence.hbm.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.service.ChangesetService;
-import com.bstore.services.service.CoroService;
 import com.bstore.services.service.DeliveryFailedService;
 import com.bstore.services.service.EmailSendService;
 import com.bstore.services.service.PropiedadSistemaService;
@@ -22,9 +18,7 @@ import java.io.IOException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -83,6 +77,9 @@ public class LoginController {
               this.guardarChangeset(TipoMovimientoEnum.ACCESO_AL_SISTEMA.getTipo(), usuario);
               
               try {
+            	  String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
+                  model.addAttribute("cifrar",cifrar);
+            	  model.addAttribute("user",usuario.getNombre());
             	  return "indexPrincipal";
               } catch (Exception ex) {
                   ex.printStackTrace();
@@ -446,9 +443,6 @@ public class LoginController {
     
     @Autowired
     EmailSendService emailSendService;
-    
-    @Autowired
-    private CoroService coroService;
     
     @Autowired
     private DroolRuleAge droolRuleAgeAdapter;

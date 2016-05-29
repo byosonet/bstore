@@ -19,7 +19,8 @@ public class SendEmailTest {
         atachh.put("Archivo.png", new File("C:\\temporal\\god\\god-web\\src\\main\\webapp\\resources\\img\\503.png"));
         atachh.put("Archivo.jpg", new File("C:\\temporal\\god\\god-web\\src\\main\\webapp\\resources\\img\\500.jpg"));
         
-        ApplicationContext context = new FileSystemXmlApplicationContext("C:\\temporal\\god\\god-web\\src\\main\\java\\com\\rest\\services\\test\\applicationEmail-context.xml");
+        @SuppressWarnings("resource")
+		ApplicationContext context = new FileSystemXmlApplicationContext("C:\\temporal\\god\\god-web\\src\\main\\java\\com\\rest\\services\\test\\applicationEmail-context.xml");
         EmailSendServiceImpl mailer = (EmailSendServiceImpl) context.getBean("emailSendService");
         mailer.sendEmailRegister("byosonet@gmail.com", "gtrejo.armenta@gmail.com","Gustavo Trejo",atachh);
         //mailer.sendPreConfiguredMail("Exception occurred everywhere.. where are you ????");
