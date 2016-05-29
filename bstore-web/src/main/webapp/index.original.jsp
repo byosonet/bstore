@@ -127,31 +127,34 @@
 
 <div class="container-fluid" style="margin-top: 30px;">
     <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
+        <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
+        </br>
+        </br>
+        </br>
             <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/ingresar">
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>
                     <div class="col-sm-9">
-                        <div style="text-align:center"><label>Bienvenido a BStore Online</label><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
+                        <div style="text-align:center;color:white"><h5>B I E N V E N I D O</h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
                       </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="nombre">Email:</label>
+                    <label class="control-label col-sm-3" style="color:white;" for="nombre">Usuario:</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" for="email">Password:</label>
+                    <label class="control-label col-sm-3" style="color:white;" for="email">Password:</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-12">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                    <label class="control-label col-sm-12" style="color:white;">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
                 </div>
             </form>
             <div class="row">
@@ -164,13 +167,13 @@
     </div>    
 </div>
          
-
+<!--
   <nav class="navbar navbar-inverse navbar-fixed-bottom">
           <div class="container-fluid">
             <div class="navbar-header navbar-right">
               <a class="navbar-brand" href="https://www.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262" style="font-size: 1em;color:white;">by Ulysses M@c</a>
             </div>
           </div>
-</nav>
+</nav>-->
 </body>
 </html>
