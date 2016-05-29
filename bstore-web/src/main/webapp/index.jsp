@@ -3,174 +3,186 @@
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>BStore Online</title>
-  <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
-  <style>
-      
-  </style>
-  
-  <script type="text/javascript">
-      $(function(){
-          var status;
-          $('input#login').focus();
-          $('button#acceder').click(function(){
-              
-              var email = $('input#login');
-              var password = $('input#password');
-              if(email.val() === ""){
-                  muestraMsjSistemaError('El email es requerido.');
-                  return false;
-              }else if(password.val() === ""){
-                  muestraMsjSistemaError('El password es requerido.');
-                  return false;
-              }
-              
-              $.blockUI();
-              $.ajax({
-	              type: 'POST',
-	              url: '${contextpath}'+'/validar/usuario',
-	              data: $('form#ingresar').serialize(),
-	                  success: function (data) {
-                             $.unblockUI();
-                             muestraMsjSistemaSuccess(data.mensaje);
-	              },
-                         error: function(msj){
-                             status = JSON.parse(msj.responseText);
-                             $.unblockUI();
-                             muestraMsjSistemaError(status.mensaje);
-                          }
-	        });
-          });
-          
-          $('button#registrar').click(function(){
-                $.blockUI();
-                var urlAction = '${contextpath}' + '/registrar/usuario';
-		document.getElementById('ingresar').action = urlAction;
-                document.getElementById('ingresar').method = 'GET';
-		document.getElementById('ingresar').submit();
-          });
-
-        function muestraMsjSistemaError(msjStatus){
-           BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_SMALL,
-            title: 'Mensaje del Sistema:',
-            closable: false,
-            message: msjStatus,
-            type: BootstrapDialog.TYPE_DANGER,
-            cssClass: 'login-dialog',
-            buttons: [{
-                icon: 'glyphicon glyphicon-check',
-                label: 'OK',
-                cssClass: 'btn-primary',
-                action: function(dialog) {
-                    dialog.close();
-                }
-            }]
-        });
-        }
-        
-        function muestraMsjSistemaSuccess(msjStatus){
-           BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_SMALL,
-            title: 'Mensaje del Sistema:',
-            closable: false,
-            message: msjStatus,
-            type: BootstrapDialog.TYPE_SUCCESS,
-            cssClass: 'login-dialog',
-            buttons: [{
-                icon: 'glyphicon glyphicon-ok',
-                label: 'CONTINUAR',
-                cssClass: 'btn-primary',
-                action: function(dialog) {
-                    dialog.close();
-                    $.blockUI();
-                    var urlAction = '${contextpath}' + '/ingresar';
-                    document.getElementById('ingresar').action = urlAction;
-                    document.getElementById('ingresar').method = 'POST';
-                    document.getElementById('ingresar').submit();
-                }
-            }]
-        });
-        }
-      });
-  </script>
-  <style>
-             body{
-                font:  10.5px Verdana;
-             }
-  </style>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>BStore</title>
+    <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
 </head>
-<body style="">
-     <nav class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container-fluid">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="/bstore" style="color:white;">BStore Online</a>
-          </div>
-          <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
+<body>
+    <div id="wrapper">
+        <!-- Navigation -->
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="index.html">BStore</a>
+            </div>
+            <!-- Top Menu Items -->
+            <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                  <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#"></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu message-dropdown">
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-preview">
+                            <a href="#">
+                                <div class="media">
+                                    <span class="pull-left">
+                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    </span>
+                                    <div class="media-body">
+                                        <h5 class="media-heading"><strong>John Smith</strong>
+                                        </h5>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
+                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                    </div>
+                                </div>
+                            </a>
+                        </li>
+                        <li class="message-footer">
+                            <a href="#">Read All New Messages</a>
+                        </li>
+                    </ul>
                 </li>
-              </ul>
-          </div>
-        </div>
-      </nav>
-
-<div class="container-fluid" style="margin-top: 30px;">
-    <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
-            <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/ingresar">
-                <div class="form-group">
-                    <label class="control-label col-sm-3" for="nombre"></label>
-                    <div class="col-sm-9">
-                        <div style="text-align:center"><label>Bienvenido a BStore Online</label><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
-                      </div>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
+                    <ul class="dropdown-menu alert-dropdown">
+                        <li>
+                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
+                        </li>
+                        <li>
+                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#">View All</a>
+                        </li>
+                    </ul>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> John Smith <b class="caret"></b></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                        </li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="#"><i class="fa fa-fw fa-power-off"></i> Log Out</a>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
+            <div class="collapse navbar-collapse navbar-ex1-collapse">
+                <ul class="nav navbar-nav side-nav">
+                    <li class="active">
+                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                    </li>
+                    <li>
+                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
+                    </li>
+                    <li>
+                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
+                    </li>
+                    <li>
+                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
+                    </li>
+                    <li>
+                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
+                    </li>
+                    <li>
+                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="demo" class="collapse">
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                            <li>
+                                <a href="#">Dropdown Item</a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
+                    </li>
+                    <li>
+                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </nav>
+        <div id="page-wrapper">
+            <div class="container-fluid">
+                <!-- Page Heading -->
+                <div class="row">
+                    <div class="col-lg-12">
+                        <h1 class="page-header">
+                            Bienvenido<small> a tu portal</small>
+                        </h1>
                     </div>
                 </div>
-                <div class="form-group">
-                    <label class="control-label col-sm-3" for="nombre">Email:</label>
-                    <div class="col-sm-9">
-                        <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu email">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-3" for="email">Password:</label>
-                    <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
-                    </div>
-                </div>
-
-                <div class="form-group">
-                    <label class="control-label col-sm-12">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
-                </div>
-            </form>
-            <div class="row">
-                <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="registrar" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
-                <button id="acceder" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACCEDER</button>
-                </div>
+                <!-- /.row -->
+				<p>Mi contenido del body</p></br>
+                <!-- /.row -->
             </div>
         </div>
-    </div>    
-</div>
-         
-
-  <nav class="navbar navbar-inverse navbar-fixed-bottom">
-          <div class="container-fluid">
-            <div class="navbar-header navbar-right">
-              <a class="navbar-brand" href="https://www.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262" style="font-size: 1em;color:white;">by Ulysses M@c</a>
-            </div>
-          </div>
-</nav>
+    </div>
 </body>
 </html>
