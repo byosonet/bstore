@@ -46,6 +46,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class LoginController {
    private final Logger log = Logger.getLogger(LoginController.class);
    @RequestMapping(value="/ingresar",method = RequestMethod.POST)
+   /*
+    * Metodo de Login del Portal BStore
+    * */
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
        
       String requestEmail="";
@@ -80,108 +83,10 @@ public class LoginController {
               this.guardarChangeset(TipoMovimientoEnum.ACCESO_AL_SISTEMA.getTipo(), usuario);
               
               try {
-                  List<Coro> corosActualizados = this.coroService.obtenerListaCoroActualizada();
-                  List<Coro> corosCompletos = this.coroService.obtenerListaCoroCompleta();
-                  List<Coro> corosPendientes = this.coroService.getListaPendiente();
-                  if (corosActualizados != null && corosActualizados.size() > 0) {
-                        model.addAttribute("coros", corosActualizados);
-                        model.addAttribute("corosCompletos", corosCompletos);
-                        model.addAttribute("usuario", usuario.getNombre());
-
-                        //model.addAttribute("userEmail", usuario.getEmail());
-                        //model.addAttribute("userPassword", password);
-                        String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
-                        model.addAttribute("cifrar",cifrar);
-                        
-                        //activar menu
-                        model.addAttribute("menu",true);
-
-                        //retornando los datos del perfil
-                        model.addAttribute("nombreUsuario", usuario.getNombre());
-                        model.addAttribute("falta", usuario.getFechaAlta());
-                        model.addAttribute("fconexion", usuario.getUltConexion());
-                        model.addAttribute("emailUsuario", usuario.getEmail());
-                        model.addAttribute("actividad", usuario.getActividad());
-                        model.addAttribute("sexo", usuario.getSexo()=='M'?"Masculino":"Femenino");
-                        model.addAttribute("fnacimiento", usuario.getFechaNacimiento());
-
-                        //Dial
-                        model.addAttribute("accesoSistema", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.ACCESO_AL_SISTEMA, String.valueOf(usuario.getIdUsuario())));
-                        model.addAttribute("registroCoro", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.REGISTRO_DE_CORO, String.valueOf(usuario.getIdUsuario())));
-                        model.addAttribute("consultarPerfil", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.VALIDAR_USUARIO, String.valueOf(usuario.getIdUsuario())));
-                        model.addAttribute("consultarCoro", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.CONSULTAR_CORO, String.valueOf(usuario.getIdUsuario())));
-                        model.addAttribute("emailContacto", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.ENVIO_CORREO_CONTACTO, String.valueOf(usuario.getIdUsuario())));
-                        model.addAttribute("actUsuario", 
-                                this.changesetService.totalMovement(TipoMovimientoEnum.ACTUALIZAR_PERFIL, String.valueOf(usuario.getIdUsuario())));
-
-                         //retornando los aviso
-                        PropiedadSistema tituloAviso = this.propiedadSistemaService.obtenerValorPropiedad("titulo.aviso");
-                        PropiedadSistema detalleAviso = this.propiedadSistemaService.obtenerValorPropiedad("detalle.aviso");
-
-                        if(tituloAviso.getActive() == 1){
-                            model.addAttribute("titulo", tituloAviso.getValue());
-                            model.addAttribute("detalle", detalleAviso.getValue());
-                        }else{
-                             model.addAttribute("titulo", "<p class=\"alert alert-info\">Por el momento no hay avisos disponibles.</p>");
-                             model.addAttribute("detalle", "");
-                        }
-                        
-                        //Retornando Lista de movimientos de usuario
-                        List<Changeset> listCh = 
-                                this.changesetService.listaChangeset(String.valueOf(usuario.getIdUsuario()));
-                        if(listCh != null){
-                            model.addAttribute("changesetUser", listCh);
-                        } 
-                  }
-                  this.guardarChangeset(TipoMovimientoEnum.CONSULTAR_HIMNARIO.getTipo(), usuario);
-                  
-                  //DEVOLVIENDO LISTA DE USUARIOS
-                  String mailAdmin = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue();
-                  String conectado = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin.connect").getValue();
-                  if(mailAdmin.equals(usuario.getEmail()) && conectado.equals("TRUE")){
-                      model.addAttribute("show", true);
-                      model.addAttribute("listaUsuario", this.usuarioService.getListaUsuarios());
-                      
-                      List<DeliveryFailed> listTemp = new ArrayList<DeliveryFailed>();
-                      for(DeliveryFailed listDelivery: this.deliveryFailedService.getListMailFailed()){
-                          listDelivery.setDetalleClob(listDelivery.readClob(listDelivery.getBody()));
-                          listTemp.add(listDelivery);
-                      }
-                      model.addAttribute("listaMail", listTemp);
-                      if(corosPendientes!=null){
-                          List<Coro> temp = new ArrayList<Coro>();
-                            for(Coro c: corosPendientes){
-                                c.setDescripcionString(c.getDataClob(c.getDescripcion()));
-                                temp.add(c);
-                            }
-                            model.addAttribute("listaCoroPendiente", temp);
-                        }
-                  }else{
-                      model.addAttribute("show", false);
-                  }
-
-                  //RECUPERANDO INFORMACION DE CONSULTA DE COROS
-                  int rows=0;
-                  PropiedadSistema ps =
-                          this.propiedadSistemaService.obtenerValorPropiedad("rows.query.choir");
-                  if(ps!=null)
-                     rows = Integer.valueOf(ps.getValue());
-                  List<ConsultaCoro> cc = this.changesetService.getListaCoros(rows);
-                  if(cc!=null){
-                      for(int i=0; i<cc.size();i++){
-                           model.addAttribute("fecha"+i, cc.get(i).getFecha());
-                           model.addAttribute("total"+i, cc.get(i).getTotal());
-                      }
-                  }   
+            	  return "indexPrincipal";
               } catch (Exception ex) {
                   ex.printStackTrace();
               }
-              return "listaHimnario";
           }
       }
    return "invalido";
