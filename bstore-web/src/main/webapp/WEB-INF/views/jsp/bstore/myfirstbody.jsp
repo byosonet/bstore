@@ -4,7 +4,7 @@
 <html>
 <body>
     <div>
-        <h3 class="alert alert-info" style="text-align: center;">Content Body</h3>
+        <h3 class="alert alert-info" style="text-align: center;">BodyContent</h3>
     </div>
 </body>
 </html>
