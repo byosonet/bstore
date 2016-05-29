@@ -128,56 +128,71 @@
 <div class="container-fluid" style="margin-top: 30px;">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
+        </br>
+        </br>
+        </br>
             <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
+            
+            	<div class="form-group">
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">REGISTRO DE USUARIO</h5>
+                </div>
+                </br>
+                </br>
+                
                 <div class="form-group">
-                    <label class="control-label col-sm-2" for="nombre">Nombre completo:</label>
+                    <label class="control-label col-sm-2" style="color:white;" for="nombre">Nombre completo:</label>
                     <div class="col-sm-5">
                         <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
                     </div>
                     
-                    <label class="control-label col-sm-1" for="email">Email:</label>
+                    <label class="control-label col-sm-1" style="color:white;" for="email">Email:</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                   <label class="control-label col-sm-2" for="email">Password:</label>
+                   <label class="control-label col-sm-2" style="color:white;" for="email">Password:</label>
                     <div class="col-sm-4">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
                     </div>
                    
-                   <label class="control-label col-sm-2" for="email">Confirmar password:</label>
+                   <label class="control-label col-sm-2" style="color:white;" for="email">Confirmar password:</label>
                     <div class="col-sm-4">
                         <input type="password" class="form-control" id="confPassword" name="confPassword" placeholder="Confirma tu password">
                     </div>
                 </div>
                 
+                
+                </br>
+                </br>
                 <div class="form-group">
-                    <label class="control-label col-sm-12" style="text-align: center;">Información Personal:</label>
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">DATOS PERSONALES</h5>
                 </div>
+                </br>
+                </br>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2">Día:</label>
+                    <label class="control-label col-sm-2" style="color:white;">Día:</label>
                     <div class="col-sm-1">
                         <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
                         <option data-bind="value: id,text:day"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1">Mes:</label>
+                    <label class="control-label col-sm-1" style="color:white;">Mes:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
                         <option data-bind="value: id,text:mes"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1">Año:</label>
+                    <label class="control-label col-sm-1" style="color:white;">Año:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
                         <option data-bind="value: year,text:year"></option></select>
                     </div>
                    
                     
-                    <label class="control-label col-sm-1">Actividad:</label>
+                    <label class="control-label col-sm-1" style="color:white;">Actividad:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
                         <option data-bind="value: activity,text:activity"></option></select>
@@ -186,26 +201,26 @@
                 
                 
                  <div class="form-group">
-                    <label class="control-label col-sm-2">Sexo:</label>
+                    <label class="control-label col-sm-2" style="color:white;">Sexo:</label>
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
                             <input type="radio" id="masculino" name="sexo" value="M">
-                            <label> Masculino </label>
+                            <label style="color:white;"> Masculino </label>
                         </div>
                     </div>
 
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
                             <input type="radio" id="femenino" name="sexo" value="F">
-                            <label> Femenino </label>
+                            <label style="color:white;"> Femenino </label>
                         </div>
                     </div>
      
-                    <label class="control-label col-sm-3">Deseo recibir notificaciones:</label>
+                    <label class="control-label col-sm-3" style="color:white;">Deseo recibir notificaciones:</label>
                     <div class="col-sm-3">
                        <div class="checkbox checkbox-primary">
                         <input type="checkbox" value="SI" name="notificar" id="notificar">
-                        <label>
+                        <label style="color:white;">
                             Sí
                         </label>
                     </div>

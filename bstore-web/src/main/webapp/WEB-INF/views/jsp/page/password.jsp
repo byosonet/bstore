@@ -95,17 +95,26 @@
     
     <div class="container-fluid" style="margin-top: 30px;">
     <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-5 col-md-offset-3 main">
+        <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
+        	</br>
+        	</br>
+        	</br>
             <form id="recuperar" class="form-horizontal">
+            	<div class="form-group">
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">RECUPERA TU PASSWORD</h5>
+                </div>
+                </br>
+        		</br>
+                
                 <div class="form-group">
-                    <label class="control-label col-sm-4" for="nombre">Email:</label>
+                    <label class="control-label col-sm-4" style="color:white;" for="nombre">Usuario:</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-4" for="email">Confirmar email:</label>
+                    <label class="control-label col-sm-4" style="color:white;" for="email">Confirmar usuario:</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
                     </div>
