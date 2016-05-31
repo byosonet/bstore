@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="AutorizacionUsuario" table="autorizacion_usuario" catalog="bstore" optimistic-lock="version">
+        <composite-id name="id" class="AutorizacionUsuarioId">
+            <key-property name="idUsuario" type="int">
+                <column name="ID_USUARIO" />
+            </key-property>
+            <key-property name="idAutorizacion" type="short">
+                <column name="ID_AUTORIZACION" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="autorizacion" class="Autorizacion" update="false" insert="false" fetch="select">
+            <column name="ID_AUTORIZACION" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioByIdUsuario" class="Usuario" update="false" insert="false" fetch="select">
+            <column name="ID_USUARIO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioByIdUsuarioUmodif" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

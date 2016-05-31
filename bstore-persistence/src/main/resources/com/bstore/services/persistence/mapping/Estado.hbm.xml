@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Estado" table="estado" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="short">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="pais" class="Pais" fetch="select">
+            <column name="ID_PAIS" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+        <set name="ciudads" table="ciudad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ESTADO" not-null="true" />
+            </key>
+            <one-to-many class="Ciudad" />
+        </set>
+        <set name="delegacionMunicipios" table="delegacion_municipio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ESTADO" not-null="true" />
+            </key>
+            <one-to-many class="DelegacionMunicipio" />
+        </set>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Mailtemplate" table="mailtemplate" catalog="bstore" optimistic-lock="version">
+        <id name="idTemplate" type="java.lang.Integer">
+            <column name="ID_TEMPLATE" />
+            <generator class="identity" />
+        </id>
+        <property name="description" type="string">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="subject" type="string">
+            <column name="SUBJECT" />
+        </property>
+        <property name="html" type="string">
+            <column name="HTML" length="65535" />
+        </property>
+    </class>
+</hibernate-mapping>

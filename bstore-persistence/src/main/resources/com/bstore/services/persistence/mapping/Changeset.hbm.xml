@@ -1,0 +1,24 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Changeset" table="changeset" catalog="bstore" optimistic-lock="version">
+        <id name="idChangeset" type="java.lang.Integer">
+            <column name="ID_CHANGESET" />
+            <generator class="identity" />
+        </id>
+        <property name="idUsuario" type="string">
+            <column name="ID_USUARIO" />
+        </property>
+        <property name="movement" type="string">
+            <column name="MOVEMENT" />
+        </property>
+        <property name="idCoro" type="string">
+            <column name="ID_CORO" />
+        </property>
+        <property name="fecha" type="timestamp">
+            <column name="FECHA" length="19" />
+        </property>
+    </class>
+</hibernate-mapping>

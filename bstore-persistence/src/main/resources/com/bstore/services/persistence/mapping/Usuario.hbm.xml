@@ -1,0 +1,190 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Usuario" table="usuario" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <property name="AMaterno" type="string">
+            <column name="A_MATERNO" length="50" />
+        </property>
+        <property name="APaterno" type="string">
+            <column name="A_PATERNO" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" />
+        </property>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="foto" type="binary">
+            <column name="FOTO" />
+        </property>
+        <property name="login" type="string">
+            <column name="LOGIN" length="30" not-null="true" unique="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="password" type="string">
+            <column name="PASSWORD" length="100" not-null="true" />
+        </property>
+        <set name="usuarioOficinas" table="usuario_oficina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioOficina" />
+        </set>
+        <set name="usuarioPuestos" table="usuario_puesto" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioPuesto" />
+        </set>
+        <set name="perfils" table="usuario_perfil" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" not-null="true" />
+            </key>
+            <many-to-many entity-name="Perfil">
+                <column name="ID_PERFIL" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="hollidays" table="holliday" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Holliday" />
+        </set>
+        <set name="paises" table="pais" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Pais" />
+        </set>
+        <set name="usuarioInfosForIdUsuarioUmodif" table="usuario_info" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioInfo" />
+        </set>
+        <set name="oficinasForIdUsuarioResponsableOficina" table="oficina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_RESPONSABLE_OFICINA" />
+            </key>
+            <one-to-many class="Oficina" />
+        </set>
+        <set name="usuarioTitulos" table="usuario_titulo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioTitulo" />
+        </set>
+        <set name="delegacionMunicipios" table="delegacion_municipio" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="DelegacionMunicipio" />
+        </set>
+        <set name="perfils_1" table="perfil" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Perfil" />
+        </set>
+        <set name="autors" table="autor" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Autor" />
+        </set>
+        <set name="editorials" table="editorial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Editorial" />
+        </set>
+        <one-to-one name="usuarioLector" class="UsuarioLector"></one-to-one>
+        <set name="salarioMinimos" table="salario_minimo" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="SalarioMinimo" />
+        </set>
+        <set name="estados" table="estado" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Estado" />
+        </set>
+        <set name="ciudads" table="ciudad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Ciudad" />
+        </set>
+        <set name="direccions" table="direccion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Direccion" />
+        </set>
+        <set name="publicacionsForIdUsuarioUmodif" table="publicacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Publicacion" />
+        </set>
+        <set name="autorizacionUsuariosForIdUsuario" table="autorizacion_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" not-null="true" />
+            </key>
+            <one-to-many class="AutorizacionUsuario" />
+        </set>
+        <set name="oficinasForIdUsuarioUmodif" table="oficina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Oficina" />
+        </set>
+        <one-to-one name="usuarioInfoById" class="UsuarioInfo"></one-to-one>
+        <set name="temas" table="tema" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Tema" />
+        </set>
+        <set name="autorizacions" table="autorizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="Autorizacion" />
+        </set>
+        <set name="usuarioMenus" table="usuario_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioMenu" />
+        </set>
+        <set name="autorizacionUsuariosForIdUsuarioUmodif" table="autorizacion_usuario" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="AutorizacionUsuario" />
+        </set>
+        <set name="coloniaLocalidads" table="colonia_localidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_USUARIO_UMODIF" not-null="true" />
+            </key>
+            <one-to-many class="ColoniaLocalidad" />
+        </set>
+        <set name="publicacionsForUsuarioalta" table="publicacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="USUARIOALTA" not-null="true" />
+            </key>
+            <one-to-many class="Publicacion" />
+        </set>
+    </class>
+</hibernate-mapping>

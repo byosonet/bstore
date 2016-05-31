@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Direccion" table="direccion" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="java.lang.Long">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="coloniaLocalidad" class="ColoniaLocalidad" fetch="select">
+            <column name="ID_ESTADO" not-null="true" />
+            <column name="ID_DELEGACION_MUNICIPIO" not-null="true" />
+            <column name="ID_COLONIA_LOCALIDAD" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <property name="calle" type="string">
+            <column name="CALLE" length="100" not-null="true" />
+        </property>
+        <property name="codigoPostal" type="int">
+            <column name="CODIGO_POSTAL" not-null="true" />
+        </property>
+        <property name="fechaAlta" type="timestamp">
+            <column name="FECHA_ALTA" length="19" not-null="true" />
+        </property>
+        <property name="numeroExt" type="string">
+            <column name="NUMERO_EXT" length="10" not-null="true" />
+        </property>
+        <property name="numeroInt" type="string">
+            <column name="NUMERO_INT" length="10" />
+        </property>
+        <property name="referencia" type="string">
+            <column name="REFERENCIA" length="250" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+        <set name="oficinas" table="oficina" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_DIRECCION" not-null="true" />
+            </key>
+            <one-to-many class="Oficina" />
+        </set>
+        <set name="editorials" table="editorial" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_DIRECCION" not-null="true" />
+            </key>
+            <one-to-many class="Editorial" />
+        </set>
+    </class>
+</hibernate-mapping>

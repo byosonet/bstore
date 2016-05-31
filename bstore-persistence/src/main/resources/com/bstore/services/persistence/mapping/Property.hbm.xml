@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Property" table="property" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="llave" type="string">
+            <column name="LLAVE" />
+        </property>
+        <property name="value" type="string">
+            <column name="VALUE" length="2044" />
+        </property>
+        <property name="active" type="java.lang.Integer">
+            <column name="ACTIVE" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Menu" table="menu" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="java.lang.Short">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="sistema" class="Sistema" fetch="select">
+            <column name="ID_SISTEMA" not-null="true" />
+        </many-to-one>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="icon" type="string">
+            <column name="ICON" length="50" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" unique="true" />
+        </property>
+        <property name="orden" type="short">
+            <column name="ORDEN" not-null="true" />
+        </property>
+        <property name="visible" type="int">
+            <column name="VISIBLE" not-null="true" />
+        </property>
+        <one-to-one name="subMenuById" class="SubMenu"></one-to-one>
+        <set name="usuarioMenus" table="usuario_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_MENU" not-null="true" />
+            </key>
+            <one-to-many class="UsuarioMenu" />
+        </set>
+        <set name="perfils" table="perfil_menu" inverse="false" lazy="true" fetch="select">
+            <key>
+                <column name="ID_MENU" not-null="true" />
+            </key>
+            <many-to-many entity-name="Perfil">
+                <column name="ID_PERFIL" not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="subMenusForIdMenuPadre" table="sub_menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_MENU_PADRE" not-null="true" />
+            </key>
+            <one-to-many class="SubMenu" />
+        </set>
+        <set name="menuUrls" table="menu_url" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_MENU" not-null="true" />
+            </key>
+            <one-to-many class="MenuUrl" />
+        </set>
+    </class>
+</hibernate-mapping>

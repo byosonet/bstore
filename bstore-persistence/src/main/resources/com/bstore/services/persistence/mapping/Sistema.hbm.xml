@@ -1,0 +1,36 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Sistema" table="sistema" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="short">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" unique="true" />
+        </property>
+        <set name="autorizacions" table="autorizacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SISTEMA" not-null="true" />
+            </key>
+            <one-to-many class="Autorizacion" />
+        </set>
+        <set name="hollidays" table="holliday" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SISTEMA" />
+            </key>
+            <one-to-many class="Holliday" />
+        </set>
+        <set name="menus" table="menu" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_SISTEMA" not-null="true" />
+            </key>
+            <one-to-many class="Menu" />
+        </set>
+    </class>
+</hibernate-mapping>
