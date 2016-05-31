@@ -1,0 +1,175 @@
+﻿# Host: localhost  (Version 5.5.49)
+# Date: 2016-05-30 22:47:21
+# Generator: MySQL-Front 5.3  (Build 5.39)
+
+/*!40101 SET NAMES utf8 */;
+
+#
+# Structure for table "autor"
+#
+
+DROP TABLE IF EXISTS `autor`;
+CREATE TABLE `autor` (
+  `ID` int(11) NOT NULL,
+  `AP_MATERNO` varchar(50) DEFAULT NULL,
+  `AP_PATERNO` varchar(50) NOT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `ESTATUS` int(11) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `RFC` varchar(13) DEFAULT NULL,
+  `TELEFONO` varchar(30) DEFAULT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_AUTOR_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`),
+  CONSTRAINT `FK_AUTOR_ID_USUARIO_UMODIF` FOREIGN KEY (`ID_USUARIO_UMODIF`) REFERENCES `r2r_core`.`usuario` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "autor"
+#
+
+
+#
+# Structure for table "editorial"
+#
+
+DROP TABLE IF EXISTS `editorial`;
+CREATE TABLE `editorial` (
+  `ID` int(11) NOT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `ESTATUS` int(11) NOT NULL,
+  `NOMBRE` varchar(100) NOT NULL,
+  `RFC` varchar(13) DEFAULT NULL,
+  `TELEFONO` varchar(30) DEFAULT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  `ID_DIRECCION` bigint(20) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_EDIT_NOMBRE` (`NOMBRE`),
+  KEY `FK_EDITORIAL_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`),
+  KEY `FK_EDITORIAL_ID_DIRECCION` (`ID_DIRECCION`),
+  CONSTRAINT `FK_EDITORIAL_ID_DIRECCION` FOREIGN KEY (`ID_DIRECCION`) REFERENCES `r2r_core`.`direccion` (`ID`),
+  CONSTRAINT `FK_EDITORIAL_ID_USUARIO_UMODIF` FOREIGN KEY (`ID_USUARIO_UMODIF`) REFERENCES `r2r_core`.`usuario` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "editorial"
+#
+
+
+#
+# Structure for table "tema"
+#
+
+DROP TABLE IF EXISTS `tema`;
+CREATE TABLE `tema` (
+  `ID` int(11) NOT NULL,
+  `ESTATUS` int(11) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_TEMA_NOMBRE` (`NOMBRE`),
+  KEY `FK_TEMA_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`),
+  CONSTRAINT `FK_TEMA_ID_USUARIO_UMODIF` FOREIGN KEY (`ID_USUARIO_UMODIF`) REFERENCES `r2r_core`.`usuario` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "tema"
+#
+
+
+#
+# Structure for table "subtema"
+#
+
+DROP TABLE IF EXISTS `subtema`;
+CREATE TABLE `subtema` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `ID_TEMA` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_SUBTEMA_NOMBRE` (`NOMBRE`),
+  KEY `FK_SUBTEMA_ID_TEMA` (`ID_TEMA`),
+  CONSTRAINT `FK_SUBTEMA_ID_TEMA` FOREIGN KEY (`ID_TEMA`) REFERENCES `tema` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "subtema"
+#
+
+
+#
+# Structure for table "publicacion"
+#
+
+DROP TABLE IF EXISTS `publicacion`;
+CREATE TABLE `publicacion` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCUENTO` decimal(3,2) DEFAULT NULL,
+  `ESTATUS` int(11) NOT NULL,
+  `ISBN` varchar(13) NOT NULL,
+  `NOMBRE` varchar(100) NOT NULL,
+  `NUMERO_PAGINAS` smallint(6) DEFAULT NULL,
+  `PORTADA` longblob,
+  `PRECIO` decimal(3,2) DEFAULT NULL,
+  `RESUMEN` longtext,
+  `URL_ARCHIVO` varchar(200) NOT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  `ID_TEMA` int(11) NOT NULL,
+  `USUARIOALTA` int(11) NOT NULL,
+  `ID_AUTOR` int(11) NOT NULL,
+  `ID_EDITORIAL` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_PUBLICACION_NOMBRE` (`NOMBRE`),
+  KEY `FK_PUBLICACION_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`),
+  KEY `FK_PUBLICACION_USUARIOALTA` (`USUARIOALTA`),
+  KEY `FK_PUBLICACION_ID_AUTOR` (`ID_AUTOR`),
+  KEY `FK_PUBLICACION_ID_TEMA` (`ID_TEMA`),
+  KEY `FK_PUBLICACION_ID_EDITORIAL` (`ID_EDITORIAL`),
+  CONSTRAINT `FK_PUBLICACION_ID_AUTOR` FOREIGN KEY (`ID_AUTOR`) REFERENCES `autor` (`ID`),
+  CONSTRAINT `FK_PUBLICACION_ID_EDITORIAL` FOREIGN KEY (`ID_EDITORIAL`) REFERENCES `editorial` (`ID`),
+  CONSTRAINT `FK_PUBLICACION_ID_TEMA` FOREIGN KEY (`ID_TEMA`) REFERENCES `tema` (`ID`),
+  CONSTRAINT `FK_PUBLICACION_ID_USUARIO_UMODIF` FOREIGN KEY (`ID_USUARIO_UMODIF`) REFERENCES `r2r_core`.`usuario` (`ID`),
+  CONSTRAINT `FK_PUBLICACION_USUARIOALTA` FOREIGN KEY (`USUARIOALTA`) REFERENCES `r2r_core`.`usuario` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "publicacion"
+#
+
+
+#
+# Structure for table "usuario_lector"
+#
+
+DROP TABLE IF EXISTS `usuario_lector`;
+CREATE TABLE `usuario_lector` (
+  `ID` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  CONSTRAINT `FK_USUARIO_LECTOR_ID` FOREIGN KEY (`ID`) REFERENCES `r2r_core`.`usuario` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "usuario_lector"
+#
+
+
+#
+# Structure for table "usuario_lector_publicacion"
+#
+
+DROP TABLE IF EXISTS `usuario_lector_publicacion`;
+CREATE TABLE `usuario_lector_publicacion` (
+  `FECHA_COMPRA` datetime NOT NULL,
+  `ID_USUARIO_LECTOR` int(11) NOT NULL,
+  `ID_PUBLICACION` int(11) NOT NULL,
+  PRIMARY KEY (`ID_USUARIO_LECTOR`,`ID_PUBLICACION`)
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+#
+# Data for table "usuario_lector_publicacion"
+#
+
