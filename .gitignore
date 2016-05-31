@@ -14,7 +14,9 @@
 /bstore-web/.project
 /bstore-web/.settings/
 
-
 /bstore-drools/src/test/java/META-INF/
 /bstore-persistence/src/test/java/META-INF/
 /bstore-web/src/test/java/META-INF/
+
+.project
+.settings/
