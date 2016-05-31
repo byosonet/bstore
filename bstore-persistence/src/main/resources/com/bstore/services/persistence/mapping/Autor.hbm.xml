@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Autor" table="autor" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <property name="apMaterno" type="string">
+            <column name="AP_MATERNO" length="50" />
+        </property>
+        <property name="apPaterno" type="string">
+            <column name="AP_PATERNO" length="50" not-null="true" />
+        </property>
+        <property name="email" type="string">
+            <column name="EMAIL" />
+        </property>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="50" not-null="true" />
+        </property>
+        <property name="rfc" type="string">
+            <column name="RFC" length="13" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="30" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+        <set name="publicacions" table="publicacion" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_AUTOR" not-null="true" />
+            </key>
+            <one-to-many class="Publicacion" />
+        </set>
+    </class>
+</hibernate-mapping>

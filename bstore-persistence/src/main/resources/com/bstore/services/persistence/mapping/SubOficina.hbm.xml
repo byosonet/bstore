@@ -1,0 +1,18 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="SubOficina" table="sub_oficina" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="foreign">
+                <param name="property">oficinaById</param>
+            </generator>
+        </id>
+        <many-to-one name="oficinaByIdOficinaPadre" class="Oficina" fetch="select">
+            <column name="ID_OFICINA_PADRE" not-null="true" />
+        </many-to-one>
+        <one-to-one name="oficinaById" class="Oficina" constrained="true"></one-to-one>
+    </class>
+</hibernate-mapping>

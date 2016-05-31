@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="DelegacionMunicipio" table="delegacion_municipio" catalog="bstore" optimistic-lock="version">
+        <composite-id name="id" class="DelegacionMunicipioId">
+            <key-property name="idEstado" type="short">
+                <column name="ID_ESTADO" />
+            </key-property>
+            <key-property name="id" type="int">
+                <column name="ID" />
+            </key-property>
+        </composite-id>
+        <many-to-one name="estado" class="Estado" update="false" insert="false" fetch="select">
+            <column name="ID_ESTADO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuario" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <property name="abreviatura" type="string">
+            <column name="ABREVIATURA" length="5" not-null="true" />
+        </property>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" not-null="true" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+        <set name="coloniaLocalidads" table="colonia_localidad" inverse="true" lazy="true" fetch="select">
+            <key>
+                <column name="ID_ESTADO" not-null="true" />
+                <column name="ID_DELEGACION_MUNICIPIO" not-null="true" />
+            </key>
+            <one-to-many class="ColoniaLocalidad" />
+        </set>
+    </class>
+</hibernate-mapping>

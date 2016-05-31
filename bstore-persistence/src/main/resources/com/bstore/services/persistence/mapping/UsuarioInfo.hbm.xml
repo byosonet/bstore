@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="UsuarioInfo" table="usuario_info" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="foreign">
+                <param name="property">usuarioById</param>
+            </generator>
+        </id>
+        <many-to-one name="usuarioByIdUsuarioUmodif" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <one-to-one name="usuarioById" class="Usuario" constrained="true"></one-to-one>
+        <many-to-one name="usuarioPuesto" class="UsuarioPuesto" fetch="select">
+            <column name="ID_USUARIO_PUESTO" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioTitulo" class="UsuarioTitulo" fetch="select">
+            <column name="ID_USUARIO_TITULO" />
+        </many-to-one>
+        <property name="curp" type="string">
+            <column name="CURP" length="19" />
+        </property>
+        <property name="fechaAlta" type="timestamp">
+            <column name="FECHA_ALTA" length="19" not-null="true" />
+        </property>
+        <property name="fechaBaja" type="timestamp">
+            <column name="FECHA_BAJA" length="19" />
+        </property>
+        <property name="rfc" type="string">
+            <column name="RFC" length="13" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>

@@ -1,0 +1,57 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+<hibernate-mapping>
+    <class name="Publicacion" table="publicacion" catalog="bstore" optimistic-lock="version">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="autor" class="Autor" fetch="select">
+            <column name="ID_AUTOR" not-null="true" />
+        </many-to-one>
+        <many-to-one name="editorial" class="Editorial" fetch="select">
+            <column name="ID_EDITORIAL" not-null="true" />
+        </many-to-one>
+        <many-to-one name="tema" class="Tema" fetch="select">
+            <column name="ID_TEMA" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioByIdUsuarioUmodif" class="Usuario" fetch="select">
+            <column name="ID_USUARIO_UMODIF" not-null="true" />
+        </many-to-one>
+        <many-to-one name="usuarioByUsuarioalta" class="Usuario" fetch="select">
+            <column name="USUARIOALTA" not-null="true" />
+        </many-to-one>
+        <property name="descuento" type="big_decimal">
+            <column name="DESCUENTO" precision="3" />
+        </property>
+        <property name="estatus" type="int">
+            <column name="ESTATUS" not-null="true" />
+        </property>
+        <property name="isbn" type="string">
+            <column name="ISBN" length="13" not-null="true" />
+        </property>
+        <property name="nombre" type="string">
+            <column name="NOMBRE" length="100" not-null="true" unique="true" />
+        </property>
+        <property name="numeroPaginas" type="java.lang.Short">
+            <column name="NUMERO_PAGINAS" />
+        </property>
+        <property name="portada" type="binary">
+            <column name="PORTADA" />
+        </property>
+        <property name="precio" type="big_decimal">
+            <column name="PRECIO" precision="3" />
+        </property>
+        <property name="resumen" type="string">
+            <column name="RESUMEN" />
+        </property>
+        <property name="urlArchivo" type="string">
+            <column name="URL_ARCHIVO" length="200" not-null="true" />
+        </property>
+        <property name="fechaUmodif" type="timestamp">
+            <column name="FECHA_UMODIF" length="19" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
