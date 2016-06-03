@@ -3,25 +3,28 @@
 "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <!-- Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="com.bstore.services.persistence.pojo.Editorial" table="EDITORIAL" catalog="bstore">
+    <class name="com.bstore.services.persistence.pojo.Fuente" table="FUENTE" catalog="bstore">
         <id name="id" type="int">
             <column name="ID" />
             <generator class="assigned" />
         </id>
+        <property name="nombreBiblioteca" type="string">
+            <column name="NOMBRE_BIBLIOTECA" length="50" not-null="true" />
+        </property>
+        <property name="paginaWeb" type="string">
+            <column name="PAGINA_WEB" length="50" />
+        </property>
         <property name="email" type="string">
             <column name="EMAIL" />
+        </property>
+        <property name="telefono" type="string">
+            <column name="TELEFONO" length="30" />
         </property>
         <property name="estatus" type="int">
             <column name="ESTATUS" not-null="true" />
         </property>
-        <property name="nombre" type="string">
-            <column name="NOMBRE" length="100" not-null="true" unique="true" />
-        </property>
         <property name="rfc" type="string">
             <column name="RFC" length="13" />
-        </property>
-        <property name="telefono" type="string">
-            <column name="TELEFONO" length="30" />
         </property>
         <property name="fechaUmodif" type="timestamp">
             <column name="FECHA_UMODIF" length="19" not-null="true" />

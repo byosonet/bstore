@@ -1,0 +1,31 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.bstore.services.persistence.pojo.Compra" table="COMPRA" catalog="bstore">
+        <composite-id name="id" class="com.bstore.services.persistence.pojo.CompraId">
+            <key-property name="idUsuario" type="int">
+                <column name="ID_USUARIO" />
+            </key-property>
+            <key-property name="idPublicacion" type="int">
+                <column name="ID_PUBLICACION" />
+            </key-property>
+            <key-property name="id" type="int">
+                <column name="ID" />
+            </key-property>
+        </composite-id>
+        <property name="idFormaPago" type="java.lang.Integer">
+            <column name="ID_FORMA_PAGO" />
+        </property>
+        <property name="precioCompra" type="big_decimal">
+            <column name="PRECIO_COMPRA" precision="3" />
+        </property>
+        <property name="fechaCompra" type="timestamp">
+            <column name="FECHA_COMPRA" length="19" not-null="true" />
+        </property>
+        <property name="formaPagoId" type="int">
+            <column name="FORMA_PAGO_ID" not-null="true" />
+        </property>
+    </class>
+</hibernate-mapping>
