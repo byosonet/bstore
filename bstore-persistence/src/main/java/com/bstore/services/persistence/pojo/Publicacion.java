@@ -1,5 +1,5 @@
-// default package
-// Generated 31-may-2016 0:05:40 by Hibernate Tools 4.3.1
+package com.bstore.services.persistence.pojo;
+// Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -9,12 +9,11 @@ import java.util.Date;
  */
 public class Publicacion implements java.io.Serializable {
 
-	private Integer id;
-	private Autor autor;
-	private Editorial editorial;
-	private Tema tema;
-	private Usuario usuarioByIdUsuarioUmodif;
-	private Usuario usuarioByUsuarioalta;
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7576625373651137083L;
+	private PublicacionId id;
 	private BigDecimal descuento;
 	private int estatus;
 	private String isbn;
@@ -25,34 +24,40 @@ public class Publicacion implements java.io.Serializable {
 	private String resumen;
 	private String urlArchivo;
 	private Date fechaUmodif;
+	private int idUsuarioUmodif;
+	private int idColeccion;
+	private int usuarioalta;
+	private int idFuente;
+	private int idEditorial;
+	private int compraIdUsuario;
+	private int compraIdPublicacion;
 
 	public Publicacion() {
 	}
 
-	public Publicacion(Autor autor, Editorial editorial, Tema tema, Usuario usuarioByIdUsuarioUmodif,
-			Usuario usuarioByUsuarioalta, int estatus, String isbn, String nombre, String urlArchivo,
-			Date fechaUmodif) {
-		this.autor = autor;
-		this.editorial = editorial;
-		this.tema = tema;
-		this.usuarioByIdUsuarioUmodif = usuarioByIdUsuarioUmodif;
-		this.usuarioByUsuarioalta = usuarioByUsuarioalta;
+	public Publicacion(PublicacionId id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
+			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial, int compraIdUsuario,
+			int compraIdPublicacion) {
+		this.id = id;
 		this.estatus = estatus;
 		this.isbn = isbn;
 		this.nombre = nombre;
 		this.urlArchivo = urlArchivo;
 		this.fechaUmodif = fechaUmodif;
+		this.idUsuarioUmodif = idUsuarioUmodif;
+		this.idColeccion = idColeccion;
+		this.usuarioalta = usuarioalta;
+		this.idFuente = idFuente;
+		this.idEditorial = idEditorial;
+		this.compraIdUsuario = compraIdUsuario;
+		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
-	public Publicacion(Autor autor, Editorial editorial, Tema tema, Usuario usuarioByIdUsuarioUmodif,
-			Usuario usuarioByUsuarioalta, BigDecimal descuento, int estatus, String isbn, String nombre,
-			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo,
-			Date fechaUmodif) {
-		this.autor = autor;
-		this.editorial = editorial;
-		this.tema = tema;
-		this.usuarioByIdUsuarioUmodif = usuarioByIdUsuarioUmodif;
-		this.usuarioByUsuarioalta = usuarioByUsuarioalta;
+	public Publicacion(PublicacionId id, BigDecimal descuento, int estatus, String isbn, String nombre,
+			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo, Date fechaUmodif,
+			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial, int compraIdUsuario,
+			int compraIdPublicacion) {
+		this.id = id;
 		this.descuento = descuento;
 		this.estatus = estatus;
 		this.isbn = isbn;
@@ -63,54 +68,21 @@ public class Publicacion implements java.io.Serializable {
 		this.resumen = resumen;
 		this.urlArchivo = urlArchivo;
 		this.fechaUmodif = fechaUmodif;
+		this.idUsuarioUmodif = idUsuarioUmodif;
+		this.idColeccion = idColeccion;
+		this.usuarioalta = usuarioalta;
+		this.idFuente = idFuente;
+		this.idEditorial = idEditorial;
+		this.compraIdUsuario = compraIdUsuario;
+		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
-	public Integer getId() {
+	public PublicacionId getId() {
 		return this.id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(PublicacionId id) {
 		this.id = id;
-	}
-
-	public Autor getAutor() {
-		return this.autor;
-	}
-
-	public void setAutor(Autor autor) {
-		this.autor = autor;
-	}
-
-	public Editorial getEditorial() {
-		return this.editorial;
-	}
-
-	public void setEditorial(Editorial editorial) {
-		this.editorial = editorial;
-	}
-
-	public Tema getTema() {
-		return this.tema;
-	}
-
-	public void setTema(Tema tema) {
-		this.tema = tema;
-	}
-
-	public Usuario getUsuarioByIdUsuarioUmodif() {
-		return this.usuarioByIdUsuarioUmodif;
-	}
-
-	public void setUsuarioByIdUsuarioUmodif(Usuario usuarioByIdUsuarioUmodif) {
-		this.usuarioByIdUsuarioUmodif = usuarioByIdUsuarioUmodif;
-	}
-
-	public Usuario getUsuarioByUsuarioalta() {
-		return this.usuarioByUsuarioalta;
-	}
-
-	public void setUsuarioByUsuarioalta(Usuario usuarioByUsuarioalta) {
-		this.usuarioByUsuarioalta = usuarioByUsuarioalta;
 	}
 
 	public BigDecimal getDescuento() {
@@ -191,6 +163,62 @@ public class Publicacion implements java.io.Serializable {
 
 	public void setFechaUmodif(Date fechaUmodif) {
 		this.fechaUmodif = fechaUmodif;
+	}
+
+	public int getIdUsuarioUmodif() {
+		return this.idUsuarioUmodif;
+	}
+
+	public void setIdUsuarioUmodif(int idUsuarioUmodif) {
+		this.idUsuarioUmodif = idUsuarioUmodif;
+	}
+
+	public int getIdColeccion() {
+		return this.idColeccion;
+	}
+
+	public void setIdColeccion(int idColeccion) {
+		this.idColeccion = idColeccion;
+	}
+
+	public int getUsuarioalta() {
+		return this.usuarioalta;
+	}
+
+	public void setUsuarioalta(int usuarioalta) {
+		this.usuarioalta = usuarioalta;
+	}
+
+	public int getIdFuente() {
+		return this.idFuente;
+	}
+
+	public void setIdFuente(int idFuente) {
+		this.idFuente = idFuente;
+	}
+
+	public int getIdEditorial() {
+		return this.idEditorial;
+	}
+
+	public void setIdEditorial(int idEditorial) {
+		this.idEditorial = idEditorial;
+	}
+
+	public int getCompraIdUsuario() {
+		return this.compraIdUsuario;
+	}
+
+	public void setCompraIdUsuario(int compraIdUsuario) {
+		this.compraIdUsuario = compraIdUsuario;
+	}
+
+	public int getCompraIdPublicacion() {
+		return this.compraIdPublicacion;
+	}
+
+	public void setCompraIdPublicacion(int compraIdPublicacion) {
+		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
 }

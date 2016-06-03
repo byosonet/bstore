@@ -1,21 +1,15 @@
 <?xml version="1.0"?>
 <!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
-"http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
-<!-- Generated 31-may-2016 0:05:41 by Hibernate Tools 4.3.1 -->
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
-    <class name="Perfil" table="perfil" catalog="bstore" optimistic-lock="version">
+    <class name="com.bstore.services.persistence.pojo.Perfil" table="PERFIL" catalog="bstore">
         <id name="id" type="java.lang.Integer">
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="usuario" class="Usuario" fetch="select">
-            <column name="ID_USUARIO_UMODIF" not-null="true" />
-        </many-to-one>
         <property name="descripcion" type="string">
             <column name="DESCRIPCION" length="300" />
-        </property>
-        <property name="estatus" type="int">
-            <column name="ESTATUS" not-null="true" />
         </property>
         <property name="nombre" type="string">
             <column name="NOMBRE" length="50" not-null="true" unique="true" />
@@ -23,29 +17,5 @@
         <property name="fechaUmodif" type="timestamp">
             <column name="FECHA_UMODIF" length="19" not-null="true" />
         </property>
-        <set name="menus" table="perfil_menu" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="ID_PERFIL" not-null="true" />
-            </key>
-            <many-to-many entity-name="Menu">
-                <column name="ID_MENU" not-null="true" />
-            </many-to-many>
-        </set>
-        <set name="usuarios" table="usuario_perfil" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="ID_PERFIL" not-null="true" />
-            </key>
-            <many-to-many entity-name="Usuario">
-                <column name="ID_USUARIO" not-null="true" />
-            </many-to-many>
-        </set>
-        <set name="oficinas" table="perfil_oficina" inverse="false" lazy="true" fetch="select">
-            <key>
-                <column name="ID_PERFIL" not-null="true" />
-            </key>
-            <many-to-many entity-name="Oficina">
-                <column name="ID_OFICINA" not-null="true" />
-            </many-to-many>
-        </set>
     </class>
 </hibernate-mapping>
