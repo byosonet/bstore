@@ -29,15 +29,12 @@ public class Publicacion implements java.io.Serializable {
 	private int usuarioalta;
 	private int idFuente;
 	private int idEditorial;
-	private int compraIdUsuario;
-	private int compraIdPublicacion;
 
 	public Publicacion() {
 	}
 
 	public Publicacion(PublicacionId id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial, int compraIdUsuario,
-			int compraIdPublicacion) {
+			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
 		this.id = id;
 		this.estatus = estatus;
 		this.isbn = isbn;
@@ -49,14 +46,11 @@ public class Publicacion implements java.io.Serializable {
 		this.usuarioalta = usuarioalta;
 		this.idFuente = idFuente;
 		this.idEditorial = idEditorial;
-		this.compraIdUsuario = compraIdUsuario;
-		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
 	public Publicacion(PublicacionId id, BigDecimal descuento, int estatus, String isbn, String nombre,
 			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial, int compraIdUsuario,
-			int compraIdPublicacion) {
+			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
 		this.id = id;
 		this.descuento = descuento;
 		this.estatus = estatus;
@@ -73,8 +67,6 @@ public class Publicacion implements java.io.Serializable {
 		this.usuarioalta = usuarioalta;
 		this.idFuente = idFuente;
 		this.idEditorial = idEditorial;
-		this.compraIdUsuario = compraIdUsuario;
-		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
 	public PublicacionId getId() {
@@ -203,22 +195,6 @@ public class Publicacion implements java.io.Serializable {
 
 	public void setIdEditorial(int idEditorial) {
 		this.idEditorial = idEditorial;
-	}
-
-	public int getCompraIdUsuario() {
-		return this.compraIdUsuario;
-	}
-
-	public void setCompraIdUsuario(int compraIdUsuario) {
-		this.compraIdUsuario = compraIdUsuario;
-	}
-
-	public int getCompraIdPublicacion() {
-		return this.compraIdPublicacion;
-	}
-
-	public void setCompraIdPublicacion(int compraIdPublicacion) {
-		this.compraIdPublicacion = compraIdPublicacion;
 	}
 
 }

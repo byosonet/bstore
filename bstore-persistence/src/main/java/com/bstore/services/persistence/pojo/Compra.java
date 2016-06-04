@@ -17,23 +17,20 @@ public class Compra implements java.io.Serializable {
 	private Integer idFormaPago;
 	private BigDecimal precioCompra;
 	private Date fechaCompra;
-	private int formaPagoId;
 
 	public Compra() {
 	}
 
-	public Compra(CompraId id, Date fechaCompra, int formaPagoId) {
+	public Compra(CompraId id, Date fechaCompra) {
 		this.id = id;
 		this.fechaCompra = fechaCompra;
-		this.formaPagoId = formaPagoId;
 	}
 
-	public Compra(CompraId id, Integer idFormaPago, BigDecimal precioCompra, Date fechaCompra, int formaPagoId) {
+	public Compra(CompraId id, Integer idFormaPago, BigDecimal precioCompra, Date fechaCompra) {
 		this.id = id;
 		this.idFormaPago = idFormaPago;
 		this.precioCompra = precioCompra;
 		this.fechaCompra = fechaCompra;
-		this.formaPagoId = formaPagoId;
 	}
 
 	public CompraId getId() {
@@ -66,14 +63,6 @@ public class Compra implements java.io.Serializable {
 
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
-	}
-
-	public int getFormaPagoId() {
-		return this.formaPagoId;
-	}
-
-	public void setFormaPagoId(int formaPagoId) {
-		this.formaPagoId = formaPagoId;
 	}
 
 }

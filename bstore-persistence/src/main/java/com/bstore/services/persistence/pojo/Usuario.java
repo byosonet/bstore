@@ -10,7 +10,7 @@ public class Usuario implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -6269529491327180701L;
-	private UsuarioId id;
+	private Usuario id;
 	private String AMaterno;
 	private String APaterno;
 	private String email;
@@ -25,7 +25,7 @@ public class Usuario implements java.io.Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(UsuarioId id, String APaterno, int estatus, String login, String nombre, String password,
+	public Usuario(Usuario id, String APaterno, int estatus, String login, String nombre, String password,
 			int perfilId) {
 		this.id = id;
 		this.APaterno = APaterno;
@@ -36,7 +36,7 @@ public class Usuario implements java.io.Serializable {
 		this.perfilId = perfilId;
 	}
 
-	public Usuario(UsuarioId id, String AMaterno, String APaterno, String email, int estatus, byte[] foto, String login,
+	public Usuario(Usuario id, String AMaterno, String APaterno, String email, int estatus, byte[] foto, String login,
 			String nombre, String password, int perfilId, String sexo) {
 		this.id = id;
 		this.AMaterno = AMaterno;
@@ -51,11 +51,11 @@ public class Usuario implements java.io.Serializable {
 		this.sexo = sexo;
 	}
 
-	public UsuarioId getId() {
+	public Usuario getId() {
 		return this.id;
 	}
 
-	public void setId(UsuarioId id) {
+	public void setId(Usuario id) {
 		this.id = id;
 	}
 

@@ -24,8 +24,5 @@
         <property name="fechaCompra" type="timestamp">
             <column name="FECHA_COMPRA" length="19" not-null="true" />
         </property>
-        <property name="formaPagoId" type="int">
-            <column name="FORMA_PAGO_ID" not-null="true" />
-        </property>
     </class>
 </hibernate-mapping>
