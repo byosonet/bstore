@@ -16,7 +16,7 @@
             </key-property>
         </composite-id>
         <property name="descuento" type="big_decimal">
-            <column name="DESCUENTO" precision="3" />
+            <column name="DESCUENTO" precision="5" />
         </property>
         <property name="estatus" type="int">
             <column name="ESTATUS" not-null="true" />
@@ -34,7 +34,7 @@
             <column name="PORTADA" />
         </property>
         <property name="precio" type="big_decimal">
-            <column name="PRECIO" precision="3" />
+            <column name="PRECIO" precision="5" />
         </property>
         <property name="resumen" type="string">
             <column name="RESUMEN" />
@@ -59,12 +59,6 @@
         </property>
         <property name="idEditorial" type="int">
             <column name="ID_EDITORIAL" not-null="true" />
-        </property>
-        <property name="compraIdUsuario" type="int">
-            <column name="COMPRA_ID_USUARIO" not-null="true" />
-        </property>
-        <property name="compraIdPublicacion" type="int">
-            <column name="COMPRA_ID_PUBLICACION" not-null="true" />
         </property>
     </class>
 </hibernate-mapping>
