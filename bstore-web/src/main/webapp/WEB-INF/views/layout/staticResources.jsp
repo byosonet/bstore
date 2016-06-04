@@ -29,6 +29,9 @@
 <!-- summernote css -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/summernote/summernote.css">
 
+<!-- novedades css -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/novedades.css">
+
 <!-- VERSION ANTERIOR
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 -->
@@ -77,3 +80,6 @@
 
 <!-- csi js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/csi.js"></script>
+
+<!-- grid a licious js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery.grid-a-licious.js"></script>
