@@ -15,7 +15,8 @@ public class TestHibernate {
     public static void main(String[] args) throws Exception
     {
     	System.out.println("--Testxx::");
-        ApplicationContext context = new FileSystemXmlApplicationContext("classpath:com/bstore/services/test/applicationContextHibernate.xml");
+        ApplicationContext context = new FileSystemXmlApplicationContext(""
+        		+ "//Users/ulysses/proyectos/refactorBS/refactorBookStore/bstore-web/src/main/java/com/bstore/services/test/applicationContextHibernate.xml");
         UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDao");
         System.out.print(" -- Load Usario::"+usuario.getUser().size());
         
