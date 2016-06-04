@@ -13,32 +13,32 @@
         http://www.springframework.org/schema/context/spring-context.xsd">    
     
     <bean id="usuarioDao"
-        class="com.rest.services.god.persistence.dao.UsuarioDaoImpl"
+        class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
     
     <bean id="coroDao"
-        class="com.rest.services.god.persistence.dao.CoroDaoImpl"
+        class="com.bstore.services.persistence.dao.CoroDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
     
      <bean id="propiedadSistemaDao"
-        class="com.rest.services.god.persistence.dao.PropiedadSistemaDaoImpl"
+        class="com.bstore.services.persistence.dao.PropiedadSistemaDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
      
      <bean id="changesetDao"
-        class="com.rest.services.god.persistence.dao.ChangesetDaoImpl"
+        class="com.bstore.services.persistence.dao.ChangesetDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
      
      <bean id="deliveryFailedDao"
-        class="com.rest.services.god.persistence.dao.DeliveryFailedDaoImpl"
+        class="com.bstore.services.persistence.dao.DeliveryFailedDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
      
      <bean id="mailTemplateDao"
-        class="com.rest.services.god.persistence.dao.MailTemplateDaoImpl"
+        class="com.bstore.services.persistence.dao.MailTemplateDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
     
     <bean id="sessionFactory" 
           class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-          p:configLocation="classpath:com/rest/services/god/persistence/config/hibernate.cfg.xml"/>          
+          p:configLocation="classpath:com/bstore/services/persistence/config/hibernate.cfg.xml"/>          
     
           <bean id="transactionManager" 
           class="org.springframework.orm.hibernate3.HibernateTransactionManager"

@@ -4,11 +4,9 @@ package com.bstore.services.test;
  *
  * @author Priscila
  */
-import com.bstore.services.persistence.dao.MailTemplateDaoImpl;
 import com.bstore.services.persistence.dao.UsuarioDaoImpl;
 import com.bstore.services.persistence.hbm.Usuario;
-import com.bstore.services.util.UtilService;
-import java.util.Date;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
  
@@ -16,30 +14,14 @@ public class TestHibernate {
  
     public static void main(String[] args) throws Exception
     {
-        @SuppressWarnings("resource")
-		ApplicationContext context = new FileSystemXmlApplicationContext("C:\\temporal\\god\\god-web\\src\\main\\java\\com\\cprigus\\services\\test\\applicationContextHibernate.xml");
+    	System.out.println("--Testxx::");
+        ApplicationContext context = new FileSystemXmlApplicationContext("classpath:com/bstore/services/test/applicationContextHibernate.xml");
         UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDao");
-        MailTemplateDaoImpl mailTemplateDaoImpl = (MailTemplateDaoImpl) context.getBean("mailTemplateDao");
+        System.out.print(" -- Load Usario::"+usuario.getUser().size());
         
-        for(Usuario user : usuario.getListaEmailNotificaciones("NO")){
-            System.err.println(" -- Mail: "+user.getEmail()+" -- Status: "+user.getNotificaciones());
+        for(Usuario u: usuario.getUser()){
+        	System.err.println(" -- User: "+u.getNombre()+" email: "+u.getEmail());
         }
-        
-        System.err.println(" -- Mail: "+mailTemplateDaoImpl.getMail(1).readClob(mailTemplateDaoImpl.getMail(1).getMailTemplate()));
-        System.err.println(" -- Mail: "+mailTemplateDaoImpl.getMail(2).readClob(mailTemplateDaoImpl.getMail(2).getMailTemplate()));
-        System.err.println(" -- Mail: "+mailTemplateDaoImpl.getMail(3).readClob(mailTemplateDaoImpl.getMail(3).getMailTemplate()));
-        
-        
-        Usuario u = new Usuario();
-        u.setNombre("GUSTAVO2");
-        u.setEmail("gtrejo.armenta@gmail.com");
-        u.setPassword("holamundo");
-        u.setNotificaciones("SI");
-        u.setSexo('M');
-        u.setFechaNacimiento(new Date());
-        u.setActividad("ESTUDIANTE");
-        int idUsuario = usuario.agregarUsuario(u);
-        System.err.println(" -- idUsuario agregado: "+idUsuario);
-        
+ 
     }
 }
