@@ -173,7 +173,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.html"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="${contextpath}/novedades"><i class="fa fa-fw fa-star"></i> ¡Novedades!</a>
                     </li>
                     <li>
                         <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
@@ -217,7 +217,7 @@
                 <div class="row">
                     <div class="col-lg-12" style="text-align: center;">
                         <h1 class="page-header">
-                            <!--Bienvenido--><small>Bienvenido</small>
+                            <!--Bienvenido--><small><tiles:insertAttribute name="header" /></small>
                         </h1>
                     </div>
                 </div>

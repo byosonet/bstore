@@ -8,7 +8,13 @@
 	</definition>
 	
 	<definition name="indexPrincipal" extends="principal">
+		<put-attribute name="header" value="Bienvenido"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/myfirstbody.jsp"/>
+	</definition>
+	
+	<definition name="novedades" extends="principal">
+		<put-attribute name="header" value="Sección Novedades"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/novedades.jsp"/>
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/views/layout/login.jsp">
