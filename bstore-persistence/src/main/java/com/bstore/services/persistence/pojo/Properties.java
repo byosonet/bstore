@@ -51,4 +51,9 @@ public class Properties implements java.io.Serializable {
 		this.value = value;
 	}
 
+	@Override
+	public String toString() {
+		return "Properties [id=" + id + ", key=" + key + ", value=" + value + "]";
+	}
+
 }

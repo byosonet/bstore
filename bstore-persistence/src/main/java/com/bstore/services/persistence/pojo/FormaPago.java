@@ -51,4 +51,10 @@ public class FormaPago implements java.io.Serializable {
 		this.status = status;
 	}
 
+	@Override
+	public String toString() {
+		return "FormaPago [id=" + id + ", formaPago=" + formaPago + ", status=" + status + "]";
+	}
+
+	
 }

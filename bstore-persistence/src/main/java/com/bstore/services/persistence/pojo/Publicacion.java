@@ -2,6 +2,7 @@ package com.bstore.services.persistence.pojo;
 // Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 import java.util.Date;
 
 /**
@@ -13,7 +14,7 @@ public class Publicacion implements java.io.Serializable {
 	 * 
 	 */
 	private static final long serialVersionUID = -7576625373651137083L;
-	private PublicacionId id;
+	private int id;
 	private BigDecimal descuento;
 	private int estatus;
 	private String isbn;
@@ -33,7 +34,7 @@ public class Publicacion implements java.io.Serializable {
 	public Publicacion() {
 	}
 
-	public Publicacion(PublicacionId id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
+	public Publicacion(int id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
 			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
 		this.id = id;
 		this.estatus = estatus;
@@ -48,7 +49,7 @@ public class Publicacion implements java.io.Serializable {
 		this.idEditorial = idEditorial;
 	}
 
-	public Publicacion(PublicacionId id, BigDecimal descuento, int estatus, String isbn, String nombre,
+	public Publicacion(int id, BigDecimal descuento, int estatus, String isbn, String nombre,
 			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo, Date fechaUmodif,
 			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
 		this.id = id;
@@ -69,11 +70,11 @@ public class Publicacion implements java.io.Serializable {
 		this.idEditorial = idEditorial;
 	}
 
-	public PublicacionId getId() {
+	public int getId() {
 		return this.id;
 	}
 
-	public void setId(PublicacionId id) {
+	public void setId(int id) {
 		this.id = id;
 	}
 
@@ -195,6 +196,15 @@ public class Publicacion implements java.io.Serializable {
 
 	public void setIdEditorial(int idEditorial) {
 		this.idEditorial = idEditorial;
+	}
+
+	@Override
+	public String toString() {
+		return "Publicacion [id=" + id + ", descuento=" + descuento + ", estatus=" + estatus + ", isbn=" + isbn
+				+ ", nombre=" + nombre + ", numeroPaginas=" + numeroPaginas + ", portada=" + Arrays.toString(portada)
+				+ ", precio=" + precio + ", resumen=" + resumen + ", urlArchivo=" + urlArchivo + ", fechaUmodif="
+				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", idColeccion=" + idColeccion
+				+ ", usuarioalta=" + usuarioalta + ", idFuente=" + idFuente + ", idEditorial=" + idEditorial + "]";
 	}
 
 }

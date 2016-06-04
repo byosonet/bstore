@@ -98,4 +98,11 @@ public class Coleccion implements java.io.Serializable {
 		this.ranking = ranking;
 	}
 
+	@Override
+	public String toString() {
+		return "Coleccion [id=" + id + ", estatus=" + estatus + ", nombre=" + nombre + ", fechaUmodif=" + fechaUmodif
+				+ ", idUsuarioUmodif=" + idUsuarioUmodif + ", nombreMostrar=" + nombreMostrar + ", ranking=" + ranking
+				+ "]";
+	}
+	
 }

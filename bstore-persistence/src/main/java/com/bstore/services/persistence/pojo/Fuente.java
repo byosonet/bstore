@@ -118,4 +118,11 @@ public class Fuente implements java.io.Serializable {
 		this.idUsuarioUmodif = idUsuarioUmodif;
 	}
 
+	@Override
+	public String toString() {
+		return "Fuente [id=" + id + ", nombreBiblioteca=" + nombreBiblioteca + ", paginaWeb=" + paginaWeb + ", email="
+				+ email + ", telefono=" + telefono + ", estatus=" + estatus + ", rfc=" + rfc + ", fechaUmodif="
+				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + "]";
+	}
+
 }

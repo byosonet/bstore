@@ -63,4 +63,10 @@ public class Perfil implements java.io.Serializable {
 		this.fechaUmodif = fechaUmodif;
 	}
 
+	@Override
+	public String toString() {
+		return "Perfil [id=" + id + ", descripcion=" + descripcion + ", nombre=" + nombre + ", fechaUmodif="
+				+ fechaUmodif + "]";
+	}
+
 }
