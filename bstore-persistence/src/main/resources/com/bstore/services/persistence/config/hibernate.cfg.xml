@@ -46,5 +46,8 @@
     <mapping resource="com/bstore/services/persistence/hbm/Changeset.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/DeliveryFailed.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/MailTemplate.hbm.xml"/>
+    
+    <!-- MAPPING PARA BSTORE -->
+    <!-- <mapping resource="com/bstore/services/persistence/xml/Usuario.hbm.xml"/>-->
   </session-factory>
 </hibernate-configuration>

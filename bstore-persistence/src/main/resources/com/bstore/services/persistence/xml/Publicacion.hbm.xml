@@ -4,17 +4,10 @@
 <!-- Generated 02-jun-2016 21:47:36 by Hibernate Tools 3.4.0.CR1 -->
 <hibernate-mapping>
     <class name="com.bstore.services.persistence.pojo.Publicacion" table="PUBLICACION" catalog="bstore">
-        <composite-id name="id" class="com.bstore.services.persistence.pojo.PublicacionId">
-            <key-property name="id" type="int">
-                <column name="ID" />
-            </key-property>
-            <key-property name="fuenteId" type="int">
-                <column name="FUENTE_ID" />
-            </key-property>
-            <key-property name="coleccionId" type="int">
-                <column name="COLECCION_ID" />
-            </key-property>
-        </composite-id>
+		<id name="id" type="int">
+            <column name="ID" />
+            <generator class="assigned" />
+        </id>
         <property name="descuento" type="big_decimal">
             <column name="DESCUENTO" precision="5" />
         </property>

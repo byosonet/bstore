@@ -32,5 +32,10 @@
      <bean id="mailTemplateDao"
         class="com.bstore.services.persistence.dao.MailTemplateDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+        
+     <!-- DAO PARA BSTORE -->
+     <!-- <bean id="usuarioDap"
+        class="com.bstore.services.persistence.dap.UsuarioDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>-->
 
 </beans>

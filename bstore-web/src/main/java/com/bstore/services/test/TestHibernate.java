@@ -4,8 +4,7 @@ package com.bstore.services.test;
  *
  * @author Priscila
  */
-import com.bstore.services.persistence.dao.UsuarioDaoImpl;
-import com.bstore.services.persistence.hbm.Usuario;
+import com.bstore.services.persistence.dap.UsuarioDaoImpl;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
@@ -17,12 +16,10 @@ public class TestHibernate {
     	System.out.println("--Testxx::");
         ApplicationContext context = new FileSystemXmlApplicationContext(""
         		+ "//Users/ulysses/proyectos/refactorBS/refactorBookStore/bstore-web/src/main/java/com/bstore/services/test/applicationContextHibernate.xml");
-        UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDao");
-        System.out.print(" -- Load Usario::"+usuario.getUser().size());
+        UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDap");
+        System.out.print(" -- Load Usario::");
         
-        for(Usuario u: usuario.getUser()){
-        	System.err.println(" -- User: "+u.getNombre()+" email: "+u.getEmail());
-        }
+       System.out.println(" -- User: "+usuario.consultar(1).toString());
  
     }
 }

@@ -12,9 +12,9 @@
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">    
     
-    <bean id="usuarioDao"
+   <!-- <bean id="usuarioDao"
         class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
+        p:sessionFactory-ref="sessionFactory"/>-->
     
     <bean id="coroDao"
         class="com.bstore.services.persistence.dao.CoroDaoImpl"
@@ -34,6 +34,11 @@
      
      <bean id="mailTemplateDao"
         class="com.bstore.services.persistence.dao.MailTemplateDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+        
+        <!-- TEST PARA BSTORE -->
+     <bean id="usuarioDap"
+        class="com.bstore.services.persistence.dap.UsuarioDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
     
     <bean id="sessionFactory" 

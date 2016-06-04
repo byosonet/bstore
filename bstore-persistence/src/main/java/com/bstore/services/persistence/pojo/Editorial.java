@@ -108,4 +108,12 @@ public class Editorial implements java.io.Serializable {
 		this.idUsuarioUmodif = idUsuarioUmodif;
 	}
 
+	@Override
+	public String toString() {
+		return "Editorial [id=" + id + ", email=" + email + ", estatus=" + estatus + ", nombre=" + nombre + ", rfc="
+				+ rfc + ", telefono=" + telefono + ", fechaUmodif=" + fechaUmodif + ", idUsuarioUmodif="
+				+ idUsuarioUmodif + "]";
+	}
+
+	
 }
