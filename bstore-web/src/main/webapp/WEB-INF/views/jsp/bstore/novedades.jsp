@@ -7,7 +7,8 @@
 $(document).ready(function() {                               
 console.log('--load novedades');
 $("#example1").gridalicious({
-	width:150,
+	gutter: 10,
+	width:200,
     animate: true
 	});
 }          
@@ -18,83 +19,172 @@ $("#example1").gridalicious({
     
     <div id="example1">
                             <div class="item">
-                                <div>ddsdasdas</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut asdsade.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>itur.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Dasdasmdhaj hajsdoat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Wxercquinsequat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Quisnsequat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Lorem odo consequat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut enim
-                                </div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Lorem ctetur.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Dolor snsequat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Wxeat.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Quis at.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Lored do.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                             <div class="item">
-                                <div>Ut t.</div>
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
+                            </div>
+                            <div class="item">
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
+                            </div>
+                            <div class="item">
+                                <img style="margin-top:-40px;width: 100%;" src="${contextpath}/static/resources/novedades/item_example2.jpg">
+                                <span style="float:left;margin-bottom:-20px;">The plugin is totally rewritten and the biggest change since the previous versions of Grid-A-Licious (and other similar plugins) is that the items in the grid aren’t using absolute positioning any more. They’re all floating.</span>
+  								<div style="padding:5px;text-align:center;margin-bottom:-50px" class="alert alert-info"><b><a href="#">$ 200.00</a></b></div>
+								<div style="padding:5px;text-align:center;margin-bottom:-40px" class="alert alert-info"><b><a href="#">COMPRAR</a></b></div>
                             </div>
                         </div>
 </body>
