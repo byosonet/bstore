@@ -14,7 +14,7 @@ public class Compra implements java.io.Serializable {
 	 */
 	private static final long serialVersionUID = -6547708758871807877L;
 	private CompraId id;
-	private Integer idFormaPago;
+	private FormaPago formaPago;
 	private BigDecimal precioCompra;
 	private Date fechaCompra;
 
@@ -26,9 +26,9 @@ public class Compra implements java.io.Serializable {
 		this.fechaCompra = fechaCompra;
 	}
 
-	public Compra(CompraId id, Integer idFormaPago, BigDecimal precioCompra, Date fechaCompra) {
+	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra) {
 		this.id = id;
-		this.idFormaPago = idFormaPago;
+		this.formaPago = formaPago;
 		this.precioCompra = precioCompra;
 		this.fechaCompra = fechaCompra;
 	}
@@ -41,12 +41,12 @@ public class Compra implements java.io.Serializable {
 		this.id = id;
 	}
 
-	public Integer getIdFormaPago() {
-		return this.idFormaPago;
+	public FormaPago getFormaPago() {
+		return formaPago;
 	}
 
-	public void setIdFormaPago(Integer idFormaPago) {
-		this.idFormaPago = idFormaPago;
+	public void setFormaPago(FormaPago formaPago) {
+		this.formaPago = formaPago;
 	}
 
 	public BigDecimal getPrecioCompra() {
@@ -63,6 +63,57 @@ public class Compra implements java.io.Serializable {
 
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
+	}
+	
+	
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((fechaCompra == null) ? 0 : fechaCompra.hashCode());
+		result = prime * result + ((formaPago == null) ? 0 : formaPago.hashCode());
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((precioCompra == null) ? 0 : precioCompra.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Compra other = (Compra) obj;
+		if (fechaCompra == null) {
+			if (other.fechaCompra != null)
+				return false;
+		} else if (!fechaCompra.equals(other.fechaCompra))
+			return false;
+		if (formaPago == null) {
+			if (other.formaPago != null)
+				return false;
+		} else if (!formaPago.equals(other.formaPago))
+			return false;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		if (precioCompra == null) {
+			if (other.precioCompra != null)
+				return false;
+		} else if (!precioCompra.equals(other.precioCompra))
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "Compra [id=" + id + ", formaPago=" + formaPago + ", precioCompra=" + precioCompra + ", fechaCompra="
+				+ fechaCompra + "]";
 	}
 
 }

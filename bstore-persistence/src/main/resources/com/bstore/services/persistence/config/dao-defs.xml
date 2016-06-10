@@ -34,8 +34,11 @@
         p:sessionFactory-ref="sessionFactory"/>
         
      <!-- DAO PARA BSTORE -->
-     <!-- <bean id="usuarioDap"
+      <bean id="usuarioDap"
         class="com.bstore.services.persistence.dap.UsuarioDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>-->
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="compraDap"
+        class="com.bstore.services.persistence.dap.CompraDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>
