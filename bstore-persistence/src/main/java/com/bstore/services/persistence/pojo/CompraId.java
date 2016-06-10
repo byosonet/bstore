@@ -12,15 +12,13 @@ public class CompraId implements java.io.Serializable {
 	private static final long serialVersionUID = 7227843486673662935L;
 	private int idUsuario;
 	private int idPublicacion;
-	private int id;
 
 	public CompraId() {
 	}
 
-	public CompraId(int idUsuario, int idPublicacion, int id) {
+	public CompraId(int idUsuario, int idPublicacion) {
 		this.idUsuario = idUsuario;
 		this.idPublicacion = idPublicacion;
-		this.id = id;
 	}
 
 	public int getIdUsuario() {
@@ -39,34 +37,34 @@ public class CompraId implements java.io.Serializable {
 		this.idPublicacion = idPublicacion;
 	}
 
-	public int getId() {
-		return this.id;
-	}
-
-	public void setId(int id) {
-		this.id = id;
-	}
-
-	public boolean equals(Object other) {
-		if ((this == other))
-			return true;
-		if ((other == null))
-			return false;
-		if (!(other instanceof CompraId))
-			return false;
-		CompraId castOther = (CompraId) other;
-
-		return (this.getIdUsuario() == castOther.getIdUsuario())
-				&& (this.getIdPublicacion() == castOther.getIdPublicacion()) && (this.getId() == castOther.getId());
-	}
-
+	@Override
 	public int hashCode() {
-		int result = 17;
-
-		result = 37 * result + this.getIdUsuario();
-		result = 37 * result + this.getIdPublicacion();
-		result = 37 * result + this.getId();
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + idPublicacion;
+		result = prime * result + idUsuario;
 		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		CompraId other = (CompraId) obj;
+		if (idPublicacion != other.idPublicacion)
+			return false;
+		if (idUsuario != other.idUsuario)
+			return false;
+		return true;
+	}
+
+	@Override
+	public String toString() {
+		return "CompraId [idUsuario=" + idUsuario + ", idPublicacion=" + idPublicacion + "]";
 	}
 
 }

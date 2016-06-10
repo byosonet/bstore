@@ -11,15 +11,12 @@
             <key-property name="idPublicacion" type="int">
                 <column name="ID_PUBLICACION" />
             </key-property>
-            <key-property name="id" type="int">
-                <column name="ID" />
-            </key-property>
         </composite-id>
-        <property name="idFormaPago" type="java.lang.Integer">
-            <column name="ID_FORMA_PAGO" />
-        </property>
+        <many-to-one name="formaPago" class="com.bstore.services.persistence.pojo.FormaPago" fetch="select"> 
+        	<column name="ID_FORMA_PAGO"/> 
+        </many-to-one>
         <property name="precioCompra" type="big_decimal">
-            <column name="PRECIO_COMPRA" precision="3" />
+            <column name="PRECIO_COMPRA" precision="5" />
         </property>
         <property name="fechaCompra" type="timestamp">
             <column name="FECHA_COMPRA" length="19" not-null="true" />

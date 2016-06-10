@@ -40,7 +40,7 @@
     <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
     <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
     <property name="current_session_context_class">thread</property>
-    <mapping resource="com/bstore/services/persistence/hbm/User.hbm.xml"/>
+    <!--<mapping resource="com/bstore/services/persistence/hbm/User.hbm.xml"/>-->
     <mapping resource="com/bstore/services/persistence/hbm/Choir.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/Property.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/Changeset.hbm.xml"/>
@@ -48,6 +48,8 @@
     <mapping resource="com/bstore/services/persistence/hbm/MailTemplate.hbm.xml"/>
     
     <!-- MAPPING PARA BSTORE -->
-    <!-- <mapping resource="com/bstore/services/persistence/xml/Usuario.hbm.xml"/>-->
+    <mapping resource="com/bstore/services/persistence/xml/Usuario.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Compra.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/FormaPago.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
