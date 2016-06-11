@@ -1,6 +1,11 @@
+/bstore-conekta/target/
 /bstore-drools/target/
 /bstore-persistence/target/
 /bstore-web/target/
+
+/bstore-conekta/.classpath
+/bstore-conekta/.project
+/bstore-conekta/.settings/
 
 /bstore-drools/.classpath
 /bstore-drools/.project
@@ -14,9 +19,11 @@
 /bstore-web/.project
 /bstore-web/.settings/
 
+/bstore-conekta/src/test/java/META-INF/
 /bstore-drools/src/test/java/META-INF/
 /bstore-persistence/src/test/java/META-INF/
 /bstore-web/src/test/java/META-INF/
 
 .project
+.classpath
 .settings/
