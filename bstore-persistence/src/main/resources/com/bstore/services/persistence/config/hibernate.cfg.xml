@@ -30,8 +30,8 @@
     <property name="hibernate.dbcp.removeAbandonedTimeout=">60</property>
     <property name="hibernate.dbcp.removeAbandoned=">true</property>
     <property name="hibernate.dbcp.maxWait=">10000</property>-->
-    <property name="hibernate.show_sql">true</property>
-    <property name="hibernate.format_sql">true</property>
+    <property name="hibernate.show_sql">false</property>
+    <property name="hibernate.format_sql">false</property>
     <property name="hibernate.use_sql_comments">true</property>
     <property name="hibernate.cache.use_query_cache">false</property>
     <property name="hibernate.generate_statistics">false</property>
@@ -41,7 +41,7 @@
     <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
     <property name="current_session_context_class">thread</property>
     <!--<mapping resource="com/bstore/services/persistence/hbm/User.hbm.xml"/>-->
-    <mapping resource="com/bstore/services/persistence/hbm/Choir.hbm.xml"/>
+    <!--<mapping resource="com/bstore/services/persistence/hbm/Choir.hbm.xml"/>-->
     <mapping resource="com/bstore/services/persistence/hbm/Property.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/Changeset.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/hbm/DeliveryFailed.hbm.xml"/>
@@ -51,5 +51,9 @@
     <mapping resource="com/bstore/services/persistence/xml/Usuario.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/xml/Compra.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/xml/FormaPago.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Publicacion.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Fuente.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Editorial.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Coleccion.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
