@@ -195,6 +195,11 @@
         <!-- Dependencies Externas -->
         <dependency>
             <groupId>com.bstore.services</groupId>
+            <artifactId>bstore-conekta</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.bstore.services</groupId>
             <artifactId>bstore-drools</artifactId>
             <version>1.0</version>
         </dependency> 

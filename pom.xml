@@ -8,6 +8,7 @@
     <name>bstore-app</name>
 
     <modules>
+    	<module>bstore-conekta</module>
         <module>bstore-drools</module>
         <module>bstore-persistence</module>
         <module>bstore-web</module>
