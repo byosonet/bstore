@@ -42,10 +42,10 @@
     <property name="current_session_context_class">thread</property>
     <!--<mapping resource="com/bstore/services/persistence/hbm/User.hbm.xml"/>-->
     <!--<mapping resource="com/bstore/services/persistence/hbm/Choir.hbm.xml"/>-->
-    <mapping resource="com/bstore/services/persistence/hbm/Property.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/hbm/Changeset.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/hbm/DeliveryFailed.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/hbm/MailTemplate.hbm.xml"/>
+    <!--<mapping resource="com/bstore/services/persistence/hbm/Property.hbm.xml"/>-->
+    <!--<mapping resource="com/bstore/services/persistence/hbm/Changeset.hbm.xml"/>-->
+    <!--<mapping resource="com/bstore/services/persistence/hbm/DeliveryFailed.hbm.xml"/>-->
+    <!--<mapping resource="com/bstore/services/persistence/hbm/MailTemplate.hbm.xml"/>-->
     
     <!-- MAPPING PARA BSTORE -->
     <mapping resource="com/bstore/services/persistence/xml/Usuario.hbm.xml"/>
@@ -55,5 +55,6 @@
     <mapping resource="com/bstore/services/persistence/xml/Fuente.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/xml/Editorial.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/xml/Coleccion.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/xml/Perfil.hbm.xml"/>
   </session-factory>
 </hibernate-configuration>
