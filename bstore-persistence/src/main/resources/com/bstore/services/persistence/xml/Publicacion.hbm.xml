@@ -41,17 +41,17 @@
         <property name="idUsuarioUmodif" type="int">
             <column name="ID_USUARIO_UMODIF" not-null="true" />
         </property>
-        <property name="idColeccion" type="int">
-            <column name="ID_COLECCION" not-null="true" />
-        </property>
-        <property name="usuarioalta" type="int">
-            <column name="USUARIOALTA" not-null="true" />
-        </property>
-        <property name="idFuente" type="int">
-            <column name="ID_FUENTE" not-null="true" />
-        </property>
-        <property name="idEditorial" type="int">
-            <column name="ID_EDITORIAL" not-null="true" />
-        </property>
+        <many-to-one name="coleccion" class="com.bstore.services.persistence.pojo.Coleccion" fetch="select"> 
+        	<column name="ID_COLECCION"/> 
+        </many-to-one>
+        <many-to-one name="usuario" class="com.bstore.services.persistence.pojo.Usuario" fetch="select"> 
+        	<column name="USUARIOALTA"/> 
+        </many-to-one>
+        <many-to-one name="fuente" class="com.bstore.services.persistence.pojo.Fuente" fetch="select"> 
+        	<column name="ID_FUENTE"/> 
+        </many-to-one>
+        <many-to-one name="editorial" class="com.bstore.services.persistence.pojo.Editorial" fetch="select"> 
+        	<column name="ID_EDITORIAL"/> 
+        </many-to-one>
     </class>
 </hibernate-mapping>

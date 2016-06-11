@@ -26,16 +26,16 @@ public class Publicacion implements java.io.Serializable {
 	private String urlArchivo;
 	private Date fechaUmodif;
 	private int idUsuarioUmodif;
-	private int idColeccion;
-	private int usuarioalta;
-	private int idFuente;
-	private int idEditorial;
+	private Coleccion coleccion;
+	private Usuario usuario;
+	private Fuente fuente;
+	private Editorial editorial;
 
 	public Publicacion() {
 	}
 
 	public Publicacion(int id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
+			int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial) {
 		this.id = id;
 		this.estatus = estatus;
 		this.isbn = isbn;
@@ -43,15 +43,15 @@ public class Publicacion implements java.io.Serializable {
 		this.urlArchivo = urlArchivo;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
-		this.idColeccion = idColeccion;
-		this.usuarioalta = usuarioalta;
-		this.idFuente = idFuente;
-		this.idEditorial = idEditorial;
+		this.coleccion = coleccion;
+		this.usuario = usuario;
+		this.fuente = fuente;
+		this.editorial = editorial;
 	}
 
 	public Publicacion(int id, BigDecimal descuento, int estatus, String isbn, String nombre,
 			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, int idColeccion, int usuarioalta, int idFuente, int idEditorial) {
+			int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial) {
 		this.id = id;
 		this.descuento = descuento;
 		this.estatus = estatus;
@@ -64,10 +64,10 @@ public class Publicacion implements java.io.Serializable {
 		this.urlArchivo = urlArchivo;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
-		this.idColeccion = idColeccion;
-		this.usuarioalta = usuarioalta;
-		this.idFuente = idFuente;
-		this.idEditorial = idEditorial;
+		this.coleccion = coleccion;
+		this.usuario = usuario;
+		this.fuente = fuente;
+		this.editorial = editorial;
 	}
 
 	public int getId() {
@@ -166,36 +166,36 @@ public class Publicacion implements java.io.Serializable {
 		this.idUsuarioUmodif = idUsuarioUmodif;
 	}
 
-	public int getIdColeccion() {
-		return this.idColeccion;
+	public Coleccion getColeccion() {
+		return coleccion;
 	}
 
-	public void setIdColeccion(int idColeccion) {
-		this.idColeccion = idColeccion;
+	public void setColeccion(Coleccion coleccion) {
+		this.coleccion = coleccion;
 	}
 
-	public int getUsuarioalta() {
-		return this.usuarioalta;
+	public Usuario getUsuario() {
+		return usuario;
 	}
 
-	public void setUsuarioalta(int usuarioalta) {
-		this.usuarioalta = usuarioalta;
+	public void setUsuario(Usuario usuario) {
+		this.usuario = usuario;
 	}
 
-	public int getIdFuente() {
-		return this.idFuente;
+	public Fuente getFuente() {
+		return fuente;
 	}
 
-	public void setIdFuente(int idFuente) {
-		this.idFuente = idFuente;
+	public void setFuente(Fuente fuente) {
+		this.fuente = fuente;
 	}
 
-	public int getIdEditorial() {
-		return this.idEditorial;
+	public Editorial getEditorial() {
+		return editorial;
 	}
 
-	public void setIdEditorial(int idEditorial) {
-		this.idEditorial = idEditorial;
+	public void setEditorial(Editorial editorial) {
+		this.editorial = editorial;
 	}
 
 	@Override
@@ -203,8 +203,8 @@ public class Publicacion implements java.io.Serializable {
 		return "Publicacion [id=" + id + ", descuento=" + descuento + ", estatus=" + estatus + ", isbn=" + isbn
 				+ ", nombre=" + nombre + ", numeroPaginas=" + numeroPaginas + ", portada=" + Arrays.toString(portada)
 				+ ", precio=" + precio + ", resumen=" + resumen + ", urlArchivo=" + urlArchivo + ", fechaUmodif="
-				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", idColeccion=" + idColeccion
-				+ ", usuarioalta=" + usuarioalta + ", idFuente=" + idFuente + ", idEditorial=" + idEditorial + "]";
+				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", coleccion=" + coleccion + ", usuario="
+				+ usuario + ", fuente=" + fuente + ", editorial=" + editorial + "]";
 	}
 
 }

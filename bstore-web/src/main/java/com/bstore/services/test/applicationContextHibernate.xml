@@ -43,6 +43,9 @@
      <bean id="compraDap"
         class="com.bstore.services.persistence.dap.CompraDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+    <bean id="publicacionDap"
+        class="com.bstore.services.persistence.dap.PublicacionDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
     
     <bean id="sessionFactory" 
           class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
