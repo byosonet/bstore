@@ -108,7 +108,7 @@
                 action: function(dialog) {
                     dialog.close();
                     $.blockUI();
-                    var urlAction = '${contextpath}' + '/lista/obtener';
+                    var urlAction = '${contextpath}' + '/ingresar';
                     document.getElementById('ingresar').action = urlAction;
                     document.getElementById('ingresar').method = 'POST';
                     document.getElementById('ingresar').submit();
@@ -228,8 +228,8 @@
             </form>
                 
             <form id="ingresar">
-                <input type="hidden" id="idEmail" name="idEmail" value=""/>
-                <input type="hidden" id="idPassword" name="idPassword" value=""/>
+                <input type="hidden" id="idEmail" name="user" value=""/>
+                <input type="hidden" id="idPassword" name="password" value=""/>
             </form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">

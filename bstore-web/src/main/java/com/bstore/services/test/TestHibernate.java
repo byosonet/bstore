@@ -1,14 +1,10 @@
 package com.bstore.services.test;
 
-import com.bstore.services.persistence.dap.CompraDao;
-import com.bstore.services.persistence.dap.CompraDaoImpl;
-import com.bstore.services.persistence.dap.PublicacionDao;
-import com.bstore.services.persistence.dap.PublicacionDaoImpl;
-/**
- *
- * @author Priscila
- */
-import com.bstore.services.persistence.dap.UsuarioDaoImpl;
+import com.bstore.services.persistence.dao.CompraDao;
+import com.bstore.services.persistence.dao.CompraDaoImpl;
+import com.bstore.services.persistence.dao.PublicacionDao;
+import com.bstore.services.persistence.dao.PublicacionDaoImpl;
+import com.bstore.services.persistence.dao.UsuarioDaoImpl;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.CompraId;
 import com.bstore.services.persistence.pojo.Publicacion;
@@ -25,13 +21,13 @@ public class TestHibernate {
         ApplicationContext context = new FileSystemXmlApplicationContext(""
         		+ "//Users/ulysses/proyectos/refactorBS/refactorBookStore/bstore-web/src/main/java/com/bstore/services/test/applicationContextHibernate.xml");
         
-        UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDap");
+        UsuarioDaoImpl usuario = (UsuarioDaoImpl) context.getBean("usuarioDao");
         System.out.print(" -- Load Usario::");
         
-        System.out.println(" -- User: "+usuario.consultar(1).toString());
+        System.out.println(" -- User: "+usuario.byId(1).toString());
         
         
-        CompraDaoImpl compra = (CompraDaoImpl) context.getBean("compraDap");
+        CompraDaoImpl compra = (CompraDaoImpl) context.getBean("compraDao");
         System.out.println(" -- Buscando compra:::");
         
         CompraId id = new CompraId();
@@ -44,7 +40,7 @@ public class TestHibernate {
         System.out.println(" -- Compra id: "+c.getFormaPago().getFormaPago());
         
         
-        PublicacionDao publicacion = (PublicacionDaoImpl) context.getBean("publicacionDap");
+        PublicacionDao publicacion = (PublicacionDaoImpl) context.getBean("publicacionDao");
         System.out.println(" -- Buscando Publicacion:::");
         Publicacion p = publicacion.getPublicacion(1);
         

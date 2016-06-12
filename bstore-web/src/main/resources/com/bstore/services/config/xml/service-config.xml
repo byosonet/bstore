@@ -17,24 +17,8 @@
   
     <bean id="usuarioService" 
           class="com.bstore.services.service.UsuarioServiceImpl"/>
-    
-    <bean id="coroService" 
-          class="com.bstore.services.service.CoroServiceImpl"/>
-    
-    <bean id="mailTemplateService" 
-          class="com.bstore.services.service.MailTemplateServiceImpl"/>
-    
-    <bean id="propiedadSistemaService" 
-          class="com.bstore.services.service.PropiedadSistemaServiceImpl"/>
-    
-    <bean id="changesetService" 
-          class="com.bstore.services.service.ChangesetServiceImpl"/>
-    
-    <bean id="deliveryFailedService" 
-          class="com.bstore.services.service.DeliveryFailedServiceImpl"/>
 
     <!-- Adapters Externos-->
-    
     <bean id="droolRuleAge" 
           class="com.bstore.services.drools.DroolRuleAgeImpl"/>
     

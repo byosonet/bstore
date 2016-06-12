@@ -32,7 +32,7 @@ public class DroolRuleAgeImpl implements DroolRuleAge{
  
     private static KnowledgeBase leerReglasAgeDRL() {
         final KnowledgeBuilder kbuilder = KnowledgeBuilderFactory.newKnowledgeBuilder();
-        kbuilder.add(ResourceFactory.newClassPathResource("/com/bstore/services/drools/config/rulesAgeGodWeb.drl"), ResourceType.DRL);
+        kbuilder.add(ResourceFactory.newClassPathResource("/com/bstore/services/drools/config/rules.drl"), ResourceType.DRL);
         if (kbuilder.hasErrors()) {
             for (KnowledgeBuilderError error : kbuilder.getErrors()) {
                 System.err.println(error);

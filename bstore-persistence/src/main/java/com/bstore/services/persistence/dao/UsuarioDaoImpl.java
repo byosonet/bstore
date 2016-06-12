@@ -1,26 +1,26 @@
 package com.bstore.services.persistence.dao;
 
-import com.bstore.services.persistence.hbm.Usuario;
 import java.sql.Timestamp;
 import java.util.Date;
 import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-/**
- *
- * @author User
- */
+import com.bstore.services.persistence.dao.UsuarioDaoImpl;
+import com.bstore.services.persistence.pojo.Perfil;
+import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.persistence.utils.TransacctionMySQL;
+
 public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     private final Logger log = Logger.getLogger(UsuarioDaoImpl.class);
     TransacctionMySQL mysql = new TransacctionMySQL();
 
-    public List<Usuario> getUser() {
+    @SuppressWarnings("unchecked")
+	public List<Usuario> getUser() {
        this.log.info(" -- Buscando por lista de usuarios::");
-        return (List<Usuario>) this
-                .getSession()
-                .createQuery("FROM Usuario u " + "ORDER BY u.idUsuario ASC").list();
+       return (List<Usuario>) this.getSession().createQuery("FROM Usuario u " + "ORDER BY u.id ASC").list();
     }
 
     public Usuario validaUsuario(String email, String password) {
@@ -66,13 +66,20 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     public int agregarUsuario(Usuario usuario) {
         try {
             this.mysql.iniciarOperacion();
-            Number maximo = (Number) this.getSession().createQuery(
-                    "SELECT MAX(u.idUsuario) "
+            /*Number maximo = (Number) this.getSession().createQuery(
+                    "SELECT MAX(u.id) "
                     + "FROM Usuario u")
                     .uniqueResult();
 
             long id = maximo == null ? 1 : maximo.longValue() + 1;
-            usuario.setIdUsuario(Integer.parseInt(String.valueOf(id)));
+            usuario.setId(Integer.parseInt(String.valueOf(id)));*/
+            usuario.setAPaterno("Dev");
+            usuario.setLogin("gtrejo");
+            usuario.setEstatus(1);
+            Perfil perfil = new Perfil();
+            perfil.setId(2);
+            usuario.setPerfil(perfil);
+            
             this.mysql.getSesion().save(usuario);
             this.mysql.getSesion().flush();
 
@@ -83,7 +90,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         } finally {
             this.mysql.getSesion().close();
         }
-        return usuario.getIdUsuario();
+        return usuario.getId();
     }
 
     public void actualizarDatosUsuario(Usuario user) {
@@ -122,17 +129,15 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         this.log.info(" -- Buscando usuario by id:: "+idUser);
         return (Usuario) this
                 .getSession()
-                .createQuery("FROM Usuario u WHERE u.idUsuario = :idUser")
+                .createQuery("FROM Usuario u WHERE u.id = :idUser")
                 .setParameter("idUser", idUser)
                 .uniqueResult();
     }
 
-    public List<Usuario> getListaEmailNotificaciones(String notificar) {
-        return (List<Usuario>) this.getSession().createQuery
-        ("FROM Usuario u WHERE u.notificaciones = :tipo")
+    @SuppressWarnings("unchecked")
+	public List<Usuario> getListaEmailNotificaciones(String notificar) {
+        return (List<Usuario>) this.getSession().createQuery("FROM Usuario u WHERE u.notificaciones = :tipo")
                 .setParameter("tipo", notificar)
                 .list();
     }
-    
-    
 }
