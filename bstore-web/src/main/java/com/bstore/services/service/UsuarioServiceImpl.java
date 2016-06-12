@@ -1,7 +1,7 @@
 package com.bstore.services.service;
 
 import com.bstore.services.persistence.dao.UsuarioDao;
-import com.bstore.services.persistence.hbm.Usuario;
+import com.bstore.services.persistence.pojo.Usuario;
 import java.util.List;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,7 +22,7 @@ private final Logger log = Logger.getLogger(UsuarioServiceImpl.class);
         List<Usuario> lista = this.usuarioDao.getUser();
         if(!lista.isEmpty()){
             for(Usuario u: lista){
-                 this.log.info(" idUsuario: "+u.getIdUsuario()+" Nombre: "+u.getNombre());
+                 this.log.info(" idUsuario: "+u.getId()+" Nombre: "+u.getNombre());
             } 
         }
         return lista;
@@ -83,7 +83,4 @@ private UsuarioDao usuarioDao;
         return this.usuarioDao.byId(idUser);
     }
     
-    
-    
-
 }

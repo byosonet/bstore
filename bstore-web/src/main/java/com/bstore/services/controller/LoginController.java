@@ -2,15 +2,8 @@ package com.bstore.services.controller;
 
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
-import com.bstore.services.persistence.hbm.DeliveryFailed;
-import com.bstore.services.persistence.hbm.PropiedadSistema;
-import com.bstore.services.persistence.hbm.TipoMovimientoEnum;
-import com.bstore.services.persistence.hbm.Usuario;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
-import com.bstore.services.service.ChangesetService;
-import com.bstore.services.service.DeliveryFailedService;
-import com.bstore.services.service.EmailSendService;
-import com.bstore.services.service.PropiedadSistemaService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import java.io.BufferedReader;
@@ -38,16 +31,19 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 @Controller
 public class LoginController {
+	
+	@Autowired
+	UsuarioService usuarioService;
+	
+	@Autowired
+	private DroolRuleAge droolRuleAgeAdapter;
+	
    private final Logger log = Logger.getLogger(LoginController.class);
    @RequestMapping(value="/ingresar",method = RequestMethod.POST)
-   /*
-    * Metodo de Login del Portal BStore
-    * */
+
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
-       
       String requestEmail="";
       String requestPassword="";
-               
       String cifrarEnviado = request.getParameter("cifrar");
       if(cifrarEnviado!=null){
           this.log.info(" -- El cifrado es enviado: "+cifrarEnviado);
@@ -73,9 +69,6 @@ public class LoginController {
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
               this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
-              
-              this.guardarChangeset(TipoMovimientoEnum.ACCESO_AL_SISTEMA.getTipo(), usuario);
-              
               try {
             	  String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
                   model.addAttribute("cifrar",cifrar);
@@ -108,19 +101,8 @@ public class LoginController {
           
           String encriptarPassword = UtilService.Encriptar(password);
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
-          
-          PropiedadSistema ps = this.propiedadSistemaService.obtenerValorPropiedad("mail.admin");
-            this.log.info(" -- El usuario indica que es admin: "+user);
-            if(ps.getValue().equals(user)){
-                  this.log.info(" -- El usuario tiene privilegios admin: "+user);
-                  this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","TRUE");
-                  this.propiedadSistemaService.guardarPropiedad("mail.admin.date", new Date().toString());
-                  this.log.info(" -- Guardando informacion de propiedad: ");
-              }
             
           if(usuario!=null){
-              this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), usuario);
-              
               this.log.info(" -- Usuario correcto");
               ErrorService data = new ErrorService();
               data.setCodigo("200");
@@ -143,7 +125,6 @@ public class LoginController {
    
     @RequestMapping(value="/registrar/usuario", method = RequestMethod.GET)
     public String registrarUsuario(Model model){
-         //activar menu
          model.addAttribute("menu","smenu");
         return "registrar";
     }
@@ -156,7 +137,7 @@ public class LoginController {
         String nombre = request.getParameter("nombre").toUpperCase();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
-        char sexo = request.getParameter("sexo").toCharArray()[0];
+        String sexo = request.getParameter("sexo");
         
         String dia = request.getParameter("dia");
         String mes = request.getParameter("mes");
@@ -236,13 +217,12 @@ public class LoginController {
 
             int id = this.usuarioService.agregaUsuarioNuevo(usuario);
             Usuario nuevo = new Usuario();
-            nuevo.setIdUsuario(id);
+            nuevo.setId(id);
             this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
-            
-           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_USUARIO.getTipo(), nuevo);
+
            try {
                try {
-                   this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
+                   //this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
                    this.log.info(" -- Enviado");
                } catch (Exception ex) {
                    this.log.error(" -- No se puedo enviar mail de registro: "+ex.getMessage());
@@ -281,9 +261,6 @@ public class LoginController {
         String email = jObj.getString("email");
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
-            
-           this.guardarChangeset(TipoMovimientoEnum.VALIDAR_EMAIL.getTipo(), user);
-            
             this.log.info(" -- Usuario encontrado: "+user.getEmail());
             response.setMensaje(user.getNombre());
         }else{
@@ -326,9 +303,6 @@ public class LoginController {
         if(user!=null){
             if(!UtilService.Desencriptar(user.getPassword()).equals(passwordUsuario))
                 return new ResponseEntity<ErrorService>(response, status);
-            
-            this.guardarChangeset(TipoMovimientoEnum.ACTUALIZAR_PERFIL.getTipo(), user);
-            
             this.log.info(" -- Usuario encontrado: "+user.toString());
             String encriptarPassword = UtilService.Encriptar(passwordUsuario);
             user.setPassword(encriptarPassword);
@@ -367,16 +341,9 @@ public class LoginController {
        String[] data = descifrado.split(";");
        String userEmail = data[0];
        Usuario user = this.usuarioService.validaEmailSistema(userEmail);
-       if(user!=null){
-           if(this.propiedadSistemaService.obtenerValorPropiedad("mail.admin").getValue().equals(user.getEmail())){
-               this.propiedadSistemaService.guardarPropiedad("mail.admin.connect","FALSE");
-           }
-           this.guardarChangeset(TipoMovimientoEnum.SALIR_DEL_SISTEMA.getTipo(), user);
-       }
+      
        ErrorService response = new ErrorService();
        response.setCodigo("200");
-       response.setMensaje("Registro de mensaje de sálida. "+TipoMovimientoEnum.SALIR_DEL_SISTEMA.toString());
-       
        return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
     }
     
@@ -392,7 +359,6 @@ public class LoginController {
         
         Usuario user = this.usuarioService.byIdUser(Integer.valueOf(id));
         if(user!=null){
-            this.guardarChangeset(TipoMovimientoEnum.ELIMINAR_USUARIO.getTipo(), user);
             this.usuarioService.deleteUser(user);
             this.log.info(" -- El usuario fue eliminado");
             response.setCodigo("200");
@@ -413,47 +379,8 @@ public class LoginController {
         response.setCodigo("404");
         response.setMensaje("Los datos no se pudieron eliminar.");
         
-        DeliveryFailed df = this.deliveryFailedService.getById(Integer.valueOf(idMailFailed));
-        if(df!=null){
-             this.guardarChangeset(TipoMovimientoEnum.ELIMINAR_MAILS_FALLIDOS.getTipo(), 
-                     this.usuarioService.validaEmailSistema(mailUser));
-            this.deliveryFailedService.deleteDeliveryDailed(df);
-            this.log.info(" -- El mailFailed fue eliminado");
-            response.setCodigo("200");
-            response.setMensaje("Los datos fueron eliminados con éxito.");
-            status = HttpStatus.OK;
-        }
+        
         return new ResponseEntity<ErrorService>(response, status);
     }
-    
-    private void guardarChangeset(String movement, Usuario user){
-        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
-            if(tipos.getTipo().equals(movement)){
-                this.changesetService.guardarChangeset(
-                tipos.name(),
-                new Date(UtilService.getFechaTimeStamp().getTime()), 
-                user.getIdUsuario(), null);
-                break;
-            }
-        }
-    }
-    
-    @Autowired
-    UsuarioService usuarioService;
-    
-    @Autowired
-    EmailSendService emailSendService;
-    
-    @Autowired
-    private DroolRuleAge droolRuleAgeAdapter;
-    
-    @Autowired
-    private PropiedadSistemaService propiedadSistemaService;
-    
-    @Autowired
-    private ChangesetService changesetService;
-    
-    @Autowired
-    private DeliveryFailedService deliveryFailedService;
         
 }

@@ -10,41 +10,17 @@
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
-        http://www.springframework.org/schema/context/spring-context.xsd">    
-    
-   <!-- <bean id="usuarioDao"
-        class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>-->
-    
-    <bean id="coroDao"
-        class="com.bstore.services.persistence.dao.CoroDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-    
-     <bean id="propiedadSistemaDao"
-        class="com.bstore.services.persistence.dao.PropiedadSistemaDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-     
-     <bean id="changesetDao"
-        class="com.bstore.services.persistence.dao.ChangesetDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-     
-     <bean id="deliveryFailedDao"
-        class="com.bstore.services.persistence.dao.DeliveryFailedDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-     
-     <bean id="mailTemplateDao"
-        class="com.bstore.services.persistence.dao.MailTemplateDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
+        http://www.springframework.org/schema/context/spring-context.xsd">
         
         <!-- TEST PARA BSTORE -->
-     <bean id="usuarioDap"
-        class="com.bstore.services.persistence.dap.UsuarioDaoImpl"
+     <bean id="usuarioDao"
+        class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
-     <bean id="compraDap"
-        class="com.bstore.services.persistence.dap.CompraDaoImpl"
+      <bean id="compraDao"
+        class="com.bstore.services.persistence.dao.CompraDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
-    <bean id="publicacionDap"
-        class="com.bstore.services.persistence.dap.PublicacionDaoImpl"
+      <bean id="publicacionDao"
+        class="com.bstore.services.persistence.dao.PublicacionDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
     
     <bean id="sessionFactory" 

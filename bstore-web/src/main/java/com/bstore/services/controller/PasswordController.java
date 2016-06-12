@@ -1,13 +1,8 @@
 package com.bstore.services.controller;
 
-import com.bstore.services.persistence.hbm.TipoMovimientoEnum;
-import com.bstore.services.persistence.hbm.Usuario;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
-import com.bstore.services.service.ChangesetService;
-import com.bstore.services.service.EmailSendService;
 import com.bstore.services.service.UsuarioService;
-import com.bstore.services.util.UtilService;
-import java.util.Date;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,7 +24,6 @@ public class PasswordController {
  
     @RequestMapping(value="/recuperar", method = RequestMethod.GET)
     public String recuperarPassword(Model model){
-         //activar menu
         model.addAttribute("menu","smenu");
         return "password";
     }
@@ -45,8 +39,6 @@ public class PasswordController {
         ErrorService response = new ErrorService();
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
-            this.guardarChangeset(TipoMovimientoEnum.RECUPERAR_TU_PASSWORD.getTipo(), user);
-            
             this.log.info(" -- Enviar email de password a usuario: "+user.getNombre());
             response.setCodigo("202");
             response.setMensaje("Hola "+user.getNombre()+", tu password ha sido enviado a: "+user.getEmail());
@@ -54,7 +46,7 @@ public class PasswordController {
             
             try
             {
-                this.emailSendService.recuperarPassword(email, UtilService.Desencriptar(user.getPassword()),"gtrejo.armenta@gmail.com");
+                //this.emailSendService.recuperarPassword(email, UtilService.Desencriptar(user.getPassword()),"gtrejo.armenta@gmail.com");
                 this.log.info(" -- El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
                  response.setCodigo("404");
@@ -71,25 +63,7 @@ public class PasswordController {
         return new ResponseEntity<ErrorService>(response,status);
     }
     
-    private void guardarChangeset(String movement, Usuario user){
-        for(TipoMovimientoEnum tipos: TipoMovimientoEnum.values()){
-            if(tipos.getTipo().equals(movement)){
-                this.changesetService.guardarChangeset(
-                tipos.name(),
-                new Date(UtilService.getFechaTimeStamp().getTime()), 
-                user.getIdUsuario(), null);
-                break;
-            }
-        }
-    }
-    
     @Autowired
     private UsuarioService usuarioService;
-    
-    @Autowired
-    private EmailSendService emailSendService;
-    
-    @Autowired
-    private ChangesetService changesetService;
     
 }

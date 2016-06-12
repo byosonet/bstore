@@ -9,7 +9,7 @@
 	
 	<definition name="indexPrincipal" extends="principal">
 		<put-attribute name="header" value="Bienvenido"/>
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/myfirstbody.jsp"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/body.jsp"/>
 	</definition>
 	
 	<definition name="novedades" extends="principal">
@@ -29,22 +29,6 @@
 	
 	<definition name="password" extends="login">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/password.jsp"/>
-	</definition>
-        
-    <!--<definition name="listaHimnario" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/body.jsp"/>
-	</definition>-->
-	
-    <definition name="detalle" extends="principal">
-            <put-attribute name="contenido" value="/WEB-INF/views/jsp/coro/detalle.jsp"/>
-	</definition>
-	
-    <definition name="notfoundCoro" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/notfoundCoro.jsp"/>
-	</definition>
-        
-        <definition name="detalleMailTemplateFailed" extends="principal">
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/temporal.jsp"/>
 	</definition>
         
 </tiles-definitions>

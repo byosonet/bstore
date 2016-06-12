@@ -5,7 +5,7 @@
  */
 package com.bstore.services.service;
 
-import com.bstore.services.persistence.hbm.Usuario;
+import com.bstore.services.persistence.pojo.Usuario;
 import java.util.List;
 
 /**
