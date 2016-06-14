@@ -13,7 +13,7 @@
 	</definition>
 	
 	<definition name="novedades" extends="principal">
-		<put-attribute name="header" value="Sección Novedades"/>
+		<put-attribute name="header" value="Novedades"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/novedades.jsp"/>
 	</definition>
 	

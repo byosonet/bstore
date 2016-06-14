@@ -84,7 +84,8 @@ public class LoginController {
    
    @RequestMapping(value="/ingresar",method = RequestMethod.GET)
    public String ingresarGET(Model model, HttpServletRequest request) {
-      return "forbidden";
+      //return "forbidden";
+	   return "indexPrincipal";
    }
    
    

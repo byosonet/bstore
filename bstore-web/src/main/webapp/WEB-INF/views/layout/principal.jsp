@@ -71,19 +71,19 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Mensajes <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    <span class="pull-right">
+                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 50px;height: 50px">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>${user}</strong>
+                                        <h5 class="media-heading"><strong>dev@bstore.com</strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Jueves at 4:32 PM</p>
+                                        <p>Compraste un nuevo tema, rev&iacute;salo.</p>
                                     </div>
                                 </div>
                             </a>
@@ -91,76 +91,28 @@
                         <li class="message-preview">
                             <a href="#">
                                 <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
+                                    <span class="pull-right">
+                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 50px;height: 50px">
                                     </span>
                                     <div class="media-body">
-                                        <h5 class="media-heading"><strong>${user}</strong>
+                                        <h5 class="media-heading"><strong>dev@bstore.com</strong>
                                         </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
+                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Sabado at 4:49 PM</p>
+                                        <p>Actualiza tu password: Urgente</p>
                                     </div>
                                 </div>
                             </a>
                         </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-left">
-                                        <img class="media-object" src="http://placehold.it/50x50" alt="">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>${user}</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Yesterday at 4:32 PM</p>
-                                        <p>Lorem ipsum dolor sit amet, consectetur...</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-footer">
-                            <a href="#">Read All New Messages</a>
-                        </li>
                     </ul>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-bell"></i> <b class="caret"></b></a>
-                    <ul class="dropdown-menu alert-dropdown">
-                        <li>
-                            <a href="#">Alert Name <span class="label label-default">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-primary">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-success">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-info">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-warning">Alert Badge</span></a>
-                        </li>
-                        <li>
-                            <a href="#">Alert Name <span class="label label-danger">Alert Badge</span></a>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                            <a href="#">View All</a>
-                        </li>
-                    </ul>
-                </li>
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> ${user} <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> dev@bstore.com <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-user"></i> Profile</a>
+                            <a href="#"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
                         </li>
                         <li>
-                            <a href="#"><i class="fa fa-fw fa-envelope"></i> Inbox</a>
-                        </li>
-                        <li>
-                            <a href="#"><i class="fa fa-fw fa-gear"></i> Settings</a>
+                            <a href="#"><i class="fa fa-fw fa-gear"></i> Configuraci&oacute;n</a>
                         </li>
                         <li class="divider"></li>
                         <li>
@@ -172,60 +124,57 @@
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
+                	<li class="active">
+                        <a href="${contextpath}/ingresar"><i class="fa fa-home"></i> Home</a>
+                    </li>
                     <li class="active">
-                        <a href="${contextpath}/novedades"><i class="fa fa-fw fa-star"></i> ¡Novedades!</a>
+                        <a href="${contextpath}/novedades"><i class="fa fa-fw fa-star"></i> Novedades</a>
                     </li>
-                    <li>
-                        <a href="charts.html"><i class="fa fa-fw fa-bar-chart-o"></i> Charts</a>
-                    </li>
-                    <li>
-                        <a href="tables.html"><i class="fa fa-fw fa-table"></i> Tables</a>
-                    </li>
-                    <li>
-                        <a href="forms.html"><i class="fa fa-fw fa-edit"></i> Forms</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-elements.html"><i class="fa fa-fw fa-desktop"></i> Bootstrap Elements</a>
-                    </li>
-                    <li>
-                        <a href="bootstrap-grid.html"><i class="fa fa-fw fa-wrench"></i> Bootstrap Grid</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#demo"><i class="fa fa-fw fa-arrows-v"></i> Dropdown <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="demo" class="collapse">
+                    
+                    <li class="active">
+                        <a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa fa-folder-open-o"></i> Coleccion #1 </a>
+                        <ul id="demo1" class="collapse">
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #1</a>
                             </li>
                             <li>
-                                <a href="#">Dropdown Item</a>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #2</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #3</a>
                             </li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Blank Page</a>
-                    </li>
-                    <li>
-                        <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>
+                    <li class="active">
+                        <a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa fa-folder-open-o"></i> Coleccion #2 </a>
+                        <ul id="demo2" class="collapse">
+                            <li>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #1</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #2</a>
+                            </li>
+                            <li>
+                                <a href="#"><i class="fa fa-book"></i> TEMA #3</a>
+                            </li>
+                        </ul>
                     </li>
                 </ul>
             </div>
-            <!-- /.navbar-collapse -->
         </nav>
         <div id="page-wrapper">
             <div class="container-fluid">
-                <!-- Page Heading -->
-                <div class="row">
+                <!--<div class="row">
                     <div class="col-lg-12" style="text-align: center;">
-                        <h1 class="page-header">
-                            <!--Bienvenido--><small><tiles:insertAttribute name="header" /></small>
-                        </h1>
+                        <h2 class="alert alert-info page-header">
+                           <small><tiles:insertAttribute name="header" /></small>
+                        </h2>
                     </div>
-                </div>
-                <!-- /.row -->
+                </div>-->
+                <br>
 				<div id="contenido">
             		<tiles:insertAttribute name="contenido" />
         		</div>
-                <!-- /.row -->
             </div>
         </div>
     </div>
