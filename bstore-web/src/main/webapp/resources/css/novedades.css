@@ -6,6 +6,8 @@
     white-space: pre-wrap;
     word-break: break-all;
     word-wrap: break-word;
+    font: -moz-field;
+    font-size: 12px;
 }
 .zoom{
 	border-radius:10px;
