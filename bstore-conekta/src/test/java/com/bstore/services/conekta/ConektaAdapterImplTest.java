@@ -5,12 +5,19 @@
 package com.bstore.services.conekta;
 
 import com.bstore.services.conekta.ConektaAdapter;
+import com.bstore.services.conekta.service.RequestCharges;
 import com.bstore.services.conekta.service.RequestChargesMSI;
 import com.bstore.services.conekta.service.RequestPaymentCard;
+import com.bstore.services.conekta.service.RequestPaymentCard.Details;
+import com.bstore.services.conekta.service.RequestPaymentCard.Details.Item;
 import com.bstore.services.conekta.service.ResponseChargesMSI;
+import com.bstore.services.conekta.service.ResponseChargesMSI.Detail;
 import com.bstore.services.conekta.service.ResponsePaymentCard;
 
 import java.text.ParseException;
+import java.util.ArrayList;
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -54,23 +61,33 @@ public class ConektaAdapterImplTest {
     @Test
     public void testChangeMSI() throws ParseException, Exception{
         System.out.println(" Comenzando TEST - MSI... ");
-        RequestChargesMSI request = new RequestChargesMSI();
-        RequestChargesMSI.Card card = new RequestChargesMSI.Card();
+        RequestPaymentCard request = new RequestPaymentCard();
         
-        request.setAmount("600000");
+        
+        request.setAmount(5000);
         request.setCurrency("MXN");
         request.setDescription("BSTORE JUGUETE INTERACTIVO");
-        request.setMonthly_installments("3");
-        card.setCvc("123");
-        card.setExp_month("05");
-        card.setExp_year("2018");
-        card.setName("BSTORE SANCHEZ");
-        card.setNumber("4242424242424242");
-        request.setCard(card);
+        request.setCard("tok_test_visa_4242");
+        request.setReferenceId("9839-wolf_pack");
+        Details details = new Details();
+        details.setName("el men");
+        details.setPhone("5500000000");
+        details.setEmail("logan@x-men.org");
+        Item item = new Item();
+        List<Item> lista = new ArrayList<Item>();
+        item.setName("publicacion num 1");
+        item.setPrice("20.00");
+        item.setDescription("descripcion");
+        
+        lista.add(item);
+        details.setLine_items(lista);
+        request.setDetails(details);
+        
         try {
-            ResponseChargesMSI response =  this.conektaAdapter.createChargeCardMSI(request);
+        	System.out.println(" request: "+request.toString());
+        	ResponsePaymentCard response =  this.conektaAdapter.createChargeCard(request);
             System.out.println("RESPUESTA: "+ response.toString());
-            System.out.println("RESPUESTA ERROR: "+ response.getErrors());
+            System.out.println("RESPUESTA ERROR: "+ response.getStatus());
         } catch (Exception e) {
             System.out.println("MENSAJE TEST: "+e.getMessage());
             e.printStackTrace();
