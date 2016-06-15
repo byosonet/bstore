@@ -12,6 +12,7 @@ public class RequestCharges {
     private String reference_id;
     private Cash cash;
     private Details details;
+    private String token;
 
     public String getCurrency() {
         return currency;
@@ -61,12 +62,24 @@ public class RequestCharges {
         this.details = details;
     }
 
-    @Override
-    public String toString() {
-        return "RequestCharges{" + "currency=" + currency + ", amount=" + amount + ", description=" + description + ", reference_id=" + reference_id + ", cash=" + cash + ", details=" + details + '}';
-    }
+    public String getToken() {
+		return token;
+	}
 
-    public static class Cash{
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+    @Override
+	public String toString() {
+		return "RequestCharges [currency=" + currency + ", amount=" + amount + ", description=" + description
+				+ ", reference_id=" + reference_id + ", cash=" + cash + ", details=" + details + ", token=" + token
+				+ "]";
+	}
+
+
+
+	public static class Cash{
         private String type;
 
         public String getType() {
