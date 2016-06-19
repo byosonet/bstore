@@ -12,9 +12,9 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/body.jsp"/>
 	</definition>
 	
-	<definition name="novedades" extends="principal">
+	<definition name="colecciones" extends="principal">
 		<put-attribute name="header" value="Novedades"/>
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/novedades.jsp"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/colecciones.jsp"/>
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/views/layout/login.jsp">

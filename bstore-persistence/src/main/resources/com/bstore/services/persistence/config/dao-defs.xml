@@ -19,5 +19,8 @@
       <bean id="publicacionDao"
         class="com.bstore.services.persistence.dao.PublicacionDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+      <bean id="coleccionDao"
+        class="com.bstore.services.persistence.dao.ColeccionDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 
 </beans>

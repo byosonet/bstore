@@ -19,20 +19,22 @@ public class Coleccion implements java.io.Serializable {
 	private int idUsuarioUmodif;
 	private String nombreMostrar;
 	private Integer ranking;
+	private String portadaUrl;
 
 	public Coleccion() {
 	}
 
-	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif) {
+	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif, String portadaUrl) {
 		this.id = id;
 		this.estatus = estatus;
 		this.nombre = nombre;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
+		this.portadaUrl = portadaUrl;
 	}
 
 	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif, String nombreMostrar,
-			Integer ranking) {
+			Integer ranking, String portadaUrl) {
 		this.id = id;
 		this.estatus = estatus;
 		this.nombre = nombre;
@@ -40,6 +42,7 @@ public class Coleccion implements java.io.Serializable {
 		this.idUsuarioUmodif = idUsuarioUmodif;
 		this.nombreMostrar = nombreMostrar;
 		this.ranking = ranking;
+		this.portadaUrl = portadaUrl;
 	}
 
 	public int getId() {
@@ -98,11 +101,19 @@ public class Coleccion implements java.io.Serializable {
 		this.ranking = ranking;
 	}
 
+	public String getPortadaUrl() {
+		return portadaUrl;
+	}
+
+	public void setPortadaUrl(String portadaUrl) {
+		this.portadaUrl = portadaUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "Coleccion [id=" + id + ", estatus=" + estatus + ", nombre=" + nombre + ", fechaUmodif=" + fechaUmodif
 				+ ", idUsuarioUmodif=" + idUsuarioUmodif + ", nombreMostrar=" + nombreMostrar + ", ranking=" + ranking
-				+ "]";
+				+ ", portadaUrl=" + portadaUrl + "]";
 	}
 	
 }
