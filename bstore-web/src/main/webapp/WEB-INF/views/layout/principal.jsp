@@ -128,7 +128,7 @@
                         <a href="${contextpath}/ingresar"><i class="fa fa-home"></i> Home</a>
                     </li>
                     <li class="active">
-                        <a href="${contextpath}/novedades"><i class="fa fa-fw fa-star"></i> Novedades</a>
+                        <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Novedades</a>
                     </li>
                     
                     <li class="active">

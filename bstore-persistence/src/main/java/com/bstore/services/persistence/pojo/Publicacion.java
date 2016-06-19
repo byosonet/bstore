@@ -26,6 +26,7 @@ public class Publicacion implements java.io.Serializable {
 	private String urlArchivo;
 	private Date fechaUmodif;
 	private int idUsuarioUmodif;
+	private String portadaUrl;
 	private Coleccion coleccion;
 	private Usuario usuario;
 	private Fuente fuente;
@@ -35,7 +36,7 @@ public class Publicacion implements java.io.Serializable {
 	}
 
 	public Publicacion(int id, int estatus, String isbn, String nombre, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial) {
+		int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial, String portadaUrl) {
 		this.id = id;
 		this.estatus = estatus;
 		this.isbn = isbn;
@@ -47,11 +48,12 @@ public class Publicacion implements java.io.Serializable {
 		this.usuario = usuario;
 		this.fuente = fuente;
 		this.editorial = editorial;
+		this.portadaUrl = portadaUrl;
 	}
 
 	public Publicacion(int id, BigDecimal descuento, int estatus, String isbn, String nombre,
 			Short numeroPaginas, byte[] portada, BigDecimal precio, String resumen, String urlArchivo, Date fechaUmodif,
-			int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial) {
+			int idUsuarioUmodif, Coleccion coleccion, Usuario usuario, Fuente fuente, Editorial editorial, String portadaUrl) {
 		this.id = id;
 		this.descuento = descuento;
 		this.estatus = estatus;
@@ -68,6 +70,7 @@ public class Publicacion implements java.io.Serializable {
 		this.usuario = usuario;
 		this.fuente = fuente;
 		this.editorial = editorial;
+		this.portadaUrl = portadaUrl;
 	}
 
 	public int getId() {
@@ -198,13 +201,21 @@ public class Publicacion implements java.io.Serializable {
 		this.editorial = editorial;
 	}
 
+	public String getPortadaUrl() {
+		return portadaUrl;
+	}
+
+	public void setPortadaUrl(String portadaUrl) {
+		this.portadaUrl = portadaUrl;
+	}
+
 	@Override
 	public String toString() {
 		return "Publicacion [id=" + id + ", descuento=" + descuento + ", estatus=" + estatus + ", isbn=" + isbn
 				+ ", nombre=" + nombre + ", numeroPaginas=" + numeroPaginas + ", portada=" + Arrays.toString(portada)
 				+ ", precio=" + precio + ", resumen=" + resumen + ", urlArchivo=" + urlArchivo + ", fechaUmodif="
-				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", coleccion=" + coleccion + ", usuario="
-				+ usuario + ", fuente=" + fuente + ", editorial=" + editorial + "]";
+				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", portadaUrl=" + portadaUrl + ", coleccion="
+				+ coleccion + ", usuario=" + usuario + ", fuente=" + fuente + ", editorial=" + editorial + "]";
 	}
 
 }

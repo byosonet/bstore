@@ -23,6 +23,9 @@
         <property name="nombreMostrar" type="string">
             <column name="NOMBRE_MOSTRAR" length="50" />
         </property>
+        <property name="portadaUrl" type="string">
+            <column name="PORTADA_URL" length="200" />
+        </property>
         <property name="ranking" type="java.lang.Integer">
             <column name="RANKING" />
         </property>
