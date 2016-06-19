@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -17,5 +19,17 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
                 .setParameter("idPublicacion", idPublicacion)
                 .uniqueResult();
 		}
+	
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicaciones(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) this
+                .getSession()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
 
 }

@@ -15,7 +15,7 @@
             <column name="ESTATUS" not-null="true" />
         </property>
         <property name="isbn" type="string">
-            <column name="ISBN" length="13" not-null="true" />
+            <column name="ISBN" length="30" not-null="true" />
         </property>
         <property name="nombre" type="string">
             <column name="NOMBRE" length="100" not-null="true" unique="true" />
@@ -44,16 +44,16 @@
         <property name="idUsuarioUmodif" type="int">
             <column name="ID_USUARIO_UMODIF" not-null="true" />
         </property>
-        <many-to-one name="coleccion" class="com.bstore.services.persistence.pojo.Coleccion" fetch="select"> 
+        <many-to-one name="coleccion" class="com.bstore.services.persistence.pojo.Coleccion" fetch="select" lazy="false"> 
         	<column name="ID_COLECCION"/> 
         </many-to-one>
-        <many-to-one name="usuario" class="com.bstore.services.persistence.pojo.Usuario" fetch="select"> 
+        <many-to-one name="usuario" class="com.bstore.services.persistence.pojo.Usuario" fetch="select" lazy="false"> 
         	<column name="USUARIOALTA"/> 
         </many-to-one>
-        <many-to-one name="fuente" class="com.bstore.services.persistence.pojo.Fuente" fetch="select"> 
+        <many-to-one name="fuente" class="com.bstore.services.persistence.pojo.Fuente" fetch="select" lazy="false"> 
         	<column name="ID_FUENTE"/> 
         </many-to-one>
-        <many-to-one name="editorial" class="com.bstore.services.persistence.pojo.Editorial" fetch="select"> 
+        <many-to-one name="editorial" class="com.bstore.services.persistence.pojo.Editorial" fetch="select" lazy="false"> 
         	<column name="ID_EDITORIAL"/> 
         </many-to-one>
     </class>

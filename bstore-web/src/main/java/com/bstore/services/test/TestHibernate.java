@@ -10,6 +10,8 @@ import com.bstore.services.persistence.pojo.CompraId;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 
+import java.util.List;
+
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.FileSystemXmlApplicationContext;
  
@@ -43,6 +45,10 @@ public class TestHibernate {
         PublicacionDao publicacion = (PublicacionDaoImpl) context.getBean("publicacionDao");
         System.out.println(" -- Buscando Publicacion:::");
         Publicacion p = publicacion.getPublicacion(1);
+        
+        List<Publicacion> lista = publicacion.getPublicaciones(2);
+        System.out.println(" Lista publicaciones: "+lista.toString());
+        System.out.println("autor: "+lista.get(0).getFuente().getAutor());
         
         System.out.println(" -- Publicacion: "+p.getNombre());
         System.out.println(" -- Fuente: "+p.getFuente().getNombreBiblioteca());

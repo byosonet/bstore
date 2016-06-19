@@ -20,21 +20,23 @@ public class Fuente implements java.io.Serializable {
 	private int estatus;
 	private String rfc;
 	private Date fechaUmodif;
+	private String autor;
 	private int idUsuarioUmodif;
 
 	public Fuente() {
 	}
 
-	public Fuente(int id, String nombreBiblioteca, int estatus, Date fechaUmodif, int idUsuarioUmodif) {
+	public Fuente(int id, String nombreBiblioteca, int estatus, Date fechaUmodif, int idUsuarioUmodif, String autor) {
 		this.id = id;
 		this.nombreBiblioteca = nombreBiblioteca;
 		this.estatus = estatus;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
+		this.autor = autor;
 	}
 
 	public Fuente(int id, String nombreBiblioteca, String paginaWeb, String email, String telefono, int estatus,
-			String rfc, Date fechaUmodif, int idUsuarioUmodif) {
+			String rfc, Date fechaUmodif, int idUsuarioUmodif, String autor) {
 		this.id = id;
 		this.nombreBiblioteca = nombreBiblioteca;
 		this.paginaWeb = paginaWeb;
@@ -44,6 +46,7 @@ public class Fuente implements java.io.Serializable {
 		this.rfc = rfc;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
+		this.autor = autor;
 	}
 
 	public int getId() {
@@ -118,11 +121,19 @@ public class Fuente implements java.io.Serializable {
 		this.idUsuarioUmodif = idUsuarioUmodif;
 	}
 
+	public String getAutor() {
+		return autor;
+	}
+
+	public void setAutor(String autor) {
+		this.autor = autor;
+	}
+
 	@Override
 	public String toString() {
 		return "Fuente [id=" + id + ", nombreBiblioteca=" + nombreBiblioteca + ", paginaWeb=" + paginaWeb + ", email="
 				+ email + ", telefono=" + telefono + ", estatus=" + estatus + ", rfc=" + rfc + ", fechaUmodif="
-				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + "]";
+				+ fechaUmodif + ", autor=" + autor + ", idUsuarioUmodif=" + idUsuarioUmodif + "]";
 	}
 
 }

@@ -1,7 +1,7 @@
 .item {
     background: #ffffff none repeat scroll 0 0;
     border-radius: 5px;
-    color: #ffffff;
+    color: #000000;
     padding: 5px;
     white-space: pre-wrap;
     word-break: break-all;
@@ -17,8 +17,27 @@
     -o-transition: width 2s, height 2s,-o-transform 2s;
 }
 .zoom:hover{
-    transform : scale(1.5);
-    -moz-transform : scale(1.5);      /* Firefox */
-    -webkit-transform : scale(1.5);   /* Chrome - Safari */
-    -o-transform : scale(1.5);        /* Opera */
+    transform : scale(1.25);
+    -moz-transform : scale(1.25);      /* Firefox */
+    -webkit-transform : scale(1.25);   /* Chrome - Safari */
+    -o-transform : scale(1.25);        /* Opera */
+}
+.banner-wrapper {
+	position: relative;
+}
+.banner-title {
+    position: absolute;
+    left: -10px;
+    bottom: 55px;
+    background: #FF6B0E;
+    line-height: 1.5em;
+    font-weight: normal;
+    padding: 7px 9px 6px;
+    font-family: 'Oswald', sans-serif;
+    color: #FFFFFF;
+    font-size: 1.1em;
+    margin-left:11px;
+    width: 100%;
+    text-align: center;
+    border-radius:20px;
 }

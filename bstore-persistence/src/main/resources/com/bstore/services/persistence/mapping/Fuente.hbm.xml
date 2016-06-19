@@ -26,6 +26,9 @@
         <property name="rfc" type="string">
             <column name="RFC" length="13" />
         </property>
+        <property name="autor" type="string">
+            <column name="AUTOR" length="100" />
+        </property>
         <property name="fechaUmodif" type="timestamp">
             <column name="FECHA_UMODIF" length="19" not-null="true" />
         </property>

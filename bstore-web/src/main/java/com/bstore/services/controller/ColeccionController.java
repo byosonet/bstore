@@ -15,8 +15,8 @@ import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.service.ColeccionService;
 
 @Controller
-public class ColeccionesController {
-	private final Logger log = Logger.getLogger(ColeccionesController.class);
+public class ColeccionController {
+	private final Logger log = Logger.getLogger(ColeccionController.class);
 	
 	@Autowired
 	private ColeccionService coleccionService;
