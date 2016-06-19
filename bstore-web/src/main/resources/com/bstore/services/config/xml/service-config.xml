@@ -19,6 +19,8 @@
           class="com.bstore.services.service.UsuarioServiceImpl"/>
     <bean id="coleccionService" 
           class="com.bstore.services.service.ColeccionServiceImpl"/>
+    <bean id="publicacionService" 
+          class="com.bstore.services.service.PublicacionServiceImpl"/>
 
     <!-- Adapters Externos-->
     <bean id="droolRuleAge" 

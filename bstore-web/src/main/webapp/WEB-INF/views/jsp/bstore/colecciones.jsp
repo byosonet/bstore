@@ -19,8 +19,8 @@ $("#coleccion").gridalicious({
     <div id="coleccion">
     	 <c:forEach var="coleccion" items="${colecciones}">
     	 	<div class="item">
-                 <a href="${contextpath}/publicacion/${coleccion.id}"><img style="margin-top:-20px;width: 100%;" src="${coleccion.portadaUrl}"></a>
-				 <b><a href="${contextpath}/publicacion/${coleccion.id}" class="btn btn-success" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px;margin-top:-20px;">
+                 <a href="${contextpath}/coleccion/${coleccion.id}"><img style="border-radius:10px;margin-top:-20px;width: 100%;" src="${coleccion.portadaUrl}"></a>
+				 <b><a href="${contextpath}/coleccion/${coleccion.id}" class="btn btn-success" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px;margin-top:-20px;">
 				 <c:out value="${empty coleccion.nombreMostrar?coleccion.nombre:coleccion.nombreMostrar}"/>
 				 </a></b>
              </div> 
