@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context.xsd">
+        
+        <!-- TEST PARA BSTORE -->
+     <bean id="usuarioDao"
+        class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="compraDao"
+        class="com.bstore.services.persistence.dao.CompraDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="publicacionDao"
+        class="com.bstore.services.persistence.dao.PublicacionDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+    
+    <bean id="sessionFactory" 
+          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+          p:configLocation="classpath:com/bstore/services/persistence/config/hibernate.cfg.xml"/>          
+    
+          <bean id="transactionManager" 
+          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+          p:sessionFactory-ref="sessionFactory"/>
+    
+    
+          <tx:annotation-driven transaction-manager="transactionManager"/>
+    <context:annotation-config/>
+</beans>
