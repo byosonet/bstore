@@ -21,7 +21,11 @@
           class="com.bstore.services.service.ColeccionServiceImpl"/>
     <bean id="publicacionService" 
           class="com.bstore.services.service.PublicacionServiceImpl"/>
-
+	<bean id="compraService" 
+          class="com.bstore.services.service.CompraServiceImpl"/>
+	<bean id="editorialService" 
+          class="com.bstore.services.service.EditorialServiceImpl"/>
+          
     <!-- Adapters Externos-->
     <bean id="droolRuleAge" 
           class="com.bstore.services.drools.DroolRuleAgeImpl"/>
