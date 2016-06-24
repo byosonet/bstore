@@ -107,7 +107,10 @@ $("#publicacion").gridalicious({
 						     </div>
 				        </div>
 				        <div class="modal-footer">
-				          <button type="button" class="btn btn-primary" data-dismiss="modal">Aceptar</button>
+					      <div class="col-md-12">
+					      	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+					        <b><a href="${contextpath}/publicacion/${publicacion.id}" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a></b>
+					      </div>
 				        </div>
 				      </div>
 				    </div>
