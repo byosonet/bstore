@@ -25,6 +25,12 @@
           class="com.bstore.services.service.CompraServiceImpl"/>
 	<bean id="editorialService" 
           class="com.bstore.services.service.EditorialServiceImpl"/>
+    <bean id="formaPagoService" 
+          class="com.bstore.services.service.FormaPagoServiceImpl"/>
+    <bean id="fuenteService" 
+          class="com.bstore.services.service.FuenteServiceImpl"/>
+    <bean id="perfilService" 
+          class="com.bstore.services.service.PerfilServiceImpl"/>
           
     <!-- Adapters Externos-->
     <bean id="droolRuleAge" 

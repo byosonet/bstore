@@ -5,6 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.bstore.services.persistence.dao.EditorialDao;
 import com.bstore.services.persistence.pojo.Editorial;
 
+/**
+ * 
+ * @author hustler
+ *
+ */
 public class EditorialServiceImpl implements EditorialService {
 
 	@Autowired
