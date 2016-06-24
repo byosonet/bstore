@@ -22,5 +22,16 @@
       <bean id="coleccionDao"
         class="com.bstore.services.persistence.dao.ColeccionDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
-
+      <bean id="editorialDao"
+        class="com.bstore.services.persistence.dao.EditorialDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="formaPagoDao"
+        class="com.bstore.services.persistence.dao.FormaPagoDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="fuenteDao"
+        class="com.bstore.services.persistence.dao.FuenteDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
+      <bean id="perfilDao"
+        class="com.bstore.services.persistence.dao.PerfilDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 </beans>
