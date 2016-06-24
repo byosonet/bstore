@@ -15,8 +15,9 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
 		this.log.info("Buscando Publicacion by id:: "+idPublicacion);
         return (Publicacion) this
                 .getSession()
-                .createQuery("FROM Publicacion p WHERE p.id = :idPublicacion")
+                .createQuery("FROM Publicacion p WHERE p.id = :idPublicacion and p.estatus = :estatus")
                 .setParameter("idPublicacion", idPublicacion)
+                .setParameter("estatus", 1)
                 .uniqueResult();
 		}
 	

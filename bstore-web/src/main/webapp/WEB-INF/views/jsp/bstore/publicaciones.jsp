@@ -31,7 +31,7 @@ $("#publicacion").gridalicious({
 				 	<div style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="banner-title">Precio Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</div>
              	 </c:if>
-				 <b><a href="${contextpath}/publicacion/${publicacion.id}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="btn btn-primary">Comprar</a></b>
+				 <b><a href="${contextpath}/publicacion/${publicacion.id}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">

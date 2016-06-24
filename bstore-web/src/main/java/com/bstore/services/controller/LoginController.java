@@ -2,8 +2,11 @@ package com.bstore.services.controller;
 
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
+import com.bstore.services.persistence.pojo.Compra;
+import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
+import com.bstore.services.service.CompraService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import java.io.BufferedReader;
@@ -12,6 +15,7 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -36,12 +40,17 @@ public class LoginController {
 	UsuarioService usuarioService;
 	
 	@Autowired
+	CompraService compraService;
+	
+	@Autowired
 	private DroolRuleAge droolRuleAgeAdapter;
 	
    private final Logger log = Logger.getLogger(LoginController.class);
    @RequestMapping(value="/ingresar",method = RequestMethod.POST)
 
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
+	  log.info("URL: value=/ingresar,method = RequestMethod.POST");
+	   
       String requestEmail="";
       String requestPassword="";
       String cifrarEnviado = request.getParameter("cifrar");
@@ -73,6 +82,12 @@ public class LoginController {
             	  String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
                   model.addAttribute("cifrar",cifrar);
             	  model.addAttribute("user",usuario.getNombre());
+            	  
+            	  List<Compra> compras = 
+            			  this.compraService.listaCompraPorUsuario(usuario.getId());
+            	  if(compras != null){
+            		  model.addAttribute("publicaciones",this.compraService.getMenuColeccion(compras));
+            	  }
             	  return "indexPrincipal";
               } catch (Exception ex) {
                   ex.printStackTrace();
