@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -19,5 +21,16 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
                 .setParameter("compraId", compraId)
                 .uniqueResult();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Compra> getComprasPorUsuario(int idUsuario) {
+		this.log.info("Recuperando lista de compras por idUsuario: "+idUsuario);
+		return (List<Compra>) this
+				.getSession()
+				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario")
+				.setParameter("idUsuario", idUsuario)
+				.list();
+	}
+	
 
 }
