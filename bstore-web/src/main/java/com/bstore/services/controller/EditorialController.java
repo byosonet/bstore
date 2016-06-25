@@ -11,7 +11,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Editorial;
+import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EditorialService;
 
 /**
@@ -27,11 +29,19 @@ public class EditorialController {
 	@Autowired
 	private EditorialService editorialService;
 	
+	@Autowired
+	private CompraService compraService;
+	
 	@RequestMapping(value="/editorial/getAll",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request){
 		logger.info("editorialController.getAll()");
 		
 		List<Editorial> editorialList = editorialService.getAll();
+		List<Compra> compras = 
+  			  this.compraService.listaCompraPorUsuario(3);
+  	  if(compras != null){
+  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
+  	  }
 		model.addAttribute("editoriales", editorialList);
 		
 		return "editoriales";

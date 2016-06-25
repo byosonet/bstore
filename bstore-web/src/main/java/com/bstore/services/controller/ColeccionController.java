@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
+import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.service.ColeccionService;
+import com.bstore.services.service.CompraService;
 
 @Controller
 public class ColeccionController {
@@ -21,6 +23,9 @@ public class ColeccionController {
 	@Autowired
 	private ColeccionService coleccionService;
 	
+	@Autowired
+	private CompraService compraService;
+	
 	@RequestMapping(value="/colecciones",method = RequestMethod.GET)
 	   public String novedades(Model model, HttpServletRequest request) {
 		log.info("Cargando novedades.");
@@ -28,6 +33,11 @@ public class ColeccionController {
 		List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
 		log.info("Total colecciones encontradas: "+lista.size());
 		model.addAttribute("colecciones", lista);
+		List<Compra> compras = 
+	  			  this.compraService.listaCompraPorUsuario(3);
+	  	  if(compras != null){
+	  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
+	  	  }
 		return "colecciones";
 	   }
 	
