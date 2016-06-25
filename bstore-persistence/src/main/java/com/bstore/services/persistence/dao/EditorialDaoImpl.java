@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -30,4 +32,10 @@ public class EditorialDaoImpl extends HibernateDaoSupport implements EditorialDa
 		this.getSession().saveOrUpdate(editorial);
 	}
 
+	
+	@SuppressWarnings("unchecked")
+	public List<Editorial> getAll(){
+		logger.info("getAll");
+		return (List<Editorial>) getSession().createQuery("FROM Editorial e").list();
+	}
 }

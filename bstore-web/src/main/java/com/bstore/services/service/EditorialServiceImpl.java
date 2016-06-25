@@ -1,5 +1,7 @@
 package com.bstore.services.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.bstore.services.persistence.dao.EditorialDao;
@@ -25,4 +27,7 @@ public class EditorialServiceImpl implements EditorialService {
 		editorialDao.saveOrUpdate(editorial);
 	}
 
+	public List<Editorial> getAll(){
+		return editorialDao.getAll();
+	}
 }
