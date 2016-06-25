@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import com.bstore.services.persistence.pojo.Editorial;
 
 /**
@@ -10,4 +12,5 @@ import com.bstore.services.persistence.pojo.Editorial;
 public interface EditorialDao {
 	Editorial getEditorial(int id);
 	void saveOrUpdate(Editorial editorial);
+	List<Editorial> getAll();
 }
