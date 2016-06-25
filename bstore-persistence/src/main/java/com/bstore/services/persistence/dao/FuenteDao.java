@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import com.bstore.services.persistence.pojo.Fuente;
 
 /**
@@ -9,5 +11,6 @@ import com.bstore.services.persistence.pojo.Fuente;
  */
 public interface FuenteDao {
 	Fuente getFuente(int id);
+	List<Fuente> getAll();
 	void saveOrUpdateFuente(Fuente fuente);
 }
