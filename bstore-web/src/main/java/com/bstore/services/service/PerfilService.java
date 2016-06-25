@@ -1,5 +1,7 @@
 package com.bstore.services.service;
 
+import java.util.List;
+
 import com.bstore.services.persistence.pojo.Perfil;
 
 /**
@@ -9,4 +11,6 @@ import com.bstore.services.persistence.pojo.Perfil;
  */
 public interface PerfilService {
 	Perfil getPerfil(int id);
+	List<Perfil> getAll();
+	void saveOrUpdate(Perfil perfil);
 }
