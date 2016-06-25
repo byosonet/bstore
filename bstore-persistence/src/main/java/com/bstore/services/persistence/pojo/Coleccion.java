@@ -115,5 +115,63 @@ public class Coleccion implements java.io.Serializable {
 				+ ", idUsuarioUmodif=" + idUsuarioUmodif + ", nombreMostrar=" + nombreMostrar + ", ranking=" + ranking
 				+ ", portadaUrl=" + portadaUrl + "]";
 	}
+
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + estatus;
+		result = prime * result + ((fechaUmodif == null) ? 0 : fechaUmodif.hashCode());
+		result = prime * result + id;
+		result = prime * result + idUsuarioUmodif;
+		result = prime * result + ((nombre == null) ? 0 : nombre.hashCode());
+		result = prime * result + ((nombreMostrar == null) ? 0 : nombreMostrar.hashCode());
+		result = prime * result + ((portadaUrl == null) ? 0 : portadaUrl.hashCode());
+		result = prime * result + ((ranking == null) ? 0 : ranking.hashCode());
+		return result;
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Coleccion other = (Coleccion) obj;
+		if (estatus != other.estatus)
+			return false;
+		if (fechaUmodif == null) {
+			if (other.fechaUmodif != null)
+				return false;
+		} else if (!fechaUmodif.equals(other.fechaUmodif))
+			return false;
+		if (id != other.id)
+			return false;
+		if (idUsuarioUmodif != other.idUsuarioUmodif)
+			return false;
+		if (nombre == null) {
+			if (other.nombre != null)
+				return false;
+		} else if (!nombre.equals(other.nombre))
+			return false;
+		if (nombreMostrar == null) {
+			if (other.nombreMostrar != null)
+				return false;
+		} else if (!nombreMostrar.equals(other.nombreMostrar))
+			return false;
+		if (portadaUrl == null) {
+			if (other.portadaUrl != null)
+				return false;
+		} else if (!portadaUrl.equals(other.portadaUrl))
+			return false;
+		if (ranking == null) {
+			if (other.ranking != null)
+				return false;
+		} else if (!ranking.equals(other.ranking))
+			return false;
+		return true;
+	}
 	
 }

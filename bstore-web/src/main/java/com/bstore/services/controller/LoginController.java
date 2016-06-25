@@ -86,7 +86,7 @@ public class LoginController {
             	  List<Compra> compras = 
             			  this.compraService.listaCompraPorUsuario(usuario.getId());
             	  if(compras != null){
-            		  model.addAttribute("publicaciones",this.compraService.getMenuColeccion(compras));
+            		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
             	  }
             	  return "indexPrincipal";
               } catch (Exception ex) {
@@ -99,7 +99,11 @@ public class LoginController {
    
    @RequestMapping(value="/ingresar",method = RequestMethod.GET)
    public String ingresarGET(Model model, HttpServletRequest request) {
-      //return "forbidden";
+	   List<Compra> compras = 
+	  			  this.compraService.listaCompraPorUsuario(3);
+	  	  if(compras != null){
+	  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
+	  	  }
 	   return "indexPrincipal";
    }
    

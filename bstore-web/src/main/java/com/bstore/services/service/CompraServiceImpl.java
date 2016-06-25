@@ -6,6 +6,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -48,7 +49,7 @@ public class CompraServiceImpl implements CompraService {
 	}
 	
 	@Override
-	public Map<String, List<Publicacion>> getMenuColeccion(List<Compra> compras) {
+	public Map<Coleccion, List<Publicacion>> getMenuColeccion(List<Compra> compras) {
 		Set<Coleccion> colecciones =  new HashSet<Coleccion>();
 		for(Compra c: compras){
 			Publicacion p = this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());
@@ -57,32 +58,24 @@ public class CompraServiceImpl implements CompraService {
 			}
 		}
 		
-		Map<String, List<Publicacion>> map = new HashMap<String, List<Publicacion>>();
+		Map<Coleccion, List<Publicacion>> map = new HashMap<Coleccion, List<Publicacion>>();
 		for(Coleccion coleccion: colecciones){
 			List<Publicacion> publicacion = new ArrayList<Publicacion>();
 			for(Compra c: compras){
 				Publicacion p = this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());
 				if(p!=null){
 					if(p.getColeccion().getId() == coleccion.getId()){
-						String nombreColeccion = "";
-						if(p.getColeccion().getNombreMostrar()!=null){
-							nombreColeccion = p.getColeccion().getNombreMostrar();
-						}else{
-							nombreColeccion = p.getColeccion().getNombre();
-						}
 						publicacion.add(p);
-						map.put(nombreColeccion,publicacion);
+						map.put(coleccion,publicacion);
 					}
 				}
 			}
 		}
-		for(Map.Entry<String, List<Publicacion>> m : map.entrySet()){
-			log.info("Coleccion "+m.getKey());
+		for(Map.Entry<Coleccion, List<Publicacion>> m : map.entrySet()){
+			log.info("Coleccion "+m.getKey().getNombreMostrar());
 			log.info("Total Coleccion "+m.getValue().size());
 			log.info("Coleccion "+m.getValue().toString());
 		}
-		
-		
 		return map;
 	}
 	

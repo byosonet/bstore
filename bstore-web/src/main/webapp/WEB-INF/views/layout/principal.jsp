@@ -130,35 +130,18 @@
                     <li class="active">
                         <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Novedades</a>
                     </li>
-                    
-                    <li class="active">
-                        <a href="#" data-toggle="collapse" data-target="#demo1"><i class="fa fa-folder-open-o"></i> Coleccion #1 </a>
-                        <ul id="demo1" class="collapse">
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #1</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #2</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #3</a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li class="active">
-                        <a href="#" data-toggle="collapse" data-target="#demo2"><i class="fa fa-folder-open-o"></i> Coleccion #2 </a>
-                        <ul id="demo2" class="collapse">
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #1</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #2</a>
-                            </li>
-                            <li>
-                                <a href="#"><i class="fa fa-book"></i> TEMA #3</a>
-                            </li>
-                        </ul>
-                    </li>
+                    <c:forEach var="entry" items="${menu}">
+	                    <li class="active">
+	                        <a href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-folder-open-o"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
+	                        <ul id="${entry.key.id}" class="collapse">
+							<c:forEach var="publicacion" items="${entry.value}">
+						    	<li>
+	                                <a href="#"><i class="fa fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
+	                            </li>
+							</c:forEach>
+							</ul>
+	                    </li>
+					</c:forEach>
                 </ul>
             </div>
         </nav>
