@@ -1,5 +1,7 @@
 package com.bstore.services.service;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -28,6 +30,12 @@ public class FuenteServiceImpl implements FuenteService {
 	public void saveOrUpdateFuente(Fuente fuente) {
 		logger.info("saveOrUpdateFuente: "+fuente.toString());
 		fuenteDao.saveOrUpdateFuente(fuente);
+	}
+
+	@Override
+	public List<Fuente> getAll() {
+		logger.info("getAll");
+		return fuenteDao.getAll();
 	}
 
 }

@@ -19,4 +19,9 @@ public class ColeccionServiceImpl implements ColeccionService{
 		return this.coleccionDao.getColecion(tipoOrden);
 	}
 
+	@Override
+	public List<Coleccion> getAll() {
+		return coleccionDao.getAll();
+	}
+
 }

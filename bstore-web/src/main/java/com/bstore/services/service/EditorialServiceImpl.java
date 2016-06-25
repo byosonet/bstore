@@ -26,7 +26,8 @@ public class EditorialServiceImpl implements EditorialService {
 	public void saveOrUpdate(Editorial editorial) {
 		editorialDao.saveOrUpdate(editorial);
 	}
-
+	
+	@Override
 	public List<Editorial> getAll(){
 		return editorialDao.getAll();
 	}

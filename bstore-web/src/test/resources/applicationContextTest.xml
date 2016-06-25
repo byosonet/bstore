@@ -1,40 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
-       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xmlns:p="http://www.springframework.org/schema/p"
-       xmlns:context="http://www.springframework.org/schema/context"
-       xmlns:tx="http://www.springframework.org/schema/tx"
-       xsi:schemaLocation="
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:context="http://www.springframework.org/schema/context" xmlns:tx="http://www.springframework.org/schema/tx"
+	xsi:schemaLocation="
         http://www.springframework.org/schema/beans 
         http://www.springframework.org/schema/beans/spring-beans.xsd
         http://www.springframework.org/schema/tx
         http://www.springframework.org/schema/tx/spring-tx.xsd
         http://www.springframework.org/schema/context
         http://www.springframework.org/schema/context/spring-context.xsd">
-        
-        <!-- TEST PARA BSTORE -->
-     <bean id="usuarioDao"
-        class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-      <bean id="compraDao"
-        class="com.bstore.services.persistence.dao.CompraDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-      <bean id="publicacionDao"
-        class="com.bstore.services.persistence.dao.PublicacionDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-    <bean id="editorialDao"
-        class="com.bstore.services.persistence.dao.EditorialDaoImpl"
-        p:sessionFactory-ref="sessionFactory"/>
-        
-    <bean id="sessionFactory" 
-          class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
-          p:configLocation="classpath:com/bstore/services/persistence/config/hibernate.cfg.xml"/>          
-    
-          <bean id="transactionManager" 
-          class="org.springframework.orm.hibernate3.HibernateTransactionManager"
-          p:sessionFactory-ref="sessionFactory"/>
-    
-    
-          <tx:annotation-driven transaction-manager="transactionManager"/>
-    <context:annotation-config/>
+
+	<bean id="usuarioDao" class="com.bstore.services.persistence.dao.UsuarioDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="compraDao" class="com.bstore.services.persistence.dao.CompraDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="publicacionDao" class="com.bstore.services.persistence.dao.PublicacionDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="coleccionDao" class="com.bstore.services.persistence.dao.ColeccionDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="editorialDao" class="com.bstore.services.persistence.dao.EditorialDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="formaPagoDao" class="com.bstore.services.persistence.dao.FormaPagoDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="fuenteDao" class="com.bstore.services.persistence.dao.FuenteDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+	<bean id="perfilDao" class="com.bstore.services.persistence.dao.PerfilDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
+
+	<bean id="usuarioService" class="com.bstore.services.service.UsuarioServiceImpl" />
+	<bean id="coleccionService" class="com.bstore.services.service.ColeccionServiceImpl" />
+	<bean id="publicacionService" class="com.bstore.services.service.PublicacionServiceImpl" />
+	<bean id="compraService" class="com.bstore.services.service.CompraServiceImpl" />
+	<bean id="editorialService" class="com.bstore.services.service.EditorialServiceImpl" />
+	<bean id="formaPagoService" class="com.bstore.services.service.FormaPagoServiceImpl" />
+	<bean id="fuenteService" class="com.bstore.services.service.FuenteServiceImpl" />
+	<bean id="perfilService" class="com.bstore.services.service.PerfilServiceImpl" />
+
+	<bean id="sessionFactory"
+		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
+		p:configLocation="classpath:com/bstore/services/persistence/config/hibernate.cfg.xml" />
+
+	<bean id="transactionManager"
+		class="org.springframework.orm.hibernate3.HibernateTransactionManager"
+		p:sessionFactory-ref="sessionFactory" />
+
+
+	<tx:annotation-driven transaction-manager="transactionManager" />
+	<context:annotation-config />
 </beans>

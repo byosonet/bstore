@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
@@ -19,6 +21,13 @@ public class FuenteDaoImpl extends HibernateDaoSupport implements FuenteDao {
 		logger.info("getFuente, id: "+id);
 		
 		return (Fuente) this.getSession().createQuery("FROM Fuente f WHERE f.id = :fuenteId").setParameter("fuenteId", id).uniqueResult();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Fuente> getAll(){
+		logger.info("getAll");
+		
+		return (List<Fuente>) this.getSession().createQuery("FROM Fuente f").list();
 	}
 
 	public void saveOrUpdateFuente(Fuente fuente) {

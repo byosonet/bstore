@@ -28,7 +28,7 @@ public class EditorialDaoImpl extends HibernateDaoSupport implements EditorialDa
 	}
 
 	public void saveOrUpdate(Editorial editorial) {
-		logger.info("saveOrUpdateEditorial: "+editorial);
+		logger.info("saveOrUpdateEditorial: "+editorial.toString());
 		this.getSession().saveOrUpdate(editorial);
 	}
 
