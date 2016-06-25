@@ -1,5 +1,7 @@
 package com.bstore.services.persistence.dao;
 
+import java.util.List;
+
 import com.bstore.services.persistence.pojo.Perfil;
 
 /**
@@ -9,5 +11,5 @@ import com.bstore.services.persistence.pojo.Perfil;
  */
 public interface PerfilDao {
 	Perfil getPerfil(int id);
-	
+	List<Perfil> getAll();
 }
