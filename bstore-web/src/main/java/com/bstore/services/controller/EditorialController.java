@@ -23,28 +23,21 @@ import com.bstore.services.service.EditorialService;
  */
 @Controller
 public class EditorialController {
-	
+
 	private Logger logger = Logger.getLogger(EditorialController.class);
-	
+
 	@Autowired
 	private EditorialService editorialService;
-	
-	@Autowired
-	private CompraService compraService;
-	
+
 	@RequestMapping(value="/editorial/getAll",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request){
 		logger.info("editorialController.getAll()");
-		
+
 		List<Editorial> editorialList = editorialService.getAll();
-		List<Compra> compras = 
-  			  this.compraService.listaCompraPorUsuario(3);
-  	  if(compras != null){
-  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
-  	  }
-		model.addAttribute("editoriales", editorialList);
-		
+		if(editorialList != null){
+			model.addAttribute("editoriales",editorialList);
+		}
 		return "editoriales";
 	}
-	
+
 }
