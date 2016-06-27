@@ -136,7 +136,7 @@
 	                        <ul id="${entry.key.id}" class="collapse">
 							<c:forEach var="publicacion" items="${entry.value}">
 						    	<li>
-	                                <a href="#"><i class="fa fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
+	                                <a href="${contextpath}/publicacion/${publicacion.id}"><i class="fa fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
 	                            </li>
 							</c:forEach>
 							</ul>

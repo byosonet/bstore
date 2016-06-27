@@ -44,4 +44,19 @@ public class PublicacionController {
 		return "publicaciones";
 	   }
 	
+	@RequestMapping(value="/publicacion/{id}",method = RequestMethod.GET)
+	   public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request) {
+		log.info("Cargando publicacion.");
+		log.info("Cargando Service publicacion:");
+		String url = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue()).getUrlArchivo();
+		log.info("URL Encontrada: "+url);
+		model.addAttribute("urlPublicacion", url);
+		List<Compra> compras = 
+	  			  this.compraService.listaCompraPorUsuario(3);
+		  	  if(compras != null){
+		  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
+		  	  }
+		return "publicacionHTML";
+	   }
+	
 }

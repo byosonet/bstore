@@ -22,4 +22,10 @@ public class PublicacionServiceImpl implements PublicacionService{
 		return this.publicacionDao.getPublicaciones(idColeccion);
 	}
 
+	@Override
+	public Publicacion getPublicacion(int id) {
+		log.info("Buscnado publicacion para URL HTML: "+id);
+		return this.publicacionDao.getPublicacion(id);
+	}
+
 }
