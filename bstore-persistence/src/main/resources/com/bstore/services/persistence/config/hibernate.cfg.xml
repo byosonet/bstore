@@ -19,7 +19,7 @@
     <property name="hibernate.connection.password">toor</property>
     
     <!-- PROPIEDADES HIBERNATE -->
-    <property name="connection.pool_size">5</property>
+    <property name="hibernate.connection.pool_size">5</property>
     <property name="hibernate.show_sql">false</property>
     <property name="hibernate.format_sql">false</property>
     <property name="hibernate.use_sql_comments">true</property>
@@ -28,8 +28,8 @@
     <property name="hibernate.cache.use_structured_entries">false</property>
     <property name="hibernate.cache.use_second_level_cache">true</property>
     <property name="hibernate.cache.provider_class">org.hibernate.cache.EhCacheProvider</property>
-    <property name="transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
-    <property name="current_session_context_class">thread</property>
+    <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+    <property name="hibernate.current_session_context_class">thread</property>
     
     <!-- MAPPING PARA BSTORE -->
     <mapping resource="com/bstore/services/persistence/mapping/Usuario.hbm.xml"/>
@@ -42,6 +42,12 @@
     <mapping resource="com/bstore/services/persistence/mapping/Perfil.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/mapping/Properties.hbm.xml"/>
     <mapping resource="com/bstore/services/persistence/mapping/Plantilla.hbm.xml"/>
+    
+    <!-- OTHER MYSAL
+    	SET GLOBAL MAX_CONNECTIONS = 5000;
+    	SHOW STATUS LIKE '%onn%';
+    	SHOW VARIABLES LIKE "max_connections";
+     -->
 
   </session-factory>
 </hibernate-configuration>
