@@ -9,7 +9,22 @@
 	$(document).ready(function() {
 		console.log('--load editoriales');
 		$(document).ready(function() {
-			$('#tablaEditoriales').DataTable();
+			$('#tablaEditoriales').DataTable({
+				"language":{
+					"lengthMenu": "Mostrar _MENU_ registros por página",
+		            "zeroRecords": "No hay registros",
+		            "info": "Página _PAGE_ de _PAGES_",
+		            "infoEmpty": "No hay registros",
+		            "infoFiltered": "(Filtrado de _MAX_ registros)",
+		            "sSearch": "Buscar:",
+		            "oPaginate": {
+		                "sFirst":    "Primero",
+		                "sLast":     "Último",
+		                "sNext":     "Siguiente",
+		                "sPrevious": "Anterior"
+		            },
+				}
+			});
 		});
 	});
 </script>
@@ -20,7 +35,7 @@
 	<p>Editoriales</p>
 
 	<b>
-		<a href="${contextpath}/editorial/add" class="btn btn-primary" style="font-size: 15; width: 10%; padding: 5px; text-align: center; margin-bottom: -10px; margin-top: -20px; align:right;">
+		<a href="${contextpath}/editorial/add" class="btn btn-primary pull-right" style="font-size: 15; width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align:right;">
 			<i class="fa fa-folder-open-o"></i> 
 			<c:out value="Agregar editorial" />
 		</a>
