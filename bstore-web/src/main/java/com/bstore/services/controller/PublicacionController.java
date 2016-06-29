@@ -12,7 +12,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.PublicacionService;
@@ -33,13 +32,7 @@ public class PublicacionController {
 		log.info("Cargando Service publicacion:");
 		List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue());
 		log.info("Total publicaciones encontradas: "+lista.size());
-		
-		List<Compra> compras = 
-  			  this.compraService.listaCompraPorUsuario(3);
-	  	  if(compras != null){
-	  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
-	  	  }
-			
+		model.addAttribute("menu",this.compraService.getMenuColeccion(3));
 		model.addAttribute("publicaciones", lista);
 		return "publicaciones";
 	   }
@@ -48,14 +41,11 @@ public class PublicacionController {
 	   public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request) {
 		log.info("Cargando publicacion.");
 		log.info("Cargando Service publicacion:");
-		String url = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue()).getUrlArchivo();
-		log.info("URL Encontrada: "+url);
-		model.addAttribute("urlPublicacion", url);
-		List<Compra> compras = 
-	  			  this.compraService.listaCompraPorUsuario(3);
-		  	  if(compras != null){
-		  		  model.addAttribute("menu",this.compraService.getMenuColeccion(compras));
-		  	  }
+		Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
+		log.info("URL Encontrada: "+pub.getUrlArchivo());
+		model.addAttribute("urlPublicacion", pub.getUrlArchivo());
+		model.addAttribute("nombrePublicacion", pub.getNombre());
+		model.addAttribute("menu",this.compraService.getMenuColeccion(3));
 		return "publicacionHTML";
 	   }
 	
