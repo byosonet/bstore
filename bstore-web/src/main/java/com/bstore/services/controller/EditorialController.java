@@ -40,4 +40,10 @@ public class EditorialController {
 		return "editoriales";
 	}
 
+	@RequestMapping(value="/editorial/add",method = RequestMethod.GET)
+	public String editorialAdd(Model model, HttpServletRequest request){
+		logger.info("editorialController.editorialAdd()");
+		
+		return "editorialAdd";
+	}
 }
