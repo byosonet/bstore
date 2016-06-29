@@ -10,6 +10,5 @@ import com.bstore.services.persistence.pojo.Publicacion;
 
 public interface CompraService {
 	Compra getCompra(CompraId compraId);
-	List<Compra> listaCompraPorUsuario(int idUsuario);
-	Map<Coleccion, List<Publicacion>> getMenuColeccion(List<Compra> compras);
+	Map<Coleccion, List<Publicacion>> getMenuColeccion(int idUsuario);
 }
