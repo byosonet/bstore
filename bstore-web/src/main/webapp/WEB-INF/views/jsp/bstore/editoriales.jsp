@@ -2,6 +2,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
 <head>
 <script type="text/javascript">
@@ -17,7 +18,14 @@
 </head>
 <body>
 	<p>Editoriales</p>
-	
+
+	<b>
+		<a href="${contextpath}/editorial/add" class="btn btn-primary" style="font-size: 15; width: 10%; padding: 5px; text-align: center; margin-bottom: -10px; margin-top: -20px; align:right;">
+			<i class="fa fa-folder-open-o"></i> 
+			<c:out value="Agregar editorial" />
+		</a>
+	</b>
+
 	<table id="tablaEditoriales" class="table table-striped table-bordered"
 		cellspacing="0" width="100%">
 		<thead>
