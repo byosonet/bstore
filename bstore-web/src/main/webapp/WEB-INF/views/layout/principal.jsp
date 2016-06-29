@@ -66,7 +66,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<spring:message code="url.menu.href"/>">BStore</a>
+                <a class="navbar-brand" href="<spring:message code="url.menu.href"/>">eQuivira</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -125,18 +125,18 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                 	<li class="active">
-                        <a href="${contextpath}/ingresar"><i class="fa fa-home"></i> Home</a>
+                        <a href="${contextpath}/ingresar"><i class="fa fa-fw fa-home"></i> Principal</a>
                     </li>
                     <li class="active">
-                        <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Novedades</a>
+                        <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>
                     </li>
                     <c:forEach var="entry" items="${menu}">
 	                    <li class="active">
-	                        <a href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-folder-open-o"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
+	                        <a href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
 	                        <ul id="${entry.key.id}" class="collapse">
 							<c:forEach var="publicacion" items="${entry.value}">
 						    	<li>
-	                                <a href="${contextpath}/publicacion/${publicacion.id}"><i class="fa fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
+	                                <a href="${contextpath}/publicacion/${publicacion.id}"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
 	                            </li>
 							</c:forEach>
 							</ul>
