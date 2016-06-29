@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-  <title>BStore Online</title>
+  <title>eQuivira</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
   <style>
       
@@ -113,7 +113,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/bstore" style="color:white;">BStore Online</a>
+            <a class="navbar-brand" href="/bstore" style="color:white;">eQuivira</a>
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
