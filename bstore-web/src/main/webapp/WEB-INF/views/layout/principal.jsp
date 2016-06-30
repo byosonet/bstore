@@ -142,6 +142,17 @@
 							</ul>
 	                    </li>
 					</c:forEach>
+					
+					<!-- Menu del Admin -->
+					<li class="active">
+                        <a href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Administrador</a>
+                        <ul id="admin" class="collapse">
+					    	<li>
+                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Editoriales</a>
+                            </li>
+						</ul>
+                    </li>
+                    
                 </ul>
             </div>
         </nav>
