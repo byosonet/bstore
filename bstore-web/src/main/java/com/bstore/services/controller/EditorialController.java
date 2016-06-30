@@ -8,6 +8,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -43,6 +44,15 @@ public class EditorialController {
 	@RequestMapping(value="/editorial/add",method = RequestMethod.GET)
 	public String editorialAdd(Model model, HttpServletRequest request){
 		logger.info("editorialController.editorialAdd()");
+		
+		return "editorialAdd";
+	}
+	
+	@RequestMapping(value="/editorial/saveEditorial",method = RequestMethod.POST)
+	public String saveEditorial(Model model, HttpServletRequest request, @ModelAttribute("editorialForm") Editorial editorial){
+		logger.info("editorialController.editorialAdd()");
+		
+		System.out.println("nombre de la nueva editorial: "+editorial.getNombre());
 		
 		return "editorialAdd";
 	}
