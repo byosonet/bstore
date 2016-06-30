@@ -13,7 +13,7 @@
 	</definition>
 	
 	<definition name="colecciones" extends="principal">
-		<put-attribute name="header" value="Novedades"/>
+		<put-attribute name="header" value="Colecciones"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/colecciones.jsp"/>
 	</definition>
 	
@@ -28,8 +28,13 @@
 	</definition>
 	
 	<definition name="publicacionHTML" extends="principal">
-		<put-attribute name="header" value="Editoriales"/>
+		<put-attribute name="header" value="Publicacion HTML"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicacionHTML.jsp"/>
+	</definition>
+	
+	<definition name="detalleCompra" extends="principal">
+		<put-attribute name="header" value="Detalle Compra"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/detalleCompra.jsp"/>
 	</definition>
 	
 	<definition name="editorialAdd" extends="principal">
