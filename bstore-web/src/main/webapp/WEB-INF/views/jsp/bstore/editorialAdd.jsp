@@ -16,11 +16,11 @@
 
 	<spring:url value="{contextpath}/editorial/saveEditorial" var="guardarEditorial" />
 	
-	<form:form method="post" modelAttribute="editorialForm" action="${guardarEditorial}">
+	<form:form method="post" action="${guardarEditorial}">
 		<div class="form-group row">
 			<label for="nombre" class="col-sm-2 form-control-label">Nombre</label>
 			<div class="col-sm-10">
-				<form:input path="nombre" type="text" class="form-control" id="nombre"
+				<input path="nombre" type="text" class="form-control" id="nombre"
 					placeholder="Nombre" />
 			</div>
 		</div>
