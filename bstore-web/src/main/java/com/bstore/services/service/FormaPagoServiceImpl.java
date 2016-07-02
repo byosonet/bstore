@@ -27,9 +27,15 @@ public class FormaPagoServiceImpl implements FormaPagoService {
 	}
 
 	@Override
-	public List<FormaPago> getFormaPagoList() {
+	public List<FormaPago> getAll() {
 		logger.info("getFormaPagoList...");
-		return formaPagoDao.getFormaPagoList();
+		return formaPagoDao.getAll();
+	}
+
+	@Override
+	public void saveOrUpdate(FormaPago formaPago) {
+		logger.info("saveOrUpdate");
+		formaPagoDao.saveOrUpdate(formaPago);
 	}
 
 }

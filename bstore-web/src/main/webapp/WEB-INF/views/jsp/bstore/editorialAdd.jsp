@@ -1,9 +1,8 @@
-<%@ include file="../../layout/taglibs.jsp"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ include file="../../layout/taglibs.jsp"%>
 
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
@@ -13,15 +12,12 @@
 </head>
 <body>
 	<p>Nueva editorial</p>
-
-	<spring:url value="{contextpath}/editorial/saveEditorial" var="guardarEditorial" />
 	
-	<form:form method="post" action="${guardarEditorial}">
+	<form method="post" action="${contextpath}/editorial/saveEditorial">
 		<div class="form-group row">
 			<label for="nombre" class="col-sm-2 form-control-label">Nombre</label>
 			<div class="col-sm-10">
-				<input path="nombre" type="text" class="form-control" id="nombre"
-					placeholder="Nombre" />
+				<input id="nombre" type="text"  class="form-control" placeholder="Nombre" />
 			</div>
 		</div>
 		<div class="form-group row">
@@ -66,6 +62,6 @@
 				<i class="fa fa-folder-open-o"></i> <c:out value="Cancelar" />
 			</a>
 		</div>
-	</form:form>
+	</form>
 </body>
 </html>

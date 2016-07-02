@@ -11,5 +11,6 @@ import com.bstore.services.persistence.pojo.FormaPago;
  */
 public interface FormaPagoDao {
 	FormaPago getFormaPago(int id);
-	List<FormaPago> getFormaPagoList();
+	List<FormaPago> getAll();
+	void saveOrUpdate(FormaPago formaPago);
 }

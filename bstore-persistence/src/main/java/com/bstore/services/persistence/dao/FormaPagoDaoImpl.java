@@ -25,8 +25,19 @@ public class FormaPagoDaoImpl extends HibernateDaoSupport implements FormaPagoDa
                 .uniqueResult();
 	}
 
-	public List<FormaPago> getFormaPagoList() {
-		return null;
+	@SuppressWarnings("unchecked")
+	public List<FormaPago> getAll() {
+		logger.info("Buscando todas las formas de pago");
+		return (List<FormaPago>) this
+                .getSession()
+                .createQuery("FROM FormaPago fp")
+                .list();
 	}
 
+	public void saveOrUpdate(FormaPago formaPago) {
+		logger.info("Guardar o actualizar Forma de Pago");
+		this.getSession().saveOrUpdate(formaPago);
+	}
+
+	
 }

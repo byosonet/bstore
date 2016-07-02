@@ -11,10 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
-import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Editorial;
-import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EditorialService;
 
 /**
@@ -23,6 +20,7 @@ import com.bstore.services.service.EditorialService;
  *
  */
 @Controller
+@RequestMapping("/editorial")
 public class EditorialController {
 
 	private Logger logger = Logger.getLogger(EditorialController.class);
@@ -30,7 +28,7 @@ public class EditorialController {
 	@Autowired
 	private EditorialService editorialService;
 
-	@RequestMapping(value="/editorial/getAll",method = RequestMethod.GET)
+	@RequestMapping(value="/getAll",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request){
 		logger.info("editorialController.getAll()");
 
@@ -41,19 +39,26 @@ public class EditorialController {
 		return "editoriales";
 	}
 
-	@RequestMapping(value="/editorial/add",method = RequestMethod.GET)
+	@RequestMapping(value="/add",method = RequestMethod.GET)
 	public String editorialAdd(Model model, HttpServletRequest request){
 		logger.info("editorialController.editorialAdd()");
-		
+		logger.info("---------------------------------------------------------------------------------");
 		return "editorialAdd";
 	}
 	
-	@RequestMapping(value="/editorial/saveEditorial",method = RequestMethod.POST)
+	@RequestMapping(value="/saveEditorial",method = RequestMethod.POST)
 	public String saveEditorial(Model model, HttpServletRequest request, @ModelAttribute("editorialForm") Editorial editorial){
 		logger.info("editorialController.editorialAdd()");
 		
 		System.out.println("nombre de la nueva editorial: "+editorial.getNombre());
 		
-		return "editorialAdd";
+		
+		
+		//Para regresar a lista de editoriales
+		List<Editorial> editorialList = editorialService.getAll();
+		if(editorialList != null){
+			model.addAttribute("editoriales",editorialList);
+		}
+		return "editoriales";
 	}
 }
