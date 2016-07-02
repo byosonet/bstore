@@ -2,6 +2,8 @@ package com.bstore.services.controller;
 
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
+import com.bstore.services.persistence.pojo.Coleccion;
+import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.service.CompraService;
@@ -13,8 +15,13 @@ import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
+import java.util.Map;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
 import org.apache.log4j.Logger;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
@@ -47,6 +54,8 @@ public class LoginController {
 
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
 	  log.info("URL: value=/ingresar,method = RequestMethod.POST");
+	  
+	  HttpSession session= request.getSession(true);
 	   
       String requestEmail="";
       String requestPassword="";
@@ -79,7 +88,11 @@ public class LoginController {
             	  String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
                   model.addAttribute("cifrar",cifrar);
             	  model.addAttribute("user",usuario.getNombre());
-            	  model.addAttribute("menu",this.compraService.getMenuColeccion(usuario.getId()));
+            	  
+            	  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
+            	  model.addAttribute("menu",menu);
+            	  session.setAttribute("menu",menu);
+            	  
             	  return "indexPrincipal";
               } catch (Exception ex) {
                   ex.printStackTrace();
