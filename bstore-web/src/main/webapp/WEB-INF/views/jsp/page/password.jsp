@@ -6,7 +6,7 @@
   <meta charset="utf-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <style type="text/css">
-		html * {font-family: fantasy;font-size: 16;}
+		html * {font-family: Verdana;font-size: 12;}
   </style>
   <script type="text/javascript">
       $(function(){
