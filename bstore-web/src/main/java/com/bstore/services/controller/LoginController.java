@@ -92,6 +92,9 @@ public class LoginController {
             	  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
             	  model.addAttribute("menu",menu);
             	  
+            	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
+            	  
+            	  session.setAttribute("ultimasCompras", ultimasCompras);
             	  session.setAttribute("menu",menu);
             	  session.setAttribute("usuario", usuario);
             	  session.setAttribute("token", cifrar);
@@ -365,6 +368,8 @@ public class LoginController {
        session.removeAttribute("menu");
        session.removeAttribute("usuario");
        session.removeAttribute("token");
+       session.removeAttribute("ultimasCompras");
+       
        log.info("Removiendo datos de la session");
        
        ErrorService response = new ErrorService();

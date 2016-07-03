@@ -20,6 +20,7 @@ public class ColeccionServiceImpl implements ColeccionService{
 	}
 
 	@Override
+	@Transactional
 	public List<Coleccion> getAll() {
 		return coleccionDao.getAll();
 	}

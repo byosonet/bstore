@@ -31,6 +31,15 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
 				.setParameter("idUsuario", idUsuario)
 				.list();
 	}
-	
 
+	@SuppressWarnings("unchecked")
+	public List<Compra> getUlrimasComprasPorUsuarioParaMenuMensajes(int idUsuario) {
+		this.log.info("Recuperando lista de ultimas compras por idUsuario: "+idUsuario);
+		return (List<Compra>) this
+				.getSession()
+				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario order by fechaCompra DESC")
+				.setParameter("idUsuario", idUsuario)
+				.setMaxResults(3)
+				.list();
+	}
 }

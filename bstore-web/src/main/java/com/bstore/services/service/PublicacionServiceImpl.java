@@ -23,8 +23,9 @@ public class PublicacionServiceImpl implements PublicacionService{
 	}
 
 	@Override
+	@Transactional
 	public Publicacion getPublicacion(int id) {
-		log.info("Buscnado publicacion para URL HTML: "+id);
+		log.info("Buscando publicacion para URL HTML: "+id);
 		return this.publicacionDao.getPublicacion(id);
 	}
 
