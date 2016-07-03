@@ -70,13 +70,13 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="exit" class="navbar-brand" href="#">eQuivira</a>
+                <a id="exit" class="navbar-brand" href="#" style="color: white;">eQuivira</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
             	<c:if test="${not empty ultimasCompras}">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                     	<c:forEach var="publicacion" items="${ultimasCompras}">
 	                        <li class="message-preview">
@@ -101,15 +101,15 @@
                 </c:if>
                 <li class="dropdown">
                 	<c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
-                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-key"></i> Nivel: Administrador </a>
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Administrador </a>
                     </c:if>
                     <c:if test="${sessionScope.usuario.perfil.nombre == 'LECTOR'}">
-                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-key"></i> Nivel: Lector </a>
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Lector </a>
                     </c:if>
                     
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
                             <a href="#"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
