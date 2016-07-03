@@ -83,7 +83,7 @@
 	                            <a href="${contextpath}/publicacion/${publicacion.id}">
 	                                <div class="media">
 	                                    <span class="pull-left">
-	                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 20px;height: 20px">
+	                                        <img alt="" src="${contextpath}/static/resources/img/user.png" class="media-object" style="width: 20px;height: 20px">
 	                                    </span>
 	                                    <div class="media-body">
 	                                        <h5 class="media-heading"><strong><c:out value="${sessionScope.usuario.email}"/></strong>
