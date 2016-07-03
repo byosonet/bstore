@@ -9,6 +9,7 @@ import java.util.Set;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.bstore.services.persistence.dao.CompraDao;
 import com.bstore.services.persistence.dao.PublicacionDao;
@@ -32,11 +33,13 @@ public class CompraServiceImpl implements CompraService {
 	private PublicacionDao publicacionDao;
 	
 	@Override
+	@Transactional
 	public Compra getCompra(CompraId compraId) {
 		return compraDao.getCompra(compraId);
 	}
 	
 	@Override
+	@Transactional
 	public Map<Coleccion, List<Publicacion>> getMenuColeccion(int idUsuario) {
 		this.log.info("Buscando compras para el idUsuario: "+idUsuario);
 		List<Compra> lista = null;
@@ -72,6 +75,18 @@ public class CompraServiceImpl implements CompraService {
 			}
 		}
 		return map;
+	}
+
+	@Override
+	@Transactional
+	public List<Publicacion> ultimasCompras(int idUsuario) {
+		List<Compra> compras = this.compraDao.getUlrimasComprasPorUsuarioParaMenuMensajes(idUsuario);
+		List<Publicacion> publicacionesCompradas = new ArrayList<Publicacion>();
+		for(Compra c: compras){
+			Publicacion pub =this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());
+			publicacionesCompradas.add(pub);
+		}
+		return publicacionesCompradas;
 	}
 	
 }

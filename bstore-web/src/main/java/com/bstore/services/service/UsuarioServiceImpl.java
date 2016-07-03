@@ -78,6 +78,7 @@ private UsuarioDao usuarioDao;
         this.log.info(" -- Usuario elimnado de la BD: "+user.toString());
     }
 
+    @Transactional
     public Usuario byIdUser(int idUser) {
         this.log.info(" -- Buscando por id de usuario: "+idUser);
         return this.usuarioDao.byId(idUser);

@@ -71,38 +71,25 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Mensajes <b class="caret"></b></a>
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-right">
-                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 50px;height: 50px">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>dev@bstore.com</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Jueves at 4:32 PM</p>
-                                        <p>Compraste un nuevo tema, rev&iacute;salo.</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
-                        <li class="message-preview">
-                            <a href="#">
-                                <div class="media">
-                                    <span class="pull-right">
-                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 50px;height: 50px">
-                                    </span>
-                                    <div class="media-body">
-                                        <h5 class="media-heading"><strong>dev@bstore.com</strong>
-                                        </h5>
-                                        <p class="small text-muted"><i class="fa fa-clock-o"></i> Sabado at 4:49 PM</p>
-                                        <p>Actualiza tu password: Urgente</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </li>
+                    	<c:forEach var="publicacion" items="${ultimasCompras}">
+	                        <li class="message-preview">
+	                            <a href="${contextpath}/publicacion/${publicacion.id}">
+	                                <div class="media">
+	                                    <span class="pull-left">
+	                                        <img alt="" src="http://localhost:8080/bstore/static/resources/img/user.png" class="media-object" style="width: 20px;height: 20px">
+	                                    </span>
+	                                    <div class="media-body">
+	                                        <h5 class="media-heading"><strong><c:out value="${sessionScope.usuario.email}"/></strong>
+	                                        </h5>
+	                                        <p class="small text-muted"><i class="fa fa-fw fa-check"></i> ISBN <c:out value="${publicacion.isbn}"/></p>
+	                                        <p>Tema: <c:out value="${publicacion.nombre}"/></p>
+	                                    </div>
+	                                </div>
+	                            </a>
+	                        </li>
+                        </c:forEach>
                     </ul>
                 </li>
                 <li class="dropdown">
