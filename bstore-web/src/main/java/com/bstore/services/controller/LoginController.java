@@ -91,7 +91,10 @@ public class LoginController {
             	  
             	  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
             	  model.addAttribute("menu",menu);
+            	  
             	  session.setAttribute("menu",menu);
+            	  session.setAttribute("usuario", usuario);
+            	  session.setAttribute("token", cifrar);
             	  
             	  return "indexPrincipal";
               } catch (Exception ex) {
@@ -354,15 +357,16 @@ public class LoginController {
     public ResponseEntity<ErrorService> exitSistema(HttpServletRequest request) throws IOException, JSONException, Exception {
        
        this.log.info(" -- Registrando salida en sistema."); 
-       String cifrar = request.getParameter("cifrar");
-       this.log.info(" -- Cifrado enviado: "+cifrar);
+       HttpSession session= (HttpSession) request.getSession();
+       Usuario usuario = (Usuario) session.getAttribute("usuario");
+       this.usuarioService.actulizarConexionUsuario(usuario);
        
-       String descifrado = UtilService.Desencriptar(cifrar);
-       this.log.info(" -- Descifrado: "+descifrado);
-       String[] data = descifrado.split(";");
-       String userEmail = data[0];
-       Usuario user = this.usuarioService.validaEmailSistema(userEmail);
-      
+       //Removiendo datos de la session
+       session.removeAttribute("menu");
+       session.removeAttribute("usuario");
+       session.removeAttribute("token");
+       log.info("Removiendo datos de la session");
+       
        ErrorService response = new ErrorService();
        response.setCodigo("200");
        return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
