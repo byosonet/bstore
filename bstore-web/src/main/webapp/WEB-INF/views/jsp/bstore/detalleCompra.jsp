@@ -30,7 +30,7 @@
 	  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%">
 			<thead>
 				<tr>
-					<th style="text-align: center;width: 30%;" class="alert alert-success">Nombre</th>
+					<th style="text-align: center;width: 30%;" class="alert alert-success">Nombre de la publicaci&oacute;n</th>
 					<th style="text-align: center;" class="alert alert-success">ISBN</th>
 					<th style="text-align: center;" class="alert alert-success">Descuento</th>
 					<th style="text-align: center;" class="alert alert-success">Precio Venta</th>
