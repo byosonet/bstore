@@ -70,6 +70,7 @@
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
+            	<c:if test="${not empty ultimasCompras}">
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
@@ -93,6 +94,7 @@
                         </c:forEach>
                     </ul>
                 </li>
+                </c:if>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
