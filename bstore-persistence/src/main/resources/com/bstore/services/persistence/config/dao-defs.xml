@@ -34,4 +34,7 @@
       <bean id="perfilDao"
         class="com.bstore.services.persistence.dao.PerfilDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+      <bean id="propertyDao"
+        class="com.bstore.services.persistence.dao.PropertyDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 </beans>
