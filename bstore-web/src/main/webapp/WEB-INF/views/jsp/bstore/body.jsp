@@ -5,7 +5,7 @@
 <body>
      <div class="row">
         <div class="col-lg-12" style="text-align: justify;">
-        	<img style="width: 100%" src="http://localhost:8080/bstore/static/resources/img/app-background.jpg">
+        	<img style="width: 100%" src="${contextpath}/static/resources/img/app-background.jpg">
 			<br>
 			<br>
             <p>Ediciones Quivira surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la Inquisición del Virreinato de la Nueva España. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
