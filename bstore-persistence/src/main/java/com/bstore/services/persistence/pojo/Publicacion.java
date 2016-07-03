@@ -31,6 +31,7 @@ public class Publicacion implements java.io.Serializable {
 	private Usuario usuario;
 	private Fuente fuente;
 	private Editorial editorial;
+	private Date fechaCompraTemporal;
 
 	public Publicacion() {
 	}
@@ -216,6 +217,14 @@ public class Publicacion implements java.io.Serializable {
 				+ ", precio=" + precio + ", resumen=" + resumen + ", urlArchivo=" + urlArchivo + ", fechaUmodif="
 				+ fechaUmodif + ", idUsuarioUmodif=" + idUsuarioUmodif + ", portadaUrl=" + portadaUrl + ", coleccion="
 				+ coleccion + ", usuario=" + usuario + ", fuente=" + fuente + ", editorial=" + editorial + "]";
+	}
+
+	public Date getFechaCompraTemporal() {
+		return fechaCompraTemporal;
+	}
+
+	public void setFechaCompraTemporal(Date fechaCompraTemporal) {
+		this.fechaCompraTemporal = fechaCompraTemporal;
 	}
 
 }

@@ -94,6 +94,7 @@ public class CompraServiceImpl implements CompraService {
 		List<Publicacion> publicacionesCompradas = new ArrayList<Publicacion>();
 		for(Compra c: compras){
 			Publicacion pub =this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());
+			pub.setFechaCompraTemporal(c.getFechaCompra());
 			publicacionesCompradas.add(pub);
 		}
 		return publicacionesCompradas;
