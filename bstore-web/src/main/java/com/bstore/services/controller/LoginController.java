@@ -110,7 +110,13 @@ public class LoginController {
    
    @RequestMapping(value="/ingresar",method = RequestMethod.GET)
    public String ingresarGET(Model model, HttpServletRequest request) {
-	   model.addAttribute("menu",this.compraService.getMenuColeccion(3));
+	   HttpSession session= (HttpSession) request.getSession();
+	   
+	   @SuppressWarnings("unchecked")
+	   Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
+	   model.addAttribute("menu",menu);
+	   log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+	   
 	   return "indexPrincipal";
    }
    
