@@ -10,7 +10,7 @@
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
 
   <style type="text/css">
-	html * {font-family: fantasy;font-size: 16;}
+	html * {font-family: Verdana;font-size: 12;}
   </style>
 
   
