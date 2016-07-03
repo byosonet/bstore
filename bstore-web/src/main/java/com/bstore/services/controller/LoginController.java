@@ -50,10 +50,10 @@ public class LoginController {
 	private DroolRuleAge droolRuleAgeAdapter;
 	
    private final Logger log = Logger.getLogger(LoginController.class);
-   @RequestMapping(value="/ingresar",method = RequestMethod.POST)
+   @RequestMapping(value="/equivira",method = RequestMethod.POST)
 
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
-	  log.info("URL: value=/ingresar,method = RequestMethod.POST");
+	  log.info("URL: value=/equivira,method = RequestMethod.POST");
 	  
 	  HttpSession session= request.getSession(true);
 	   
@@ -108,7 +108,7 @@ public class LoginController {
    return "invalido";
    }
    
-   @RequestMapping(value="/ingresar",method = RequestMethod.GET)
+   @RequestMapping(value="/equivira",method = RequestMethod.GET)
    public String ingresarGET(Model model, HttpServletRequest request) {
 	   HttpSession session= (HttpSession) request.getSession();
 	   

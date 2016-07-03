@@ -108,7 +108,7 @@
                 action: function(dialog) {
                     dialog.close();
                     $.blockUI();
-                    var urlAction = '${contextpath}' + '/ingresar';
+                    var urlAction = '${contextpath}' + '/equivira';
                     document.getElementById('ingresar').action = urlAction;
                     document.getElementById('ingresar').method = 'POST';
                     document.getElementById('ingresar').submit();
