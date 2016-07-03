@@ -14,6 +14,10 @@
     <title><tiles:insertAttribute name="title"/></title>
     <jsp:include page="staticResources.jsp"></jsp:include>
     
+    <style type="text/css">
+		html * {font-family: fantasy;font-size: 16;}
+	</style>
+    
     	<script type="text/javascript">
             $(document).ready(function() {                               
                     $('a#exit').click(function(){
@@ -160,18 +164,19 @@
         </nav>
         <div id="page-wrapper">
             <div class="container-fluid">
-                <!--<div class="row">
-                    <div class="col-lg-12" style="text-align: center;">
-                        <h2 class="alert alert-info page-header">
-                           <small><tiles:insertAttribute name="header" /></small>
-                        </h2>
-                    </div>
-                </div>-->
                 <br>
 				<div id="contenido">
             		<tiles:insertAttribute name="contenido" />
         		</div>
             </div>
+
+            <!-- Footer pagina -->
+          	<div class="container-fluid">
+            	<div style="color: black;">
+              		<p style="text-align: center;"><b>Copyright &copy; 2010 - 2016 | Ediciones Quivira</b></p>
+            	</div>
+          	</div>
+
         </div>
     </div>
     

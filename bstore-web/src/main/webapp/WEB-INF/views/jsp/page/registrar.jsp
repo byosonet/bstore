@@ -6,6 +6,10 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
          <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelNacimiento.js"></script>
   
+  <style type="text/css">
+		html * {font-family: fantasy;font-size: 16;}
+  </style>
+  
   <script type="text/javascript">
       $(function(){
           

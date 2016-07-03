@@ -8,9 +8,11 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
   <title>eQuivira</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
-  <style>
-      
+
+  <style type="text/css">
+	html * {font-family: fantasy;font-size: 16;}
   </style>
+
   
   <script type="text/javascript">
       $(function(){
