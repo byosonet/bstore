@@ -96,6 +96,15 @@
                 </li>
                 </c:if>
                 <li class="dropdown">
+                	<c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-key"></i> Nivel: Administrador </a>
+                    </c:if>
+                    <c:if test="${sessionScope.usuario.perfil.nombre == 'LECTOR'}">
+                    	<a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-fw fa-key"></i> Nivel: Lector </a>
+                    </c:if>
+                    
+                </li>
+                <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
                         <li>
@@ -110,6 +119,7 @@
                         </li>
                     </ul>
                 </li>
+                
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
             <div class="collapse navbar-collapse navbar-ex1-collapse">
@@ -134,14 +144,16 @@
 					</c:forEach>
 					
 					<!-- Menu del Admin -->
-					<li class="active">
-                        <a href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Administrador</a>
-                        <ul id="admin" class="collapse">
-					    	<li>
-                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Editoriales</a>
-                            </li>
-						</ul>
-                    </li>
+					<c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
+						<li class="active">
+	                        <a href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Administrador</a>
+	                        <ul id="admin" class="collapse">
+						    	<li>
+	                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Editoriales</a>
+	                            </li>
+							</ul>
+	                    </li>
+                    </c:if>
                     
                 </ul>
             </div>
