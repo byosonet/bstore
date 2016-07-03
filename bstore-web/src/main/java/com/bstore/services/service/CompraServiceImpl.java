@@ -16,6 +16,7 @@ import com.bstore.services.persistence.dao.PublicacionDao;
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.CompraId;
+import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
 
 /**
@@ -31,6 +32,9 @@ public class CompraServiceImpl implements CompraService {
 	
 	@Autowired
 	private PublicacionDao publicacionDao;
+	
+	@Autowired
+	private PropertyService propertyService;
 	
 	@Override
 	@Transactional
@@ -80,7 +84,13 @@ public class CompraServiceImpl implements CompraService {
 	@Override
 	@Transactional
 	public List<Publicacion> ultimasCompras(int idUsuario) {
-		List<Compra> compras = this.compraDao.getUlrimasComprasPorUsuarioParaMenuMensajes(idUsuario);
+		Properties prop = this.propertyService.getValueKey("max.items.message.buy");
+		int totalMostrar = 3;
+		if(prop != null){
+			totalMostrar = Integer.valueOf(prop.getValue());
+		}
+
+		List<Compra> compras = this.compraDao.getUlrimasComprasPorUsuarioParaMenuMensajes(idUsuario,totalMostrar);
 		List<Publicacion> publicacionesCompradas = new ArrayList<Publicacion>();
 		for(Compra c: compras){
 			Publicacion pub =this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());
