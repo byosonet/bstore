@@ -116,7 +116,12 @@ $("#publicacion").gridalicious({
 				    </div>
 				  </div>
 			</div>
-          </c:forEach>      
+          </c:forEach>
+          <c:if test="${empty publicaciones}">
+		 	<div class="row alert alert-danger">
+		 	    <p style="text-align: center;">Aun no existen publicaciones asociadas a esta colecci&oacute;n, intente m&aacute;s tarde.</p>
+		 	</div>
+		 </c:if>          
      </div>
      
 </body>
