@@ -66,7 +66,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="<spring:message code="url.menu.href"/>">eQuivira</a>
+                <a id="exit" class="navbar-brand" href="#">eQuivira</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -125,7 +125,7 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                 	<li class="active">
-                        <a href="${contextpath}/ingresar"><i class="fa fa-fw fa-home"></i> Principal</a>
+                        <a href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Principal</a>
                     </li>
                     <li class="active">
                         <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>

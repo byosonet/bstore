@@ -87,7 +87,7 @@
                 action: function(dialog) {
                     dialog.close();
                     $.blockUI();
-                    var urlAction = '${contextpath}' + '/ingresar';
+                    var urlAction = '${contextpath}' + '/equivira';
                     document.getElementById('ingresar').action = urlAction;
                     document.getElementById('ingresar').method = 'POST';
                     document.getElementById('ingresar').submit();
@@ -131,7 +131,7 @@
         </br>
         </br>
         </br>
-            <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/ingresar">
+            <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>
                     <div class="col-sm-9">
