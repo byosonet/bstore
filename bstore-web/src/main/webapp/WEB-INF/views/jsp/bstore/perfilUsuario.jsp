@@ -12,7 +12,6 @@
   
   <script type="text/javascript">
       $(function(){
-          
         $('select#dia').select2();
         $('select#anio').select2();
         $('select#mes').select2();
@@ -60,7 +59,7 @@
 		$.blockUI();
                 $.ajax({
 	              type: 'POST',
-	              url: '${contextpath}'+'/usuario/nuevo',
+	              url: '${contextpath}'+'/perfil/actualizar',
 	              data: $('form#formRegistrar').serialize(),
 	                  success: function (data) {
                              $.unblockUI();
@@ -73,10 +72,6 @@
                           }
 	        });
         });
-        
-        $('button#limpiar').click(function(){
-              $('form#formRegistrar')[0].reset();
-          });
         
         function muestraMsjSistemaError(msjStatus){
            BootstrapDialog.show({
@@ -131,7 +126,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-12">
-            <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
+            <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/actualizar">
             
             	<div class="form-group">
                     <div class="control-label col-sm-12 alert alert-info" style="text-align: center;">Informaci&oacute;n de Usuario</div>
@@ -140,12 +135,12 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}">
                     </div>
                     
                     <label class="control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno">
+                        <input type="text" class="form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${usuario.APaterno}">
                     </div>
                     
                 </div>
@@ -153,24 +148,24 @@
                  <div class="form-group">
                     <label class="control-label col-sm-2"  for="amaterno">Apellido Materno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno">
+                        <input type="text" class="form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${usuario.AMaterno}">
                     </div>
                     
                     <label class="control-label col-sm-1"  for="email">Email:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}">
                     </div>
                 </div>
 
                 <div class="form-group">
                    <label class="control-label col-sm-2"  for="pass1">Password:</label>
                     <div class="col-sm-3">
-                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password">
+                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
                     </div>
                    
                    <label class="control-label col-sm-3"  for="pass2">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password">
+                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
                     </div>
                 </div>
                 
@@ -213,14 +208,25 @@
                     <label class="control-label col-sm-2" >Sexo:</label>
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
-                            <input type="radio" id="masculino" name="sexo" value="M">
+                            <c:if test="${usuario.sexo == 'M'}">
+                            	<input type="radio" id="masculino" name="sexo" value="M" checked>
+                            </c:if>
+                            <c:if test="${usuario.sexo == 'F'}">
+                            	<input type="radio" id="masculino" name="sexo" value="M">
+                            </c:if>
+                            
                             <label > Masculino </label>
                         </div>
                     </div>
 
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
-                            <input type="radio" id="femenino" name="sexo" value="F">
+                       		<c:if test="${usuario.sexo == 'F'}">
+                       			<input type="radio" id="femenino" name="sexo" value="F" checked>
+                       		</c:if>
+                       		<c:if test="${usuario.sexo == 'M'}">
+                       			<input type="radio" id="femenino" name="sexo" value="F">
+                       		</c:if>
                             <label > Femenino </label>
                         </div>
                     </div>
@@ -228,7 +234,12 @@
                     <label class="control-label col-sm-3" >Deseo recibir notificaciones:</label>
                     <div class="col-sm-3">
                        <div class="checkbox checkbox-primary">
-                        <input type="checkbox" value="SI" name="notificar" id="notificar">
+                       <c:if test="${usuario.notificaciones == 'SI'}">
+                       		<input type="checkbox" value="SI" name="notificar" id="notificar" checked>
+                       </c:if>
+                       <c:if test="${usuario.notificaciones == 'NO'}">
+                       		<input type="checkbox" value="SI" name="notificar" id="notificar">
+                       </c:if>
                         <label>
                             Sí
                         </label>
@@ -243,8 +254,7 @@
             </form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                <button id="registrar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR</button>
+                <button id="registrar" class="btn btn-primary" disabled><span class="glyphicon glyphicon-user"></span> ACTUALIZAR</button>
                 </div>
             </div>
         </div>
