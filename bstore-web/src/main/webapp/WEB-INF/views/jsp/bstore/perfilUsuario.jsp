@@ -15,6 +15,8 @@
   
   <script type="text/javascript">
       $(function(){
+    	$('input#pass1').val('');
+    	$('input#pass2').val('');
     	$('select#dia option[value=${fechaNacimiento.substring(0,2)}]').attr('selected','selected'); 
     	$('select#dia').select2();
         
@@ -36,19 +38,25 @@
             $('input#masculino').attr('checked',false);
         });
           
-          
         $('input#nombre').focus();
-        $('button#registrar').click(function(){
-            
+        $('button#actualizar').click(function(){
                 var nombre = $('input#nombre');
+                var apaterno = $('input#apaterno');
+                var amaterno = $('input#amaterno');
                 var email = $('input#email');
-                var passw = $('input#password');
-                var confPassword = $('input#confPassword');
+                var passw = $('input#pass1');
+                var confPassword = $('input#pass2');
                 if(nombre.val() === ""){
-                    nombre.focus();
-                    muestraMsjSistemaError('El nombre es requerido.');
+                    muestraMsjSistemaError('El nombre es un campo requerido.');
                     return false;
-                }else if(email.val() === ""){
+                }else if(apaterno.val() === ""){
+                	muestraMsjSistemaError('El apellido paterno es requerido.');
+                	return false;
+                }else if(amaterno.val() === ""){
+                	muestraMsjSistemaError('El apellido materno es requerido.');
+                	return false;
+                }
+                else if(email.val() === ""){
                     muestraMsjSistemaError('El email es requerido.');
                     return false;
                 }else if(passw.val() === "" || confPassword.val() === ""){
@@ -60,74 +68,70 @@
                 }
                 var m = $('input#masculino').filter(":checked").val();
                 var f = $('input#femenino').filter(":checked").val();
-		if(m === undefined && f === undefined){
-			  muestraMsjSistemaError('El sexo es un campo requerido.');
-			  return false;
-		}
-                $('input#idEmail').val(email.val());
-                $('input#idPassword').val(passw.val());
-		$.blockUI();
-                $.ajax({
-	              type: 'POST',
-	              url: '${contextpath}'+'/perfil/actualizar',
-	              data: $('form#formRegistrar').serialize(),
-	                  success: function (data) {
-                             $.unblockUI();
-                             muestraMsjSistemaSuccess(data.mensaje);
-	              },
-                         error: function(msj){
-                             status = JSON.parse(msj.responseText);
-                             $.unblockUI();
-                             muestraMsjSistemaError(status.mensaje);
-                          }
-	        });
-        });
+				if(m === undefined && f === undefined){
+					  muestraMsjSistemaError('El sexo es un campo requerido.');
+					  return false;
+				}
+                
+				$.blockUI();
+		                $.ajax({
+			              type: 'POST',
+			              url: '${contextpath}'+'/perfil/actualizar',
+			              data: $('form#formRegistrar').serialize(),
+			                  success: function (data) {
+		                             $.unblockUI();
+		                             muestraMsjSistemaSuccess(data.mensaje);
+			              },
+		                         error: function(msj){
+		                             status = JSON.parse(msj.responseText);
+		                             $.unblockUI();
+		                             muestraMsjSistemaError(status.mensaje);
+		                          }
+			        });
+		        });
         
-        function muestraMsjSistemaError(msjStatus){
-           BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_SMALL,
-            title: 'Mensaje del Sistema:',
-            closable: false,
-            message: msjStatus,
-            type: BootstrapDialog.TYPE_DANGER,
-            cssClass: 'login-dialog',
-            buttons: [{
-                icon: 'glyphicon glyphicon-check',
-                label: 'OK',
-                cssClass: 'btn-primary',
-                action: function(dialog) {
-                    dialog.close();
-                }
-            }]
-        });
-        }
+		        function muestraMsjSistemaError(msjStatus){
+		           BootstrapDialog.show({
+		            size: BootstrapDialog.SIZE_SMALL,
+		            title: 'Mensaje del Sistema',
+		            closable: false,
+		            message: msjStatus,
+		            type: BootstrapDialog.TYPE_DANGER,
+		            cssClass: 'login-dialog',
+		            buttons: [{
+		                icon: 'glyphicon glyphicon-check',
+		                label: 'OK',
+		                cssClass: 'btn-primary',
+		                action: function(dialog) {
+		                    dialog.close();
+		                }
+		            }]
+		        });
+		        }
         
-        function muestraMsjSistemaSuccess(msjStatus){
-           BootstrapDialog.show({
-            size: BootstrapDialog.SIZE_SMALL,
-            title: 'Mensaje del Sistema:',
-            closable: false,
-            message: msjStatus,
-            type: BootstrapDialog.TYPE_SUCCESS,
-            cssClass: 'login-dialog',
-            buttons: [{
-                icon: 'glyphicon glyphicon-check',
-                label: 'CONTINUAR',
-                cssClass: 'btn-primary',
-                action: function(dialog) {
-                    dialog.close();
-                    $.blockUI();
-                    var urlAction = '${contextpath}' + '/equivira';
-                    document.getElementById('ingresar').action = urlAction;
-                    document.getElementById('ingresar').method = 'POST';
-                    document.getElementById('ingresar').submit();
-                }
-            }]
-        });
-        }
-        
-        
-        
+		        function muestraMsjSistemaSuccess(msjStatus){
+		           BootstrapDialog.show({
+		            size: BootstrapDialog.SIZE_SMALL,
+		            title: 'Mensaje del Sistema',
+		            closable: false,
+		            message: msjStatus,
+		            type: BootstrapDialog.TYPE_SUCCESS,
+		            cssClass: 'login-dialog',
+		            buttons: [{
+		                icon: 'glyphicon glyphicon-check',
+		                label: 'CONTINUAR',
+		                cssClass: 'btn-primary',
+		                action: function(dialog) {
+		                    dialog.close();
+		                    $.blockUI();
+		                    var urlAction = '${contextpath}' + '/perfil';
+		                    document.getElementById('perfil').action = urlAction;
+		                    document.getElementById('perfil').method = 'GET';
+		                    document.getElementById('perfil').submit();
+		                }
+		            }]
+		        });
+		        }
       });
   </script>
     </head>
@@ -136,8 +140,8 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-12">
-            <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/actualizar">
-            
+            <form class="form-horizontal" id="formRegistrar">
+            	<input type="hidden" name="idUsuario" value="${usuario.id}">
             	<div class="form-group">
                     <div class="control-label col-sm-12 alert alert-info" style="text-align: center;">Informaci&oacute;n de Usuario</div>
                 </div>
@@ -145,7 +149,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}" >
                     </div>
                     
                     <label class="control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
@@ -170,12 +174,12 @@
                 <div class="form-group">
                    <label class="control-label col-sm-2"  for="pass1">Password:</label>
                     <div class="col-sm-3">
-                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
+                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password">
                     </div>
                    
                    <label class="control-label col-sm-3"  for="pass2">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
+                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password">
                     </div>
                 </div>
                 
@@ -257,14 +261,10 @@
                     </div>
                 </div>
             </form>
-                
-            <form id="ingresar">
-                <input type="hidden" id="idEmail" name="user" value=""/>
-                <input type="hidden" id="idPassword" name="password" value=""/>
-            </form>
+            <form id="perfil"></form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="registrar" class="btn btn-primary" disabled><span class="glyphicon glyphicon-user"></span> ACTUALIZAR</button>
+                <button id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR</button>
                 </div>
             </div>
         </div>
