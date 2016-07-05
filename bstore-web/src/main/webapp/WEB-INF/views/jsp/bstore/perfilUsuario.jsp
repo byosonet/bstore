@@ -1,6 +1,9 @@
 <%@ include file="../../layout/taglibs.jsp"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
+<c:set var="fechaNacimiento">
+     <fmt:formatDate pattern="ddMMyyyy" value="${usuario.fechaNacimiento}" />
+</c:set>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -12,9 +15,16 @@
   
   <script type="text/javascript">
       $(function(){
-        $('select#dia').select2();
+    	$('select#dia option[value=${fechaNacimiento.substring(0,2)}]').attr('selected','selected'); 
+    	$('select#dia').select2();
+        
+    	$('select#anio option[value=${fechaNacimiento.substring(4,8)}]').attr('selected','selected'); 
         $('select#anio').select2();
+        
+        $('select#mes option[value=${fechaNacimiento.substring(2,4)}]').attr('selected','selected'); 
         $('select#mes').select2();
+        
+        $('select#actividad option[value=${usuario.actividad}]').attr('selected','selected');
         $('select#actividad').select2();
           
         var status;
