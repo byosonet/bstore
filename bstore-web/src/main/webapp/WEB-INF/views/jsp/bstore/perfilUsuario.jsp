@@ -15,8 +15,6 @@
   
   <script type="text/javascript">
       $(function(){
-    	$('input#pass1').val('');
-    	$('input#pass2').val('');
     	$('select#dia option[value=${fechaNacimiento.substring(0,2)}]').attr('selected','selected'); 
     	$('select#dia').select2();
         
@@ -174,12 +172,12 @@
                 <div class="form-group">
                    <label class="control-label col-sm-2"  for="pass1">Password:</label>
                     <div class="col-sm-3">
-                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password">
+                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
                     </div>
                    
                    <label class="control-label col-sm-3"  for="pass2">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password">
+                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
                     </div>
                 </div>
                 

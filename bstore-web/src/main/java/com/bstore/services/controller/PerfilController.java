@@ -80,8 +80,10 @@ public class PerfilController {
             response.setMensaje("Este email ya ha sido utilizado, "+emailUsuario);
         } else if(user!=null){
             this.log.info(" -- Usuario encontrado: "+user.toString());
-            String encriptarPassword = UtilService.Encriptar(passwordUsuario1);
-            user.setPassword(encriptarPassword);
+            if(!user.getPassword().equalsIgnoreCase(passwordUsuario1)){
+            	String encriptarPassword = UtilService.Encriptar(passwordUsuario1);
+            	user.setPassword(encriptarPassword);
+            }
             user.setNombre(nombreUsuario);
             user.setEmail(emailUsuario);
             user.setAPaterno(apaternoUsuario);
