@@ -110,14 +110,17 @@ public class LoginController {
    }
    
    @RequestMapping(value="/equivira",method = RequestMethod.GET)
-   public String ingresarGET(Model model, HttpServletRequest request) {
-	   HttpSession session= (HttpSession) request.getSession();
-	   
-	   @SuppressWarnings("unchecked")
-	   Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-	   model.addAttribute("menu",menu);
-	   log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-	   
+   public String ingresarGET(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+	   HttpSession session= (HttpSession) request.getSession(false);
+	   if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+		   @SuppressWarnings("unchecked")
+		   Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
+		   model.addAttribute("menu",menu);
+		   log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+	   }else{
+		   log.info("Enviando a login, token no existe");
+		   response.sendRedirect(request.getContextPath());
+	   }
 	   return "indexPrincipal";
    }
    
