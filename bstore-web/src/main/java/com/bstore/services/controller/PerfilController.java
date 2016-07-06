@@ -36,7 +36,7 @@ public class PerfilController {
 	private UsuarioService usuarioService;
 	
 	@RequestMapping(value="/perfil",method = RequestMethod.GET)
-	   public String perfil(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+	   public String perfil(Model model, HttpServletRequest request){
 		log.info("Cargando perfil de usuario: "+NAME_CONTROLLER);
 		
 		HttpSession session= (HttpSession) request.getSession(false);
@@ -44,15 +44,14 @@ public class PerfilController {
 			@SuppressWarnings("unchecked")
 			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
 			model.addAttribute("menu",menu);
-			
 			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			model.addAttribute("usuario",usuario);
+			return "perfilUsuario";
 		}else{
-			response.sendRedirect(request.getContextPath());
+			log.info("Enviando a login, token no existe");
+			return "redirect:/index.jsp";
 		}
-
-		return "perfilUsuario";
-	   }
+	 }
 	
 	
 	@RequestMapping(value="/perfil/actualizar",method = RequestMethod.POST)
