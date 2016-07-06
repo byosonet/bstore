@@ -78,7 +78,16 @@
 			              data: $('form#formRegistrar').serialize(),
 			                  success: function (data) {
 		                             $.unblockUI();
-		                             muestraMsjSistemaSuccess(data.mensaje);
+		                             if(data.mensaje === undefined){
+		                            	 $.blockUI();
+		     		                     var urlAction = '${contextpath}' + '/perfil';
+		     		                     document.getElementById('perfil').action = urlAction;
+		     		                     document.getElementById('perfil').method = 'GET';
+		     		                     document.getElementById('perfil').submit();
+		                             }else{
+		                            	 muestraMsjSistemaSuccess(data.mensaje);
+		                             }
+		                             
 			              },
 		                         error: function(msj){
 		                             status = JSON.parse(msj.responseText);

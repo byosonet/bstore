@@ -370,15 +370,20 @@ public class LoginController {
     public void exitSistema(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException, Exception {
        this.log.info(" -- Registrando salida en sistema."); 
        HttpSession session= (HttpSession) request.getSession(false);
-       Usuario usuario = (Usuario) session.getAttribute("usuario");
-       this.usuarioService.actulizarConexionUsuario(usuario);
-       session.removeAttribute("menu");
-       session.removeAttribute("usuario");
-       session.removeAttribute("token");
-       session.removeAttribute("ultimasCompras");
-       session.invalidate();
-       log.info("Removiendo datos de la session");
-       response.sendRedirect(request.getContextPath());
+       if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+	       Usuario usuario = (Usuario) session.getAttribute("usuario");
+	       this.usuarioService.actulizarConexionUsuario(usuario);
+	       session.removeAttribute("menu");
+	       session.removeAttribute("usuario");
+	       session.removeAttribute("token");
+	       session.removeAttribute("ultimasCompras");
+	       session.invalidate();
+	       log.info("Removiendo datos de la session");
+	       response.sendRedirect(request.getContextPath());
+       }else{
+    	   log.info("Enviando a login, token no existe");
+    	   response.sendRedirect(request.getContextPath());
+       }
     }
     
     @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.POST)
