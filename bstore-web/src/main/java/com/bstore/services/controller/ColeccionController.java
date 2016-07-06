@@ -1,9 +1,11 @@
 package com.bstore.services.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -20,25 +22,27 @@ import com.bstore.services.service.ColeccionService;
 @Controller
 public class ColeccionController {
 	private final Logger log = Logger.getLogger(ColeccionController.class);
+	private static final String NAME_CONTROLLER = "[--ColeccionController--]";
 	
 	@Autowired
 	private ColeccionService coleccionService;
 	
 	@RequestMapping(value="/colecciones",method = RequestMethod.GET)
-	   public String novedades(Model model, HttpServletRequest request) {
-		log.info("Cargando novedades.");
-		log.info("Cargando Service Coleccion:");
-		
-		HttpSession session= (HttpSession) request.getSession();
-		@SuppressWarnings("unchecked")
-		Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-		 model.addAttribute("menu",menu);
-		log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-		
-		List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
-		log.info("Total colecciones encontradas: "+lista.size());
-		model.addAttribute("colecciones", lista);
-
+	   public String colecciones(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("Cargando colecciones. "+NAME_CONTROLLER);
+		HttpSession session = (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			@SuppressWarnings("unchecked")
+			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
+			 model.addAttribute("menu",menu);
+			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+			
+			List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+			log.info("Total colecciones encontradas: "+lista.size());
+			model.addAttribute("colecciones", lista);
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
 		return "colecciones";
 	   }
 	
