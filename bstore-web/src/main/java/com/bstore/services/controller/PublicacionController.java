@@ -1,9 +1,11 @@
 package com.bstore.services.controller;
 
+import java.io.IOException;
 import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -21,43 +23,54 @@ import com.bstore.services.service.PublicacionService;
 @Controller
 public class PublicacionController {
 	private final Logger log = Logger.getLogger(PublicacionController.class);
+	private static final String NAME_CONTROLLER="[--PublicacionController--]";
 	
 	@Autowired
 	private PublicacionService publicacionService;
 	
 	@RequestMapping(value="/coleccion/{id}",method = RequestMethod.GET)
-	   public String novedades(Model model, @PathVariable("id") String id, HttpServletRequest request) {
-		log.info("Cargando publicacion.");
-		log.info("Cargando Service publicacion:");
+	   public String coleccionesById(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
 		
-		HttpSession session= (HttpSession) request.getSession();
-		@SuppressWarnings("unchecked")
-		Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-		 model.addAttribute("menu",menu);
-		log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-		
-		List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue());
-		log.info("Total publicaciones encontradas: "+lista.size());
-		
-		model.addAttribute("publicaciones", lista);
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			@SuppressWarnings("unchecked")
+			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
+			 model.addAttribute("menu",menu);
+			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+			
+			List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue());
+			log.info("Total publicaciones encontradas: "+lista.size());
+			
+			model.addAttribute("publicaciones", lista);
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
 		return "publicaciones";
 	   }
 	
 	@RequestMapping(value="/publicacion/{id}",method = RequestMethod.GET)
-	   public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request) {
-		log.info("Cargando publicacion.");
-		log.info("Cargando Service publicacion:");
+	   public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/publicacion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/publicacion/{id}");
 		
-		HttpSession session= (HttpSession) request.getSession();
-		@SuppressWarnings("unchecked")
-		Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-		 model.addAttribute("menu",menu);
-		log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-		
-		Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
-		log.info("URL Encontrada: "+pub.getUrlArchivo());
-		model.addAttribute("urlPublicacion", pub.getUrlArchivo());
-		model.addAttribute("nombrePublicacion", pub.getNombre());
+		HttpSession session= (HttpSession) request.getSession(false);
+			if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			@SuppressWarnings("unchecked")
+			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
+			 model.addAttribute("menu",menu);
+			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+			
+			Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
+			log.info("URL Encontrada: "+pub.getUrlArchivo());
+			model.addAttribute("urlPublicacion", pub.getUrlArchivo());
+			model.addAttribute("nombrePublicacion", pub.getNombre());
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
 		
 		return "publicacionHTML";
 	   }

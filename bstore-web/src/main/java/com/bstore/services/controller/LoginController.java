@@ -20,6 +20,7 @@ import java.util.Locale;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
@@ -363,24 +364,18 @@ public class LoginController {
     }
     
     @RequestMapping(value = "/sistema/salir", method = RequestMethod.POST)
-    public ResponseEntity<ErrorService> exitSistema(HttpServletRequest request) throws IOException, JSONException, Exception {
-       
+    public void exitSistema(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException, Exception {
        this.log.info(" -- Registrando salida en sistema."); 
-       HttpSession session= (HttpSession) request.getSession();
+       HttpSession session= (HttpSession) request.getSession(false);
        Usuario usuario = (Usuario) session.getAttribute("usuario");
        this.usuarioService.actulizarConexionUsuario(usuario);
-       
-       //Removiendo datos de la session
        session.removeAttribute("menu");
        session.removeAttribute("usuario");
        session.removeAttribute("token");
        session.removeAttribute("ultimasCompras");
-       
+       session.invalidate();
        log.info("Removiendo datos de la session");
-       
-       ErrorService response = new ErrorService();
-       response.setCodigo("200");
-       return new ResponseEntity<ErrorService>(response, HttpStatus.OK);
+       response.sendRedirect(request.getContextPath());
     }
     
     @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.POST)
