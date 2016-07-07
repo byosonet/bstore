@@ -36,7 +36,7 @@
             $('input#masculino').attr('checked',false);
         });
           
-        $('input#nombre').focus();
+        
         $('button#actualizar').click(function(){
                 var nombre = $('input#nombre');
                 var apaterno = $('input#apaterno');

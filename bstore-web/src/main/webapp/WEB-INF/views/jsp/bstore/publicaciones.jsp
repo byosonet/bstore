@@ -23,11 +23,13 @@ $("#publicacion").gridalicious({
     		 		<c:set var="valueName" value="Ver" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
+    		 		<c:set var="valueColor" value="btn btn-success" />
     		 	</c:when>
     		 	<c:otherwise>
     		 		<c:set var="valueName" value="Comprar" />
     		 		<c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-shopping-cart" />
+    		 		<c:set var="valueColor" value="btn btn-primary" />
     		 	</c:otherwise>
     		 </c:choose>
              <div class="item banner-wrapper">
@@ -44,7 +46,7 @@ $("#publicacion").gridalicious({
 				 	<div style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="banner-title">Precio Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</div>
              	 </c:if>
-				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="btn btn-primary"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">

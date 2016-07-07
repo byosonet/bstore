@@ -37,8 +37,12 @@
 	              data: $('form#ingresar').serialize(),
 	                  success: function (data) {
                              $.unblockUI();
-                             muestraMsjSistemaSuccess(data.mensaje);
-	              },
+                             //muestraMsjSistemaSuccess(data.mensaje);
+                             var urlAction = '${contextpath}' + '/equivira';
+                             document.getElementById('ingresar').action = urlAction;
+                             document.getElementById('ingresar').method = 'POST';
+                             document.getElementById('ingresar').submit();
+	              			},
                          error: function(msj){
                              status = JSON.parse(msj.responseText);
                              $.unblockUI();
@@ -50,9 +54,9 @@
           $('button#registrar').click(function(){
                 $.blockUI();
                 var urlAction = '${contextpath}' + '/registrar/usuario';
-		document.getElementById('ingresar').action = urlAction;
+				document.getElementById('ingresar').action = urlAction;
                 document.getElementById('ingresar').method = 'GET';
-		document.getElementById('ingresar').submit();
+				document.getElementById('ingresar').submit();
           });
 
         function muestraMsjSistemaError(msjStatus){
