@@ -171,10 +171,10 @@
             </div>
 
             <!-- Footer pagina -->
-          	<div class="container-fluid">
-            	<div style="color: black;">
-              		<p style="text-align: center;"><b>Copyright &copy; 2010 - 2016 | Ediciones Quivira</b></p>
-            	</div>
+          	<div class="row" style="margin:5px;">
+           	    <br>
+           	    <br>
+            	<p style="text-align: center;" class="alert alert-success"><b>Copyright &copy; 2010 - 2016 | Ediciones Quivira</b></p>
           	</div>
 
         </div>
