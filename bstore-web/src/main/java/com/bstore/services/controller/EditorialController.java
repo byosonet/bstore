@@ -62,6 +62,10 @@ public class EditorialController {
 		logger.info("editorialController.editorialAdd(): "+NAME_CONTROLLER+"/add");
 		logger.info("---------------------------------------------------------------------------------");
 		
+		
+		
+		
+		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			@SuppressWarnings("unchecked")

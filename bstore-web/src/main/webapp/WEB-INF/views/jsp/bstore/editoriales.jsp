@@ -45,12 +45,12 @@
 		cellspacing="0" width="100%">
 		<thead>
 			<tr>
-				<th>Id</th>
-				<th>Nombre</th>
-				<th>Estatus</th>
-				<th>RFC</th>
-				<th>Telefono</th>
-				<th>E-mail</th>
+				<th class="alert alert-success">Id</th>
+				<th class="alert alert-success">Nombre</th>
+				<th class="alert alert-success">Estatus</th>
+				<th class="alert alert-success">RFC</th>
+				<th class="alert alert-success">Telefono</th>
+				<th class="alert alert-success">E-mail</th>
 			</tr>
 		</thead>
 		<tfoot>
