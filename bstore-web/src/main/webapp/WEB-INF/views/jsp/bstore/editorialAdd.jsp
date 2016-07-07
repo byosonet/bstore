@@ -12,11 +12,10 @@
 <title>Editorial nueva</title>
 </head>
 <body>
-	<p>Nueva editorial</p>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-sm-12 col-sm-offset-0 col-md-12">
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-sm-12 col-sm-offset-0 col-md-12">
 				<form class="form-horizontal" id="editorialAddForm" method="post"
 					action="${contextpath}/editorial/saveEditorial">
 
@@ -27,54 +26,52 @@
 					</div>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2"  for="nombre">Nombre:</label>
+						<label class="control-label col-sm-2"  for="nombre">Nombre</label>
 						<div class="col-sm-4">
 							<input id="nombre" type="text" class="form-control" placeholder="Nombre" />
 						</div>
 						
-						<label for="rfc" class="col-sm-2 form-control-label">RFC</label>
+						<label for="rfc" class="col-sm-2 control-label">RFC</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="rfc" placeholder="RFC">
 						</div>
 					</div>
 					<div class="form-group">
-						<label for="email" class="col-sm-2 form-control-label">Email</label>
+						<label for="email" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-4">
 							<input type="email" class="form-control" id="email" placeholder="Email">
 						</div>
-						<label for="telefono" class="col-sm-2 form-control-label">Telefono</label>
+						<label for="telefono" class="col-sm-2 control-label">Telefono</label>
 						<div class="col-sm-4">
 							<input type="text" class="form-control" id="telefono" placeholder="Telefono">
 						</div>
 					</div>
 					<div class="form-group">
-						<label class="col-sm-2">Activo</label>
+						<label class="col-sm-2 control-label">Activar</label>
 						<div class="col-sm-4">
-							<div class="checkbox">
-								<label> <input type="checkbox" value=""></label>
+							<div class="checkbox checkbox-primary">
+								<input type="checkbox" value="1" name="activo" id="activo">
+								<label>
+                            		Sí
+                        		</label>
 							</div>
-						</div>
-						<div class="col-sm-6">
-								<label/>
 						</div>
 					</div>
 
 
-					<div class="form-group" align="center">
-						<div class="col-sm-6">
-							<button class="btn btn-primary" type="submit">Guardar</button>
-						</div>
-						<div class="col-sm-6">
-							<span>&nbsp&nbsp&nbsp&nbsp&nbsp</span> <a
-								href="${contextpath}/editorial/getAll" class="btn btn-secondary"
+					<div class="row" align="right">
+							<a
+								href="${contextpath}/editorial/getAll" class="btn btn-default"
 								style="font-size: 15; width: 10%; padding: 5px; text-align: center; align: right;">
-								<i class="fa fa-folder-open-o"></i> <c:out value="Cancelar" />
+								<i class="glyphicon glyphicon-remove"></i> <c:out value="Cancelar" />
 							</a>
-						</div>
+							<button class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
+	<br>
+	<br>
 </body>
 </html>
