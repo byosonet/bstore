@@ -18,6 +18,18 @@ $("#publicacion").gridalicious({
 <body>
     <div id="publicacion">
     	<c:forEach var="publicacion" items="${publicaciones}">
+    		 <c:choose>
+    		 	<c:when test="${publicacion.comprada}">
+    		 		<c:set var="valueName" value="Ver" />
+    		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
+    		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
+    		 	</c:when>
+    		 	<c:otherwise>
+    		 		<c:set var="valueName" value="Comprar" />
+    		 		<c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
+    		 		<c:set var="valueIcon" value="glyphicon glyphicon-shopping-cart" />
+    		 	</c:otherwise>
+    		 </c:choose>
              <div class="item banner-wrapper">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
                    <span style="float:left;margin-top: -10px;margin-left:40px;"><b>Autor/Fuente</b></span>
@@ -32,7 +44,7 @@ $("#publicacion").gridalicious({
 				 	<div style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="banner-title">Precio Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</div>
              	 </c:if>
-				 <b><a href="${contextpath}/comprar/publicacion/${publicacion.id}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a></b>
+				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="btn btn-primary"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">

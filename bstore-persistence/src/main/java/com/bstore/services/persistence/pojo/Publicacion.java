@@ -32,6 +32,7 @@ public class Publicacion implements java.io.Serializable {
 	private Fuente fuente;
 	private Editorial editorial;
 	private Date fechaCompraTemporal;
+	private boolean comprada;
 
 	public Publicacion() {
 	}
@@ -225,6 +226,14 @@ public class Publicacion implements java.io.Serializable {
 
 	public void setFechaCompraTemporal(Date fechaCompraTemporal) {
 		this.fechaCompraTemporal = fechaCompraTemporal;
+	}
+
+	public boolean isComprada() {
+		return comprada;
+	}
+
+	public void setComprada(boolean comprada) {
+		this.comprada = comprada;
 	}
 
 }
