@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Publicacion;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
 
 @Controller
@@ -41,7 +42,8 @@ public class PublicacionController {
 			 model.addAttribute("menu",menu);
 			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
 			
-			List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue());
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue(), usuario.getId());
 			log.info("Total publicaciones encontradas: "+lista.size());
 			
 			model.addAttribute("publicaciones", lista);
