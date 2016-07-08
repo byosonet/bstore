@@ -5,7 +5,6 @@
 <head>
 <script type="text/javascript">
 $(document).ready(function() {                               
-console.log('--load novedades');
 $("#coleccion").gridalicious({
 	gutter: 25,
 	width:300,
