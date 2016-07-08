@@ -20,7 +20,7 @@ $("#publicacion").gridalicious({
     	<c:forEach var="publicacion" items="${publicaciones}">
     		 <c:choose>
     		 	<c:when test="${publicacion.comprada}">
-    		 		<c:set var="valueName" value="Ver" />
+    		 		<c:set var="valueName" value="Leer" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
     		 		<c:set var="valueColor" value="btn btn-success" />
@@ -124,7 +124,7 @@ $("#publicacion").gridalicious({
 				        <div class="modal-footer">
 					      <div class="col-md-12">
 					      	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
-					        <b><a href="${contextpath}/comprar/publicacion/${publicacion.id}" class="btn btn-primary"><span class="glyphicon glyphicon-shopping-cart"></span> Comprar</a></b>
+					        <b><a href="${valueUrl}" class="${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
 					      </div>
 				        </div>
 				      </div>
