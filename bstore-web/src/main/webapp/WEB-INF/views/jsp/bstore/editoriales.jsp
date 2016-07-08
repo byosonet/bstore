@@ -7,7 +7,6 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
-		console.log('--load editoriales');
 		$(document).ready(function() {
 			$('#tablaEditoriales').DataTable({
 				"language" : {
