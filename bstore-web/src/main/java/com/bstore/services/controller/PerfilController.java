@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -21,8 +19,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.model.ErrorService;
-import com.bstore.services.persistence.pojo.Coleccion;
-import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
@@ -41,9 +37,6 @@ public class PerfilController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			model.addAttribute("menu",menu);
 			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			model.addAttribute("usuario",usuario);
 			return "perfilUsuario";
@@ -64,10 +57,6 @@ public class PerfilController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			model.addAttribute("menu",menu);
-
 			String idUsuario = request.getParameter("idUsuario");
 	        String nombreUsuario = request.getParameter("nombre");
 	        String apaternoUsuario = request.getParameter("apaterno");

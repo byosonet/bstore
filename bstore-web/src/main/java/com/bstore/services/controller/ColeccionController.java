@@ -2,7 +2,6 @@ package com.bstore.services.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
-import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.service.ColeccionService;
 
 @Controller
@@ -32,11 +30,6 @@ public class ColeccionController {
 		log.info("Cargando colecciones. "+NAME_CONTROLLER);
 		HttpSession session = (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-			
 			List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
 			log.info("Total colecciones encontradas: "+lista.size());
 			model.addAttribute("colecciones", lista);

@@ -42,11 +42,6 @@ public class CompraController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			model.addAttribute("menu",menu);
-			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-			
 			Publicacion publicacion = this.publicacionService.getPublicacion(id);
 			model.addAttribute("publicacion", publicacion);
 		}else{
