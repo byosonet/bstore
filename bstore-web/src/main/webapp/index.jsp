@@ -18,9 +18,28 @@
       $(function(){
           var status;
           $('input#login').focus();
+          
+          $("input#password").keypress(function(event) {
+              if (event.which == 13) {
+                  event.preventDefault();
+                  login();
+              }
+          });
+
+          $("input#login").keypress(function(event) {
+              if (event.which == 13) {
+                  event.preventDefault();
+                  login();
+              }
+          });
+
+          
           $('button#acceder').click(function(){
-              
-              var email = $('input#login');
+              login();
+          });
+          
+          function login(){
+        	  var email = $('input#login');
               var password = $('input#password');
               if(email.val() === ""){
                   muestraMsjSistemaError('El email es requerido.');
@@ -49,7 +68,7 @@
                              muestraMsjSistemaError(status.mensaje);
                           }
 	        });
-          });
+          }
           
           $('button#registrar').click(function(){
                 $.blockUI();
@@ -155,7 +174,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" style="color:white;" for="email">Password:</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
+                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu password">
                     </div>
                 </div>
 
