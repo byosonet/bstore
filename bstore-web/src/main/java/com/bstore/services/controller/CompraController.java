@@ -66,13 +66,13 @@ public class CompraController {
 		  Usuario usuario = (Usuario) session.getAttribute("usuario");
       	  
 		  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
-      	  //model.addAttribute("menu",menu);
+      	  model.addAttribute("menu",menu);
       	  
       	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-      	  //model.addAttribute("ultimasCompras",ultimasCompras);
+      	  model.addAttribute("ultimasCompras",ultimasCompras);
       	  
-      	  //session.setAttribute("ultimasCompras", ultimasCompras);
-      	  //session.setAttribute("menu",menu);
+      	  session.setAttribute("ultimasCompras", ultimasCompras);
+      	  session.setAttribute("menu",menu);
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
