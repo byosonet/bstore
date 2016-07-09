@@ -27,6 +27,8 @@ import com.bstore.services.service.PublicacionService;
 public class CompraController {
 	private final Logger log = Logger.getLogger(CompraController.class);
 	private static final String NAME_CONTROLLER = "[--CompraController--]";
+	private final static String TYPE_CARD_VISA = "VISA";
+	private final static String TYPE_CARD_MASTERCARD = "MASTERCARD";
 	
 	@Autowired
 	private PublicacionService publicacionService;
@@ -53,12 +55,41 @@ public class CompraController {
 	@RequestMapping(value="/pagar/publicacion/{id}",method = RequestMethod.POST)
 	   public String pagarPublicacion(Model model, @PathVariable("id") int id, 
 			   HttpServletRequest request, HttpServletResponse response) throws IOException{
+		
 		log.info("Controller::: "+NAME_CONTROLLER);
 		log.info("Procesar compra de publicacion con ID::: "+id);
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 		  Usuario usuario = (Usuario) session.getAttribute("usuario");
+		  
+		  String tipoTarjeta = request.getParameter("visa") != null?TYPE_CARD_VISA:TYPE_CARD_MASTERCARD;
+		  String nombre = request.getParameter("nombre");
+		  String numeroTarjeta = request.getParameter("numeroTarjeta");
+		  String cvv = request.getParameter("cvv");
+		  String fechaExpriacionMes = request.getParameter("fechaExpiracionMes");
+		  String fechaExpiracionAnio = request.getParameter("fechaExpiracionAnio");
+		  String calle = request.getParameter("calle");
+		  String colonia = request.getParameter("colonia");
+		  String ciudad = request.getParameter("ciudad");
+		  String estado = request.getParameter("estado");
+		  String codigoPostal = request.getParameter("codigo");
+		  String pais = request.getParameter("pais");
+		  String tokenConekta = request.getParameter("key");
+		  
+		  System.out.println("tipoTarjeta: "+tipoTarjeta);
+		  System.out.println("nombre: "+nombre);
+		  System.out.println("numeroTarjeta: "+numeroTarjeta);
+		  System.out.println("cvv: "+cvv);
+		  System.out.println("fechaExpriacionMes: "+fechaExpriacionMes);
+		  System.out.println("fechaExpiracionAnio: "+fechaExpiracionAnio);
+		  System.out.println("calle: "+calle);
+		  System.out.println("colonia: "+colonia);
+		  System.out.println("ciudad: "+ciudad);
+		  System.out.println("estado: "+estado);
+		  System.out.println("codigoPostal: "+codigoPostal);
+		  System.out.println("pais: "+pais);
+		  System.out.println("tokenConekta: "+tokenConekta);
       	  
 		  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
       	  model.addAttribute("menu",menu);
