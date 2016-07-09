@@ -11,15 +11,20 @@
     <util:properties 
         id="conektaProperties"
         location="classpath:com/bstore/services/conekta/config/conekta.properties"/>
-    <bean id="conektaAbstract" 
+    <bean id="conektaAbstractDev" 
             abstract="true" 
             class="com.bstore.services.conekta.ConektaAdapterAbstract"
-            p:apiKey="#{conektaProperties['conekta.api.key']}"
+            p:apiKey="#{conektaProperties['conekta.api.key.dev']}"
+            p:url="#{conektaProperties['conekta.url.charges']}"/>
+    <bean id="conektaAbstractProd" 
+            abstract="true" 
+            class="com.bstore.services.conekta.ConektaAdapterAbstract"
+            p:apiKey="#{conektaProperties['conekta.api.key.prod']}"
             p:url="#{conektaProperties['conekta.url.charges']}"/>
     <bean id="conektaDev" 
           class="com.bstore.services.conekta.ConektaAdapterImpl"
-          parent="conektaAbstract"/>
+          parent="conektaAbstractDev"/>
     <bean id="conektaProd" 
           class="com.bstore.services.conekta.ConektaAdapterImpl"
-          parent="conektaAbstract"/>
+          parent="conektaAbstractProd"/>
 </beans>

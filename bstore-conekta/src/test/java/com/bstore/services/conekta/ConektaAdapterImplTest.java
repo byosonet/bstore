@@ -84,12 +84,16 @@ public class ConektaAdapterImplTest {
         request.setDetails(details);
         
         try {
-        	System.out.println(" request: "+request.toString());
+        	System.out.println("REQUEST: "+request.toString());
         	ResponsePaymentCard response =  this.conektaAdapter.createChargeCard(request);
-            System.out.println("RESPUESTA: "+ response.toString());
-            System.out.println("RESPUESTA ERROR: "+ response.getStatus());
+            System.out.println("RESPONSE: "+ response.toString());
+            if(response.getStatus()!=null && response.getStatus().equalsIgnoreCase("paid")){
+            	System.out.println("MESSAGE RESPONSE: "+ response.getStatus().toUpperCase());
+            }else{
+            	System.out.println("MESSAGE ERROR: "+ response.getError().getError1());
+            }
         } catch (Exception e) {
-            System.out.println("MENSAJE TEST: "+e.getMessage());
+            System.out.println("MESSAGE EXCEPTION: "+e.getMessage());
             e.printStackTrace();
         }
     }
