@@ -37,6 +37,11 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/detalleCompra.jsp"/>
 	</definition>
 	
+	<definition name="pagoCompra" extends="principal">
+		<put-attribute name="header" value="Pago de Compra"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/pagoCompra.jsp"/>
+	</definition>
+	
 	<definition name="editorialAdd" extends="principal">
 		<put-attribute name="header" value="Editorial Add"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/editorialAdd.jsp"/>
