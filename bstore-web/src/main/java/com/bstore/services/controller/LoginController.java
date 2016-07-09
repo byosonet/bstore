@@ -94,6 +94,7 @@ public class LoginController {
             	  model.addAttribute("menu",menu);
             	  
             	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
+            	  model.addAttribute("ultimasCompras",ultimasCompras);
             	  
             	  session.setAttribute("ultimasCompras", ultimasCompras);
             	  session.setAttribute("menu",menu);

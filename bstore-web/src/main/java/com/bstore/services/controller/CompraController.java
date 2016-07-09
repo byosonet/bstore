@@ -18,6 +18,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Publicacion;
+import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.service.CompraService;
 import com.bstore.services.service.PublicacionService;
 
 
@@ -28,6 +30,10 @@ public class CompraController {
 	
 	@Autowired
 	private PublicacionService publicacionService;
+	
+	@Autowired
+	private CompraService compraService;
+	
 	
 	@RequestMapping(value="/comprar/publicacion/{id}",method = RequestMethod.GET)
 	   public String getDetalleCompra(Model model, @PathVariable("id") int id, 
@@ -47,6 +53,30 @@ public class CompraController {
 			response.sendRedirect(request.getContextPath());
 		}
 		return "detalleCompra";
+	   }
+	
+	@RequestMapping(value="/pagar/publicacion/{id}",method = RequestMethod.POST)
+	   public String pagarPublicacion(Model model, @PathVariable("id") int id, 
+			   HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("Controller::: "+NAME_CONTROLLER);
+		log.info("Procesar compra de publicacion con ID::: "+id);
+		
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+		  Usuario usuario = (Usuario) session.getAttribute("usuario");
+      	  
+		  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
+      	  //model.addAttribute("menu",menu);
+      	  
+      	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
+      	  //model.addAttribute("ultimasCompras",ultimasCompras);
+      	  
+      	  //session.setAttribute("ultimasCompras", ultimasCompras);
+      	  //session.setAttribute("menu",menu);
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "pagoCompra";
 	   }
 	
 }
