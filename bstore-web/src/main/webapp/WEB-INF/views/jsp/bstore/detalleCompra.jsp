@@ -17,6 +17,92 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 			});
 		});
 		
+			function validation(){
+				var nombre = $('input#nombre');
+	            var numeroTarjeta = $('input#numeroTarjeta');
+	            var cvv = $('input#cvv');
+	            var fechaExpiracionMes = $('input#fechaExpiracionMes');
+	            var fechaExpiracionAnio = $('input#fechaExpiracionAnio');
+	            var calle = $('input#calle');
+	            var colonia = $('input#colonia');
+	            var ciudad = $('input#ciudad');
+	            var estado = $('input#estado');
+	            var codigo = $('input#codigo');
+	            var pais = $('input#pais');
+	            
+	            if(nombre.val() === ""){
+	                muestraMsjSistemaError('El nombre es un campo requerido.');
+	                return false;
+	            }else if(numeroTarjeta.val() === ""){
+	            	muestraMsjSistemaError('El numero de tarjeta es requerido.');
+	            	return false;
+	            }else if(cvv.val() === ""){
+	            	muestraMsjSistemaError('El cvv es requerido');
+	            	return false;
+	            }
+	            else if(fechaExpiracionMes.val() === ""){
+	                muestraMsjSistemaError('El mes es requerido');
+	                return false;
+	            }else if(fechaExpiracionAnio.val() === ""){
+	                muestraMsjSistemaError('El año es requerido.');
+	                return false;
+	            }else if(calle.val() === ""){
+	                muestraMsjSistemaError('La calle es requerida.');
+	                return false; 
+	            }else if(colonia.val() === ""){
+	                muestraMsjSistemaError('La colonia es requerida.');
+	                return false; 
+	            }else if(ciudad.val() === ""){
+	                muestraMsjSistemaError('La ciudad es requerida.');
+	                return false; 
+	            }else if(estado.val() === ""){
+	                muestraMsjSistemaError('El estado es requerida.');
+	                return false; 
+	            }else if(codigo.val() === ""){
+	                muestraMsjSistemaError('El código postal es requerido.');
+	                return false; 
+	            }else if(pais.val() === ""){
+	                muestraMsjSistemaError('País es requerida.');
+	                return false; 
+	            }
+
+	            var m = $('input#visa').filter(":checked").val();
+	            var f = $('input#mastercard').filter(":checked").val();
+				if(m === undefined && f === undefined){
+					  muestraMsjSistemaError('Debes seleccionar una forma de pago, Visa/Mastercard.');
+					  return false;
+				}
+				return true;
+			}
+    
+	        function muestraMsjSistemaError(msjStatus){
+	           BootstrapDialog.show({
+	            size: BootstrapDialog.SIZE_SMALL,
+	            title: 'Mensaje del Sistema',
+	            closable: false,
+	            message: msjStatus,
+	            type: BootstrapDialog.TYPE_DANGER,
+	            cssClass: 'login-dialog',
+	            buttons: [{
+	                icon: 'glyphicon glyphicon-ok',
+	                label: 'ACEPTAR',
+	                cssClass: 'btn-primary',
+	                action: function(dialog) {
+	                    dialog.close();
+	                }
+	            }]
+	        });
+	        }
+    
+	        function procesarPago(){
+                /*$.blockUI();
+                var urlAction = '${contextpath}' + '/perfil';
+                document.getElementById('perfil').action = urlAction;
+                document.getElementById('perfil').method = 'GET';
+                document.getElementById('perfil').submit();*/
+                console.log('-- Procesando pago...');
+	        }
+		
 		$('input#visa').click(function(){
             $('input#mastercard').attr('checked',false);
         });
@@ -27,19 +113,28 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 		
 		var success = function(token) {
 			console.log('-- Token Generado: '+token.id);
-			alert('Token Generado Conekta: '+token.id);
+			procesarPago();
+			
 		};
 			
 		var error = function(messages) {
-			console.log('--message_to_purchaser: '+messages.message_to_purchaser); 
+			console.log('--message_to_purchaser: '+messages.message_to_purchaser);
+			muestraMsjSistemaError(messages.message_to_purchaser);
 		};
 		     
    	   $("#card-form").submit(function(event) {
-   		    console.log('-- Calculando Token...');
-		    var $form = $(this);
-		    //$form.find("button").prop("disabled", true);
-		    Conekta.Token.create($form, success, error);
-		    return false;
+   		    console.log('-- validando campos...');
+			var result = validation();
+			if(result){
+				console.log('result: '+result);
+   		    	console.log('-- Calculando Token...');
+   			    var $form = $(this);
+   			    //$form.find("button").prop("disabled", true);
+   			    Conekta.Token.create($form, success, error);
+   			    return false;
+			}
+			return false;
+   		      
 	   });
 	});
 </script>
@@ -121,68 +216,69 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 				<div class="form-group">
                     <label class="control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[name]" type="text" class="form-control" id="nombre" name="nombre" placeholder="Nombre del cuenta habiente" value="" >
+                        <input data-conekta="card[name]" type="text" class="form-control" id="nombre" maxlength="50" name="nombre" placeholder="Nombre del cuenta habiente" value="" >
                     </div>
                     
                     <label class="control-label col-sm-2"  for="numeroTarjeta">Numero tarjeta:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[number]" type="text" class="form-control" id="numeroTarjeta" name="numeroTarjeta" placeholder="N&uacute;mero de tarjeta" value="">
+                        <input data-conekta="card[number]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="numeroTarjeta" maxlength="16" name="numeroTarjeta" placeholder="N&uacute;mero de tarjeta" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
                     <label class="control-label col-sm-2"  for="cvv">CVC/CVV:</label>
                     <div class="col-sm-2">
-                        <input data-conekta="card[cvc]" type="text" class="form-control" id="cvv" name="cvv" placeholder="CVC/CVV" value="" >
+                        <input data-conekta="card[cvc]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="cvv" maxlength="4" name="cvv" placeholder="CVC/CVV" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-4"  for="fechaExpiracionMes">Fecha de expiraci&oacute;n:</label>
+                    <label class="control-label col-sm-4"  for="fechaExpiracionMes">Fecha de expiraci&oacute;n: MM/YYYY</label>
                     <div class="col-sm-2">
-                        <input data-conekta="card[exp_month]" type="text" class="form-control" id="fechaExpiracionMes" name="fechaExpiracionMes" placeholder="MM" value="">
+                        <input data-conekta="card[exp_month]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="fechaExpiracionMes" maxlength="2" name="fechaExpiracionMes" placeholder="MM" value="">
                     </div>
                     <div class="col-sm-2">
-                    	<input data-conekta="card[exp_year]" type="text" class="form-control" id="fechaExpiracionAnio" name="fechaExpiracionAnio" placeholder="YYYY" value="">
+                    	<input data-conekta="card[exp_year]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="fechaExpiracionAnio" maxlength="4" name="fechaExpiracionAnio" placeholder="YYYY" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
                     <label class="control-label col-sm-2"  for="calle">Calle:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][street1]" type="text" class="form-control" id="calle" name="calle" placeholder="Calle" value="" >
+                        <input data-conekta="card[address][street1]" type="text" class="form-control" id="calle" maxlength="40" name="calle" placeholder="Calle" value="" >
                     </div>
                     
                     <label class="control-label col-sm-2"  for="colonia">Colonia:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][street2]" type="text" class="form-control" id="colonia" name="colonia" placeholder="Colonia" value="">
+                        <input data-conekta="card[address][street2]" type="text" class="form-control" id="colonia" maxlength="30" name="colonia" placeholder="Colonia" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2"  for="ciudad">Ciudad:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][city]" type="text" class="form-control" id="ciudad" name="ciudad" placeholder="Ciudad" value="" >
+                        <input data-conekta="card[address][city]" type="text" class="form-control" id="ciudad" maxlength="30" name="ciudad" placeholder="Ciudad" value="" >
                     </div>
                     
                     <label class="control-label col-sm-2"  for="estado">Estado:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][state]" type="text" class="form-control" id="estado" name="estado" placeholder="Estado" value="">
+                        <input data-conekta="card[address][state]" type="text" class="form-control" id="estado" maxlength="30" name="estado" placeholder="Estado" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2"  for="codigo">C&oacute;digo Postal:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][zip]" type="text" class="form-control" id="codigo" name="codigo" placeholder="C&oacute;digo postal" value="" >
+                        <input data-conekta="card[address][zip]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="codigo" maxlength="5" name="codigo" placeholder="C&oacute;digo postal" value="" >
                     </div>
                     
                     <label class="control-label col-sm-2"  for="pais">Pa&iacute;s:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][country]" type="text" class="form-control" id="pais" name="pais" placeholder="Pa&iacute;s" value="">
+                        <input data-conekta="card[address][country]" type="text" class="form-control" id="pais" maxlength="25" name="pais" placeholder="Pa&iacute;s" value="">
                     </div>
                 </div>
 
 			  <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+                 <button type="reset" id="reset" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> LIMPIAR</button>
                 <button type="submit" id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
                 </div>
             </div>
