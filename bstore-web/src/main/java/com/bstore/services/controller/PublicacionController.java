@@ -2,7 +2,6 @@ package com.bstore.services.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,7 +15,6 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
@@ -37,11 +35,6 @@ public class PublicacionController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-			
 			Usuario usuario = (Usuario) session.getAttribute("usuario");
 			List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue(), usuario.getId());
 			log.info("Total publicaciones encontradas: "+lista.size());
@@ -60,12 +53,7 @@ public class PublicacionController {
 		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/publicacion/{id}");
 		
 		HttpSession session= (HttpSession) request.getSession(false);
-			if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-			
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
 			log.info("URL Encontrada: "+pub.getUrlArchivo());
 			model.addAttribute("urlPublicacion", pub.getUrlArchivo());

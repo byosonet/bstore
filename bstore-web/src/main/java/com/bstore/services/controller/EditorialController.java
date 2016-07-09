@@ -2,7 +2,6 @@ package com.bstore.services.controller;
 
 import java.io.IOException;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -16,9 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Editorial;
-import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.service.EditorialService;
 
 /**
@@ -46,11 +43,6 @@ public class EditorialController {
 			if(editorialList != null){
 				model.addAttribute("editoriales",editorialList);
 			}
-			
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			logger.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -62,16 +54,9 @@ public class EditorialController {
 		logger.info("editorialController.editorialAdd(): "+NAME_CONTROLLER+"/add");
 		logger.info("---------------------------------------------------------------------------------");
 		
-		
-		
-		
-		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			logger.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
+			
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -86,10 +71,6 @@ public class EditorialController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			@SuppressWarnings("unchecked")
-			Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
-			 model.addAttribute("menu",menu);
-			logger.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
 			logger.info("nombre de la nueva editorial: "+editorial.getNombre());
 			//Para regresar a lista de editoriales
 			List<Editorial> editorialList = editorialService.getAll();
