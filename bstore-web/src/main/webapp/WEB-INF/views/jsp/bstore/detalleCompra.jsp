@@ -94,13 +94,13 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 	        });
 	        }
     
-	        function procesarPago(){
-                /*$.blockUI();
-                var urlAction = '${contextpath}' + '/perfil';
-                document.getElementById('perfil').action = urlAction;
-                document.getElementById('perfil').method = 'GET';
-                document.getElementById('perfil').submit();*/
-                console.log('-- Procesando pago...');
+	        function procesarPago(token){
+                $.blockUI();
+                var urlAction = '${contextpath}' + '/pagar/publicacion/'+${publicacion.id};
+                $('input#key').val(token);
+                document.getElementById('card-form').action = urlAction;
+                document.getElementById('card-form').method = 'POST';
+                document.getElementById('card-form').submit();
 	        }
 		
 		$('input#visa').click(function(){
@@ -112,9 +112,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
         });
 		
 		var success = function(token) {
-			console.log('-- Token Generado: '+token.id);
-			procesarPago();
-			
+			procesarPago(token.id);
 		};
 			
 		var error = function(messages) {
@@ -123,13 +121,10 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 		};
 		     
    	   $("#card-form").submit(function(event) {
-   		    console.log('-- validando campos...');
 			var result = validation();
 			if(result){
-				console.log('result: '+result);
-   		    	console.log('-- Calculando Token...');
    			    var $form = $(this);
-   			    //$form.find("button").prop("disabled", true);
+   			    $form.find("#pagar").prop("disabled", true);
    			    Conekta.Token.create($form, success, error);
    			    return false;
 			}
@@ -277,9 +272,10 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                 </div>
 
 			  <div class="row">
+			  	<input id="key" name="key" type="hidden" />
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
                  <button type="reset" id="reset" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> LIMPIAR</button>
-                <button type="submit" id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
+                <button type="submit" id="pagar" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
                 </div>
             </div>
 			</form>
