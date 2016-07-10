@@ -125,7 +125,7 @@ public class CompraController {
 	        Item item = new Item();
 		        List<Item> lista = new ArrayList<Item>();
 		        item.setName(publicacion.getNombre());
-		        item.setPrice(publicacion.getPrecio().toString());
+		        item.setPrice(priceFinal.toString());
 		        item.setDescription(LABEL_ONE+publicacion.getIsbn()+LABEL_TWO+publicacion.getNombre());
 		        lista.add(item);
 		        
