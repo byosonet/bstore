@@ -99,5 +99,12 @@ public class CompraServiceImpl implements CompraService {
 		}
 		return publicacionesCompradas;
 	}
+
+	@Override
+	@Transactional
+	public void crearCompra(Compra compra) {
+		log.info("Generando y gurdando compra en BD: "+compra.toString());
+		this.compraDao.generarCompra(compra);
+	}
 	
 }

@@ -37,5 +37,7 @@
     <!-- Adapters Externos-->
     <bean id="droolRuleAge" 
           class="com.bstore.services.drools.DroolRuleAgeImpl"/>
+    <bean id="conektaAdapter"
+          class="com.bstore.services.conekta.ConektaAdapterImpl"/>
     
 </beans>
