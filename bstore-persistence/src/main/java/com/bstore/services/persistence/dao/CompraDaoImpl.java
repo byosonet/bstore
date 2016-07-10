@@ -3,6 +3,7 @@ package com.bstore.services.persistence.dao;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.HibernateException;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.pojo.Compra;
@@ -43,4 +44,19 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
 				.setMaxResults(total)
 				.list();
 	}
+
+	public void generarCompra(Compra compra) {
+		 try {
+            this.mysql.iniciarOperacion();
+            this.mysql.getSesion().save(compra);
+            this.mysql.getSesion().flush();
+	        this.mysql.getTx().commit();
+        } catch (HibernateException he) {
+	            this.mysql.manejarException(he);
+	            throw he;
+        } finally {
+	            this.mysql.getSesion().close();
+        }
+	}
+	
 }

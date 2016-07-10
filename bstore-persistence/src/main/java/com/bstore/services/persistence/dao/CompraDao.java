@@ -9,4 +9,5 @@ public interface CompraDao {
 	Compra getCompra(CompraId compraId);
 	List<Compra> getComprasPorUsuario(int idUsuario);
 	List<Compra> getUlrimasComprasPorUsuarioParaMenuMensajes(int idUsuario, int total);
+	void generarCompra(Compra compra);
 }

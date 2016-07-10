@@ -12,4 +12,5 @@ public interface CompraService {
 	Compra getCompra(CompraId compraId);
 	Map<Coleccion, List<Publicacion>> getMenuColeccion(int idUsuario);
 	List<Publicacion> ultimasCompras(int idUsuario);
+	void crearCompra(Compra compra);
 }

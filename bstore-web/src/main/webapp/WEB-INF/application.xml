@@ -18,4 +18,5 @@
     <import resource="classpath:com/bstore/services/persistence/config/dao-config.xml"/>
     <import resource="classpath:com/bstore/services/config/xml/service-config.xml"/>
     <import resource="classpath:com/bstore/services/config/batch/batch-config.xml"/>
+    <import resource="classpath:com/bstore/services/conekta/config/conekta-config.xml"/>
 </beans>
