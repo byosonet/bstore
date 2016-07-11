@@ -1,6 +1,4 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
-<%@ taglib prefix="spring" uri="http://www.springframework.org/tags"%>
+<%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ include file="../../layout/taglibs.jsp"%>
 
@@ -12,6 +10,7 @@
 <title>Editorial nueva</title>
 
 <script type="text/javascript">
+/*
 	$(function() {
 
 		$('button#saveEditorial').click(function() {
@@ -44,7 +43,36 @@
 				return false;
 			}
 			
+			
+			$.blockUI();
+            $.ajax({
+              type: 'post',
+              url: '${contextpath}'+'/editorial/saveEditorial',
+              data: $('form#editorialAddForm').serialize(),
+                  success: function (data) {
+                	  console.log('success...');
+                         $.unblockUI();
+                         if(data.mensaje === undefined){
+                        	 $.blockUI();
+ 		                     var urlAction = '${contextpath}' + '/editorial/getAll';
 
+							console.log('urlAction es: '+urlAction);
+ 		                    $(location).attr('href',urlAction);
+ 		                     
+                         }else{
+                        	 console.log('Va a mostrar success...');
+                        	 muestraMsjSistemaSuccess(data.mensaje);
+                         }
+                         
+              	},
+              	error: function(msj){
+              		console.log('ERROR...');
+                	status = JSON.parse(msj.responseText);
+                    $.unblockUI();
+                    muestraMsjSistemaError(status.mensaje);
+				}
+        	});
+            
 	});
 
 		function muestraMsjSistemaError(msjStatus) {
@@ -90,6 +118,7 @@
 			});
 		}
 	});
+*/
 </script>
 </head>
 <body>
@@ -97,47 +126,58 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-12">
-				<form class="form-horizontal" id="editorialAddForm" method="post">
+				<form:form action="${contextpath}/editorial/saveEditorial" method="POST" commandName="editorial">
 
 					<div class="form-group">
-						<div class="control-label col-sm-12 alert alert-info"
-							style="text-align: center;">Informaci&oacute;n de Editorial
+						<div class="control-label col-sm-12 alert alert-success"
+							style="text-align: center;"><b>Informaci&oacute;n de Editorial</b>
 						</div>
 					</div>
+					<br/>
+					<br/>
+					<br/>
 					
 					<div class="form-group">
 						<label class="control-label col-sm-2"  for="nombre">Nombre</label>
 						<div class="col-sm-4">
-							<input id="nombre" type="text" class="form-control" placeholder="Nombre" />
+							<form:input path="nombre" class="form-control" placeholder="Nombre" />
 						</div>
 						
 						<label for="rfc" class="col-sm-2 control-label">RFC</label>
 						<div class="col-sm-4">
-							<input id="rfc" type="text" class="form-control" placeholder="RFC">
+							<form:input path="rfc" class="form-control" placeholder="RFC" />
 						</div>
 					</div>
+					<br/>
+					<br/>
+					
 					<div class="form-group">
 						<label for="email" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-4">
-							<input id="email" type="email" class="form-control" placeholder="Email">
+							<form:input path="email" class="form-control" placeholder="Email" />
 						</div>
 						<label for="telefono" class="col-sm-2 control-label">Telefono</label>
 						<div class="col-sm-4">
-							<input id="telefono" type="text" class="form-control" placeholder="Telefono">
+							<form:input path="telefono" class="form-control" placeholder="Telefono" />
 						</div>
 					</div>
+					<br/>
+					<br/>
+					
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Activar</label>
 						<div class="col-sm-4">
-							<div class="checkbox checkbox-primary">
-								<input id="activo" type="checkbox" value="1" name="activo">
+							<!-- div class="checkbox checkbox-primary"-->
+							<div class="checkbox-primary">
+								<form:checkbox path="estatus" value="1"/>
 								<label>
                             		Sí
                         		</label>
 							</div>
 						</div>
 					</div>
-
+					<br/>
+					<br/>
 
 					<div class="row" align="right">
 							<a
@@ -147,7 +187,7 @@
 							</a>
 							<button id="saveEditorial" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
 					</div>
-				</form>
+				</form:form>
 			</div>
 		</div>
 	</div>

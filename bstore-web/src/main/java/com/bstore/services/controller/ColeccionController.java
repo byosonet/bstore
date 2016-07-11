@@ -39,4 +39,17 @@ public class ColeccionController {
 		return "colecciones";
 	   }
 	
+	@RequestMapping(value="/coleccionAdmin",method = RequestMethod.GET)
+	   public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("Colecciones getAll"+NAME_CONTROLLER);
+		HttpSession session = (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+			log.info("Total colecciones encontradas: "+lista.size());
+			model.addAttribute("colecciones", lista);
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "coleccionAdmin";
+	   }
 }

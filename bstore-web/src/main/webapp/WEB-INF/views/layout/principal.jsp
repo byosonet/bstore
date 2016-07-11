@@ -155,6 +155,18 @@
 						    	<li>
 	                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Editoriales</a>
 	                            </li>
+	                            <li>
+	                                <a style="color: white;" href="${contextpath}/coleccionAdmin"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Colecciones</a>
+	                            </li>
+	                            <li>
+	                                <a style="color: white;" href="${contextpath}/fuente/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Fuentes</a>
+	                            </li>
+	                            <li>
+	                                <a style="color: white;" href="${contextpath}/perfil/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Perfiles</a>
+	                            </li>
+	                            <li>
+	                                <a style="color: white;" href="${contextpath}/publicacion/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Publicaciones</a>
+	                            </li>
 							</ul>
 	                    </li>
                     </c:if>

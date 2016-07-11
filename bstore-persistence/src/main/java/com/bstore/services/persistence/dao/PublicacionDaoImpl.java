@@ -33,4 +33,9 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
                 .list();
 	}
 
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getAll() {
+		logger.info("getAll");
+		return (List<Publicacion>) getSession().createQuery("FROM Publicacion p").list();
+	}
 }

@@ -1,6 +1,7 @@
 package com.bstore.services.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -36,13 +37,14 @@ public class EditorialController {
 	@RequestMapping(value="/getAll",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		logger.info("editorialController.getAll(): "+NAME_CONTROLLER+"/getAll");
-		
+
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			List<Editorial> editorialList = editorialService.getAll();
 			if(editorialList != null){
 				model.addAttribute("editoriales",editorialList);
 			}
+			model.addAttribute("editorial", new Editorial());
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -56,7 +58,7 @@ public class EditorialController {
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			
+			model.addAttribute("editorial", new Editorial());
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -66,16 +68,26 @@ public class EditorialController {
 	
 	@RequestMapping(value="/saveEditorial",method = RequestMethod.POST)
 	public String saveEditorial(Model model, HttpServletRequest request, HttpServletResponse response, 
-			@ModelAttribute("editorialForm") Editorial editorial) throws IOException{
+			@ModelAttribute("editorial") Editorial editorial) throws IOException{
 		logger.info("editorialController.editorialAdd(): "+NAME_CONTROLLER+"/saveEditorial");
+		logger.info("editorialObject: "+editorial);
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			logger.info("nombre de la nueva editorial: "+editorial.getNombre());
-			//Para regresar a lista de editoriales
-			List<Editorial> editorialList = editorialService.getAll();
-			if(editorialList != null){
-				model.addAttribute("editoriales",editorialList);
+			//logger.info("nombre de la nueva editorial: "+editorial.getNombre());
+			if(editorial!=null){
+				logger.info("Se va a guardar la nueva editorial");
+				
+				editorial.setFechaUmodif(new Date());
+				editorialService.saveOrUpdate(editorial);
+				
+				//Para regresar a lista de editoriales
+				List<Editorial> editorialList = editorialService.getAll();
+				model.addAttribute("editoriales",editorialList);	
+			}
+			else{
+				logger.info("La nueva editorial es null, regresamos a la misma pantalla");
+				return "editorialAdd";
 			}
 		}else{
 			response.sendRedirect(request.getContextPath());
