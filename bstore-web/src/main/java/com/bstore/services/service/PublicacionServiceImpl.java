@@ -57,4 +57,9 @@ public class PublicacionServiceImpl implements PublicacionService{
 		return this.publicacionDao.getPublicacion(id);
 	}
 
+	@Override
+	public List<Publicacion> getAll() {
+		log.info("getAll");
+		return publicacionDao.getAll();
+	}
 }

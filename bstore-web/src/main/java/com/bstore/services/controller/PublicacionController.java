@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
@@ -64,5 +65,21 @@ public class PublicacionController {
 		
 		return "publicacionHTML";
 	   }
-	
+
+	@RequestMapping(value="/publicacion/getAll",method = RequestMethod.GET)
+	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("PublicacionController.getAll(): "+NAME_CONTROLLER+"/getAll");
+
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			List<Publicacion> publicacionList = publicacionService.getAll();
+			if(publicacionList != null){
+				model.addAttribute("publicaciones", publicacionList);
+			}
+			model.addAttribute("publicacion", new Perfil());
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "publicacionesAdmin";
+	}
 }

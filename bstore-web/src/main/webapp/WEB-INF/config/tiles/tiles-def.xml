@@ -16,15 +16,27 @@
 		<put-attribute name="header" value="Colecciones"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/colecciones.jsp"/>
 	</definition>
+	<definition name="coleccionAdmin" extends="principal">
+		<put-attribute name="header" value="Administración de Colecciones"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/coleccionAdmin.jsp"/>
+	</definition>
 	
 	<definition name="publicaciones" extends="principal">
 		<put-attribute name="header" value="Publicaciones"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicaciones.jsp"/>
 	</definition>
+	<definition name="publicacionesAdmin" extends="principal">
+		<put-attribute name="header" value="Publicaciones"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicacionAdmin.jsp"/>
+	</definition>
 	
 	<definition name="editoriales" extends="principal">
 		<put-attribute name="header" value="Editoriales"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/editoriales.jsp"/>
+	</definition>
+	<definition name="fuentesAdmin" extends="principal">
+		<put-attribute name="header" value="Editoriales"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/fuenteAdmin.jsp"/>
 	</definition>
 	
 	<definition name="publicacionHTML" extends="principal">
@@ -50,6 +62,10 @@
 	<definition name="perfilUsuario" extends="principal">
 		<put-attribute name="header" value="Perfil Usuario"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/perfilUsuario.jsp"/>
+	</definition>
+	<definition name="perfilesAdmin" extends="principal">
+		<put-attribute name="header" value="Perfil Usuario"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/perfilAdmin.jsp"/>
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/views/layout/login.jsp">

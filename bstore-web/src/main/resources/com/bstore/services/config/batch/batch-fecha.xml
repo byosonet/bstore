@@ -21,6 +21,6 @@
         <property name="jobDetail" 
                   ref="monitorFechaJobDetail" />
         <property name="cronExpression" 
-                  value="*/5 * * * * ?"/>
+                  value="*/50 * * * * ?"/>
     </bean>
 </beans>

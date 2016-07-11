@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,7 +20,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.model.ErrorService;
+import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.service.PerfilService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 
@@ -30,6 +33,9 @@ public class PerfilController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private PerfilService perfilService;
 	
 	@RequestMapping(value="/perfil",method = RequestMethod.GET)
 	   public String perfil(Model model, HttpServletRequest request){
@@ -123,4 +129,22 @@ public class PerfilController {
 		}
         return new ResponseEntity<ErrorService>(responseLocal, status);
 	   }
+	
+	
+	@RequestMapping(value="perfil/getAll",method = RequestMethod.GET)
+	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("PerfilController.getAll(): "+NAME_CONTROLLER+"/getAll");
+
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			List<Perfil> perfilList = perfilService.getAll();
+			if(perfilList != null){
+				model.addAttribute("perfiles", perfilList);
+			}
+			model.addAttribute("perfil", new Perfil());
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "perfilesAdmin";
+	}
 }
