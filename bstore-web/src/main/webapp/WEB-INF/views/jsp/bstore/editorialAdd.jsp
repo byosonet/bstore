@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html;charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@ include file="../../layout/taglibs.jsp"%>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
@@ -9,117 +10,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Editorial nueva</title>
 
-<script type="text/javascript">
-/*
-	$(function() {
 
-		$('button#saveEditorial').click(function() {
-			var nombre = $('input#nombre');
-			var rfc = $('input#rfc');
-			var email = $('input#email');
-			var telefono = $('input#telefono');
-			var activo = $('input#activo');
 
-			console.log('nombre: ' + nombre);
-			console.log('rfc: ' + rfc);
-			console.log('email: ' + email);
-			console.log('telefono: ' + telefono);
-			console.log('activo: ' + activo);
-
-			if (nombre.val() === "") {
-				muestraMsjSistemaError('El nombre es requerido.');
-				return false;
-			} else if (rfc.val() === "") {
-				muestraMsjSistemaError('El RFC es requerido.');
-				return false;
-			} else if(email.val() === ""){
-				muestraMsjSistemaError('El email es requerido.');
-				return false;
-			} else if(telefono.val() === ""){
-				muestraMsjSistemaError('El telefono es requerido.');
-				return false;
-			} else if(activo.val() === ""){
-				muestraMsjSistemaError('El campo \'activo\' es requerido.');
-				return false;
-			}
-			
-			
-			$.blockUI();
-            $.ajax({
-              type: 'post',
-              url: '${contextpath}'+'/editorial/saveEditorial',
-              data: $('form#editorialAddForm').serialize(),
-                  success: function (data) {
-                	  console.log('success...');
-                         $.unblockUI();
-                         if(data.mensaje === undefined){
-                        	 $.blockUI();
- 		                     var urlAction = '${contextpath}' + '/editorial/getAll';
-
-							console.log('urlAction es: '+urlAction);
- 		                    $(location).attr('href',urlAction);
- 		                     
-                         }else{
-                        	 console.log('Va a mostrar success...');
-                        	 muestraMsjSistemaSuccess(data.mensaje);
-                         }
-                         
-              	},
-              	error: function(msj){
-              		console.log('ERROR...');
-                	status = JSON.parse(msj.responseText);
-                    $.unblockUI();
-                    muestraMsjSistemaError(status.mensaje);
-				}
-        	});
-            
-	});
-
-		function muestraMsjSistemaError(msjStatus) {
-			BootstrapDialog.show({
-				size : BootstrapDialog.SIZE_SMALL,
-				title : 'Mensaje del Sistema',
-				closable : false,
-				message : msjStatus,
-				type : BootstrapDialog.TYPE_DANGER,
-				cssClass : 'login-dialog',
-				buttons : [ {
-					icon : 'glyphicon glyphicon-check',
-					label : 'OK',
-					cssClass : 'btn-primary',
-					action : function(dialog) {
-						dialog.close();
-					}
-				} ]
-			});
-		}
-
-		function muestraMsjSistemaSuccess(msjStatus) {
-			BootstrapDialog.show({
-				size : BootstrapDialog.SIZE_SMALL,
-				title : 'Mensaje del Sistema',
-				closable : false,
-				message : msjStatus,
-				type : BootstrapDialog.TYPE_SUCCESS,
-				cssClass : 'login-dialog',
-				buttons : [ {
-					icon : 'glyphicon glyphicon-check',
-					label : 'CONTINUAR',
-					cssClass : 'btn-primary',
-					action : function(dialog) {
-						dialog.close();
-						$.blockUI();
-						var urlAction = '${contextpath}' + '/perfil';
-						document.getElementById('perfil').action = urlAction;
-						document.getElementById('perfil').method = 'GET';
-						document.getElementById('perfil').submit();
-					}
-				} ]
-			});
-		}
-	});
-*/
-</script>
 </head>
 <body>
 
@@ -132,19 +24,26 @@
 						<div class="control-label col-sm-12 alert alert-success"
 							style="text-align: center;"><b>Informaci&oacute;n de Editorial</b>
 						</div>
+						<br/>
+						<br/>
 					</div>
-					<br/>
 					<br/>
 					<br/>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2"  for="nombre">Nombre</label>
+						<label class="control-label col-sm-2" for="nombre">Nombre</label>
 						<div class="col-sm-4">
+							<span style="color:#FE2E2E;">
+								<form:errors path="nombre" />
+							</span>
 							<form:input path="nombre" class="form-control" placeholder="Nombre" />
 						</div>
 						
 						<label for="rfc" class="col-sm-2 control-label">RFC</label>
 						<div class="col-sm-4">
+							<span style="color:#FE2E2E;">
+								<form:errors path="rfc" />
+							</span>
 							<form:input path="rfc" class="form-control" placeholder="RFC" />
 						</div>
 					</div>
@@ -154,10 +53,16 @@
 					<div class="form-group">
 						<label for="email" class="col-sm-2 control-label">Email</label>
 						<div class="col-sm-4">
+							<span style="color:#FE2E2E;">
+								<form:errors path="email" />
+							</span>
 							<form:input path="email" class="form-control" placeholder="Email" />
 						</div>
 						<label for="telefono" class="col-sm-2 control-label">Telefono</label>
 						<div class="col-sm-4">
+							<span style="color:#FE2E2E;">
+								<form:errors path="telefono" />
+							</span>
 							<form:input path="telefono" class="form-control" placeholder="Telefono" />
 						</div>
 					</div>
@@ -176,8 +81,6 @@
 							</div>
 						</div>
 					</div>
-					<br/>
-					<br/>
 
 					<div class="row" align="right">
 							<a

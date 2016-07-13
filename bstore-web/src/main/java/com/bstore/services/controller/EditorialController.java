@@ -12,12 +12,17 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Editorial;
 import com.bstore.services.service.EditorialService;
+import com.bstore.services.validator.EditorialValidator;
 
 /**
  * 
@@ -33,7 +38,15 @@ public class EditorialController {
 
 	@Autowired
 	private EditorialService editorialService;
+	
+	@Autowired
+	private EditorialValidator editorialValidator;
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder){
+		binder.setValidator(editorialValidator);
+	}
+	
 	@RequestMapping(value="/getAll",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		logger.info("editorialController.getAll(): "+NAME_CONTROLLER+"/getAll");
@@ -68,8 +81,15 @@ public class EditorialController {
 	
 	@RequestMapping(value="/saveEditorial",method = RequestMethod.POST)
 	public String saveEditorial(Model model, HttpServletRequest request, HttpServletResponse response, 
-			@ModelAttribute("editorial") Editorial editorial) throws IOException{
+			@ModelAttribute("editorial") @Validated Editorial editorial,
+			BindingResult result) throws IOException{
 		logger.info("editorialController.editorialAdd(): "+NAME_CONTROLLER+"/saveEditorial");
+		
+		if(result.hasErrors()){
+			
+			return "editorialAdd";
+		}
+		
 		logger.info("editorialObject: "+editorial);
 		
 		HttpSession session= (HttpSession) request.getSession(false);

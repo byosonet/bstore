@@ -19,4 +19,10 @@
     <import resource="classpath:com/bstore/services/config/xml/service-config.xml"/>
     <import resource="classpath:com/bstore/services/config/batch/batch-config.xml"/>
     <import resource="classpath:com/bstore/services/conekta/config/conekta-config.xml"/>
+    
+    <!-- Registrando messages.properties -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+	</bean>
 </beans>
