@@ -26,6 +26,8 @@
 		p:sessionFactory-ref="sessionFactory" />
 	<bean id="perfilDao" class="com.bstore.services.persistence.dao.PerfilDaoImpl"
 		p:sessionFactory-ref="sessionFactory" />
+	<bean id="propertyDao" class="com.bstore.services.persistence.dao.PropertyDaoImpl"
+		p:sessionFactory-ref="sessionFactory" />
 
 	<bean id="usuarioService" class="com.bstore.services.service.UsuarioServiceImpl" />
 	<bean id="coleccionService" class="com.bstore.services.service.ColeccionServiceImpl" />
@@ -35,6 +37,7 @@
 	<bean id="formaPagoService" class="com.bstore.services.service.FormaPagoServiceImpl" />
 	<bean id="fuenteService" class="com.bstore.services.service.FuenteServiceImpl" />
 	<bean id="perfilService" class="com.bstore.services.service.PerfilServiceImpl" />
+	<bean id="propertyService" class="com.bstore.services.service.PropertyServiceImpl" />
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate3.LocalSessionFactoryBean"
