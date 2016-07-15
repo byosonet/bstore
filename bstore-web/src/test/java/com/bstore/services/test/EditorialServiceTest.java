@@ -55,16 +55,13 @@ public class EditorialServiceTest {
 	@Test
 	public void testSaveOrUpdate(){
 		logger.info("testSaveOrUpdate");
-		
-		Editorial editorial = new Editorial();
+		Editorial editorial = this.editorialService.getEditorial(3);
 		editorial.setNombre("Editorial Prueba");
 		editorial.setEstatus(0);
 		editorial.setEmail("pudeeperalta@gmail.com");
 		editorial.setFechaUmodif(new Date());
-		editorial.setRfc("EITT8736287G31");
-		
+		editorial.setRfc("EITT873687G31");
 		editorialService.saveOrUpdate(editorial);
-		
 		logger.info("testSaveOrUpdate termina");
 	}
 }
