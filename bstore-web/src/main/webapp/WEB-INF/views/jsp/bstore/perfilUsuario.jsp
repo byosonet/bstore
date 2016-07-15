@@ -43,6 +43,7 @@
                 var amaterno = $('input#amaterno');
                 var email = $('input#email');
                 var login = $('input#login');
+                var telefono = $('input#telefono');
                 var passw = $('input#pass1');
                 var confPassword = $('input#pass2');
                 if(nombre.val() === ""){
@@ -60,6 +61,9 @@
                     return false;
                 }else if(login.val() === ""){
                     muestraMsjSistemaError('El login es requerido.');
+                    return false;
+                }else if(telefono.val() === ""){
+                    muestraMsjSistemaError('El teléfono es requerido.');
                     return false;
                 }else if(passw.val() === "" || confPassword.val() === ""){
                     muestraMsjSistemaError('El password es requerido.');
@@ -181,20 +185,27 @@
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}">
                     </div>
                 </div>
-
+                
                 <div class="form-group">
                 	<label class="control-label col-sm-2"  for="login">Usuario/Login:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <input type="text" class="form-control" id="login" name="login" placeholder="Ingesa tu login" value="${usuario.login}">
                     </div>
                     
+                    <label class="control-label col-sm-2"  for="telefono">Tel&eacute;fono:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${usuario.telefono}">
+                    </div>
+                </div>
+
+                <div class="form-group">
                    <label class="control-label col-sm-2"  for="pass1">Password:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
                     </div>
                    
                    <label class="control-label col-sm-2"  for="pass2">Confirmar password:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                         <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
                     </div>
                 </div>
