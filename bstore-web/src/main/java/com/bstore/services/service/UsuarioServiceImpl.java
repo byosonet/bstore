@@ -83,5 +83,12 @@ private UsuarioDao usuarioDao;
         this.log.info(" -- Buscando por id de usuario: "+idUser);
         return this.usuarioDao.byId(idUser);
     }
+
+	@Transactional
+	public Usuario validaLoginSistema(String login) {
+		this.log.info(" -- Validando login en sistema: "+login);
+        Usuario user = this.usuarioDao.validaLoginSistema(login);
+        return user;
+	}
     
 }

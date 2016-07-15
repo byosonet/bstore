@@ -10,6 +10,7 @@ public interface UsuarioDao {
     void actualizarConexionUsuario(Usuario usuario);
     int agregarUsuario(Usuario usuario);
     Usuario validaEmailSistema(String email);
+    Usuario validaLoginSistema(String login);
     void actualizarDatosUsuario(Usuario user);
     void deleteUser(Usuario usuario);
     Usuario byId(int idUser);

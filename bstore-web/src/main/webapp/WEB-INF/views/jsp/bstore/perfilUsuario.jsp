@@ -42,6 +42,7 @@
                 var apaterno = $('input#apaterno');
                 var amaterno = $('input#amaterno');
                 var email = $('input#email');
+                var login = $('input#login');
                 var passw = $('input#pass1');
                 var confPassword = $('input#pass2');
                 if(nombre.val() === ""){
@@ -56,6 +57,9 @@
                 }
                 else if(email.val() === ""){
                     muestraMsjSistemaError('El email es requerido.');
+                    return false;
+                }else if(login.val() === ""){
+                    muestraMsjSistemaError('El login es requerido.');
                     return false;
                 }else if(passw.val() === "" || confPassword.val() === ""){
                     muestraMsjSistemaError('El password es requerido.');
@@ -179,13 +183,18 @@
                 </div>
 
                 <div class="form-group">
+                	<label class="control-label col-sm-2"  for="login">Usuario/Login:</label>
+                    <div class="col-sm-2">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Ingesa tu login" value="${usuario.login}">
+                    </div>
+                    
                    <label class="control-label col-sm-2"  for="pass1">Password:</label>
-                    <div class="col-sm-3">
+                    <div class="col-sm-2">
                         <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
                     </div>
                    
-                   <label class="control-label col-sm-3"  for="pass2">Confirmar password:</label>
-                    <div class="col-sm-4">
+                   <label class="control-label col-sm-2"  for="pass2">Confirmar password:</label>
+                    <div class="col-sm-2">
                         <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
                     </div>
                 </div>
