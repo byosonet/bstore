@@ -88,9 +88,10 @@
 	                                    <div class="media-body">
 	                                        <h5 class="media-heading"><strong><c:out value="${sessionScope.usuario.email}"/></strong>
 	                                        </h5>
-	                                        <p class="small text-muted"><i class="fa fa-fw fa-calendar"></i> Compra <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd-MM-yyyy HH:mm:ss"/></p>
+	                                        <p class="small text-muted"><i class="fa fa-fw fa-calendar"></i> Comprado el <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd-MM-yyyy HH:mm:ss"/></p>
+	                                        <p class="small text-muted"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombre}"/></p>
+	                                        <p class="small text-muted"><i class="fa fa-fw fa-user"></i> <c:out value="${publicacion.fuente.autor}"/></p>
 	                                        <p class="small text-muted"><i class="fa fa-fw fa-check"></i> ISBN <c:out value="${publicacion.isbn}"/></p>
-	                                        <p class="small text-muted"><i class="fa fa-fw fa-book"></i> <b><c:out value="${publicacion.nombre}"/></b></p>
 	                                    </div>
 	                                </div>
 	                            </a>
