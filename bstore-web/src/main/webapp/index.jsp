@@ -42,7 +42,7 @@
         	  var email = $('input#login');
               var password = $('input#password');
               if(email.val() === ""){
-                  muestraMsjSistemaError('El email es requerido.');
+                  muestraMsjSistemaError('El login es requerido.');
                   return false;
               }else if(password.val() === ""){
                   muestraMsjSistemaError('El password es requerido.');
@@ -165,14 +165,14 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:white;" for="nombre">Usuario:</label>
+                    <label class="control-label col-sm-3" style="color:white;" for="nombre">Usuario</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu email">
+                        <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu login">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:white;" for="email">Password:</label>
+                    <label class="control-label col-sm-3" style="color:white;" for="email">Password</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu password">
                     </div>
