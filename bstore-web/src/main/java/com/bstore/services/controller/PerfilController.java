@@ -69,6 +69,7 @@ public class PerfilController {
 	        String amaternoUsuario = request.getParameter("amaterno");
 	        String emailUsuario = request.getParameter("email");
 	        String login = request.getParameter("login");
+	        String telefono = request.getParameter("telefono");
 	        String passwordUsuario1 = request.getParameter("pass1");
 	        String dia = request.getParameter("dia");
 	        String mes = request.getParameter("mes");
@@ -101,6 +102,7 @@ public class PerfilController {
 	            user.setSexo(sexo);
 	            user.setNotificaciones(notificar!=null?notificar:"NO");
 	            user.setUltConexion(new Date());
+	            user.setTelefono(telefono);
 	            
 	            SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
 	            String dateInString = dia+"/"+mes+"/"+anio;
