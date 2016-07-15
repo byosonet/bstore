@@ -68,6 +68,7 @@ public class PerfilController {
 	        String apaternoUsuario = request.getParameter("apaterno");
 	        String amaternoUsuario = request.getParameter("amaterno");
 	        String emailUsuario = request.getParameter("email");
+	        String login = request.getParameter("login");
 	        String passwordUsuario1 = request.getParameter("pass1");
 	        String dia = request.getParameter("dia");
 	        String mes = request.getParameter("mes");
@@ -78,9 +79,13 @@ public class PerfilController {
 	        
 	        Usuario user = this.usuarioService.byIdUser(Integer.valueOf(idUsuario));
 	        Usuario userTemporal = this.usuarioService.validaEmailSistema(emailUsuario);
+	        Usuario userTemporalLogin = this.usuarioService.validaLoginSistema(login);
 	        if(userTemporal!=null && !user.getEmail().equalsIgnoreCase(userTemporal.getEmail())){
 	        	responseLocal.setCodigo("404");
 	        	responseLocal.setMensaje("Este email ya ha sido utilizado, "+emailUsuario);
+	        } else if(userTemporalLogin!=null && !user.getLogin().equalsIgnoreCase(userTemporalLogin.getLogin())){
+	        	responseLocal.setCodigo("404");
+	        	responseLocal.setMensaje("Este login ya ha sido utilizado, "+login);
 	        } else if(user!=null){
 	            this.log.info(" -- Usuario encontrado: "+user.toString());
 	            if(!user.getPassword().equalsIgnoreCase(passwordUsuario1)){
@@ -89,6 +94,7 @@ public class PerfilController {
 	            }
 	            user.setNombre(nombreUsuario);
 	            user.setEmail(emailUsuario);
+	            user.setLogin(login);
 	            user.setAPaterno(apaternoUsuario);
 	            user.setAMaterno(amaternoUsuario);
 	            user.setActividad(actividad);

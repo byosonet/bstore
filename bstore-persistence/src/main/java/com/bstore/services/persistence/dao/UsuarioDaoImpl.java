@@ -25,12 +25,23 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
     public Usuario validaUsuario(String email, String password) {
         this.log.info(" -- Buscando usuario by email:: "+email);
-        return (Usuario) this
+        
+        
+        Usuario usuario = (Usuario) this
                 .getSession()
                 .createQuery("FROM Usuario u WHERE u.email = :email AND u.password = :password")
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .uniqueResult();
+        if(usuario==null){
+        	usuario = (Usuario) this
+                    .getSession()
+                    .createQuery("FROM Usuario u WHERE u.login = :login AND u.password = :password")
+                    .setParameter("login", email)
+                    .setParameter("password", password)
+                    .uniqueResult();
+        }
+        return usuario;
     }
 
     public Usuario validaEmailSistema(String email) {
@@ -140,4 +151,13 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
                 .setParameter("tipo", notificar)
                 .list();
     }
+
+	public Usuario validaLoginSistema(String login) {
+		 this.log.info(" -- Verificando login en BD:: "+login);
+	        return (Usuario) this
+	                .getSession()
+	                .createQuery("FROM Usuario u WHERE u.login = :login")
+	                .setParameter("login", login)
+	                .uniqueResult();
+	}
 }

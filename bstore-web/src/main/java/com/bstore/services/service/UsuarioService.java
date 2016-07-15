@@ -18,6 +18,7 @@ public interface UsuarioService {
     void actulizarConexionUsuario(Usuario usuario);
     int agregaUsuarioNuevo(Usuario usuario);
     Usuario validaEmailSistema(String email);
+    Usuario validaLoginSistema(String login);
     void actualizarDatosUsuario(Usuario usuario);
     void deleteUser(Usuario user);
     Usuario byIdUser(int idUser);
