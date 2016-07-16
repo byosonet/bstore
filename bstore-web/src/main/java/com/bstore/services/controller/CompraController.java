@@ -76,6 +76,19 @@ public class CompraController {
 		return "detalleCompra";
 	   }
 	
+	@RequestMapping(value="/historial/compras",method = RequestMethod.GET)
+	   public String historialCompras(Model model, 
+			   HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("Cargando historial de compras: "+NAME_CONTROLLER);
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			log.info("Procesando historial de compra...");
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "historialCompra";
+	   }
+	
 	@RequestMapping(value="/pagar/publicacion/{id}",method = RequestMethod.POST)
 	   public String pagarPublicacion(Model model, @PathVariable("id") int id, 
 			   HttpServletRequest request, HttpServletResponse response) throws IOException{
