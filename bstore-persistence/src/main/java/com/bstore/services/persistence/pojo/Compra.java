@@ -17,6 +17,20 @@ public class Compra implements java.io.Serializable {
 	private FormaPago formaPago;
 	private BigDecimal precioCompra;
 	private Date fechaCompra;
+	
+	private String idConekta;
+	private String liveMode;
+	private String status;
+	private String currencyCard;
+	private String descriptionCard;
+	private String nameCard;
+	private String last4Card;
+	private String brandCard;
+	private String authCodeCard;
+	private String amountCard; 
+	private String nameUser;
+	private String phoneUser;
+	private String emailUser;
 
 	public Compra() {
 	}
@@ -26,11 +40,27 @@ public class Compra implements java.io.Serializable {
 		this.fechaCompra = fechaCompra;
 	}
 
-	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra) {
+	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra,
+			String idConekta, String livemode, String status, String currencyCard, String descriptionCard,
+			String nameCard, String last4Card, String brandCard, String authCodeCard, String amountCard,
+			String nameUser, String phoneUser, String emailUser) {
 		this.id = id;
 		this.formaPago = formaPago;
 		this.precioCompra = precioCompra;
 		this.fechaCompra = fechaCompra;
+		this.idConekta = idConekta;
+		this.liveMode = livemode;
+		this.status = status;
+		this.currencyCard = currencyCard;
+		this.descriptionCard = descriptionCard;
+		this.nameCard = nameCard;
+		this.last4Card = last4Card;
+		this.brandCard = brandCard;
+		this.authCodeCard = authCodeCard;
+		this.amountCard = amountCard;
+		this.nameUser = nameUser;
+		this.phoneUser = phoneUser;
+		this.emailUser = emailUser;	
 	}
 
 	public CompraId getId() {
@@ -64,8 +94,110 @@ public class Compra implements java.io.Serializable {
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
-	
-	
+
+	public String getIdConekta() {
+		return idConekta;
+	}
+
+	public void setIdConekta(String idConekta) {
+		this.idConekta = idConekta;
+	}
+
+	public String getLiveMode() {
+		return liveMode;
+	}
+
+	public void setLiveMode(String liveMode) {
+		this.liveMode = liveMode;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getCurrencyCard() {
+		return currencyCard;
+	}
+
+	public void setCurrencyCard(String currencyCard) {
+		this.currencyCard = currencyCard;
+	}
+
+	public String getDescriptionCard() {
+		return descriptionCard;
+	}
+
+	public void setDescriptionCard(String descriptionCard) {
+		this.descriptionCard = descriptionCard;
+	}
+
+	public String getNameCard() {
+		return nameCard;
+	}
+
+	public void setNameCard(String nameCard) {
+		this.nameCard = nameCard;
+	}
+
+	public String getLast4Card() {
+		return last4Card;
+	}
+
+	public void setLast4Card(String last4Card) {
+		this.last4Card = last4Card;
+	}
+
+	public String getBrandCard() {
+		return brandCard;
+	}
+
+	public void setBrandCard(String brandCard) {
+		this.brandCard = brandCard;
+	}
+
+	public String getAuthCodeCard() {
+		return authCodeCard;
+	}
+
+	public void setAuthCodeCard(String authCodeCard) {
+		this.authCodeCard = authCodeCard;
+	}
+
+	public String getAmountCard() {
+		return amountCard;
+	}
+
+	public void setAmountCard(String amountCard) {
+		this.amountCard = amountCard;
+	}
+
+	public String getNameUser() {
+		return nameUser;
+	}
+
+	public void setNameUser(String nameUser) {
+		this.nameUser = nameUser;
+	}
+
+	public String getPhoneUser() {
+		return phoneUser;
+	}
+
+	public void setPhoneUser(String phoneUser) {
+		this.phoneUser = phoneUser;
+	}
+
+	public String getEmailUser() {
+		return emailUser;
+	}
+
+	public void setEmailUser(String emailUser) {
+		this.emailUser = emailUser;
+	}
 
 	@Override
 	public int hashCode() {
