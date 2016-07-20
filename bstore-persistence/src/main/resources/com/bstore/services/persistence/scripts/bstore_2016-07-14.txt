@@ -362,6 +362,7 @@ INSERT INTO `USUARIO` (`ID`, `NOMBRE`, `A_PATERNO`, `A_MATERNO`, `SEXO`, `FECHA_
 VALUES
 	(1,'GUSTAVO','TREJO','ARMENTA','M','2015-08-31 11:13:43','2016-06-11 21:49:39','SI','gtrejo.armentar@gmail.com','vLtJFzHPf1c=','1986-04-03','INGENIERO',NULL,'GTREJOX',1,1,NULL),
 	(3,'GUSTAVO','TREJO','ARMENTA','M','2016-06-11 21:54:56','2016-07-14 21:28:55','SI','gtrejo.armenta@gmail.com','cgbnZpKLzCo=','1987-10-13','PROFESIONISTA',NULL,'gtrejo.armenta',1,2,'5547559495'),
+	(4,'Pude','Pude',NULL,'M','2016-06-11 22:24:01','2016-06-13 19:04:53','SI','pude@bstore','3+FR9E2doQY=','1900-01-01','INGENIERO',NULL,'pude',1,1, NULL),
 	(5,'GUSTAVO ULISES TREJO ARMENTA','Dev','ARMENTA','M','2016-06-11 22:21:50','2016-06-11 22:22:04','SI','gtrejo.armentav@gmail.com','vLtJFzHPf1c=','1900-01-01','INGENIERO',NULL,'gtrejow',1,2,NULL),
 	(6,'Desarrollo X','Librero','Java','M','2016-06-11 22:24:01','2016-07-14 20:32:37','SI','dev@bstore','3+FR9E2doQY=','1991-01-31','PROFESIONISTA',NULL,'gtrejo',1,1,NULL);
 
