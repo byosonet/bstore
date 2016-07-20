@@ -152,7 +152,6 @@ public class CompraController {
 	            if(responseCharge.getStatus()!=null && responseCharge.getStatus().equalsIgnoreCase(STATUS_PAID)){
 	            	log.info("Mensaje de Conekta: "+responseCharge.getStatus().toUpperCase());
 	            	Compra compra = new Compra();
-	            	compra.setFechaCompra(new Date());
 	            	List<FormaPago> listPago = this.formaPagoService.getAll();
 	            	for(FormaPago formaPago : listPago){
 	            		if(formaPago.getFormaPago().equalsIgnoreCase(tipoTarjeta)){
@@ -166,6 +165,23 @@ public class CompraController {
 	            	idCompra.setIdPublicacion(publicacion.getId());
 	            	idCompra.setIdUsuario(usuario.getId());
 	            	compra.setId(idCompra);
+	            	
+	            	//Agregando datos del response de conekta al objeto compra
+	            	compra.setIdConekta(responseCharge.getId());
+	            	compra.setLiveMode(String.valueOf(responseCharge.isLivemode()));
+	            	compra.setStatus(responseCharge.getStatus());
+	            	compra.setCurrencyCard(responseCharge.getCurrency());
+	            	compra.setDescriptionCard(responseCharge.getDescription());
+	            	compra.setNameCard(responseCharge.getPaymentMethod().getName());
+	            	compra.setLast4Card(responseCharge.getPaymentMethod().getLast4());
+	            	compra.setBrandCard(responseCharge.getPaymentMethod().getBrand());
+	            	compra.setAuthCodeCard(responseCharge.getPaymentMethod().getAuthCode());
+	            	compra.setAmountCard(String.valueOf(responseCharge.getAmount()));
+	            	compra.setNameUser(responseCharge.getDetails().getName());
+	            	compra.setPhoneUser(responseCharge.getDetails().getPhone());
+	            	compra.setEmailUser(responseCharge.getDetails().getEmail());
+	            	
+	            	compra.setFechaCompra(new Date());
 	            	this.compraService.crearCompra(compra);
 	            	log.info("Compra finalizada con exito: "+compra.toString());
 	            }else{

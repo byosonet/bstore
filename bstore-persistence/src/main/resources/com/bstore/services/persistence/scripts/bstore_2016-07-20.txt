@@ -1,0 +1,388 @@
+# ************************************************************
+# Sequel Pro SQL dump
+# Versión 4541
+#
+# http://www.sequelpro.com/
+# https://github.com/sequelpro/sequelpro
+#
+# Host: 127.0.0.1 (MySQL 5.5.49)
+# Base de datos: bstore
+# Tiempo de Generación: 2016-07-20 05:09:01 +0000
+# ************************************************************
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
+
+
+# Volcado de tabla COLECCION
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `COLECCION`;
+
+CREATE TABLE `COLECCION` (
+  `ID` int(11) NOT NULL,
+  `ESTATUS` int(1) NOT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  `NOMBRE_MOSTRAR` varchar(50) DEFAULT NULL,
+  `RANKING` int(6) DEFAULT NULL,
+  `PORTADA_URL` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_COLECCION_NOMBRE` (`NOMBRE`),
+  KEY `FK_COLECCION_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `COLECCION` WRITE;
+/*!40000 ALTER TABLE `COLECCION` DISABLE KEYS */;
+
+INSERT INTO `COLECCION` (`ID`, `ESTATUS`, `NOMBRE`, `FECHA_UMODIF`, `ID_USUARIO_UMODIF`, `NOMBRE_MOSTRAR`, `RANKING`, `PORTADA_URL`)
+VALUES
+	(1,1,'Novohispanorum','2016-03-04 23:00:00',1,'Novohispanorum',0,'http://www.edicionesquivira.com/images/portfolio/vign7.jpg'),
+	(2,1,'Filosofía','2016-03-04 23:00:00',1,'Filosofía',0,'http://www.edicionesquivira.com/images/portfolio/vign5.jpg'),
+	(3,1,'Herramientas del pensar','2016-03-04 23:00:00',1,'Herramientas del pensar',0,' http://www.edicionesquivira.com/images/portfolio/vign8.jpg'),
+	(4,1,'Tusitala','2016-03-04 23:00:00',1,'Tusitala',0,'http://www.edicionesquivira.com/images/portfolio/vign9.jpg'),
+	(5,1,'Lúdica','2016-03-04 23:00:00',1,'Lúdica',0,'http://www.edicionesquivira.com/images/portfolio/vign10.jpg'),
+	(6,1,'Historia','2016-03-04 23:00:00',1,'Historia',0,'http://www.edicionesquivira.com/images/portfolio/vign11.jpg');
+
+/*!40000 ALTER TABLE `COLECCION` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla COMPRA
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `COMPRA`;
+
+CREATE TABLE `COMPRA` (
+  `ID` int(11) unsigned NOT NULL AUTO_INCREMENT,
+  `ID_USUARIO` int(11) NOT NULL,
+  `ID_PUBLICACION` int(11) NOT NULL,
+  `ID_FORMA_PAGO` int(11) DEFAULT NULL,
+  `PRECIO_COMPRA` decimal(5,2) DEFAULT NULL,
+  `FECHA_COMPRA` datetime NOT NULL,
+  `ID_CONEKTA` varchar(50) DEFAULT NULL,
+  `LIVEMODE` varchar(10) DEFAULT NULL,
+  `STATUS` varchar(15) DEFAULT NULL,
+  `CURRENCY_CARD` varchar(5) DEFAULT NULL,
+  `DESCRIPTION_CARD` varchar(100) DEFAULT NULL,
+  `NAME_CARD` varchar(100) DEFAULT NULL,
+  `LAST4_CARD` varchar(5) DEFAULT NULL,
+  `BRAND_CARD` varchar(5) DEFAULT NULL,
+  `AUTH_CODE_CARD` varchar(15) DEFAULT NULL,
+  `AMOUNT_CARD` varchar(20) DEFAULT NULL,
+  `NAME_USER` varchar(100) DEFAULT NULL,
+  `PHONE_USER` varchar(15) DEFAULT NULL,
+  `EMAIL_USER` varchar(40) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `COMPRA` WRITE;
+/*!40000 ALTER TABLE `COMPRA` DISABLE KEYS */;
+
+INSERT INTO `COMPRA` (`ID`, `ID_USUARIO`, `ID_PUBLICACION`, `ID_FORMA_PAGO`, `PRECIO_COMPRA`, `FECHA_COMPRA`, `ID_CONEKTA`, `LIVEMODE`, `STATUS`, `CURRENCY_CARD`, `DESCRIPTION_CARD`, `NAME_CARD`, `LAST4_CARD`, `BRAND_CARD`, `AUTH_CODE_CARD`, `AMOUNT_CARD`, `NAME_USER`, `PHONE_USER`, `EMAIL_USER`)
+VALUES
+	(6,3,6,1,90.00,'2016-07-20 00:04:46','578f0669a97880be120089aa','false','paid','MXN','ISBN: 978-607-9153-14-4','GUSTAVO TREJO','4242','visa','068127','9000','GUSTAVO TREJO','5542558485','gtrejo.armenta@gmail.com'),
+	(7,3,4,1,340.00,'2016-07-20 00:07:27','578f070ea97880cc5800890e','false','paid','MXN','ISBN: 978-607-9153-15-1','GUSTAVO TREJO','4242','visa','108411','34000','GUSTAVO TREJO','5542558485','gtrejo.armenta@gmail.com');
+
+/*!40000 ALTER TABLE `COMPRA` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla EDITORIAL
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `EDITORIAL`;
+
+CREATE TABLE `EDITORIAL` (
+  `ID` int(11) NOT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `ESTATUS` int(1) NOT NULL,
+  `NOMBRE` varchar(100) NOT NULL,
+  `RFC` varchar(13) DEFAULT NULL,
+  `TELEFONO` varchar(30) DEFAULT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_EDIT_NOMBRE` (`NOMBRE`),
+  KEY `FK_EDITORIAL_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `EDITORIAL` WRITE;
+/*!40000 ALTER TABLE `EDITORIAL` DISABLE KEYS */;
+
+INSERT INTO `EDITORIAL` (`ID`, `EMAIL`, `ESTATUS`, `NOMBRE`, `RFC`, `TELEFONO`, `FECHA_UMODIF`, `ID_USUARIO_UMODIF`)
+VALUES
+	(1,'admin@email.com',1,'Ediciones Quivira, 2013','PPPP00000000','5500000000','2016-03-04 23:00:00',1),
+	(2,'admin@email.com',1,'Ediciones Quivira, 2014','PPPP00000000','5500000000','2016-03-04 23:00:00',1),
+	(3,'pudeeperalta@gmail.com',0,'Editorial Prueba','EITT873687G31','5500000000','2016-07-14 20:45:28',1);
+
+/*!40000 ALTER TABLE `EDITORIAL` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla FORMA_PAGO
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `FORMA_PAGO`;
+
+CREATE TABLE `FORMA_PAGO` (
+  `ID` int(11) NOT NULL,
+  `FORMA_PAGO` varchar(45) DEFAULT NULL,
+  `STATUS` int(1) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `FORMA_PAGO` WRITE;
+/*!40000 ALTER TABLE `FORMA_PAGO` DISABLE KEYS */;
+
+INSERT INTO `FORMA_PAGO` (`ID`, `FORMA_PAGO`, `STATUS`)
+VALUES
+	(1,'VISA',1),
+	(2,'MASTERCARD',1),
+	(3,'AMEX',0),
+	(4,'OXXO',0),
+	(10,'Nueva forma de pago',1);
+
+/*!40000 ALTER TABLE `FORMA_PAGO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla FUENTE
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `FUENTE`;
+
+CREATE TABLE `FUENTE` (
+  `ID` int(11) NOT NULL,
+  `NOMBRE_BIBLIOTECA` varchar(50) NOT NULL,
+  `PAGINA_WEB` varchar(50) DEFAULT NULL,
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `TELEFONO` varchar(30) DEFAULT NULL,
+  `ESTATUS` int(1) NOT NULL,
+  `RFC` varchar(13) DEFAULT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  `AUTOR` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  KEY `FK_FUENTE_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `FUENTE` WRITE;
+/*!40000 ALTER TABLE `FUENTE` DISABLE KEYS */;
+
+INSERT INTO `FUENTE` (`ID`, `NOMBRE_BIBLIOTECA`, `PAGINA_WEB`, `EMAIL`, `TELEFONO`, `ESTATUS`, `RFC`, `FECHA_UMODIF`, `ID_USUARIO_UMODIF`, `AUTOR`)
+VALUES
+	(1,'VACONCELOS','www.vasconcelos.com.mx','user@email.com','5500000000',1,'XXXX00000000','2016-03-04 23:00:00',1,'Crescenciano Grave Tirado'),
+	(2,'UNAM','www.unam.com.mx','unam@email.com','5500000000',1,'YYYY00000000','2016-03-04 23:00:00',1,'Mario Magallón Anaya'),
+	(100,'BibliotecaPrueba','www.prueba.com','pudeeperalta@gmail.com','7729273849',1,'EIPP886382M53','2016-07-14 20:45:28',0,'AutorPrueba');
+
+/*!40000 ALTER TABLE `FUENTE` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla PERFIL
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PERFIL`;
+
+CREATE TABLE `PERFIL` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCRIPCION` varchar(300) DEFAULT NULL,
+  `NOMBRE` varchar(50) NOT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_PERFIL` (`NOMBRE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `PERFIL` WRITE;
+/*!40000 ALTER TABLE `PERFIL` DISABLE KEYS */;
+
+INSERT INTO `PERFIL` (`ID`, `DESCRIPCION`, `NOMBRE`, `FECHA_UMODIF`)
+VALUES
+	(1,'ADMIN','ADMIN','1986-04-03 00:00:00'),
+	(2,'LECTOR','LECTOR','1986-04-03 00:00:00');
+
+/*!40000 ALTER TABLE `PERFIL` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla PERFIL_COLECCION
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PERFIL_COLECCION`;
+
+CREATE TABLE `PERFIL_COLECCION` (
+  `ID_PERFIL` int(11) NOT NULL,
+  `COLECCION_ID` int(11) NOT NULL,
+  KEY `fk_PERFIL_COLECCION_COLECCION1_idx` (`COLECCION_ID`),
+  CONSTRAINT `fk_PERFIL_COLECCION_COLECCION1` FOREIGN KEY (`COLECCION_ID`) REFERENCES `COLECCION` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `PERFIL_COLECCION` WRITE;
+/*!40000 ALTER TABLE `PERFIL_COLECCION` DISABLE KEYS */;
+
+INSERT INTO `PERFIL_COLECCION` (`ID_PERFIL`, `COLECCION_ID`)
+VALUES
+	(1,1),
+	(1,2),
+	(2,1),
+	(2,2);
+
+/*!40000 ALTER TABLE `PERFIL_COLECCION` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla PLANTILLA
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PLANTILLA`;
+
+CREATE TABLE `PLANTILLA` (
+  `ID_TEMPLATE` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCRIPTION` varchar(255) DEFAULT NULL,
+  `SUBJECT` varchar(255) DEFAULT NULL,
+  `HTML` text,
+  PRIMARY KEY (`ID_TEMPLATE`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `PLANTILLA` WRITE;
+/*!40000 ALTER TABLE `PLANTILLA` DISABLE KEYS */;
+
+INSERT INTO `PLANTILLA` (`ID_TEMPLATE`, `DESCRIPTION`, `SUBJECT`, `HTML`)
+VALUES
+	(1,'REGISTRO DE USUARIO','Gracias por registrate en nuestra pï¿½gina, Solo a Dios la Gloria.','<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n<title></title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n<style type=\"text/css\">\r\n  a{\r\n   color:#ffffff; \r\n  }\r\n</style>\r\n</head>\r\n<body>\r\n<div style=\"width:100%;\" align=\"center\">\r\n<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n  <tr>\r\n        <br>\r\n        <br>\r\n        <table width=\"583\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\"><img src=\"http://imageshack.com/a/img910/9964/oa9XQ1.jpg\" width=\"583\" height=\"118\" style=\"border-radius: 5px\"></td>\r\n          </tr>\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\" bgcolor=\"#FFFFFF\" style=\"background-color:#FFFFFF;\">\r\n              <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                  <tr>\r\n                    <td align=\"left\" valign=\"top\">\r\n                      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                          <tr>\r\n                            <td align=\"center\" valign=\"top\">\r\n                              <div style=\"text-align:center;\"><img style=\"height: 200px; width: 200px;\" src=\"http://upload.wikimedia.org/wikipedia/commons/f/f7/PRESBITERIANA_1.jpg\"></div>\r\n                            	<div style=\"color:#245da5; font-family:Times New Roman, Times, serif; font-size:25px;\">Himnario Presbiteriano de M&eacute;xico.</div>\r\n                            </td>\r\n                          </tr>\r\n                        \r\n                          <tr>\r\n                            <td align=\"left\" valign=\"top\" style=\"font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#525252;\">\r\n                              <br>\r\n                              <div><p style=\"text-align:justify\">Hola <b><u>$nombre</u></b>, te damos la bienvenida al Himnario Presbiteriano en L&iacute;nea \"S&oacute;lo a Dios la Gloria\", gracias por registrarte.</p></div>\r\n                              <br><p style=\"text-align:justify\">\"La Iglesia Nacional Presbiteriana de M&eacute;xico, es una organizaci&oacute;n cristiana presbiteriana que agrupa a m&aacute;s de 6,000 iglesias y cuenta con 437,690 miembros seg&uacute;n el Censo de Poblaci&oacute;n y Vivienda 2010 en M&eacute;xico. Puede considerarse la denominaci&oacute;n presbiteriana m&aacute;s grande del pa&iacute;s y como la segunda denominaci&oacute;n protestante m&aacute;s grande despu&eacute;s de las Asambleas de Dios.\"</p><br>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                        <td height=\"50\" valign=\"middle\" style=\"background-color:#BFE1F7;color:#000000;border-radius: 5px;font-size:11px; font-family:Arial, Helvetica, sans-serif;text-align:center\">\r\n                            <b>Cont&aacute;ctanos por correo  electr&oacute;nico: </b> godweb.mx@gmail.com.  <b> <p>Web desarrollada por:</b> \r\n                            <a href=\"https://mx.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262\">Ulysses M@c</a> </p>\r\n                        </td>\r\n                      </tr>\r\n                      </table>\r\n                    </td>\r\n                  </tr>\r\n              </table>\r\n               </td>\r\n            </tr>\r\n        </table>\r\n        <br>\r\n        <br>\r\n     </tr>\r\n</table>\r\n</div>\r\n</body>\r\n</html>'),
+	(2,'RECUPERAR PASSWORD','Recuperaciï¿½n de contraseï¿½a, Solo a Dios la Gloria.','<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n<title></title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n<style type=\"text/css\">\r\n  a{\r\n   color:#ffffff; \r\n  }\r\n</style>\r\n</head>\r\n<body>\r\n<div style=\"width:100%;\" align=\"center\">\r\n<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n  <tr>\r\n        <br>\r\n        <br>\r\n        <table width=\"583\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\"><img src=\"http://imageshack.com/a/img910/9964/oa9XQ1.jpg\" width=\"583\" height=\"118\" style=\"border-radius: 5px\"></td>\r\n          </tr>\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\" bgcolor=\"#FFFFFF\" style=\"background-color:#FFFFFF;\">\r\n              <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                  <tr>\r\n                    <td align=\"left\" valign=\"top\">\r\n                      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                          <tr>\r\n                            <td align=\"center\" valign=\"top\">\r\n                              <div style=\"text-align:center;\"><img style=\"height: 200px; width: 200px;\" src=\"http://upload.wikimedia.org/wikipedia/commons/f/f7/PRESBITERIANA_1.jpg\"></div>\r\n                            	<div style=\"color:#245da5; font-family:Times New Roman, Times, serif; font-size:25px;\">Himnario Presbiteriano de M&eacute;xico.</div>\r\n                            </td>\r\n                          </tr>\r\n                        \r\n                          <tr>\r\n                            <td align=\"left\" valign=\"top\" style=\"font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#525252;\">\r\n                              <br>\r\n                              <div><p style=\"text-align:justify\">Hola tu password para ingresar al sistema es: <b><u>$tuclave.</u></b></p></div>\r\n                              <br><p style=\"text-align:justify\">\"La Iglesia Nacional Presbiteriana de M&eacute;xico, es una organizaci&oacute;n cristiana presbiteriana que agrupa a m&aacute;s de 6,000 iglesias y cuenta con 437,690 miembros seg&uacute;n el Censo de Poblaci&oacute;n y Vivienda 2010 en M&eacute;xico. Puede considerarse la denominaci&oacute;n presbiteriana m&aacute;s grande del pa&iacute;s y como la segunda denominaci&oacute;n protestante m&aacute;s grande despu&eacute;s de las Asambleas de Dios.\"</p><br>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                        <td height=\"50\" valign=\"middle\" style=\"background-color:#BFE1F7;color:#000000;border-radius: 5px;font-size:11px; font-family:Arial, Helvetica, sans-serif;text-align:center\">\r\n                            <b>Cont&aacute;ctanos por correo  electr&oacute;nico: </b> godweb.mx@gmail.com.  <b> <p>Web desarrollada por:</b> \r\n                            <a href=\"https://mx.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262\">Ulysses M@c</a> </p>\r\n                        </td>\r\n                      </tr>\r\n                      </table>\r\n                    </td>\r\n                  </tr>\r\n              </table>\r\n               </td>\r\n            </tr>\r\n        </table>\r\n        <br>\r\n        <br>\r\n     </tr>\r\n</table>\r\n</div>\r\n</body>\r\n</html>'),
+	(3,'CONTACTO A SISTEMA','NO APLICA','<html xmlns=\"http://www.w3.org/1999/xhtml\">\r\n<head>\r\n<title></title>\r\n<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n<style type=\"text/css\">\r\na {\r\n    color: #FFFFFF;\r\n}\r\n</style>\r\n</head>\r\n<body link=\"white\">\r\n<div style=\"width:100%;\" align=\"center\">\r\n<table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n  <tr>\r\n        <br>\r\n        <br>\r\n        <table width=\"583\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\"><img src=\"http://imageshack.com/a/img910/9964/oa9XQ1.jpg\" width=\"583\" height=\"118\" style=\"border-radius: 5px\"></td>\r\n          </tr>\r\n          <tr>\r\n            <td align=\"left\" valign=\"top\" bgcolor=\"#FFFFFF\" style=\"background-color:#FFFFFF;\">\r\n              <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                  <tr>\r\n                    <td align=\"left\" valign=\"top\">\r\n                      <table width=\"100%\" border=\"0\" cellspacing=\"0\" cellpadding=\"0\">\r\n                          <tr>\r\n                            <td align=\"center\" valign=\"top\">\r\n                              <div style=\"text-align:center;\"><img style=\"height: 200px; width: 200px;\" src=\"http://upload.wikimedia.org/wikipedia/commons/f/f7/PRESBITERIANA_1.jpg\"></div>\r\n                            	<div style=\"color:#245da5; font-family:Times New Roman, Times, serif; font-size:25px;\">Himnario Presbiteriano de M&eacute;xico.</div>\r\n                            </td>\r\n                          </tr>\r\n                        \r\n                          <tr>\r\n                            <td align=\"left\" valign=\"top\" style=\"font-family:Arial, Helvetica, sans-serif; font-size:12px; color:#525252;\">\r\n                              <br>\r\n                              <div><p style=\"text-align:justify\">\r\n                                    Email de usuario: <b><u>$emailUsuario</u></b><br>\r\n                                    Nombre: <b><u>$nombre.</u></b><br><br>\r\n                                    Asunto: $asunto\r\n\r\n                              </p></div>\r\n                              <br>\r\n<p>Comentarios Enviados: <b>$body</b></p>\r\n<p style=\"text-align:justify\">\"La Iglesia Nacional Presbiteriana de M&eacute;xico, es una organizaci&oacute;n cristiana presbiteriana que agrupa a m&aacute;s de 6,000 iglesias y cuenta con 437,690 miembros seg&uacute;n el Censo de Poblaci&oacute;n y Vivienda 2010 en M&eacute;xico. Puede considerarse la denominaci&oacute;n presbiteriana m&aacute;s grande del pa&iacute;s y como la segunda denominaci&oacute;n protestante m&aacute;s grande despu&eacute;s de las Asambleas de Dios.\"</p><br>\r\n                            </td>\r\n                        </tr>\r\n                        <tr>\r\n                        <td height=\"50\" valign=\"middle\" style=\"background-color:#BFE1F7;color:#000000;border-radius: 5px;font-size:11px; font-family:Arial, Helvetica, sans-serif;text-align:center\">\r\n                            <b>Cont&aacute;ctanos por correo  electr&oacute;nico: </b> godweb.mx@gmail.com.  <b> <p>Web desarrollada por:</b> \r\n                            <a href=\"https://mx.linkedin.com/pub/gustavo-ulises-trejo-armenta/94/aa6/262\">Ulysses M@c</a> </p>\r\n                        </td>\r\n                      </tr>\r\n                      </table>\r\n                    </td>\r\n                  </tr>\r\n              </table>\r\n               </td>\r\n            </tr>\r\n        </table>\r\n        <br>\r\n        <br>\r\n     </tr>\r\n</table>\r\n</div>\r\n</body>\r\n</html>');
+
+/*!40000 ALTER TABLE `PLANTILLA` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla PROPERTIES
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PROPERTIES`;
+
+CREATE TABLE `PROPERTIES` (
+  `ID` int(11) NOT NULL,
+  `KEY` varchar(50) DEFAULT NULL,
+  `VALUE` varchar(100) DEFAULT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `PROPERTIES` WRITE;
+/*!40000 ALTER TABLE `PROPERTIES` DISABLE KEYS */;
+
+INSERT INTO `PROPERTIES` (`ID`, `KEY`, `VALUE`)
+VALUES
+	(1,'max.items.message.buy','5');
+
+/*!40000 ALTER TABLE `PROPERTIES` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla PUBLICACION
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `PUBLICACION`;
+
+CREATE TABLE `PUBLICACION` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `DESCUENTO` decimal(5,2) DEFAULT NULL,
+  `ESTATUS` int(1) NOT NULL,
+  `ISBN` varchar(30) NOT NULL DEFAULT '',
+  `NOMBRE` varchar(100) NOT NULL,
+  `NUMERO_PAGINAS` smallint(6) DEFAULT NULL,
+  `PORTADA` longblob,
+  `PRECIO` decimal(5,2) DEFAULT NULL,
+  `RESUMEN` longtext,
+  `URL_ARCHIVO` varchar(250) NOT NULL,
+  `FECHA_UMODIF` datetime NOT NULL,
+  `ID_USUARIO_UMODIF` int(11) NOT NULL,
+  `ID_COLECCION` int(11) NOT NULL,
+  `USUARIOALTA` int(11) NOT NULL,
+  `ID_FUENTE` int(11) NOT NULL,
+  `ID_EDITORIAL` int(11) NOT NULL,
+  `PORTADA_URL` varchar(200) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_PUBLICACION_NOMBRE` (`NOMBRE`),
+  KEY `FK_PUBLICACION_ID_USUARIO_UMODIF` (`ID_USUARIO_UMODIF`),
+  KEY `FK_PUBLICACION_USUARIOALTA` (`USUARIOALTA`),
+  KEY `FK_PUBLICACION_ID_EDITORIAL` (`ID_EDITORIAL`),
+  CONSTRAINT `FK_PUBLICACION_ID_EDITORIAL` FOREIGN KEY (`ID_EDITORIAL`) REFERENCES `EDITORIAL` (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+LOCK TABLES `PUBLICACION` WRITE;
+/*!40000 ALTER TABLE `PUBLICACION` DISABLE KEYS */;
+
+INSERT INTO `PUBLICACION` (`ID`, `DESCUENTO`, `ESTATUS`, `ISBN`, `NOMBRE`, `NUMERO_PAGINAS`, `PORTADA`, `PRECIO`, `RESUMEN`, `URL_ARCHIVO`, `FECHA_UMODIF`, `ID_USUARIO_UMODIF`, `ID_COLECCION`, `USUARIOALTA`, `ID_FUENTE`, `ID_EDITORIAL`, `PORTADA_URL`)
+VALUES
+	(1,0.00,1,'978-607-9153-14-4','El pensar trágico: un ensayo sobre Nietzsche',300,NULL,50.00,'Nietzsche señaló la esencia trágica del mundo a través de dos impulsos: lo apolíneo y lo dionisíaco. El artista trágico entrega su ser a estas fuerzas para identificarse a sí con lo primigenio. En esta obra se entrelaza la ontología y la metafísica puesto que la obra de Nietzsche abarca la metafísica moderna de Kant y Schopenhauer, mientras profundiza en el pensamiento antiguo de la Grecia clásica. Para el autor, El nacimiento de la tragedia revela la profunda correlación entre el arte y el pensamiento humano, la cual se muestra como una experiencia que engrandece y comunica a los individuos. “El pensamiento es eros y pathos[...] Como toda forma de amor, el pensamiento no sólo discurre dúctil y maleablemente sino que también incurre en excesos y tormentos”. ','http://www.edicionesquivira.com/publicaciones/documento1/','2016-06-05 23:34:21',1,1,1,1,1,'http://www.edicionesquivira.com/images/portfolio/pensar_tragico.jpg'),
+	(2,30.00,1,'978-607-9153-15-1','Filosofía y política mexicana en la Independencia y Revolución',300,NULL,60.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento2/','2016-06-05 23:34:21',1,1,1,2,2,'http://www.edicionesquivira.com/images/portfolio/filosofia_politica.jpg'),
+	(3,0.00,1,'978-607-9153-14-4','El Príncipe mexicano : Subalternidad, historia y Estado',300,NULL,50.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento3/','2016-06-05 23:34:21',1,1,1,1,1,'https://books.google.com/books/content/images/frontcover/T_SGBAAAQBAJ?fife=w300'),
+	(4,0.00,1,'978-607-9153-15-1','Chiapas: la razón ardiente',300,NULL,340.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento1/','2016-06-05 23:34:21',1,2,1,2,2,'https://books.google.com/books/content/images/frontcover/x30vBQAAQBAJ?fife=w300'),
+	(5,12.00,1,'978-607-9153-14-4','Fundamentos de ontología dialéctica',300,NULL,45.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento2/','2016-06-05 23:34:21',1,2,1,2,2,'https://books.google.com/books/content/images/frontcover/C9AZCId31cQC?fife=w300'),
+	(6,0.00,1,'978-607-9153-14-4','Hallazgos filosóficos',300,NULL,90.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento3/','2016-06-05 23:34:21',1,2,1,1,1,'https://books.google.com/books/content/images/frontcover/H1vQ9jKENokC?fife=w300'),
+	(7,21.00,1,'978-607-9153-15-1','El ente y su ser : un estudio lógico-metafísico',300,NULL,120.00,'Científicamente, podría definirse como la capacidad de administrar los recursos internos de un ser físico de forma adaptada a los cambios producidos en su medio, sin que exista una correspondencia directa de causa y efecto entre el ser que administra los recursos y el cambio introducido en el medio por ese ser, sino una asíntota de aproximación al ideal establecido por dicho ser, ideal que nunca llega a su consecución completa por la dinámica del medio.','http://www.edicionesquivira.com/publicaciones/documento1/','2016-06-05 23:34:21',1,3,1,1,1,'https://books.google.com/books/content/images/frontcover/tWNw7qVe1p0C?fife=w300');
+
+/*!40000 ALTER TABLE `PUBLICACION` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+# Volcado de tabla USUARIO
+# ------------------------------------------------------------
+
+DROP TABLE IF EXISTS `USUARIO`;
+
+CREATE TABLE `USUARIO` (
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  `NOMBRE` varchar(50) NOT NULL,
+  `A_PATERNO` varchar(50) NOT NULL,
+  `A_MATERNO` varchar(50) DEFAULT NULL,
+  `SEXO` varchar(1) DEFAULT NULL,
+  `FECHA_ALTA` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `ULT_CONEXION` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  `NOTIFICACIONES` varchar(2) DEFAULT '',
+  `EMAIL` varchar(255) DEFAULT NULL,
+  `PASSWORD` varchar(100) NOT NULL,
+  `NACIMIENTO` date DEFAULT NULL,
+  `ACTIVIDAD` varchar(50) DEFAULT NULL,
+  `FOTO` longblob,
+  `LOGIN` varchar(30) NOT NULL,
+  `ESTATUS` int(1) NOT NULL,
+  `PERFIL_ID` int(11) NOT NULL,
+  `TELEFONO` varchar(15) DEFAULT NULL,
+  PRIMARY KEY (`ID`),
+  UNIQUE KEY `UNQ_USER_LOGIN` (`LOGIN`),
+  KEY `fk_USUARIO_PERFIL1_idx` (`PERFIL_ID`),
+  CONSTRAINT `fk_USUARIO_PERFIL1` FOREIGN KEY (`PERFIL_ID`) REFERENCES `PERFIL` (`ID`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COMMENT='TABLA DE USUARIOS';
+
+LOCK TABLES `USUARIO` WRITE;
+/*!40000 ALTER TABLE `USUARIO` DISABLE KEYS */;
+
+INSERT INTO `USUARIO` (`ID`, `NOMBRE`, `A_PATERNO`, `A_MATERNO`, `SEXO`, `FECHA_ALTA`, `ULT_CONEXION`, `NOTIFICACIONES`, `EMAIL`, `PASSWORD`, `NACIMIENTO`, `ACTIVIDAD`, `FOTO`, `LOGIN`, `ESTATUS`, `PERFIL_ID`, `TELEFONO`)
+VALUES
+	(1,'GUSTAVO','TREJO','ARMENTA','M','2015-08-31 11:13:43','2016-06-11 21:49:39','SI','gtrejo.armentar@gmail.com','vLtJFzHPf1c=','1986-04-03','INGENIERO',NULL,'GTREJOX',1,1,NULL),
+	(3,'GUSTAVO','TREJO','ARMENTA','M','2016-06-11 21:54:56','2016-07-20 00:04:03','SI','gtrejo.armenta@gmail.com','cgbnZpKLzCo=','1987-10-13','PROFESIONISTA',NULL,'gtrejo.armenta',1,2,'5542558485'),
+	(5,'GUSTAVO ULISES TREJO ARMENTA','Dev','ARMENTA','M','2016-06-11 22:21:50','2016-06-11 22:22:04','SI','gtrejo.armentav@gmail.com','vLtJFzHPf1c=','1900-01-01','INGENIERO',NULL,'gtrejow',1,2,NULL),
+	(6,'Desarrollo X','Librero','Java','M','2016-06-11 22:24:01','2016-07-15 22:57:24','SI','dev@bstore','3+FR9E2doQY=','1991-01-31','PROFESIONISTA',NULL,'gtrejo',1,1,NULL);
+
+/*!40000 ALTER TABLE `USUARIO` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
+
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
