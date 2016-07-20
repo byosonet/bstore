@@ -245,7 +245,11 @@ public class Compra implements java.io.Serializable {
 	@Override
 	public String toString() {
 		return "Compra [id=" + id + ", formaPago=" + formaPago + ", precioCompra=" + precioCompra + ", fechaCompra="
-				+ fechaCompra + "]";
+				+ fechaCompra + ", idConekta=" + idConekta + ", liveMode=" + liveMode + ", status=" + status
+				+ ", currencyCard=" + currencyCard + ", descriptionCard=" + descriptionCard + ", nameCard=" + nameCard
+				+ ", last4Card=" + last4Card + ", brandCard=" + brandCard + ", authCodeCard=" + authCodeCard
+				+ ", amountCard=" + amountCard + ", nameUser=" + nameUser + ", phoneUser=" + phoneUser + ", emailUser="
+				+ emailUser + "]";
 	}
 
 }
