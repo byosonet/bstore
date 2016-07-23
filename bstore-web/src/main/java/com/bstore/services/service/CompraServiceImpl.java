@@ -106,5 +106,11 @@ public class CompraServiceImpl implements CompraService {
 		log.info("Generando y gurdando compra en BD: "+compra.toString());
 		this.compraDao.generarCompra(compra);
 	}
+
+	@Override
+	@Transactional
+	public List<Compra> obtenetComprasbyUsuario(int idUsuario) {
+		return this.compraDao.getComprasPorUsuario(idUsuario);
+	}
 	
 }

@@ -31,6 +31,7 @@ public class Compra implements java.io.Serializable {
 	private String nameUser;
 	private String phoneUser;
 	private String emailUser;
+	private Publicacion publicacion;
 
 	public Compra() {
 	}
@@ -197,6 +198,14 @@ public class Compra implements java.io.Serializable {
 
 	public void setEmailUser(String emailUser) {
 		this.emailUser = emailUser;
+	}
+
+	public Publicacion getPublicacion() {
+		return publicacion;
+	}
+
+	public void setPublicacion(Publicacion publicacion) {
+		this.publicacion = publicacion;
 	}
 
 	@Override
