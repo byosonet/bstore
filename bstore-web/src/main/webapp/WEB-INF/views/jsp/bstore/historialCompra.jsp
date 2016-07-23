@@ -5,15 +5,6 @@
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
 <head>
-<script type="text/javascript">
-$(document).ready(function() {
-		$('#tablaDetalleVenta').DataTable({
-			"bPaginate": false,
-	        "bFilter": false,
-	        "bInfo": false
-		});
-});
-</script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Historial de Compras</title>
 </head>
