@@ -183,9 +183,21 @@ public class CompraController {
 	            	
 	            	compra.setFechaCompra(new Date());
 	            	this.compraService.crearCompra(compra);
+
+	            	model.addAttribute("compra", compra);
+	            	model.addAttribute("publicacion", publicacion);
 	            	log.info("Compra finalizada con exito: "+compra.toString());
+	            	
+	      		    Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
+	          	    model.addAttribute("menu",menu);
+	          	    List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
+	          	    model.addAttribute("ultimasCompras",ultimasCompras);
+	          	  
+	          	    session.setAttribute("ultimasCompras", ultimasCompras);
+	          	    session.setAttribute("menu",menu);
 	            }else{
-	            	log.info("Mensaje de error conekta: "+responseCharge.getError().getError1());
+	            	log.info("Mensaje de error conekta 1: "+responseCharge.getError().getError1());
+	            	log.info("Mensaje de error conekta 2: "+responseCharge.getError().getError2());
 	            	return "pagoFallido";
 	            }
 	        } catch (Exception e) {
@@ -193,15 +205,6 @@ public class CompraController {
 	            e.printStackTrace();
 	            return "pagoFallido";
 	        } 
-      	  
-		  Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
-      	  model.addAttribute("menu",menu);
-      	  
-      	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-      	  model.addAttribute("ultimasCompras",ultimasCompras);
-      	  
-      	  session.setAttribute("ultimasCompras", ultimasCompras);
-      	  session.setAttribute("menu",menu);
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}

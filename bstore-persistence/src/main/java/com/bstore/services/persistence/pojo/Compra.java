@@ -203,10 +203,22 @@ public class Compra implements java.io.Serializable {
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((amountCard == null) ? 0 : amountCard.hashCode());
+		result = prime * result + ((authCodeCard == null) ? 0 : authCodeCard.hashCode());
+		result = prime * result + ((brandCard == null) ? 0 : brandCard.hashCode());
+		result = prime * result + ((currencyCard == null) ? 0 : currencyCard.hashCode());
+		result = prime * result + ((descriptionCard == null) ? 0 : descriptionCard.hashCode());
+		result = prime * result + ((emailUser == null) ? 0 : emailUser.hashCode());
 		result = prime * result + ((fechaCompra == null) ? 0 : fechaCompra.hashCode());
-		result = prime * result + ((formaPago == null) ? 0 : formaPago.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idConekta == null) ? 0 : idConekta.hashCode());
+		result = prime * result + ((last4Card == null) ? 0 : last4Card.hashCode());
+		result = prime * result + ((liveMode == null) ? 0 : liveMode.hashCode());
+		result = prime * result + ((nameCard == null) ? 0 : nameCard.hashCode());
+		result = prime * result + ((nameUser == null) ? 0 : nameUser.hashCode());
+		result = prime * result + ((phoneUser == null) ? 0 : phoneUser.hashCode());
 		result = prime * result + ((precioCompra == null) ? 0 : precioCompra.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -219,37 +231,92 @@ public class Compra implements java.io.Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Compra other = (Compra) obj;
+		if (amountCard == null) {
+			if (other.amountCard != null)
+				return false;
+		} else if (!amountCard.equals(other.amountCard))
+			return false;
+		if (authCodeCard == null) {
+			if (other.authCodeCard != null)
+				return false;
+		} else if (!authCodeCard.equals(other.authCodeCard))
+			return false;
+		if (brandCard == null) {
+			if (other.brandCard != null)
+				return false;
+		} else if (!brandCard.equals(other.brandCard))
+			return false;
+		if (currencyCard == null) {
+			if (other.currencyCard != null)
+				return false;
+		} else if (!currencyCard.equals(other.currencyCard))
+			return false;
+		if (descriptionCard == null) {
+			if (other.descriptionCard != null)
+				return false;
+		} else if (!descriptionCard.equals(other.descriptionCard))
+			return false;
+		if (emailUser == null) {
+			if (other.emailUser != null)
+				return false;
+		} else if (!emailUser.equals(other.emailUser))
+			return false;
 		if (fechaCompra == null) {
 			if (other.fechaCompra != null)
 				return false;
 		} else if (!fechaCompra.equals(other.fechaCompra))
-			return false;
-		if (formaPago == null) {
-			if (other.formaPago != null)
-				return false;
-		} else if (!formaPago.equals(other.formaPago))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (idConekta == null) {
+			if (other.idConekta != null)
+				return false;
+		} else if (!idConekta.equals(other.idConekta))
+			return false;
+		if (last4Card == null) {
+			if (other.last4Card != null)
+				return false;
+		} else if (!last4Card.equals(other.last4Card))
+			return false;
+		if (liveMode == null) {
+			if (other.liveMode != null)
+				return false;
+		} else if (!liveMode.equals(other.liveMode))
+			return false;
+		if (nameCard == null) {
+			if (other.nameCard != null)
+				return false;
+		} else if (!nameCard.equals(other.nameCard))
+			return false;
+		if (nameUser == null) {
+			if (other.nameUser != null)
+				return false;
+		} else if (!nameUser.equals(other.nameUser))
+			return false;
+		if (phoneUser == null) {
+			if (other.phoneUser != null)
+				return false;
+		} else if (!phoneUser.equals(other.phoneUser))
+			return false;
 		if (precioCompra == null) {
 			if (other.precioCompra != null)
 				return false;
 		} else if (!precioCompra.equals(other.precioCompra))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Compra [id=" + id + ", formaPago=" + formaPago + ", precioCompra=" + precioCompra + ", fechaCompra="
-				+ fechaCompra + ", idConekta=" + idConekta + ", liveMode=" + liveMode + ", status=" + status
-				+ ", currencyCard=" + currencyCard + ", descriptionCard=" + descriptionCard + ", nameCard=" + nameCard
-				+ ", last4Card=" + last4Card + ", brandCard=" + brandCard + ", authCodeCard=" + authCodeCard
-				+ ", amountCard=" + amountCard + ", nameUser=" + nameUser + ", phoneUser=" + phoneUser + ", emailUser="
-				+ emailUser + "]";
+		return "Compra [id=" + id + ", precioCompra=" + precioCompra + ", fechaCompra=" + fechaCompra + "]";
 	}
 
 }

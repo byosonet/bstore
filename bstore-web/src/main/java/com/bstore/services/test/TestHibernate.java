@@ -33,13 +33,14 @@ public class TestHibernate {
         System.out.println(" -- Buscando compra:::");
         
         CompraId id = new CompraId();
-        id.setIdPublicacion(1);
-        id.setIdUsuario(1);
+        id.setIdPublicacion(5);
+        id.setIdUsuario(3);
         
         Compra c = compra.getCompra(id);
         
         System.out.println(" -- Compra id: "+c.getId());
         System.out.println(" -- Compra id: "+c.getFormaPago().getFormaPago());
+        System.out.println(" -- Compra: "+c.toString());
         
         
         PublicacionDao publicacion = (PublicacionDaoImpl) context.getBean("publicacionDao");
