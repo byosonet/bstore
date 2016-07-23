@@ -83,6 +83,22 @@ public class CompraController {
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			log.info("Procesando historial de compra...");
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			List<Compra> mapaCompras = new ArrayList<Compra>();
+			List<Compra> listaCompras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
+			if(listaCompras!=null && listaCompras.size()>0){
+				for(Compra buy: listaCompras){
+					Publicacion pub = this.publicacionService.getPublicacion(buy.getId().getIdPublicacion());
+					if(pub!=null){
+						log.info("compra id: "+"id: "+buy.getId()+" fecha: "+buy.getFechaCompra());
+						log.info("pub id: "+"id: "+pub.getId());
+						buy.setPublicacion(pub);
+						mapaCompras.add(buy);
+					}
+				}
+			}
+			log.info("Total de compras encontradas: "+mapaCompras.size());
+			model.addAttribute("mapaCompras", mapaCompras);
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -100,8 +116,6 @@ public class CompraController {
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 		  Usuario usuario = (Usuario) session.getAttribute("usuario");
 		  Publicacion publicacion = this.publicacionService.getPublicacion(id);
-		  
-		  String tipoTarjeta = request.getParameter("visa") != null?TYPE_CARD_VISA:TYPE_CARD_MASTERCARD;
 		  /*String nombre = request.getParameter("nombre");
 		  String numeroTarjeta = request.getParameter("numeroTarjeta");
 		  String cvv = request.getParameter("cvv");
@@ -154,6 +168,7 @@ public class CompraController {
 	            	Compra compra = new Compra();
 	            	List<FormaPago> listPago = this.formaPagoService.getAll();
 	            	for(FormaPago formaPago : listPago){
+	            		String tipoTarjeta = responseCharge.getPaymentMethod().getBrand().equalsIgnoreCase("visa")?TYPE_CARD_VISA:TYPE_CARD_MASTERCARD;
 	            		if(formaPago.getFormaPago().equalsIgnoreCase(tipoTarjeta)){
 	            			log.info("Tipo tarjeta pago: "+formaPago.getFormaPago());
 	            			compra.setFormaPago(formaPago);
