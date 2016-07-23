@@ -280,7 +280,13 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
             </div>
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>
+<div class="row" style="padding: 0.5em;">
+		<div class="col-md-12 alert alert-danger" style="text-align: center">
+			<p>En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
+			<p>y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
+		</div>
+</div>	
 </body>
 </html>
