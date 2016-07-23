@@ -116,9 +116,11 @@
                             <a href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
                         </li>
                         <c:if test="${sessionScope.usuario.perfil.nombre == 'LECTOR'}">
-	                        <li>
-	                            <a href="${contextpath}/historial/compras"><i class="fa fa-fw fa-shopping-cart"></i> Mi historial</a>
-	                        </li>
+                        	<c:if test="${not empty ultimasCompras}">
+		                        <li>
+		                            <a href="${contextpath}/historial/compras"><i class="fa fa-fw fa-shopping-cart"></i> Mi historial</a>
+		                        </li>
+	                        </c:if>
                         </c:if>
                         <li class="divider"></li>
                         <li>
