@@ -60,5 +60,20 @@
         <property name="emailUser" type="string">
             <column name="EMAIL_USER" precision="40" />
         </property>
+        <property name="precioOriginal" type="big_decimal">
+            <column name="PRECIO_ORIGINAL" precision="5" />
+        </property>
+        <property name="descuentoOriginal" type="big_decimal">
+            <column name="DESCUENTO_ORIGINAL" precision="5" />
+        </property>
+        <property name="conektaComisionPorcentaje" type="string">
+            <column name="CONEKTA_COMISION_PORCENTAJE" precision="5" />
+        </property>
+        <property name="conektaComisionCantidad" type="string">
+            <column name="CONEKTA_COMISION_CANTIDAD" precision="5" />
+        </property>
+        <property name="conektaComisionIva" type="string">
+            <column name="CONEKTA_COMISION_IVA" precision="5" />
+        </property>
     </class>
 </hibernate-mapping>
