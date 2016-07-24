@@ -29,10 +29,12 @@ import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.CompraId;
 import com.bstore.services.persistence.pojo.FormaPago;
+import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.FormaPagoService;
+import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
 
 
@@ -47,6 +49,11 @@ public class CompraController {
 	private final static String LABEL_ONE = "ISBN: ";
 	private final static String LABEL_TWO = " TEMA: ";
 	
+	private final String VALUE_PERCENTAGE = "com.conekta.porcentaje";
+	private final String VALUE_AMOUNT = "com.conekta.cantidad";
+	private final String VALUE_TAXE = "com.conekta.iva";
+	private final static String NA = "N/A";
+	
 	@Autowired
 	private PublicacionService publicacionService;
 	
@@ -59,6 +66,9 @@ public class CompraController {
     
     @Autowired
     private FormaPagoService formaPagoService;
+    
+    @Autowired
+    private PropertyService propertyService;
 	
 	
 	@RequestMapping(value="/comprar/publicacion/{id}",method = RequestMethod.GET)
@@ -195,7 +205,23 @@ public class CompraController {
 	            	compra.setNameUser(responseCharge.getDetails().getName());
 	            	compra.setPhoneUser(responseCharge.getDetails().getPhone());
 	            	compra.setEmailUser(responseCharge.getDetails().getEmail());
-	            	
+
+	            	compra.setPrecioOriginal(this.publicacionService.precioRealPublicacion(id));
+	            	compra.setDescuentoOriginal(publicacion.getDescuento());	            	
+	            	Properties valuePorcentaje = this.propertyService.getValueKey(VALUE_PERCENTAGE);
+	        		Properties valueCantidad = this.propertyService.getValueKey(VALUE_AMOUNT);
+	        		Properties valueIva = this.propertyService.getValueKey(VALUE_TAXE);
+	        		if(valuePorcentaje!=null && valueCantidad!=null && valueIva!=null){
+	        			log.info("Guardando las propiedades de comision de Conekta:::");
+	        			compra.setConektaComisionPorcentaje(this.propertyService.getValueKey(VALUE_PERCENTAGE).getValue());
+	        			compra.setConektaComisionCantidad(this.propertyService.getValueKey(VALUE_AMOUNT).getValue());
+	        			compra.setConektaComisionIva(this.propertyService.getValueKey(VALUE_TAXE).getValue());
+	        		}else{
+	        			this.log.info("No se guarda ninguna comision de las propiedades, no han sido definidas en sistemas:::");
+	        			compra.setConektaComisionPorcentaje(NA);
+	        			compra.setConektaComisionCantidad(NA);
+	        			compra.setConektaComisionIva(NA);
+	        		}
 	            	compra.setFechaCompra(new Date());
 	            	this.compraService.crearCompra(compra);
 

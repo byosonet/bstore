@@ -32,6 +32,12 @@ public class Compra implements java.io.Serializable {
 	private String phoneUser;
 	private String emailUser;
 	private Publicacion publicacion;
+	
+	private BigDecimal precioOriginal;
+	private BigDecimal descuentoOriginal;
+	private String conektaComisionPorcentaje;
+	private String conektaComisionCantidad;
+	private String conektaComisionIva;
 
 	public Compra() {
 	}
@@ -44,7 +50,8 @@ public class Compra implements java.io.Serializable {
 	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra,
 			String idConekta, String livemode, String status, String currencyCard, String descriptionCard,
 			String nameCard, String last4Card, String brandCard, String authCodeCard, String amountCard,
-			String nameUser, String phoneUser, String emailUser) {
+			String nameUser, String phoneUser, String emailUser,BigDecimal precioOriginal, BigDecimal descuentoOriginal,
+			String conektaComisionPorcentaje, String conektaComisionCantidad, String conektaComisionIva) {
 		this.id = id;
 		this.formaPago = formaPago;
 		this.precioCompra = precioCompra;
@@ -62,6 +69,11 @@ public class Compra implements java.io.Serializable {
 		this.nameUser = nameUser;
 		this.phoneUser = phoneUser;
 		this.emailUser = emailUser;	
+		this.precioOriginal = precioOriginal;
+		this.descuentoOriginal = descuentoOriginal;
+		this.conektaComisionPorcentaje = conektaComisionPorcentaje;
+		this.conektaComisionCantidad = conektaComisionCantidad;
+		this.conektaComisionIva = conektaComisionIva;
 	}
 
 	public CompraId getId() {
@@ -208,6 +220,46 @@ public class Compra implements java.io.Serializable {
 		this.publicacion = publicacion;
 	}
 
+	public BigDecimal getPrecioOriginal() {
+		return precioOriginal;
+	}
+
+	public void setPrecioOriginal(BigDecimal precioOriginal) {
+		this.precioOriginal = precioOriginal;
+	}
+
+	public BigDecimal getDescuentoOriginal() {
+		return descuentoOriginal;
+	}
+
+	public void setDescuentoOriginal(BigDecimal descuentoOriginal) {
+		this.descuentoOriginal = descuentoOriginal;
+	}
+
+	public String getConektaComisionPorcentaje() {
+		return conektaComisionPorcentaje;
+	}
+
+	public void setConektaComisionPorcentaje(String conektaComisionPorcentaje) {
+		this.conektaComisionPorcentaje = conektaComisionPorcentaje;
+	}
+
+	public String getConektaComisionCantidad() {
+		return conektaComisionCantidad;
+	}
+
+	public void setConektaComisionCantidad(String conektaComisionCantidad) {
+		this.conektaComisionCantidad = conektaComisionCantidad;
+	}
+
+	public String getConektaComisionIva() {
+		return conektaComisionIva;
+	}
+
+	public void setConektaComisionIva(String conektaComisionIva) {
+		this.conektaComisionIva = conektaComisionIva;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -215,8 +267,12 @@ public class Compra implements java.io.Serializable {
 		result = prime * result + ((amountCard == null) ? 0 : amountCard.hashCode());
 		result = prime * result + ((authCodeCard == null) ? 0 : authCodeCard.hashCode());
 		result = prime * result + ((brandCard == null) ? 0 : brandCard.hashCode());
+		result = prime * result + ((conektaComisionCantidad == null) ? 0 : conektaComisionCantidad.hashCode());
+		result = prime * result + ((conektaComisionIva == null) ? 0 : conektaComisionIva.hashCode());
+		result = prime * result + ((conektaComisionPorcentaje == null) ? 0 : conektaComisionPorcentaje.hashCode());
 		result = prime * result + ((currencyCard == null) ? 0 : currencyCard.hashCode());
 		result = prime * result + ((descriptionCard == null) ? 0 : descriptionCard.hashCode());
+		result = prime * result + ((descuentoOriginal == null) ? 0 : descuentoOriginal.hashCode());
 		result = prime * result + ((emailUser == null) ? 0 : emailUser.hashCode());
 		result = prime * result + ((fechaCompra == null) ? 0 : fechaCompra.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
@@ -227,6 +283,7 @@ public class Compra implements java.io.Serializable {
 		result = prime * result + ((nameUser == null) ? 0 : nameUser.hashCode());
 		result = prime * result + ((phoneUser == null) ? 0 : phoneUser.hashCode());
 		result = prime * result + ((precioCompra == null) ? 0 : precioCompra.hashCode());
+		result = prime * result + ((precioOriginal == null) ? 0 : precioOriginal.hashCode());
 		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
@@ -255,6 +312,21 @@ public class Compra implements java.io.Serializable {
 				return false;
 		} else if (!brandCard.equals(other.brandCard))
 			return false;
+		if (conektaComisionCantidad == null) {
+			if (other.conektaComisionCantidad != null)
+				return false;
+		} else if (!conektaComisionCantidad.equals(other.conektaComisionCantidad))
+			return false;
+		if (conektaComisionIva == null) {
+			if (other.conektaComisionIva != null)
+				return false;
+		} else if (!conektaComisionIva.equals(other.conektaComisionIva))
+			return false;
+		if (conektaComisionPorcentaje == null) {
+			if (other.conektaComisionPorcentaje != null)
+				return false;
+		} else if (!conektaComisionPorcentaje.equals(other.conektaComisionPorcentaje))
+			return false;
 		if (currencyCard == null) {
 			if (other.currencyCard != null)
 				return false;
@@ -264,6 +336,11 @@ public class Compra implements java.io.Serializable {
 			if (other.descriptionCard != null)
 				return false;
 		} else if (!descriptionCard.equals(other.descriptionCard))
+			return false;
+		if (descuentoOriginal == null) {
+			if (other.descuentoOriginal != null)
+				return false;
+		} else if (!descuentoOriginal.equals(other.descuentoOriginal))
 			return false;
 		if (emailUser == null) {
 			if (other.emailUser != null)
@@ -314,6 +391,11 @@ public class Compra implements java.io.Serializable {
 			if (other.precioCompra != null)
 				return false;
 		} else if (!precioCompra.equals(other.precioCompra))
+			return false;
+		if (precioOriginal == null) {
+			if (other.precioOriginal != null)
+				return false;
+		} else if (!precioOriginal.equals(other.precioOriginal))
 			return false;
 		if (status == null) {
 			if (other.status != null)
