@@ -75,5 +75,8 @@
         <property name="conektaComisionIva" type="string">
             <column name="CONEKTA_COMISION_IVA" precision="5" />
         </property>
+        <property name="factorRedondeo" type="string">
+            <column name="FACTOR_REDONDEO" precision="5" />
+        </property>
     </class>
 </hibernate-mapping>

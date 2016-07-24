@@ -38,6 +38,7 @@ public class Compra implements java.io.Serializable {
 	private String conektaComisionPorcentaje;
 	private String conektaComisionCantidad;
 	private String conektaComisionIva;
+	private String factorRedondeo;
 
 	public Compra() {
 	}
@@ -51,7 +52,8 @@ public class Compra implements java.io.Serializable {
 			String idConekta, String livemode, String status, String currencyCard, String descriptionCard,
 			String nameCard, String last4Card, String brandCard, String authCodeCard, String amountCard,
 			String nameUser, String phoneUser, String emailUser,BigDecimal precioOriginal, BigDecimal descuentoOriginal,
-			String conektaComisionPorcentaje, String conektaComisionCantidad, String conektaComisionIva) {
+			String conektaComisionPorcentaje, String conektaComisionCantidad, String conektaComisionIva,
+			String factorRedondeo) {
 		this.id = id;
 		this.formaPago = formaPago;
 		this.precioCompra = precioCompra;
@@ -74,6 +76,7 @@ public class Compra implements java.io.Serializable {
 		this.conektaComisionPorcentaje = conektaComisionPorcentaje;
 		this.conektaComisionCantidad = conektaComisionCantidad;
 		this.conektaComisionIva = conektaComisionIva;
+		this.factorRedondeo = factorRedondeo;
 	}
 
 	public CompraId getId() {
@@ -260,6 +263,14 @@ public class Compra implements java.io.Serializable {
 		this.conektaComisionIva = conektaComisionIva;
 	}
 
+	public String getFactorRedondeo() {
+		return factorRedondeo;
+	}
+
+	public void setFactorRedondeo(String factorRedondeo) {
+		this.factorRedondeo = factorRedondeo;
+	}
+
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -274,6 +285,7 @@ public class Compra implements java.io.Serializable {
 		result = prime * result + ((descriptionCard == null) ? 0 : descriptionCard.hashCode());
 		result = prime * result + ((descuentoOriginal == null) ? 0 : descuentoOriginal.hashCode());
 		result = prime * result + ((emailUser == null) ? 0 : emailUser.hashCode());
+		result = prime * result + ((factorRedondeo == null) ? 0 : factorRedondeo.hashCode());
 		result = prime * result + ((fechaCompra == null) ? 0 : fechaCompra.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
 		result = prime * result + ((idConekta == null) ? 0 : idConekta.hashCode());
@@ -346,6 +358,11 @@ public class Compra implements java.io.Serializable {
 			if (other.emailUser != null)
 				return false;
 		} else if (!emailUser.equals(other.emailUser))
+			return false;
+		if (factorRedondeo == null) {
+			if (other.factorRedondeo != null)
+				return false;
+		} else if (!factorRedondeo.equals(other.factorRedondeo))
 			return false;
 		if (fechaCompra == null) {
 			if (other.fechaCompra != null)
