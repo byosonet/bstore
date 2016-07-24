@@ -52,6 +52,7 @@ public class CompraController {
 	private final String VALUE_PERCENTAGE = "com.conekta.porcentaje";
 	private final String VALUE_AMOUNT = "com.conekta.cantidad";
 	private final String VALUE_TAXE = "com.conekta.iva";
+	private final String VALUE_ROUND = "com.conekta.factor.redondeo";
 	private final static String NA = "N/A";
 	
 	@Autowired
@@ -216,11 +217,13 @@ public class CompraController {
 	        			compra.setConektaComisionPorcentaje(this.propertyService.getValueKey(VALUE_PERCENTAGE).getValue());
 	        			compra.setConektaComisionCantidad(this.propertyService.getValueKey(VALUE_AMOUNT).getValue());
 	        			compra.setConektaComisionIva(this.propertyService.getValueKey(VALUE_TAXE).getValue());
+	        			compra.setFactorRedondeo(this.propertyService.getValueKey(VALUE_ROUND).getValue());
 	        		}else{
 	        			this.log.info("No se guarda ninguna comision de las propiedades, no han sido definidas en sistemas:::");
 	        			compra.setConektaComisionPorcentaje(NA);
 	        			compra.setConektaComisionCantidad(NA);
 	        			compra.setConektaComisionIva(NA);
+	        			compra.setFactorRedondeo(NA);
 	        		}
 	            	compra.setFechaCompra(new Date());
 	            	this.compraService.crearCompra(compra);
