@@ -54,11 +54,6 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/pagoCompra.jsp"/>
 	</definition>
 	
-	<definition name="pagoFallido" extends="principal">
-		<put-attribute name="header" value="Fallo de Compra"/>
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/pagoFallido.jsp"/>
-	</definition>
-	
 	<definition name="historialCompra" extends="principal">
 		<put-attribute name="header" value="Historial de Compra"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/historialCompra.jsp"/>

@@ -138,6 +138,13 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 </head>
 <body>
 	<div class="row" style="padding: 0.5em;">
+		<c:if test="${errorMessage}">
+			<div class="col-md-12 alert alert-danger" style="text-align: center">
+				<p><b><c:out value="${messageError}"/></b></p>
+				<p><b><c:out value="${messageErrorConekta}"/></b></p>
+			</div>
+		</c:if>
+		
   		<div class="col-md-12 alert alert-info" style="text-align: center">1.- Valida el detalle de tu compra</div>
   		
   			<div class="form-group">

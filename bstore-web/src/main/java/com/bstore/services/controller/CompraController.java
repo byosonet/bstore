@@ -128,7 +128,6 @@ public class CompraController {
 		  Usuario usuario = (Usuario) session.getAttribute("usuario");
 		  Publicacion publicacion = this.publicacionService.getPublicacion(id);
 		  /*String nombre = request.getParameter("nombre");
-		  String numeroTarjeta = request.getParameter("numeroTarjeta");
 		  String cvv = request.getParameter("cvv");
 		  String fechaExpriacionMes = request.getParameter("fechaExpiracionMes");
 		  String fechaExpiracionAnio = request.getParameter("fechaExpiracionAnio");
@@ -138,6 +137,9 @@ public class CompraController {
 		  String estado = request.getParameter("estado");
 		  String codigoPostal = request.getParameter("codigo");
 		  String pais = request.getParameter("pais");*/
+		  String tipoTarj = request.getParameter("visa");
+		  tipoTarj = tipoTarj!=null?TYPE_CARD_VISA:TYPE_CARD_MASTERCARD;
+		  String numeroTarjeta = request.getParameter("numeroTarjeta");
 		  String tokenConekta = request.getParameter("key");
 
 		  RequestPaymentCard requestCharge = new RequestPaymentCard();
@@ -242,12 +244,20 @@ public class CompraController {
 	            }else{
 	            	log.info("Mensaje de error conekta 1: "+responseCharge.getError().getError1());
 	            	log.info("Mensaje de error conekta 2: "+responseCharge.getError().getError2());
-	            	return "pagoFallido";
+	            	model.addAttribute("errorMessage",true);
+	            	model.addAttribute("messageError","Error al procesar la Tarjeta ["+tipoTarj+ "**** **** **** "+numeroTarjeta.substring(numeroTarjeta.length()-4)+"]");
+	            	model.addAttribute("messageErrorConekta",responseCharge.getError().getError1());
+	            	model.addAttribute("publicacion", publicacion);
+	            	return "detalleCompra";
 	            }
 	        } catch (Exception e) {
 	            log.info("Error con Servicio Externo conekta: "+e.getMessage());
 	            e.printStackTrace();
-	            return "pagoFallido";
+	            model.addAttribute("errorMessage",true);
+            	model.addAttribute("messageError","Por el momento el servicio para procesar pagos no está disponible, intente más tarde.");
+            	model.addAttribute("messageErrorConekta",e.getMessage());
+            	model.addAttribute("publicacion", publicacion);
+            	return "detalleCompra";
 	        } 
 		}else{
 			response.sendRedirect(request.getContextPath());
