@@ -32,12 +32,27 @@
         $('button#registrar').click(function(){
             
                 var nombre = $('input#nombre');
+                var apaterno = $('input#apaterno');
+                var amaterno = $('input#amaterno');
+                var login = $('input#login');
+                var telefono = $('input#telefono');
                 var email = $('input#email');
                 var passw = $('input#password');
                 var confPassword = $('input#confPassword');
-                if(nombre.val() === ""){
-                    nombre.focus();
+                if(login.val() === ""){
+                	muestraMsjSistemaError('El login es requerido.');
+                    return false;
+                }else if(nombre.val() === ""){
                     muestraMsjSistemaError('El nombre es requerido.');
+                    return false;
+                }else if(apaterno.val() === ""){
+                	 muestraMsjSistemaError('El apellido paterno es requerido.');
+                     return false;
+                }else if(amaterno.val() === ""){
+                	 muestraMsjSistemaError('El apellido materno es requerido.');
+                     return false;
+                }else if(telefono.val() === ""){
+                	muestraMsjSistemaError('El teléfono es requerido.');
                     return false;
                 }else if(email.val() === ""){
                     muestraMsjSistemaError('El email es requerido.');
@@ -143,12 +158,36 @@
                 </br>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" style="color:white;" for="nombre">Nombre completo:</label>
-                    <div class="col-sm-5">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                	<label class="control-label col-sm-2" style="color:white;" for="login">Login:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="login" name="login" placeholder="Ingesa tu login">
                     </div>
                     
-                    <label class="control-label col-sm-1" style="color:white;" for="email">Email:</label>
+                    <label class="control-label col-sm-2" style="color:white;" for="nombre">Nombre(s):</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                    </div>
+                </div>
+                    
+                <div class="form-group">
+                    <label class="control-label col-sm-2" style="color:white;" for="apaterno">Apellido Paterno:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno">
+                    </div>
+                    
+                    <label class="control-label col-sm-2" style="color:white;" for="amaterno">Apellido Materno:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="amaterno" name="amaterno" placeholder="Ingesa tu apellido materno">
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <label class="control-label col-sm-2" style="color:white;" for="telefono">Tel&eacute;fono:</label>
+                    <div class="col-sm-4">
+                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu tel&eacute;fono">
+                    </div>
+                    
+                    <label class="control-label col-sm-2" style="color:white;" for="email">Email:</label>
                     <div class="col-sm-4">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email">
                     </div>
@@ -167,13 +206,13 @@
                 </div>
                 
                 
-                </br>
+                
                 </br>
                 <div class="form-group">
-                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">DATOS PERSONALES</h5>
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">FECHA DE NACIMIENTO</h5>
                 </div>
                 </br>
-                </br>
+                
                 
                 <div class="form-group">
                     <label class="control-label col-sm-2" style="color:white;">Día:</label>

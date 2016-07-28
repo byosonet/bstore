@@ -33,6 +33,8 @@
           class="com.bstore.services.service.PerfilServiceImpl"/>
     <bean id="propertyService" 
           class="com.bstore.services.service.PropertyServiceImpl"/>
+    <bean id="plantillaService" 
+          class="com.bstore.services.service.PlantillaServiceImpl"/>
           
     <!-- Adapters Externos-->
     <bean id="droolRuleAge" 
