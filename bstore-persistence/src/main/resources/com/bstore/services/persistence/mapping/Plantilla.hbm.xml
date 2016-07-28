@@ -4,16 +4,16 @@
 <hibernate-mapping>
   <class name="com.bstore.services.persistence.pojo.Plantilla" table="PLANTILLA" catalog="bstore">
     <id name="id" type="integer">
-      <column name="ID_TEMPLATE" precision="11" scale="0"/>
+      <column name="ID" precision="11" scale="0"/>
       <generator class="assigned"/>
     </id>
     <property name="description" type="string">
-      <column length="255" name="DESCRIPTION"/>
+      <column length="255" name="DESCRIPCION"/>
     </property>
     <property name="subject" type="string">
-      <column length="255" name="SUBJECT"/>
+      <column length="255" name="ASUNTO"/>
     </property>
-    <property name="mailTemplate" type="clob">
+    <property name="plantilla" type="clob">
       <column name="HTML"/>
     </property>
   </class>

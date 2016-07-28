@@ -7,6 +7,8 @@ import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.service.CompraService;
+import com.bstore.services.service.EnviarEmailService;
+import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import java.io.BufferedReader;
@@ -50,7 +52,15 @@ public class LoginController {
 	@Autowired
 	private DroolRuleAge droolRuleAgeAdapter;
 	
+	@Autowired
+	EnviarEmailService enviarEmailService;
+	
+	@Autowired
+	private PropertyService propertyService;
+	
    private final Logger log = Logger.getLogger(LoginController.class);
+   private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+   
    @RequestMapping(value="/equivira",method = RequestMethod.POST)
 
    public String ingresar(Model model, HttpServletRequest request) throws Exception {
@@ -170,38 +180,48 @@ public class LoginController {
     
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
     public ResponseEntity<ErrorService> registrarUsuarionNuevo(HttpServletRequest request, Model model){
-        
         String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
         String nombre = request.getParameter("nombre").toUpperCase();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
         String sexo = request.getParameter("sexo");
-        
         String dia = request.getParameter("dia");
         String mes = request.getParameter("mes");
         String anio = request.getParameter("anio");
         String actividad = request.getParameter("actividad");
-        
-        
-        
+        String apaterno = request.getParameter("apaterno").toUpperCase();
+        String amaterno = request.getParameter("amaterno").toUpperCase();
+        String login = request.getParameter("login");
+        String telefono = request.getParameter("telefono");
+
         Usuario user = this.usuarioService.validaEmailSistema(email);
+        Usuario userLogin = this.usuarioService.validaLoginSistema(login);
         if(user == null){
-            this.log.info(" -- Agregand nuevo usuario:");
+        	if(userLogin!=null){
+        		this.log.info(" -- Usuario ya se encuentra en sistema registrado");
+                ErrorService data = new ErrorService();
+                data.setCodigo("404");
+                data.setMensaje("Este login ya ha sido registrado con anterioridad: "+login);
+                return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
+        	}
+            this.log.info(" -- Agregando nuevo usuario:");
             this.log.info(" -- Nombre: "+nombre);
             this.log.info(" -- Email: "+email);
             this.log.info(" -- Password: "+password);
             this.log.info(" -- Sexo: "+sexo);
             this.log.info(" -- Notificar: "+notificar);
-            
             this.log.info(" -- Dia: "+dia);
             this.log.info(" -- Mes: "+mes);
             this.log.info(" -- Anio: "+anio);
             this.log.info(" -- Actividad: "+actividad);
+            this.log.info(" -- Apaterno: "+apaterno);
+            this.log.info(" -- Amaterno: "+amaterno);
+            this.log.info(" -- Login: "+login);
+            this.log.info(" -- Telefono: "+telefono);
 
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
             this.log.info(" -- Fecha de Alta::: "+stamp);
             Date fechaAlta = new Date(stamp.getTime());
-
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
             usuario.setEmail(email);
@@ -212,7 +232,10 @@ public class LoginController {
             usuario.setUltConexion(fechaAlta);
             usuario.setNotificaciones(notificar);
             usuario.setActividad(actividad);
-            
+            usuario.setAPaterno(apaterno);
+            usuario.setAMaterno(amaterno);
+            usuario.setTelefono(telefono);
+            usuario.setLogin(login);
             SimpleDateFormat formatter = new SimpleDateFormat("dd/MM/yyyy");
             String dateInString = dia+"/"+mes+"/"+anio;
             try {
@@ -231,10 +254,8 @@ public class LoginController {
             } catch (ParseException e) {
                 this.log.error(" -- Error al crear la fecha de nacimiento: " + e.getMessage());
             }
-            
             int edad = UtilService.calcularEdad(dateInString);
             this.log.info(" -- La edad del usuario a registrar es de: "+edad);
-            
             this.log.info(" -- Disparando las reglas con Drools");
             UserTemp userTemp = new UserTemp();
             userTemp.setEdad(edad);
@@ -250,17 +271,11 @@ public class LoginController {
                 data.setMensaje(userTemp.getMensaje());
                 return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
             }
-            
-            
-
-            int id = this.usuarioService.agregaUsuarioNuevo(usuario);
-            Usuario nuevo = new Usuario();
-            nuevo.setId(id);
-            this.log.info(" -- El usuario se agrego correctamente con el id: "+id);
-
+            this.usuarioService.agregaUsuarioNuevo(usuario);
+            this.log.info(" -- El usuario se agrego correctamente");
            try {
                try {
-                   //this.emailSendService.sendEmailRegister(usuario.getEmail(), "gtrejo.armenta@gmail.com", usuario.getNombre(), null);
+                   this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario);
                    this.log.info(" -- Enviado");
                } catch (Exception ex) {
                    this.log.error(" -- No se puedo enviar mail de registro: "+ex.getMessage());
@@ -270,7 +285,6 @@ public class LoginController {
                 data.setCodigo("200");
                 data.setMensaje("El email: "+usuario.getEmail()+" ha sido registrado.");
                 return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
-               
            } catch (Exception ex) {
                this.log.info(" -- No se puedo llevar a cabo el registro del usuario en el sistema.");    
                

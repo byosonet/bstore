@@ -74,26 +74,15 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         }
     }
 
-    public int agregarUsuario(Usuario usuario) {
+    public void agregarUsuario(Usuario usuario) {
         try {
             this.mysql.iniciarOperacion();
-            /*Number maximo = (Number) this.getSession().createQuery(
-                    "SELECT MAX(u.id) "
-                    + "FROM Usuario u")
-                    .uniqueResult();
-
-            long id = maximo == null ? 1 : maximo.longValue() + 1;
-            usuario.setId(Integer.parseInt(String.valueOf(id)));*/
-            usuario.setAPaterno("Dev");
-            usuario.setLogin("gtrejo");
             usuario.setEstatus(1);
             Perfil perfil = new Perfil();
             perfil.setId(2);
             usuario.setPerfil(perfil);
-            
             this.mysql.getSesion().save(usuario);
             this.mysql.getSesion().flush();
-
             this.mysql.getTx().commit();
         } catch (HibernateException he) {
             this.mysql.manejarException(he);
@@ -101,7 +90,6 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         } finally {
             this.mysql.getSesion().close();
         }
-        return usuario.getId();
     }
 
     public void actualizarDatosUsuario(Usuario user) {
