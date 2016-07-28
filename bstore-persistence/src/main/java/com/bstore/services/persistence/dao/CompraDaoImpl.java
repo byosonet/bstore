@@ -28,8 +28,9 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
 		this.log.info("Recuperando lista de compras por idUsuario: "+idUsuario);
 		return (List<Compra>) this
 				.getSession()
-				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario")
+				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario ORDER BY fechaCompra DESC")
 				.setParameter("idUsuario", idUsuario)
+				
 				.list();
 	}
 
@@ -39,7 +40,7 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
 		this.log.info("Total a recuperar: "+total);
 		return (List<Compra>) this
 				.getSession()
-				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario order by fechaCompra DESC")
+				.createQuery("FROM Compra c where c.id.idUsuario = :idUsuario ORDER BY fechaCompra DESC")
 				.setParameter("idUsuario", idUsuario)
 				.setMaxResults(total)
 				.list();

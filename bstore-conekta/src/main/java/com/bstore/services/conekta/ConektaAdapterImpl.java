@@ -328,6 +328,15 @@ public class ConektaAdapterImpl extends ConektaAdapterAbstract implements Conekt
             payment.setObject(pay.getString("object"));
 
             responseService.setPaymentMethod(payment);
+            
+            JSONObject detail = new JSONObject(response.getString("details"));
+            ResponsePaymentCard.Details details = new ResponsePaymentCard.Details();
+            details.setName(detail.getString("name"));
+            details.setPhone(detail.getString("phone"));
+            details.setEmail(detail.getString("email"));
+            
+            responseService.setDetails(details);
+            
         } catch (Exception e) {
             if(response != null){
                 errors.setError1(response.getString("message_to_purchaser"));

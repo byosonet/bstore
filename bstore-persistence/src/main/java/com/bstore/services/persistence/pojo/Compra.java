@@ -17,6 +17,28 @@ public class Compra implements java.io.Serializable {
 	private FormaPago formaPago;
 	private BigDecimal precioCompra;
 	private Date fechaCompra;
+	
+	private String idConekta;
+	private String liveMode;
+	private String status;
+	private String currencyCard;
+	private String descriptionCard;
+	private String nameCard;
+	private String last4Card;
+	private String brandCard;
+	private String authCodeCard;
+	private String amountCard; 
+	private String nameUser;
+	private String phoneUser;
+	private String emailUser;
+	private Publicacion publicacion;
+	
+	private BigDecimal precioOriginal;
+	private BigDecimal descuentoOriginal;
+	private String conektaComisionPorcentaje;
+	private String conektaComisionCantidad;
+	private String conektaComisionIva;
+	private String factorRedondeo;
 
 	public Compra() {
 	}
@@ -26,11 +48,35 @@ public class Compra implements java.io.Serializable {
 		this.fechaCompra = fechaCompra;
 	}
 
-	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra) {
+	public Compra(CompraId id, FormaPago formaPago, BigDecimal precioCompra, Date fechaCompra,
+			String idConekta, String livemode, String status, String currencyCard, String descriptionCard,
+			String nameCard, String last4Card, String brandCard, String authCodeCard, String amountCard,
+			String nameUser, String phoneUser, String emailUser,BigDecimal precioOriginal, BigDecimal descuentoOriginal,
+			String conektaComisionPorcentaje, String conektaComisionCantidad, String conektaComisionIva,
+			String factorRedondeo) {
 		this.id = id;
 		this.formaPago = formaPago;
 		this.precioCompra = precioCompra;
 		this.fechaCompra = fechaCompra;
+		this.idConekta = idConekta;
+		this.liveMode = livemode;
+		this.status = status;
+		this.currencyCard = currencyCard;
+		this.descriptionCard = descriptionCard;
+		this.nameCard = nameCard;
+		this.last4Card = last4Card;
+		this.brandCard = brandCard;
+		this.authCodeCard = authCodeCard;
+		this.amountCard = amountCard;
+		this.nameUser = nameUser;
+		this.phoneUser = phoneUser;
+		this.emailUser = emailUser;	
+		this.precioOriginal = precioOriginal;
+		this.descuentoOriginal = descuentoOriginal;
+		this.conektaComisionPorcentaje = conektaComisionPorcentaje;
+		this.conektaComisionCantidad = conektaComisionCantidad;
+		this.conektaComisionIva = conektaComisionIva;
+		this.factorRedondeo = factorRedondeo;
 	}
 
 	public CompraId getId() {
@@ -64,17 +110,193 @@ public class Compra implements java.io.Serializable {
 	public void setFechaCompra(Date fechaCompra) {
 		this.fechaCompra = fechaCompra;
 	}
-	
-	
+
+	public String getIdConekta() {
+		return idConekta;
+	}
+
+	public void setIdConekta(String idConekta) {
+		this.idConekta = idConekta;
+	}
+
+	public String getLiveMode() {
+		return liveMode;
+	}
+
+	public void setLiveMode(String liveMode) {
+		this.liveMode = liveMode;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	public String getCurrencyCard() {
+		return currencyCard;
+	}
+
+	public void setCurrencyCard(String currencyCard) {
+		this.currencyCard = currencyCard;
+	}
+
+	public String getDescriptionCard() {
+		return descriptionCard;
+	}
+
+	public void setDescriptionCard(String descriptionCard) {
+		this.descriptionCard = descriptionCard;
+	}
+
+	public String getNameCard() {
+		return nameCard;
+	}
+
+	public void setNameCard(String nameCard) {
+		this.nameCard = nameCard;
+	}
+
+	public String getLast4Card() {
+		return last4Card;
+	}
+
+	public void setLast4Card(String last4Card) {
+		this.last4Card = last4Card;
+	}
+
+	public String getBrandCard() {
+		return brandCard;
+	}
+
+	public void setBrandCard(String brandCard) {
+		this.brandCard = brandCard;
+	}
+
+	public String getAuthCodeCard() {
+		return authCodeCard;
+	}
+
+	public void setAuthCodeCard(String authCodeCard) {
+		this.authCodeCard = authCodeCard;
+	}
+
+	public String getAmountCard() {
+		return amountCard;
+	}
+
+	public void setAmountCard(String amountCard) {
+		this.amountCard = amountCard;
+	}
+
+	public String getNameUser() {
+		return nameUser;
+	}
+
+	public void setNameUser(String nameUser) {
+		this.nameUser = nameUser;
+	}
+
+	public String getPhoneUser() {
+		return phoneUser;
+	}
+
+	public void setPhoneUser(String phoneUser) {
+		this.phoneUser = phoneUser;
+	}
+
+	public String getEmailUser() {
+		return emailUser;
+	}
+
+	public void setEmailUser(String emailUser) {
+		this.emailUser = emailUser;
+	}
+
+	public Publicacion getPublicacion() {
+		return publicacion;
+	}
+
+	public void setPublicacion(Publicacion publicacion) {
+		this.publicacion = publicacion;
+	}
+
+	public BigDecimal getPrecioOriginal() {
+		return precioOriginal;
+	}
+
+	public void setPrecioOriginal(BigDecimal precioOriginal) {
+		this.precioOriginal = precioOriginal;
+	}
+
+	public BigDecimal getDescuentoOriginal() {
+		return descuentoOriginal;
+	}
+
+	public void setDescuentoOriginal(BigDecimal descuentoOriginal) {
+		this.descuentoOriginal = descuentoOriginal;
+	}
+
+	public String getConektaComisionPorcentaje() {
+		return conektaComisionPorcentaje;
+	}
+
+	public void setConektaComisionPorcentaje(String conektaComisionPorcentaje) {
+		this.conektaComisionPorcentaje = conektaComisionPorcentaje;
+	}
+
+	public String getConektaComisionCantidad() {
+		return conektaComisionCantidad;
+	}
+
+	public void setConektaComisionCantidad(String conektaComisionCantidad) {
+		this.conektaComisionCantidad = conektaComisionCantidad;
+	}
+
+	public String getConektaComisionIva() {
+		return conektaComisionIva;
+	}
+
+	public void setConektaComisionIva(String conektaComisionIva) {
+		this.conektaComisionIva = conektaComisionIva;
+	}
+
+	public String getFactorRedondeo() {
+		return factorRedondeo;
+	}
+
+	public void setFactorRedondeo(String factorRedondeo) {
+		this.factorRedondeo = factorRedondeo;
+	}
 
 	@Override
 	public int hashCode() {
 		final int prime = 31;
 		int result = 1;
+		result = prime * result + ((amountCard == null) ? 0 : amountCard.hashCode());
+		result = prime * result + ((authCodeCard == null) ? 0 : authCodeCard.hashCode());
+		result = prime * result + ((brandCard == null) ? 0 : brandCard.hashCode());
+		result = prime * result + ((conektaComisionCantidad == null) ? 0 : conektaComisionCantidad.hashCode());
+		result = prime * result + ((conektaComisionIva == null) ? 0 : conektaComisionIva.hashCode());
+		result = prime * result + ((conektaComisionPorcentaje == null) ? 0 : conektaComisionPorcentaje.hashCode());
+		result = prime * result + ((currencyCard == null) ? 0 : currencyCard.hashCode());
+		result = prime * result + ((descriptionCard == null) ? 0 : descriptionCard.hashCode());
+		result = prime * result + ((descuentoOriginal == null) ? 0 : descuentoOriginal.hashCode());
+		result = prime * result + ((emailUser == null) ? 0 : emailUser.hashCode());
+		result = prime * result + ((factorRedondeo == null) ? 0 : factorRedondeo.hashCode());
 		result = prime * result + ((fechaCompra == null) ? 0 : fechaCompra.hashCode());
-		result = prime * result + ((formaPago == null) ? 0 : formaPago.hashCode());
 		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		result = prime * result + ((idConekta == null) ? 0 : idConekta.hashCode());
+		result = prime * result + ((last4Card == null) ? 0 : last4Card.hashCode());
+		result = prime * result + ((liveMode == null) ? 0 : liveMode.hashCode());
+		result = prime * result + ((nameCard == null) ? 0 : nameCard.hashCode());
+		result = prime * result + ((nameUser == null) ? 0 : nameUser.hashCode());
+		result = prime * result + ((phoneUser == null) ? 0 : phoneUser.hashCode());
 		result = prime * result + ((precioCompra == null) ? 0 : precioCompra.hashCode());
+		result = prime * result + ((precioOriginal == null) ? 0 : precioOriginal.hashCode());
+		result = prime * result + ((status == null) ? 0 : status.hashCode());
 		return result;
 	}
 
@@ -87,33 +309,122 @@ public class Compra implements java.io.Serializable {
 		if (getClass() != obj.getClass())
 			return false;
 		Compra other = (Compra) obj;
+		if (amountCard == null) {
+			if (other.amountCard != null)
+				return false;
+		} else if (!amountCard.equals(other.amountCard))
+			return false;
+		if (authCodeCard == null) {
+			if (other.authCodeCard != null)
+				return false;
+		} else if (!authCodeCard.equals(other.authCodeCard))
+			return false;
+		if (brandCard == null) {
+			if (other.brandCard != null)
+				return false;
+		} else if (!brandCard.equals(other.brandCard))
+			return false;
+		if (conektaComisionCantidad == null) {
+			if (other.conektaComisionCantidad != null)
+				return false;
+		} else if (!conektaComisionCantidad.equals(other.conektaComisionCantidad))
+			return false;
+		if (conektaComisionIva == null) {
+			if (other.conektaComisionIva != null)
+				return false;
+		} else if (!conektaComisionIva.equals(other.conektaComisionIva))
+			return false;
+		if (conektaComisionPorcentaje == null) {
+			if (other.conektaComisionPorcentaje != null)
+				return false;
+		} else if (!conektaComisionPorcentaje.equals(other.conektaComisionPorcentaje))
+			return false;
+		if (currencyCard == null) {
+			if (other.currencyCard != null)
+				return false;
+		} else if (!currencyCard.equals(other.currencyCard))
+			return false;
+		if (descriptionCard == null) {
+			if (other.descriptionCard != null)
+				return false;
+		} else if (!descriptionCard.equals(other.descriptionCard))
+			return false;
+		if (descuentoOriginal == null) {
+			if (other.descuentoOriginal != null)
+				return false;
+		} else if (!descuentoOriginal.equals(other.descuentoOriginal))
+			return false;
+		if (emailUser == null) {
+			if (other.emailUser != null)
+				return false;
+		} else if (!emailUser.equals(other.emailUser))
+			return false;
+		if (factorRedondeo == null) {
+			if (other.factorRedondeo != null)
+				return false;
+		} else if (!factorRedondeo.equals(other.factorRedondeo))
+			return false;
 		if (fechaCompra == null) {
 			if (other.fechaCompra != null)
 				return false;
 		} else if (!fechaCompra.equals(other.fechaCompra))
-			return false;
-		if (formaPago == null) {
-			if (other.formaPago != null)
-				return false;
-		} else if (!formaPago.equals(other.formaPago))
 			return false;
 		if (id == null) {
 			if (other.id != null)
 				return false;
 		} else if (!id.equals(other.id))
 			return false;
+		if (idConekta == null) {
+			if (other.idConekta != null)
+				return false;
+		} else if (!idConekta.equals(other.idConekta))
+			return false;
+		if (last4Card == null) {
+			if (other.last4Card != null)
+				return false;
+		} else if (!last4Card.equals(other.last4Card))
+			return false;
+		if (liveMode == null) {
+			if (other.liveMode != null)
+				return false;
+		} else if (!liveMode.equals(other.liveMode))
+			return false;
+		if (nameCard == null) {
+			if (other.nameCard != null)
+				return false;
+		} else if (!nameCard.equals(other.nameCard))
+			return false;
+		if (nameUser == null) {
+			if (other.nameUser != null)
+				return false;
+		} else if (!nameUser.equals(other.nameUser))
+			return false;
+		if (phoneUser == null) {
+			if (other.phoneUser != null)
+				return false;
+		} else if (!phoneUser.equals(other.phoneUser))
+			return false;
 		if (precioCompra == null) {
 			if (other.precioCompra != null)
 				return false;
 		} else if (!precioCompra.equals(other.precioCompra))
+			return false;
+		if (precioOriginal == null) {
+			if (other.precioOriginal != null)
+				return false;
+		} else if (!precioOriginal.equals(other.precioOriginal))
+			return false;
+		if (status == null) {
+			if (other.status != null)
+				return false;
+		} else if (!status.equals(other.status))
 			return false;
 		return true;
 	}
 
 	@Override
 	public String toString() {
-		return "Compra [id=" + id + ", formaPago=" + formaPago + ", precioCompra=" + precioCompra + ", fechaCompra="
-				+ fechaCompra + "]";
+		return "Compra [id=" + id + ", precioCompra=" + precioCompra + ", fechaCompra=" + fechaCompra + "]";
 	}
 
 }
