@@ -8,7 +8,7 @@ public interface UsuarioDao {
 	List<Usuario> getUser();
     Usuario validaUsuario(String email, String password);
     void actualizarConexionUsuario(Usuario usuario);
-    int agregarUsuario(Usuario usuario);
+    void agregarUsuario(Usuario usuario);
     Usuario validaEmailSistema(String email);
     Usuario validaLoginSistema(String login);
     void actualizarDatosUsuario(Usuario user);

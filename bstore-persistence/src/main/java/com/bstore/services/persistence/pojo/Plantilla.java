@@ -13,19 +13,19 @@ public class Plantilla {
     private int id;
     private String description;
     private String subject;
-    private Clob mailTemplate;
-    private String template;
+    private Clob plantilla;
+    private String plantillaText;
     
     public Plantilla(){
         
     }
     
     
-    public Plantilla(int id, String description, String subject, Clob mailTemplate){
+    public Plantilla(int id, String description, String subject, Clob plantilla){
         this.id = id;
         this.description = description;
         this.subject = subject;
-        this.mailTemplate = mailTemplate;
+        this.plantilla = plantilla;
     }
 
     public int getid() {
@@ -52,25 +52,25 @@ public class Plantilla {
         this.subject = subject;
     }
 
-    public Clob getMailTemplate() {
-        return mailTemplate;
+    public Clob getPlantilla() {
+        return plantilla;
     }
 
-    public void setMailTemplate(Clob mailTemplate) {
-        this.mailTemplate = mailTemplate;
+    public void setPlantilla(Clob plantilla) {
+        this.plantilla = plantilla;
     }
 
-    public String getTemplate() {
-        return template;
+    public String getPlantillaText() {
+        return plantillaText;
     }
 
-    public void setTemplate(String template) {
-        this.template = template;
+    public void setPlantillaText(String plantillaText) {
+        this.plantillaText = plantillaText;
     }
     
     
     
-    public String readClob(Clob clob) throws SQLException, IOException {
+    public String convertClobToString(Clob clob) throws SQLException, IOException {
         StringBuilder sb = new StringBuilder((int) clob.length());
         Reader r = clob.getCharacterStream();
         char[] cbuf = new char[2048];
@@ -78,13 +78,13 @@ public class Plantilla {
         while ((n = r.read(cbuf, 0, cbuf.length)) != -1) {
             sb.append(cbuf, 0, n);
         }
-        this.setTemplate(sb.toString());
-        return this.getTemplate();
+        this.setPlantillaText(sb.toString());
+        return this.getPlantillaText();
     }
 
     @Override
     public String toString() {
-        return "MailTemplate{" + "id=" + id + ", description=" + description + ", subject=" + subject + ", mailTemplate=" + mailTemplate + ", template=" + template + '}';
+        return "MailTemplate{" + "id=" + id + ", description=" + description + ", subject=" + subject + ", plantilla=" + plantilla + ", plantillaText=" + plantillaText + '}';
     }
     
 }

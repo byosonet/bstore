@@ -52,10 +52,9 @@ private UsuarioDao usuarioDao;
     }
 
     @Transactional
-    public int agregaUsuarioNuevo(Usuario usuario) {
+    public void agregaUsuarioNuevo(Usuario usuario) {
         this.log.info(" -- Agregar usuario a la BD");
-        int id = this.usuarioDao.agregarUsuario(usuario);
-        return id;
+        this.usuarioDao.agregarUsuario(usuario);
     }
 
     @Transactional
