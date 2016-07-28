@@ -138,6 +138,13 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 </head>
 <body>
 	<div class="row" style="padding: 0.5em;">
+		<c:if test="${errorMessage}">
+			<div class="col-md-12 alert alert-danger" style="text-align: center">
+				<p><b><c:out value="${messageError}"/></b></p>
+				<p><b><c:out value="${messageErrorConekta}"/></b></p>
+			</div>
+		</c:if>
+		
   		<div class="col-md-12 alert alert-info" style="text-align: center">1.- Valida el detalle de tu compra</div>
   		
   			<div class="form-group">
@@ -280,7 +287,13 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
             </div>
 			</form>
 		</div>
-	</div>	
+	</div>
 </div>
+<div class="row" style="padding: 0.5em;">
+		<div class="col-md-12 alert alert-danger" style="text-align: center">
+			<p>En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
+			<p>y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
+		</div>
+</div>	
 </body>
 </html>

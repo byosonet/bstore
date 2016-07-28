@@ -21,5 +21,62 @@
         <property name="fechaCompra" type="timestamp">
             <column name="FECHA_COMPRA" length="19" not-null="true" />
         </property>
+        <property name="idConekta" type="string">
+            <column name="ID_CONEKTA" precision="50" />
+        </property>
+        <property name="liveMode" type="string">
+            <column name="LIVEMODE" precision="10" />
+        </property>
+        <property name="status" type="string">
+            <column name="STATUS" precision="15" />
+        </property>
+        <property name="currencyCard" type="string">
+            <column name="CURRENCY_CARD" precision="5" />
+        </property>
+        <property name="descriptionCard" type="string">
+            <column name="DESCRIPTION_CARD" precision="100" />
+        </property>
+        <property name="nameCard" type="string">
+            <column name="NAME_CARD" precision="100" />
+        </property>
+        <property name="last4Card" type="string">
+            <column name="LAST4_CARD" precision="5" />
+        </property>
+        <property name="brandCard" type="string">
+            <column name="BRAND_CARD" precision="5" />
+        </property>
+        <property name="authCodeCard" type="string">
+            <column name="AUTH_CODE_CARD" precision="15" />
+        </property>
+        <property name="amountCard" type="string">
+            <column name="AMOUNT_CARD" precision="20" />
+        </property>
+        <property name="nameUser" type="string">
+            <column name="NAME_USER" precision="100" />
+        </property>
+        <property name="phoneUser" type="string">
+            <column name="PHONE_USER" precision="15" />
+        </property>
+        <property name="emailUser" type="string">
+            <column name="EMAIL_USER" precision="40" />
+        </property>
+        <property name="precioOriginal" type="big_decimal">
+            <column name="PRECIO_ORIGINAL" precision="5" />
+        </property>
+        <property name="descuentoOriginal" type="big_decimal">
+            <column name="DESCUENTO_ORIGINAL" precision="5" />
+        </property>
+        <property name="conektaComisionPorcentaje" type="string">
+            <column name="CONEKTA_COMISION_PORCENTAJE" precision="5" />
+        </property>
+        <property name="conektaComisionCantidad" type="string">
+            <column name="CONEKTA_COMISION_CANTIDAD" precision="5" />
+        </property>
+        <property name="conektaComisionIva" type="string">
+            <column name="CONEKTA_COMISION_IVA" precision="5" />
+        </property>
+        <property name="factorRedondeo" type="string">
+            <column name="FACTOR_REDONDEO" precision="5" />
+        </property>
     </class>
 </hibernate-mapping>
