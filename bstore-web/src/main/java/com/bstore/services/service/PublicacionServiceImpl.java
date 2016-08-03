@@ -62,6 +62,10 @@ public class PublicacionServiceImpl implements PublicacionService{
 					}
 				}
 			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
 		}
 		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
 		return lista;
