@@ -31,39 +31,51 @@
 					<br/>
 					
 					<div class="form-group">
-						<label class="control-label col-sm-2" for="nombre">Nombre</label>
-						<div class="col-sm-4">
+						<label class="control-label col-sm-1" for="nombre">Nombre</label>
+						
+						<div class="col-sm-3">
+							<form:input path="nombre" class="form-control" placeholder="Nombre" />
+						</div>
+						<div class="col-sm-2">
 							<span style="color:#FE2E2E;">
 								<form:errors path="nombre" />
 							</span>
-							<form:input path="nombre" class="form-control" placeholder="Nombre" />
 						</div>
 						
-						<label for="rfc" class="col-sm-2 control-label">RFC</label>
-						<div class="col-sm-4">
+						<label for="rfc" class="col-sm-1 control-label">RFC</label>
+						<div class="col-sm-3">
+							<form:input path="rfc" class="form-control" placeholder="RFC" />
+						</div>	
+						<div class="col-sm-2">
 							<span style="color:#FE2E2E;">
 								<form:errors path="rfc" />
 							</span>
-							<form:input path="rfc" class="form-control" placeholder="RFC" />
 						</div>
 					</div>
 					<br/>
 					<br/>
 					
+					
 					<div class="form-group">
-						<label for="email" class="col-sm-2 control-label">Email</label>
-						<div class="col-sm-4">
+						<label for="email" class="col-sm-1 control-label">Email</label>
+						<div class="col-sm-3">
+							<form:input path="email" class="form-control" placeholder="Email" />
+						</div>
+						<div class="col-sm-2">
 							<span style="color:#FE2E2E;">
 								<form:errors path="email" />
 							</span>
-							<form:input path="email" class="form-control" placeholder="Email" />
 						</div>
-						<label for="telefono" class="col-sm-2 control-label">Telefono</label>
-						<div class="col-sm-4">
+						
+						
+						<label for="telefono" class="col-sm-1 control-label">Telefono</label>
+						<div class="col-sm-3">
+							<form:input path="telefono" class="form-control" placeholder="Telefono" />
+						</div>
+						<div class="col-sm-2">
 							<span style="color:#FE2E2E;">
 								<form:errors path="telefono" />
 							</span>
-							<form:input path="telefono" class="form-control" placeholder="Telefono" />
 						</div>
 					</div>
 					<br/>
@@ -72,7 +84,6 @@
 					<div class="form-group">
 						<label class="col-sm-2 control-label">Activar</label>
 						<div class="col-sm-4">
-							<!-- div class="checkbox checkbox-primary"-->
 							<div class="checkbox-primary">
 								<form:checkbox path="estatus" value="1"/>
 								<label>
