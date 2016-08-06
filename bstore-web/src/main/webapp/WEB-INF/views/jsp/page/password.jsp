@@ -82,7 +82,7 @@
                 action: function(dialog) {
                     dialog.close();
                     $.blockUI();
-                    var urlAction = '/';
+                    var urlAction = '${contextpath}/';
                     document.getElementById('regresar').action = urlAction;
                     document.getElementById('regresar').method = 'GET';
                     document.getElementById('regresar').submit();
