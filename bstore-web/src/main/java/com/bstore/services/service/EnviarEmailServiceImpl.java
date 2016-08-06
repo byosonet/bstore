@@ -19,6 +19,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Plantilla;
 import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.util.UtilService;
 
 @Component("enviarEmailService")
 public class EnviarEmailServiceImpl implements EnviarEmailService{
@@ -76,12 +77,14 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarRecuperacionPassword(final String email, final String bccEmail, final Usuario usuario, final String password) throws Exception {
+	public void enviarRecuperacionPassword(final String bccEmail, final Usuario usuario) throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_PASSWORD);
         final StringWriter swPassword = new StringWriter();
 
         VelocityContext context = new VelocityContext();
-        context.put("tuclave", password);
+        context.put("nombre", usuario.getNombre().toUpperCase());
+        context.put("tuclave", UtilService.Desencriptar(usuario.getPassword()));
+        context.put("emailApp", bccEmail);
         Velocity.evaluate(
                 context,
                 swPassword,
@@ -96,13 +99,13 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 MimeMessageHelper messageHelper = new MimeMessageHelper(
                         mimeMessage, "UTF-8");
                 messageHelper.setSubject(mail.getSubject());
-                messageHelper.setTo(email);
+                messageHelper.setTo(usuario.getEmail());
                 messageHelper.setBcc(bccEmail);
                 messageHelper.setText(actualMessagePassword, true);
             }
         };
             this.mailSender.send(preparator);
-            this.log.info(" -- Correo enviado a: "+email);
+            this.log.info(" -- Correo enviado a: "+usuario.getEmail());
         } catch (MailException e) {
             log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
         }
