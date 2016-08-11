@@ -1,6 +1,7 @@
 package com.bstore.services.controller;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
@@ -11,6 +12,9 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -81,5 +85,54 @@ public class PublicacionController {
 			response.sendRedirect(request.getContextPath());
 		}
 		return "publicacionesAdmin";
+	}
+	
+	@RequestMapping(value="/publicacion/add",method = RequestMethod.GET)
+	public String publicacionAdd(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("publicacionController.publicacionAdd(): "+NAME_CONTROLLER+"/add");
+		log.info("---------------------------------------------------------------------------------");
+		
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			model.addAttribute("publicacion", new Publicacion());
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		
+		return "publicacionAdd";
+	}
+	
+	@RequestMapping(value="publicacion/savePublicacion",method = RequestMethod.POST)
+	public String savePublicacion(Model model, HttpServletRequest request, HttpServletResponse response, 
+			@ModelAttribute("publicacion") @Validated Publicacion publicacion,
+			BindingResult result) throws IOException{
+		log.info("publicacionController.publicacionAdd(): "+NAME_CONTROLLER+"/savePubliacion");
+		
+		if(result.hasErrors()){
+			return "publicacionAdd";
+		}
+		
+		log.info("publicacionObject: "+publicacion.toString());
+		
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+//			if(publicacion!=null){
+				log.info("Se va a guardar la nueva publicacion");
+				
+				publicacion.setFechaUmodif(new Date());
+				publicacionService.saveOrUpdate(publicacion);
+				
+				//Para regresar a lista de publicaciones
+				List<Publicacion> publicacionList = publicacionService.getAll();
+				model.addAttribute("publicaciones", publicacionList);	
+//			}
+//			else{
+//				log.info("La nueva editorial es null, regresamos a la misma pantalla");
+//				return "editorialAdd";
+//			}
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "publicaciones";
 	}
 }

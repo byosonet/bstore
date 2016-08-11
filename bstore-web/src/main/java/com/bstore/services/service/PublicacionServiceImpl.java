@@ -134,5 +134,11 @@ public class PublicacionServiceImpl implements PublicacionService{
 			return price;
 		}
 	}
+
+	@Override
+	public void saveOrUpdate(Publicacion publicacion) {
+		log.info("saveOrUpdate publicacion: "+publicacion.toString());
+		publicacionDao.saveOrUpdate(publicacion);
+	}
 	
 }

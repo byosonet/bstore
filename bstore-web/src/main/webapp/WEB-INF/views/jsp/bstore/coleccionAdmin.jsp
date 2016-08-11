@@ -40,7 +40,7 @@
 				  <br /> <br /> <br />
 				</div>
 				<div class="form-group">
-					<a href="#"
+					<a href="${contextpath}/coleccion/add"
 						class="btn btn-primary pull-right"
 						style="font-size: 15; width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align: right;">
 						<i class="fa fa-plus"></i> <c:out value="Agregar coleccion" />
