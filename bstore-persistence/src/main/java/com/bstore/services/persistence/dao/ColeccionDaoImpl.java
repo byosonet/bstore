@@ -37,4 +37,10 @@ public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDa
 				.createQuery("FROM Coleccion c")
 				.list();
 	}
+
+	public void saveOrUpdate(Coleccion coleccion) {
+		logger.info("saveOrUpdate coleccion: "+coleccion.toString());
+		this.getSession().saveOrUpdate(coleccion);
+		this.getSession().flush();
+	}
 }

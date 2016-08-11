@@ -64,6 +64,11 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/editorialAdd.jsp"/>
 	</definition>
 	
+	<definition name="coleccionAdd" extends="principal">
+		<put-attribute name="header" value="Editorial Add"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/coleccionAdd.jsp"/>
+	</definition>
+	
 	<definition name="perfilUsuario" extends="principal">
 		<put-attribute name="header" value="Perfil Usuario"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/perfilUsuario.jsp"/>

@@ -37,4 +37,11 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
 		logger.info("getAll");
 		return (List<Publicacion>) getSession().createQuery("FROM Publicacion p").list();
 	}
+
+
+	public void saveOrUpdate(Publicacion publicacion) {
+		logger.info("saveOrUpdate publicacion: "+publicacion.toString());
+		this.getSession().saveOrUpdate(publicacion);
+		this.getSession().flush();
+	}
 }

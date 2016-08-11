@@ -25,4 +25,9 @@ public class ColeccionServiceImpl implements ColeccionService{
 		return coleccionDao.getAll();
 	}
 
+	@Override
+	public void saveOrUpdate(Coleccion coleccion) {
+		coleccionDao.saveOrUpdate(coleccion);
+	}
+
 }
