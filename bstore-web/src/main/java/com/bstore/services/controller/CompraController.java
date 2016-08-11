@@ -33,6 +33,7 @@ import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.CompraService;
+import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.FormaPagoService;
 import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
@@ -54,6 +55,7 @@ public class CompraController {
 	private final String VALUE_TAXE = "com.conekta.iva";
 	private final String VALUE_ROUND = "com.conekta.factor.redondeo";
 	private final static String NA = "N/A";
+	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
 	
 	@Autowired
 	private PublicacionService publicacionService;
@@ -70,6 +72,9 @@ public class CompraController {
     
     @Autowired
     private PropertyService propertyService;
+    
+    @Autowired
+	EnviarEmailService enviarEmailService;
 	
 	
 	@RequestMapping(value="/comprar/publicacion/{id}",method = RequestMethod.GET)
@@ -241,6 +246,15 @@ public class CompraController {
 	          	  
 	          	    session.setAttribute("ultimasCompras", ultimasCompras);
 	          	    session.setAttribute("menu",menu);
+	          	    
+	          	  try {
+	          		   compra.setPublicacion(publicacion);
+	                   this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario, compra);
+	                   this.log.info(" -- Enviado mail de compra exitosa");
+	               } catch (Exception ex) {
+	                   this.log.error(" -- No se puedo enviar mail de compa: "+ex.getMessage());
+	               }
+
 	            }else{
 	            	log.info("Mensaje de error conekta 1: "+responseCharge.getError().getError1());
 	            	log.info("Mensaje de error conekta 2: "+responseCharge.getError().getError2());
