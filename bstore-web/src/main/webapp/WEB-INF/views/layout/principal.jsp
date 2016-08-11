@@ -136,11 +136,11 @@
                 	<li class="active">
                         <a href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Principal</a>
                     </li>
-                    <li class="active">
+                    <li class="">
                         <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>
                     </li>
                     <c:forEach var="entry" items="${menu}">
-	                    <li class="active">
+	                    <li class="">
 	                        <a href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
 	                        <ul id="${entry.key.id}" class="collapse">
 							<c:forEach var="publicacion" items="${entry.value}">

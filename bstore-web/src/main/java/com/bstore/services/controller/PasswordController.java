@@ -2,6 +2,8 @@ package com.bstore.services.controller;
 
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
+import com.bstore.services.service.EnviarEmailService;
+import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.UsuarioService;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.log4j.Logger;
@@ -20,6 +22,15 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/password")
 public class PasswordController {
+	
+	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+	
+	@Autowired
+	EnviarEmailService enviarEmailService;
+	
+	@Autowired
+	private PropertyService propertyService;
+	
     private final Logger log = Logger.getLogger(PasswordController.class);
  
     @RequestMapping(value="/recuperar", method = RequestMethod.GET)
@@ -46,7 +57,7 @@ public class PasswordController {
             
             try
             {
-                //this.emailSendService.recuperarPassword(email, UtilService.Desencriptar(user.getPassword()),"gtrejo.armenta@gmail.com");
+                this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(),user);
                 this.log.info(" -- El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
                  response.setCodigo("404");
