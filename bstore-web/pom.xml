@@ -235,9 +235,9 @@
                         <version>2.1.1</version>
                         <configuration>
                             <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-                            
                             <packagingExcludes>
-                               <!-- WEB-INF/lib/activation-1.1.jar,	       
+                                <!--
+                                WEB-INF/lib/activation-1.1.jar,	       
                                 WEB-INF/lib/commons-digester-2.0.jar,			   
                                 WEB-INF/lib/jackson-core-2.4.1.jar,	
                                 WEB-INF/lib/mysql-connector-java-5.1.6.jar,		  
@@ -313,14 +313,13 @@
                                 WEB-INF/lib/antlr-2.7.7.jar,
                                 WEB-INF/lib/commons-collections-3.2.1.jar,
                                 WEB-INF/lib/commons-lang-2.4.jar,
-                                WEB-INF/lib/velocity-1.7.jar
+                                WEB-INF/lib/velocity-1.7.jar,
                                 WEB-INF/lib/httpclient-4.2.1.jar,
                                 WEB-INF/lib/httpcore-4.2.1.jar,
                                 WEB-INF/lib/json-20090211.jar,
                                 WEB-INF/lib/spring-test-4.1.4.RELEASE.jar
                                 -->
                             </packagingExcludes>
-                            
                         </configuration>
                     </plugin>
                 </plugins>
