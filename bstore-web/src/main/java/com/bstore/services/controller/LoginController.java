@@ -67,22 +67,8 @@ public class LoginController {
 	  log.info("URL: value=/equivira,method = RequestMethod.POST");
 	  
 	  HttpSession session= request.getSession(true);
-	   
-      String requestEmail="";
-      String requestPassword="";
-      String cifrarEnviado = request.getParameter("cifrar");
-      if(cifrarEnviado!=null){
-          this.log.info(" -- El cifrado es enviado: "+cifrarEnviado);
-          String descifrar = UtilService.Desencriptar(cifrarEnviado);
-          String[] dataEnviada = descifrar.split(";");
-          requestEmail = dataEnviada[0];
-          requestPassword = dataEnviada[1];          
-      }else{
-          this.log.info(" -- El cifrado no es enviado: ");
-          requestEmail = request.getParameter("user");
-          requestPassword = request.getParameter("password");  
-      }
-
+      String requestEmail = request.getParameter("user");
+      String requestPassword = request.getParameter("password");  
       this.log.info(" -- Ingresando al sistema");
       this.log.info(" -- Request: "+request);
       this.log.info(" -- User: "+requestEmail);
@@ -400,41 +386,4 @@ public class LoginController {
     	   response.sendRedirect(request.getContextPath());
        }
     }
-    
-    @RequestMapping(value = "/eliminar/usuario", method = RequestMethod.POST)
-    public ResponseEntity<ErrorService> eliminarDatosUsuario(HttpServletRequest request) throws IOException, JSONException, Exception {
-        HttpStatus status = HttpStatus.NOT_FOUND;
-        
-        String id = request.getParameter("idUsuario");
-
-        ErrorService response = new ErrorService();
-        response.setCodigo("404");
-        response.setMensaje("Los datos del usuario no se pudieron eliminar.");
-        
-        Usuario user = this.usuarioService.byIdUser(Integer.valueOf(id));
-        if(user!=null){
-            this.usuarioService.deleteUser(user);
-            this.log.info(" -- El usuario fue eliminado");
-            response.setCodigo("200");
-            response.setMensaje("El usuario fue eliminado con éxito.");
-            status = HttpStatus.OK;
-        }
-        return new ResponseEntity<ErrorService>(response, status);
-    }
-    
-    @RequestMapping(value = "/eliminar/mail/failed", method = RequestMethod.POST)
-    public ResponseEntity<ErrorService> eliminarMailFailed(HttpServletRequest request) throws IOException, JSONException, Exception {
-        HttpStatus status = HttpStatus.NOT_FOUND;
-        
-        String idMailFailed = request.getParameter("idMailFailed");
-        String mailUser = request.getParameter("idMailUsuarioTemp");
-
-        ErrorService response = new ErrorService();
-        response.setCodigo("404");
-        response.setMensaje("Los datos no se pudieron eliminar.");
-        
-        
-        return new ResponseEntity<ErrorService>(response, status);
-    }
-        
 }
