@@ -65,8 +65,13 @@
 	</definition>
 	
 	<definition name="coleccionAdd" extends="principal">
-		<put-attribute name="header" value="Editorial Add"/>
+		<put-attribute name="header" value="Coleccion Add"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/coleccionAdd.jsp"/>
+	</definition>
+	
+	<definition name="fuenteAdd" extends="principal">
+		<put-attribute name="header" value="Fuente Add"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/fuenteAdd.jsp"/>
 	</definition>
 	
 	<definition name="perfilUsuario" extends="principal">

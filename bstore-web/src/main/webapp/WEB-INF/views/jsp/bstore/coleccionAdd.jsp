@@ -18,7 +18,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-12">
-				<form:form action="${contextpath}/editorial/saveColeccion" method="POST" commandName="coleccion">
+				<form:form action="${contextpath}/coleccion/saveColeccion" method="POST" commandName="coleccion">
 
 					<div class="form-group">
 						<div class="control-label col-sm-12 alert alert-success"
@@ -83,7 +83,7 @@
 
 					<div class="row" align="right">
 							<a
-								href="${contextpath}/coleccion/getAll" class="btn btn-default"
+								href="${contextpath}/coleccionAdmin" class="btn btn-default"
 								style="font-size: 15; width: 10%; padding: 5px; text-align: center; align: right;">
 								<i class="glyphicon glyphicon-remove"></i> <c:out value="Cancelar" />
 							</a>

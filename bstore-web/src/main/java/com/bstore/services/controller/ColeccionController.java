@@ -14,12 +14,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.service.ColeccionService;
+import com.bstore.services.validator.ColeccionValidator;
 
 @Controller
 public class ColeccionController {
@@ -28,7 +31,15 @@ public class ColeccionController {
 
 	@Autowired
 	private ColeccionService coleccionService;
+	
+	@Autowired
+	private ColeccionValidator coleccionValidator;
 
+	@InitBinder
+	protected void initBinder(WebDataBinder binder){
+		binder.setValidator(coleccionValidator);
+	}
+	
 	@RequestMapping(value="/colecciones",method = RequestMethod.GET)
 	public String colecciones(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("Cargando colecciones. "+NAME_CONTROLLER);
