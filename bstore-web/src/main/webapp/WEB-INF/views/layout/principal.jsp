@@ -136,13 +136,13 @@
                 	<li class="active">
                         <a href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Principal</a>
                     </li>
-                    <li class="">
+                    <li class="active">
                         <a href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>
                     </li>
                     <c:forEach var="entry" items="${menu}">
-	                    <li class="">
+	                    <li class="active">
 	                        <a href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
-	                        <ul id="${entry.key.id}" class="collapse">
+	                        <ul id="${entry.key.id}" class="">
 							<c:forEach var="publicacion" items="${entry.value}">
 						    	<li>
 	                                <a style="color: white;" href="${contextpath}/publicacion/${publicacion.id}"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
@@ -155,22 +155,22 @@
 					<!-- Menu del Admin -->
 					<c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
 						<li class="active">
-	                        <a href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Administrador</a>
-	                        <ul id="admin" class="collapse">
+	                        <a href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Cat&aacute;logos</a>
+	                        <ul id="admin" class="">
+	                        	<li>
+	                                <a style="color: white;" href="${contextpath}/coleccionAdmin"><i class="fa fa-fw fa-folder-open"></i> Colecciones</a>
+	                            </li>
 						    	<li>
-	                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Editoriales</a>
+	                                <a style="color: white;" href="${contextpath}/editorial/getAll"><i class="fa fa-fw fa-folder-open"></i> Editoriales</a>
 	                            </li>
 	                            <li>
-	                                <a style="color: white;" href="${contextpath}/coleccionAdmin"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Colecciones</a>
+	                                <a style="color: white;" href="${contextpath}/fuente/getAll"><i class="fa fa-fw fa-folder-open"></i> Fuentes</a>
 	                            </li>
 	                            <li>
-	                                <a style="color: white;" href="${contextpath}/fuente/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Fuentes</a>
+	                                <a style="color: white;" href="${contextpath}/perfil/getAll"><i class="fa fa-fw fa-folder-open"></i> Perfiles</a>
 	                            </li>
 	                            <li>
-	                                <a style="color: white;" href="${contextpath}/perfil/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Perfiles</a>
-	                            </li>
-	                            <li>
-	                                <a style="color: white;" href="${contextpath}/publicacion/getAll"><i class="fa fa-fw fa-plus-square"></i> Secci&oacute;n Publicaciones</a>
+	                                <a style="color: white;" href="${contextpath}/publicacion/getAll"><i class="fa fa-fw fa-folder-open"></i> Publicaciones</a>
 	                            </li>
 							</ul>
 	                    </li>
