@@ -74,6 +74,11 @@
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/fuenteAdd.jsp"/>
 	</definition>
 	
+	<definition name="publicacionAdd" extends="principal">
+		<put-attribute name="header" value="Fuente Add"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicacionAdd.jsp"/>
+	</definition>
+	
 	<definition name="perfilUsuario" extends="principal">
 		<put-attribute name="header" value="Perfil Usuario"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/perfilUsuario.jsp"/>
