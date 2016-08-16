@@ -14,6 +14,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.WebDataBinder;
+import org.springframework.web.bind.annotation.InitBinder;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,6 +25,7 @@ import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
+import com.bstore.services.validator.PublicacionValidator;
 
 @Controller
 public class PublicacionController {
@@ -31,6 +34,14 @@ public class PublicacionController {
 	
 	@Autowired
 	private PublicacionService publicacionService;
+	
+	@Autowired
+	private PublicacionValidator publicacionValidator;
+
+	@InitBinder
+	protected void initBinder(WebDataBinder binder){
+		binder.setValidator(publicacionValidator);
+	}
 	
 	@RequestMapping(value="/coleccion/{id}",method = RequestMethod.GET)
 	   public String coleccionesById(Model model, @PathVariable("id") String id, HttpServletRequest request, 
@@ -80,7 +91,7 @@ public class PublicacionController {
 			if(publicacionList != null){
 				model.addAttribute("publicaciones", publicacionList);
 			}
-			model.addAttribute("publicacion", new Perfil());
+			model.addAttribute("publicacion", new Publicacion());
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
@@ -102,11 +113,11 @@ public class PublicacionController {
 		return "publicacionAdd";
 	}
 	
-	@RequestMapping(value="publicacion/savePublicacion",method = RequestMethod.POST)
+	@RequestMapping(value="/publicacion/savePublicacion",method = RequestMethod.POST)
 	public String savePublicacion(Model model, HttpServletRequest request, HttpServletResponse response, 
 			@ModelAttribute("publicacion") @Validated Publicacion publicacion,
 			BindingResult result) throws IOException{
-		log.info("publicacionController.publicacionAdd(): "+NAME_CONTROLLER+"/savePubliacion");
+		log.info("publicacionController.publicacionAdd(): "+NAME_CONTROLLER+"/savePublicacion");
 		
 		if(result.hasErrors()){
 			return "publicacionAdd";
@@ -133,6 +144,6 @@ public class PublicacionController {
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
-		return "publicaciones";
+		return "publicacionesAdmin";
 	}
 }
