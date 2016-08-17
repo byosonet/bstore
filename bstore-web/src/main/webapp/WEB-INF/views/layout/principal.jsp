@@ -166,9 +166,9 @@
 	                            <li>
 	                                <a style="color: white;" href="${contextpath}/fuente/getAll"><i class="fa fa-fw fa-folder-open"></i> Fuentes</a>
 	                            </li>
-	                            <li>
+	                            <!-- li>
 	                                <a style="color: white;" href="${contextpath}/perfil/getAll"><i class="fa fa-fw fa-folder-open"></i> Perfiles</a>
-	                            </li>
+	                            </li-->
 	                            <li>
 	                                <a style="color: white;" href="${contextpath}/publicacion/getAll"><i class="fa fa-fw fa-folder-open"></i> Publicaciones</a>
 	                            </li>

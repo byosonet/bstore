@@ -114,6 +114,6 @@ public class ColeccionController {
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
-		return "colecciones";
+		return "coleccionAdmin";
 	}
 }

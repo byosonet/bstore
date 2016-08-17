@@ -100,7 +100,7 @@ public class FuenteController {
 				fuenteService.saveOrUpdateFuente(fuente);
 				
 				List<Fuente> coleccionList = fuenteService.getAll();
-				model.addAttribute("colecciones", coleccionList);	
+				model.addAttribute("fuentes", coleccionList);	
 //			}
 //			else{
 //				log.info("La nueva editorial es null, regresamos a la misma pantalla");
