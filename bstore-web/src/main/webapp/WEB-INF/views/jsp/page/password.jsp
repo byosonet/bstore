@@ -103,20 +103,20 @@
         	</br>
             <form id="recuperar" class="form-horizontal">
             	<div class="form-group">
-                    <h5 class="control-label col-sm-12" style="text-align: center;color:white;">RECUPERA TU PASSWORD</h5>
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;">RECUPERA TU PASSWORD</h5>
                 </div>
                 </br>
         		</br>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-4" style="color:white;" for="nombre">Usuario:</label>
+                    <label class="control-label col-sm-4" style="color:black;" for="nombre">Usuario:</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-4" style="color:white;" for="email">Confirmar usuario:</label>
+                    <label class="control-label col-sm-4" style="color:black;" for="email">Confirmar usuario:</label>
                     <div class="col-sm-8">
                         <input type="text" class="form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
                     </div>
