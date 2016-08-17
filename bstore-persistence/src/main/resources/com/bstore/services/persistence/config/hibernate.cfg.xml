@@ -8,10 +8,19 @@
     <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
     <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
     
-    <!-- CONEXION A PRODUCCION PUBLICO -->
-    <!-- <property name="hibernate.connection.url">jdbc:mysql://127.7.93.2:3306/bstore</property>
+    <!-- CONEXION A DEV1 PUBLICO -->
+    <!-- 
+    <property name="hibernate.connection.url">jdbc:mysql://127.7.93.2:3306/bstore</property>
     <property name="hibernate.connection.username">adminEjguFet</property>
-    <property name="hibernate.connection.password">gzNpaw3sHD7U</property> -->
+    <property name="hibernate.connection.password">gzNpaw3sHD7U</property> 
+    -->
+    
+    <!-- CONEXION A DEV2 PUBLICO -->
+    <!-- 
+    <property name="hibernate.connection.url">jdbc:mysql://127.11.143.130:3306/bstore</property>
+    <property name="hibernate.connection.username">adminMpvg6Nv</property>
+    <property name="hibernate.connection.password">X6wd5_Z3pJ65</property> 
+    -->
     
     <!-- CONEXION A DESARROLLO LOCAL-->
     <property name="hibernate.connection.url">jdbc:mysql://localhost:3306/bstore</property>
