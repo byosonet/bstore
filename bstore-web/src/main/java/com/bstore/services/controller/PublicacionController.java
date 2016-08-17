@@ -128,9 +128,11 @@ public class PublicacionController {
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 //			if(publicacion!=null){
+				Usuario usuario = (Usuario) session.getAttribute("usuario");
 				log.info("Se va a guardar la nueva publicacion");
 				
 				publicacion.setFechaUmodif(new Date());
+				publicacion.setIdUsuarioUmodif(usuario.getId());
 				publicacionService.saveOrUpdate(publicacion);
 				
 				//Para regresar a lista de publicaciones

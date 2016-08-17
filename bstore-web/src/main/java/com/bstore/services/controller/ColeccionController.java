@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Coleccion;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.ColeccionService;
 import com.bstore.services.validator.ColeccionValidator;
 
@@ -83,7 +84,7 @@ public class ColeccionController {
 		return "coleccionAdd";
 	}
 	
-	@RequestMapping(value="coleccion/saveColeccion",method = RequestMethod.POST)
+	@RequestMapping(value="/coleccion/saveColeccion",method = RequestMethod.POST)
 	public String saveColeccion(Model model, HttpServletRequest request, HttpServletResponse response, 
 			@ModelAttribute("coleccion") @Validated Coleccion coleccion,
 			BindingResult result) throws IOException{
@@ -93,14 +94,18 @@ public class ColeccionController {
 			return "coleccionAdd";
 		}
 		
-		log.info("coleccionObject: "+coleccion.toString());
+//		log.info("coleccionObject: "+coleccion.toString());
 		
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 //			if(publicacion!=null){
-				log.info("Se va a guardar la nueva coleccion");
+				Usuario usuario = (Usuario) session.getAttribute("usuario");
 				
 				coleccion.setFechaUmodif(new Date());
+				coleccion.setIdUsuarioUmodif(usuario.getId());
+				
+				log.info("Antes de guardar coleccion: "+coleccion.toString());
+				
 				coleccionService.saveOrUpdate(coleccion);
 				
 				//Para regresar a lista de publicaciones
@@ -114,6 +119,7 @@ public class ColeccionController {
 		}else{
 			response.sendRedirect(request.getContextPath());
 		}
-		return "coleccionAdmin";
+		return "redirect:/coleccionAdmin";
+//		return "coleccionAdmin";
 	}
 }

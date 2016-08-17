@@ -55,7 +55,6 @@
 					<br/>
 					<br/>
 					
-					
 					<div class="form-group">
 						<label for="email" class="col-sm-1 control-label">URL de portada</label>
 						<div class="col-sm-3">
@@ -76,6 +75,21 @@
                         		</label>
 							</div>
 						</div>
+						
+					</div>
+					<br/>
+					<br/>
+					
+					<div class="form-group">
+						<label for="ranking" class="col-sm-1 control-label">Ranking</label>
+						<div class="col-sm-3">
+							<input type="range" name="amountRange" min="0" max="100" value="0" oninput="this.form.ranking.value=this.value" />
+						</div>
+						<div class="col-sm-2">
+							<input type="number" name="ranking" min="0" max="100" value="0" oninput="this.form.amountRange.value=this.value" />
+						</div>
+						
+						
 						
 					</div>
 					<br/>
