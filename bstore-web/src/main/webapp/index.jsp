@@ -138,12 +138,12 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/bstore" style="color:white;">eQuivira</a>
+            <a class="navbar-brand" href="/bstore" style="color:black;">eQuivira</a>
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
                 <li class="dropdown">
-                  <a style="color:white;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#"></a>
+                  <a style="color:black;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#"></a>
                 </li>
               </ul>
           </div>
@@ -160,26 +160,26 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>
                     <div class="col-sm-9">
-                        <div style="text-align:center;color:white"><h5>B I E N V E N I D O</h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
+                        <div style="text-align:center;color:black"><h5>B I E N V E N I D O</h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
                       </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:white;" for="nombre">Usuario</label>
+                    <label class="control-label col-sm-3" style="color:black;" for="nombre">Usuario</label>
                     <div class="col-sm-9">
                         <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu login">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:white;" for="email">Password</label>
+                    <label class="control-label col-sm-3" style="color:black;" for="email">Password</label>
                     <div class="col-sm-9">
                         <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu password">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-12" style="color:white;">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                    <label class="control-label col-sm-12" style="color:black;">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
                 </div>
             </form>
             <div class="row">
