@@ -138,7 +138,7 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" href="/bstore" style="color:black;">eQuivira</a>
+            <a class="navbar-brand" href="/bstore" style="color:white;">eQuivira</a>
           </div>
           <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav navbar-right">
@@ -160,7 +160,7 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>
                     <div class="col-sm-9">
-                        <div style="text-align:center;color:black"><h5>B I E N V E N I D O</h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/cpanel_user.png">
+                        <div style="text-align:center;color:black"><h5><b>e Q u i v i r a</b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
                       </div>
                     </div>
                 </div>
