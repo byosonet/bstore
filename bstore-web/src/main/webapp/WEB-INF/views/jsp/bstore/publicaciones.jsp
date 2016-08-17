@@ -33,17 +33,17 @@ $("#publicacion").gridalicious({
     		 </c:choose>
              <div class="item banner-wrapper">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
-                   <span style="float:left;margin-top: -10px;margin-left:40px;"><b>Autor/Fuente</b></span>
-                   <span style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
-				   <span style="float:left;margin-bottom: -10px">Tema: <c:out value="${publicacion.nombre}"/></span>
-				   <span style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
-				   <span style="float:left;"><c:out value="${publicacion.editorial.nombre}"/></span>
+                   <span class="text" style="float:left;margin-top: -10px;margin-left:40px;"><b>Autor/Fuente</b></span>
+                   <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
+				   <span class="text" style="float:left;margin-bottom: -10px">Tema: <c:out value="${publicacion.nombre}"/></span>
+				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
+				   <span class="text" style="float:left;"><c:out value="${publicacion.editorial.nombre}"/></span>
 				 <c:if test="${publicacion.descuento == '0.00'}">
-             		<div style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15">$ ${publicacion.precio} MXN</b></div>
+             		<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15">$ ${publicacion.precio} MXN</b></div>
              	 </c:if>
 				 <c:if test="${publicacion.descuento != '0.00'}">
-				 	<div style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
-             		<div class="banner-title">Precio Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</div>
+				 	<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
+             		<div class="text banner-title"> Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</div>
              	 </c:if>
 				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
