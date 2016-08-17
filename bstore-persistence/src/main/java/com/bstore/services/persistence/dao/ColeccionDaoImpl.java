@@ -11,7 +11,7 @@ import com.bstore.services.persistence.utils.TransacctionMySQL;
 public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDao{
 	private final Logger logger = Logger.getLogger(ColeccionDaoImpl.class);
 	TransacctionMySQL mysql = new TransacctionMySQL();
-
+	
 	@SuppressWarnings("unchecked")
 	public List<Coleccion> getColecion(boolean tipoOrden) {
 		this.logger.info("Buscando colecciones");
@@ -39,8 +39,16 @@ public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDa
 	}
 
 	public void saveOrUpdate(Coleccion coleccion) {
-		logger.info("saveOrUpdate coleccion: "+coleccion.toString());
-		this.getSession().saveOrUpdate(coleccion);
-		this.getSession().flush();
+		try{
+			this.mysql.iniciarOperacion();
+			logger.info("saveOrUpdate coleccion: "+coleccion.toString());
+			this.mysql.getSesion().saveOrUpdate(coleccion);
+			this.mysql.getSesion().flush();
+			this.mysql.getTx().commit();
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			this.mysql.getSesion().close();
+		}
 	}
 }

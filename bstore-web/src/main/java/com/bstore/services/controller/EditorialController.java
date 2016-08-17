@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Editorial;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.EditorialService;
 import com.bstore.services.validator.EditorialValidator;
 
@@ -96,9 +97,11 @@ public class EditorialController {
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			//logger.info("nombre de la nueva editorial: "+editorial.getNombre());
 			if(editorial!=null){
+				Usuario usuario = (Usuario) session.getAttribute("usuario");
 				logger.info("Se va a guardar la nueva editorial");
 				
 				editorial.setFechaUmodif(new Date());
+				editorial.setIdUsuarioUmodif(usuario.getId());
 				editorialService.saveOrUpdate(editorial);
 				
 				//Para regresar a lista de editoriales

@@ -27,7 +27,11 @@ public class ColeccionServiceImpl implements ColeccionService{
 
 	@Override
 	public void saveOrUpdate(Coleccion coleccion) {
-		coleccionDao.saveOrUpdate(coleccion);
+		try{
+			coleccionDao.saveOrUpdate(coleccion);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
 	}
 
 }

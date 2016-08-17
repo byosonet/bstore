@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Fuente;
+import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.FuenteService;
 import com.bstore.services.validator.FuenteValidator;
 
@@ -94,9 +95,11 @@ public class FuenteController {
 		HttpSession session= (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 //			if(publicacion!=null){
+				Usuario usuario = (Usuario) session.getAttribute("usuario");
 				logger.info("Se va a guardar la nueva fuente");
 				
 				fuente.setFechaUmodif(new Date());
+				fuente.setIdUsuarioUmodif(usuario.getId());
 				fuenteService.saveOrUpdateFuente(fuente);
 				
 				List<Fuente> coleccionList = fuenteService.getAll();
