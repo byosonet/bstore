@@ -8,6 +8,10 @@
     word-wrap: break-word;
     font: -moz-field;
     font-size: 12px;
+    font-family: verdana;
+}
+.text{
+	font-family: monospace;
 }
 .zoom{
 	border-radius:10px;
