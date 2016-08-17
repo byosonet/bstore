@@ -13,9 +13,11 @@
 	<div class="col-md-12 alert alert-success" style="text-align: center;"><b>Mi Historial de Compras</b></div>
 </div>
 
+<c:set var="count" value="0" scope="page"/>
 <c:forEach var="item" items="${mapaCompras}">
 <c:set var="compra" value="${item}" />
 <c:set var="publicacion" value="${item.publicacion}" />
+<c:set var="count" value="${count + 1}" scope="page"/>
 	<div class="row" style="padding: 0.5em;">
   			<div class="form-group">
   				<div class="col-md-12" style="margin-top:5px;">
@@ -30,7 +32,7 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td style="text-align: center;">${publicacion.nombre}</td>
+								<td style="text-align: center;"><b>${count}.- ${publicacion.nombre}</b></td>
 								<td style="text-align: center;">${publicacion.isbn}</td>
 								<td style="text-align: center;">${publicacion.numeroPaginas}</td>
 								<td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="btn btn-success">Leer</a></b></td>
