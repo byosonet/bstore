@@ -32,6 +32,9 @@
 <!-- novedades css -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/novedades.css">
 
+<!-- datatables responsice css -->
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dataTables.responsive.css">
+
 <!-- VERSION ANTERIOR
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-2.1.4.min.js"></script>
 -->
@@ -83,3 +86,6 @@
 
 <!-- grid a licious js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery.grid-a-licious.js"></script>
+
+<!-- datatables responsive js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/dataTables.responsive.min.js"></script>
