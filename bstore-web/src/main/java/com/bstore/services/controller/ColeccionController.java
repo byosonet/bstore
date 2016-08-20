@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.ColeccionService;
+import com.bstore.services.service.UsuarioService;
 import com.bstore.services.validator.ColeccionValidator;
 
 @Controller
@@ -35,6 +36,9 @@ public class ColeccionController {
 	
 	@Autowired
 	private ColeccionValidator coleccionValidator;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -60,8 +64,15 @@ public class ColeccionController {
 		log.info("Colecciones getAll"+NAME_CONTROLLER);
 		HttpSession session = (HttpSession) request.getSession(false);
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+			List<Coleccion> lista = this.coleccionService.getAll();
 			log.info("Total colecciones encontradas: "+lista.size());
+			//procesando usuarios
+			for(Coleccion col: lista){
+				Usuario u = this.usuarioService.byIdUser(col.getIdUsuarioUmodif());
+				if(u!=null){
+					col.setUsuario(u.getEmail());
+				}
+			}
 			model.addAttribute("colecciones", lista);
 		}else{
 			response.sendRedirect(request.getContextPath());

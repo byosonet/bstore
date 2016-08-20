@@ -86,9 +86,9 @@
 								</c:if>
 								</td>
 								<td class="text" style="text-align: center;">
-									<img class="zoom" style="width: 65%;height: auto;border-radius: 3px;"src="${coleccion.portadaUrl}">
+									<img class="zoom" style="width: 65%;height: auto;border-radius: 5px;"src="${coleccion.portadaUrl}">
 								</td>
-								<td class="text" style="text-align: center;">${coleccion.idUsuarioUmodif}</td>
+								<td class="text" style="text-align: center;">${coleccion.usuario}</td>
 								<td class="text" style="text-align: center;"><fmt:formatDate value="${coleccion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
 								
 								<td class="text" style="text-align: center;">
