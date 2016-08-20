@@ -42,7 +42,7 @@
 				<div class="form-group">
 				
 				<table id="tablaColecciones"
-					class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+					class="display table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>

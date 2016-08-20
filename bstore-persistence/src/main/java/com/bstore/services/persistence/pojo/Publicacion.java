@@ -33,6 +33,7 @@ public class Publicacion implements java.io.Serializable {
 	private Editorial editorial;
 	private Date fechaCompraTemporal;
 	private boolean comprada;
+	private String usuarioMail;
 
 	public Publicacion() {
 	}
@@ -209,6 +210,14 @@ public class Publicacion implements java.io.Serializable {
 
 	public void setPortadaUrl(String portadaUrl) {
 		this.portadaUrl = portadaUrl;
+	}
+
+	public String getUsuarioMail() {
+		return usuarioMail;
+	}
+
+	public void setUsuarioMail(String usuarioMail) {
+		this.usuarioMail = usuarioMail;
 	}
 
 	@Override

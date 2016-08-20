@@ -21,10 +21,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Perfil;
+import com.bstore.services.persistence.pojo.Fuente;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
+import com.bstore.services.service.UsuarioService;
 import com.bstore.services.validator.PublicacionValidator;
 
 @Controller
@@ -37,6 +38,9 @@ public class PublicacionController {
 	
 	@Autowired
 	private PublicacionValidator publicacionValidator;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -89,6 +93,13 @@ public class PublicacionController {
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			List<Publicacion> publicacionList = publicacionService.getAll();
 			if(publicacionList != null){
+				//procesando usuarios
+				for(Publicacion pub: publicacionList){
+					Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
+					if(u!=null){
+						pub.setUsuarioMail(u.getEmail());
+					}
+				}
 				model.addAttribute("publicaciones", publicacionList);
 			}
 			model.addAttribute("publicacion", new Publicacion());
