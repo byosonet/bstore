@@ -20,6 +20,7 @@ public class Editorial implements java.io.Serializable {
 	private String telefono;
 	private Date fechaUmodif;
 	private int idUsuarioUmodif;
+	private String usuario;
 
 	public Editorial() {
 	}
@@ -102,6 +103,14 @@ public class Editorial implements java.io.Serializable {
 
 	public int getIdUsuarioUmodif() {
 		return this.idUsuarioUmodif;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	public void setIdUsuarioUmodif(int idUsuarioUmodif) {

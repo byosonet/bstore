@@ -112,7 +112,7 @@
 				<div class="form-group" style="float:right;">
 					<a href="${contextpath}/coleccion/add"
 						class="btn btn-primary">
-						<i class="fa fa-plus"></i> <c:out value="Agregar" />
+						<i class="fa fa-plus"></i> Nueva Colecci&oacute;n
 					</a>
 				</div>
 			</div>
