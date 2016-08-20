@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bstore.services.persistence.pojo.Editorial;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.EditorialService;
+import com.bstore.services.service.UsuarioService;
 import com.bstore.services.validator.EditorialValidator;
 
 /**
@@ -42,6 +43,9 @@ public class EditorialController {
 	
 	@Autowired
 	private EditorialValidator editorialValidator;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -56,6 +60,13 @@ public class EditorialController {
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			List<Editorial> editorialList = editorialService.getAll();
 			if(editorialList != null){
+				//procesando usuarios
+				for(Editorial edi: editorialList){
+					Usuario u = this.usuarioService.byIdUser(edi.getIdUsuarioUmodif());
+					if(u!=null){
+						edi.setUsuario(u.getEmail());
+					}
+				}
 				model.addAttribute("editoriales",editorialList);
 			}
 			model.addAttribute("editorial", new Editorial());

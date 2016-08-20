@@ -1,16 +1,16 @@
 <%@ include file="../../layout/taglibs.jsp"%>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(document).ready(function() {
-			$('#tablaEditoriales').DataTable({
+			$('#tablaColecciones').DataTable({
+				responsive: true,
+				"lengthMenu": [5, 10, 15, 20, 25],
 				"language" : {
-					"lengthMenu" : "Mostrar _MENU_ registros por página",
+					"lengthMenu" : "Nº registros a Mostrar: _MENU_",
 					"zeroRecords" : "No hay registros",
 					"info" : "Página _PAGE_ de _PAGES_",
 					"infoEmpty" : "No hay registros",
@@ -24,69 +24,97 @@
 					},
 				}
 			});
-		});
 	});
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Editoriales</title>
 </head>
 <body>
-	<div class="container-fluid">
+<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-sm-offset-0 col-md-12">
 				<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Editoriales</b></div>
+                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Cat&aacute;logo de Editoriales</b></div>
                 </div>
                 <div class="form-group">
 				  <br /> <br /> <br />
 				</div>
 				<div class="form-group">
-					<a href="${contextpath}/editorial/add"
-						class="btn btn-primary pull-right"
-						style="font-size: 15; width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align: right;">
-						<i class="fa fa-plus"></i> <c:out value="Agregar editorial" />
-					</a>
-				</div>
-				<div class="form-group">
-				<table id="tablaEditoriales"
-					class="table table-striped table-bordered" cellspacing="0"
+				
+				<table id="tablaColecciones"
+					class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>
-							<th class="alert alert-success">Id</th>
-							<th class="alert alert-success">Nombre</th>
-							<th class="alert alert-success">Estatus</th>
-							<th class="alert alert-success">RFC</th>
-							<th class="alert alert-success">Telefono</th>
-							<th class="alert alert-success">E-mail</th>
+							<th style="text-align: center;" class="alert alert-info">#</th>
+							<th style="text-align: center;" class="alert alert-info">Nombre</th>
+							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
+							<th style="text-align: center;" class="alert alert-info">Email</th>
+							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
+							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-							<th>Id</th>
-							<th>Nombre</th>
-							<th>Estatus</th>
-							<th>RFC</th>
-							<th>Telefono</th>
-							<th>E-mail</th>
+							<th style="text-align: center;" class="alert alert-info">#</th>
+							<th style="text-align: center;" class="alert alert-info">Nombre</th>
+							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
+							<th style="text-align: center;" class="alert alert-info">Email</th>
+							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
+							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</tfoot>
 					<tbody>
 						<c:forEach var="editorial" items="${editoriales}">
 							<tr>
-								<td>${editorial.id}</td>
-								<td>${editorial.nombre}</td>
-								<td>${editorial.estatus}</td>
-								<td>${editorial.rfc}</td>
-								<td>${editorial.telefono}</td>
-								<td>${editorial.email}</td>
+								<td class="text" style="text-align: center;">${editorial.id}</td>
+								<td class="text">${editorial.nombre}</td>
+								<td class="text">${editorial.rfc}</td>
+								<td class="text">${editorial.telefono}</td>
+								<td class="text">${editorial.email}</td>
+								<td class="text">${editorial.usuario}</td>
+								<td class="text" style="text-align: center;"><fmt:formatDate value="${editorial.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
+								
+								<td class="text" style="text-align: center;">
+								<c:if test="${editorial.estatus eq 1}">
+								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
+										<c:out value="Activado"></c:out>
+									</label>
+								</c:if>
+								<c:if test="${editorial.estatus eq 0}">
+									<label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
+										<c:out value="Desactivado"></c:out>
+									</label>
+								</c:if>
+								</td>
+								<td class="text" style="text-align: center;">
+									<a href="#${editorial.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
+									 <c:out value="Modificar" />
+									</a>
+									<a href="#${editorial.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger">
+									 <c:out value="Eliminar" />
+									</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				</div>
+				<div class="form-group" style="float:right;">
+					<a href="${contextpath}/editorial/add"
+						class="btn btn-primary">
+						<i class="fa fa-plus"></i> Nueva Editorial
+					</a>
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 </body>
 </html>
