@@ -20,9 +20,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bstore.services.persistence.pojo.Editorial;
 import com.bstore.services.persistence.pojo.Fuente;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.FuenteService;
+import com.bstore.services.service.UsuarioService;
 import com.bstore.services.validator.FuenteValidator;
 
 /**
@@ -42,6 +44,9 @@ public class FuenteController {
 	
 	@Autowired
 	private FuenteValidator fuenteValidator;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -56,6 +61,13 @@ public class FuenteController {
 		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
 			List<Fuente> fuenteList = fuenteService.getAll();
 			if(fuenteList != null){
+				//procesando usuarios
+				for(Fuente fue: fuenteList){
+					Usuario u = this.usuarioService.byIdUser(fue.getIdUsuarioUmodif());
+					if(u!=null){
+						fue.setUsuario(u.getEmail());
+					}
+				}
 				model.addAttribute("fuentes",fuenteList);
 			}
 			model.addAttribute("fuente", new Fuente());
