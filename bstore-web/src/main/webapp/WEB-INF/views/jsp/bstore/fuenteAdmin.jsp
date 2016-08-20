@@ -6,10 +6,11 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
-		$(document).ready(function() {
-			$('#tablaFuentes').DataTable({
+			$('#tablaColecciones').DataTable({
+				responsive: true,
+				"lengthMenu": [5, 10, 15, 20, 25],
 				"language" : {
-					"lengthMenu" : "Mostrar _MENU_ registros por página",
+					"lengthMenu" : "Nº registros a Mostrar: _MENU_",
 					"zeroRecords" : "No hay registros",
 					"info" : "Página _PAGE_ de _PAGES_",
 					"infoEmpty" : "No hay registros",
@@ -23,81 +24,105 @@
 					},
 				}
 			});
-		});
 	});
 </script>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Fuentes</title>
 </head>
 <body>
-	<div class="container-fluid">
+<div class="container-fluid">
 		<div class="row">
 			<div class="col-sm-12 col-sm-offset-0 col-md-12">
 				<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Fuentes</b></div>
+                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Cat&aacute;logo de Fuentes</b></div>
                 </div>
                 <div class="form-group">
 				  <br /> <br /> <br />
 				</div>
 				<div class="form-group">
-					<a href="${contextpath}/fuente/add"
-						class="btn btn-primary pull-right"
-						style="font-size: 15; width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align: right;">
-						<i class="fa fa-plus"></i> <c:out value="Agregar fuente" />
-					</a>
-				</div>
-				<div class="form-group">
-				<table id="tablaFuentes"
-					class="table table-striped table-bordered" cellspacing="0"
+				
+				<table id="tablaColecciones"
+					class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>
-							<th class="alert alert-success">Id</th>
-							<th class="alert alert-success">Nombre biblioteca</th>
-							<th class="alert alert-success">Página web</th>
-							<th class="alert alert-success">Autor</th>
-							<th class="alert alert-success">Email</th>
-							<th class="alert alert-success">Telefono</th>
-							<th class="alert alert-success">RFC</th>
-							<th class="alert alert-success">Estatus</th>
-							<th class="alert alert-success">Usuario Última Modif</th>
-							<th class="alert alert-success">Fecha Última Modif</th>
+							<th style="text-align: center;" class="alert alert-info">#</th>
+							<th style="text-align: center;" class="alert alert-info">Biblioteca</th>
+							<th style="text-align: center;" class="alert alert-info">P&aacute;gina Web</th>
+							<th style="text-align: center;" class="alert alert-info">Autor</th>
+							<th style="text-align: center;" class="alert alert-info">Email</th>
+							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
+							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
+							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</thead>
 					<tfoot>
 						<tr>
-							<th>Id</th>
-							<th>Nombre biblioteca</th>
-							<th>Página web</th>
-							<th>Autor</th>
-							<th>Email</th>
-							<th>Telefono</th>
-							<th>RFC</th>
-							<th>Estatus</th>
-							<th>Usuario última modif</th>
-							<th>Fecha última modif</th>
+							<th style="text-align: center;" class="alert alert-info">#</th>
+							<th style="text-align: center;" class="alert alert-info">Biblioteca</th>
+							<th style="text-align: center;" class="alert alert-info">P&aacute;gina Web</th>
+							<th style="text-align: center;" class="alert alert-info">Autor</th>
+							<th style="text-align: center;" class="alert alert-info">Email</th>
+							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
+							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
+							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</tfoot>
 					<tbody>
 						<c:forEach var="fuente" items="${fuentes}">
 							<tr>
-								<td>${fuente.id}</td>
-								<td>${fuente.nombreBiblioteca}</td>
-								<td>${fuente.paginaWeb}</td>
-								<td>${fuente.autor}</td>
-								<td>${fuente.email}</td>
-								<td>${fuente.telefono}</td>
-								<td>${fuente.rfc}</td>
-								<td>${fuente.estatus}</td>
-								<td>${fuente.idUsuarioUmodif}</td>
-								<td>${fuente.fechaUmodif}</td>
+								<td class="text" style="text-align: center;">${fuente.id}</td>
+								<td class="text">${fuente.nombreBiblioteca}</td>
+								<td class="text">
+										<a href="${fuente.paginaWeb}" target="_blank">${fuente.paginaWeb}</a>
+								</td>
+								<td class="text">${fuente.autor}</td>
+								<td class="text">${fuente.email}</td>
+								<td class="text">${fuente.telefono}</td>
+								<td class="text">${fuente.rfc}</td>
+								<td class="text">${fuente.usuario}</td>
+								<td class="text" style="text-align: center;"><fmt:formatDate value="${fuente.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
+								
+								<td class="text" style="text-align: center;">
+								<c:if test="${fuente.estatus eq 1}">
+								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
+										<c:out value="Activado"></c:out>
+									</label>
+								</c:if>
+								<c:if test="${fuente.estatus eq 0}">
+									<label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
+										<c:out value="Desactivado"></c:out>
+									</label>
+								</c:if>
+								</td>
+								<td class="text" style="text-align: center;">
+									<a href="#${fuente.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
+									 <c:out value="Modificar" />
+									</a>
+									<a href="#${fuente.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger">
+									 <c:out value="Eliminar" />
+									</a>
+								</td>
 							</tr>
 						</c:forEach>
 					</tbody>
 				</table>
+				
+				</div>
+				<div class="form-group" style="float:right;">
+					<a href="${contextpath}/fuente/add"
+						class="btn btn-primary">
+						<i class="fa fa-plus"></i> Nueva Fuente
+					</a>
 				</div>
 			</div>
 		</div>
-	</div>
+</div>
 </body>
 </html>

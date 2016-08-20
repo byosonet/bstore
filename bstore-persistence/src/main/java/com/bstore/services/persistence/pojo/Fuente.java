@@ -22,6 +22,7 @@ public class Fuente implements java.io.Serializable {
 	private Date fechaUmodif;
 	private String autor;
 	private int idUsuarioUmodif;
+	private String usuario;
 
 	public Fuente() {
 	}
@@ -127,6 +128,14 @@ public class Fuente implements java.io.Serializable {
 
 	public void setAutor(String autor) {
 		this.autor = autor;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
