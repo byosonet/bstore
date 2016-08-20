@@ -20,6 +20,7 @@ public class Coleccion implements java.io.Serializable {
 	private String nombreMostrar;
 	private Integer ranking;
 	private String portadaUrl;
+	private String usuario;
 
 	public Coleccion() {
 	}
@@ -107,6 +108,14 @@ public class Coleccion implements java.io.Serializable {
 
 	public void setPortadaUrl(String portadaUrl) {
 		this.portadaUrl = portadaUrl;
+	}
+
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
 	}
 
 	@Override
