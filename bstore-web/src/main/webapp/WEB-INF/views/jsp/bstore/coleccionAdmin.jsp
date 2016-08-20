@@ -8,6 +8,7 @@
 	$(document).ready(function() {
 			$('#tablaColecciones').DataTable({
 				responsive: true,
+				"lengthMenu": [5, 10, 15, 20, 25],
 				"language" : {
 					"lengthMenu" : "Nº registros a Mostrar: _MENU_",
 					"zeroRecords" : "No hay registros",
@@ -48,11 +49,11 @@
 							<th style="text-align: center;" class="alert alert-info">#</th>
 							<th style="text-align: center;" class="alert alert-info">Nombre</th>
 							<th style="text-align: center;" class="alert alert-info">Nombre a mostrar</th>
-							<th style="text-align: center;" class="alert alert-info">Estatus</th>
-							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
-							<th style="text-align: center;" class="alert alert-info">Acci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</thead>
 					<tfoot>
@@ -60,11 +61,11 @@
 							<th style="text-align: center;" class="alert alert-info">#</th>
 							<th style="text-align: center;" class="alert alert-info">Nombre</th>
 							<th style="text-align: center;" class="alert alert-info">Nombre a mostrar</th>
-							<th style="text-align: center;" class="alert alert-info">Estatus</th>
-							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
-							<th style="text-align: center;" class="alert alert-info">Acci&oacute;n</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
+							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
+							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</tfoot>
 					<tbody>
@@ -73,6 +74,9 @@
 								<td class="text" style="text-align: center;">${coleccion.id}</td>
 								<td class="text">${coleccion.nombre}</td>
 								<td class="text">${coleccion.nombreMostrar}</td>
+								<td class="text" style="text-align: center;">${coleccion.usuario}</td>
+								<td class="text" style="text-align: center;"><fmt:formatDate value="${coleccion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
+								
 								<td class="text" style="text-align: center;">
 								<c:if test="${coleccion.estatus eq 1}">
 								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
@@ -86,17 +90,17 @@
 								</c:if>
 								</td>
 								<td class="text" style="text-align: center;">
-									<img class="zoom" style="width: 65%;height: auto;border-radius: 5px;"src="${coleccion.portadaUrl}">
+									<img class="zoom" style="width: 65%;height: auto;border-radius: 10px;"src="${coleccion.portadaUrl}">
 								</td>
-								<td class="text" style="text-align: center;">${coleccion.usuario}</td>
-								<td class="text" style="text-align: center;"><fmt:formatDate value="${coleccion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
-								
 								<td class="text" style="text-align: center;">
-									<a href="#${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text btn btn-success">
-									 <c:out value="Editar" />
+									<a href="#${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
+									 <c:out value="Modificar" />
 									</a>
-									<a href="#${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text btn btn-danger">
-									 <c:out value="Borrar" />
+									<a href="#${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger">
+									 <c:out value="Eliminar" />
+									</a>
+									<a href="${contextpath}/coleccion/${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-warning">
+									 <c:out value="Validar" />
 									</a>
 								</td>
 							</tr>
