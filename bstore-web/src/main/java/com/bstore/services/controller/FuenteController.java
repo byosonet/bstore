@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Editorial;
 import com.bstore.services.persistence.pojo.Fuente;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.FuenteService;

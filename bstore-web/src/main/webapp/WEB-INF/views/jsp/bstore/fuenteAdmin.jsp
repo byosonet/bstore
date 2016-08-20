@@ -42,7 +42,7 @@
 				<div class="form-group">
 				
 				<table id="tablaColecciones"
-					class="table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+					class="display table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>
@@ -53,9 +53,9 @@
 							<th style="text-align: center;" class="alert alert-info">Email</th>
 							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
 							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
-							<th style="text-align: center;" class="alert alert-info">Estatus</th>
 							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</thead>
@@ -68,9 +68,9 @@
 							<th style="text-align: center;" class="alert alert-info">Email</th>
 							<th style="text-align: center;" class="alert alert-info">Tel&eacute;fono</th>
 							<th style="text-align: center;" class="alert alert-info">RFC</th>
+							<th style="text-align: center;" class="alert alert-info">Estatus</th>
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
-							<th style="text-align: center;" class="alert alert-info">Estatus</th>
 							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</tfoot>
@@ -86,9 +86,6 @@
 								<td class="text">${fuente.email}</td>
 								<td class="text">${fuente.telefono}</td>
 								<td class="text">${fuente.rfc}</td>
-								<td class="text">${fuente.usuario}</td>
-								<td class="text" style="text-align: center;"><fmt:formatDate value="${fuente.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
-								
 								<td class="text" style="text-align: center;">
 								<c:if test="${fuente.estatus eq 1}">
 								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
@@ -101,6 +98,9 @@
 									</label>
 								</c:if>
 								</td>
+								<td class="text">${fuente.usuario}</td>
+								<td class="text" style="text-align: center;"><fmt:formatDate value="${fuente.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
+
 								<td class="text" style="text-align: center;">
 									<a href="#${fuente.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
 									 <c:out value="Modificar" />
