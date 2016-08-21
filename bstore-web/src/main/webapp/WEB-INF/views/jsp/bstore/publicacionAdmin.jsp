@@ -34,11 +34,8 @@
 		<div class="row">
 			<div class="col-sm-12 col-sm-offset-0 col-md-12">
 				<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Cat&aacute;logo de Publicaciones</b></div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>Cat&aacute;logo de Publicaciones</b></div>
                 </div>
-                <div class="form-group">
-				  <br /> <br /> <br />
-				</div>
 				<div class="form-group">
 				
 				<table id="tablaPublicaciones"
@@ -94,8 +91,10 @@
 								<td class="text">${publicacion.nombre}</td>
 								<td class="text" style="text-align: center;">${publicacion.numeroPaginas}</td>
 								<td class="text" style="text-align: center;"><b>$ ${publicacion.precio}</b></td>
-								<td class="text" style="text-align: center;"><b>$ ${publicacion.descuento}</b></td>
-								<td class="text">${publicacion.urlArchivo}</td>
+								<td class="text" style="text-align: center;">$ ${publicacion.descuento}</td>
+								<td class="text">
+									<a href="${publicacion.urlArchivo}" target="_blank">${publicacion.urlArchivo}</a>
+								</td>
 								<td class="text">${publicacion.coleccion.nombre}</td>
 								<td class="text">${publicacion.fuente.nombreBiblioteca}</td>
 								<td class="text">${publicacion.editorial.nombre}</td>
