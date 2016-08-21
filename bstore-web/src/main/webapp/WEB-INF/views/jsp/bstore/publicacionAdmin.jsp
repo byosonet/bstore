@@ -6,7 +6,7 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
-			$('#tablaColecciones').DataTable({
+			$('#tablaPublicaciones').DataTable({
 				responsive: true,
 				"lengthMenu": [5, 10, 15, 20, 25],
 				"language" : {
@@ -41,10 +41,9 @@
 				</div>
 				<div class="form-group">
 				
-				<table 
-					id="tablaColecciones"
-					class="display table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
-					>
+				<table id="tablaPublicaciones"
+					class="display table dt-responsive nowrap" cellspacing="0"
+					width="100%">
 					<thead>
 						<tr>
 							<th style="text-align: center;" class="alert alert-info">#</th>
@@ -94,8 +93,8 @@
 								<td class="text" style="text-align: center;">${publicacion.isbn}</td>
 								<td class="text">${publicacion.nombre}</td>
 								<td class="text" style="text-align: center;">${publicacion.numeroPaginas}</td>
-								<td class="text" style="text-align: center;">$ ${publicacion.precio}</td>
-								<td class="text" style="text-align: center;">$ ${publicacion.descuento}</td>
+								<td class="text" style="text-align: center;"><b>$ ${publicacion.precio}</b></td>
+								<td class="text" style="text-align: center;"><b>$ ${publicacion.descuento}</b></td>
 								<td class="text">${publicacion.urlArchivo}</td>
 								<td class="text">${publicacion.coleccion.nombre}</td>
 								<td class="text">${publicacion.fuente.nombreBiblioteca}</td>
