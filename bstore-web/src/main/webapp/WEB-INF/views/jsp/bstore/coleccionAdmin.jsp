@@ -42,7 +42,7 @@
 				<div class="form-group">
 				
 				<table id="tablaColecciones"
-					class="display table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+					class="display table dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>
@@ -52,7 +52,7 @@
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
 							<th style="text-align: center;" class="alert alert-info">Estatus</th>
-							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
+							<th style="text-align: center;width: 40px;" class="alert alert-info">Portada</th>
 							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</thead>
@@ -64,7 +64,7 @@
 							<th style="text-align: center;" class="alert alert-info">Editado por Usuario</th>
 							<th style="text-align: center;" class="alert alert-info">Fecha Actualizaci&oacute;n</th>
 							<th style="text-align: center;" class="alert alert-info">Estatus</th>
-							<th style="text-align: center;width: 80px;" class="alert alert-info">Portada</th>
+							<th style="text-align: center;width: 40px;" class="alert alert-info">Portada</th>
 							<th style="text-align: center;" class="alert alert-info">Acciones</th>
 						</tr>
 					</tfoot>
@@ -90,7 +90,7 @@
 								</c:if>
 								</td>
 								<td class="text" style="text-align: center;">
-									<img class="zoom" style="width: 65%;height: auto;border-radius: 10px;"src="${coleccion.portadaUrl}">
+									<img class="zoom" style="width: 65px;height: auto;border-radius: 10px;"src="${coleccion.portadaUrl}">
 								</td>
 								<td class="text" style="text-align: center;">
 									<a href="#${coleccion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">

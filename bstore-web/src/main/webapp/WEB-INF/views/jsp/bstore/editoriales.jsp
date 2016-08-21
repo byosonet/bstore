@@ -6,7 +6,7 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
-			$('#tablaColecciones').DataTable({
+			$('#tablaEditoriales').DataTable({
 				responsive: true,
 				"lengthMenu": [5, 10, 15, 20, 25],
 				"language" : {
@@ -41,8 +41,8 @@
 				</div>
 				<div class="form-group">
 				
-				<table id="tablaColecciones"
-					class="display table table-striped table-bordered dt-responsive nowrap" cellspacing="0"
+				<table id="tablaEditoriales"
+					class="display table dt-responsive nowrap" cellspacing="0"
 					width="100%">
 					<thead>
 						<tr>
@@ -83,12 +83,12 @@
 								
 								<td class="text" style="text-align: center;">
 								<c:if test="${editorial.estatus eq 1}">
-								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
+								    <label style="padding: 7px; margin-top: -5px;margin-bottom: -5px;" class="text alert btn-info">
 										<c:out value="Activado"></c:out>
 									</label>
 								</c:if>
 								<c:if test="${editorial.estatus eq 0}">
-									<label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
+									<label style="padding: 7px; margin-top: -5px;margin-bottom: -5px;" class="text alert btn-warning">
 										<c:out value="Desactivado"></c:out>
 									</label>
 								</c:if>
