@@ -34,11 +34,8 @@
 		<div class="row">
 			<div class="col-sm-12 col-sm-offset-0 col-md-12">
 				<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-success" style="text-align: center;"><b>Cat&aacute;logo de Editoriales</b></div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>Cat&aacute;logo de Editoriales</b></div>
                 </div>
-                <div class="form-group">
-				  <br /> <br /> <br />
-				</div>
 				<div class="form-group">
 				
 				<table id="tablaEditoriales"
