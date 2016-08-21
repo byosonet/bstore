@@ -104,12 +104,12 @@
 								<td class="text" style="text-align: center;">
 								<c:if test="${publicacion.estatus eq 1}">
 								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
-										<c:out value="Activado"></c:out>
+										<span class="glyphicon glyphicon-ok"></span>
 									</label>
 								</c:if>
 								<c:if test="${publicacion.estatus eq 0}">
 									<label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
-										<c:out value="Desactivado"></c:out>
+										<span class="glyphicon glyphicon-remove"></span>
 									</label>
 								</c:if>
 								</td>
@@ -117,15 +117,8 @@
 									<img style="width:200px;height: auto;border-radius: 10px;"src="${publicacion.portadaUrl}">
 								</td>
 								<td class="text" style="text-align: center;">
-									<a href="#${publicacion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
-									 <c:out value="Modificar" />
-									</a>
-									<a href="#${publicacion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger">
-									 <c:out value="Eliminar" />
-									</a>
-									<a href="${contextpath}/comprar/publicacion/${publicacion.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-warning">
-									 <c:out value="Validar" />
-									</a>
+									<a href="#${publicacion.id}" id="edit" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="#${publicacion.id}" id="delete" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 								</td>
 							</tr>
 						</c:forEach>

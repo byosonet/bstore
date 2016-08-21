@@ -80,23 +80,19 @@
 								
 								<td class="text" style="text-align: center;">
 								<c:if test="${editorial.estatus eq 1}">
-								    <label style="padding: 7px; margin-top: -5px;margin-bottom: -5px;" class="text alert btn-info">
-										<c:out value="Activado"></c:out>
+								    <label style="padding: 7px; margin-top: -5px;margin-bottom: 0px;" class="text alert btn-info">
+										<span class="glyphicon glyphicon-ok"></span>
 									</label>
 								</c:if>
 								<c:if test="${editorial.estatus eq 0}">
-									<label style="padding: 7px; margin-top: -5px;margin-bottom: -5px;" class="text alert btn-warning">
-										<c:out value="Desactivado"></c:out>
+									<label style="padding: 7px; margin-top: -5px;margin-bottom: 0px;" class="text alert btn-warning">
+										<span class="glyphicon glyphicon-remove"></span>
 									</label>
 								</c:if>
 								</td>
 								<td class="text" style="text-align: center;">
-									<a href="#${editorial.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success">
-									 <c:out value="Modificar" />
-									</a>
-									<a href="#${editorial.id}" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger">
-									 <c:out value="Eliminar" />
-									</a>
+									<a href="#${editorial.id}" id="edit" style="padding: 7px; margin-top: -5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a href="#${editorial.id}" id="delete" style="padding: 7px; margin-top: -5px;margin-bottom: 0px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 								</td>
 							</tr>
 						</c:forEach>
