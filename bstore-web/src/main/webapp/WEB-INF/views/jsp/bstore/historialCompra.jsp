@@ -9,8 +9,8 @@
 <title>Historial de Compras</title>
 </head>
 <body>
-<div class="row" style="padding: 0.5em;">
-	<div class="col-md-12 alert alert-success" style="text-align: center;"><b>Mi Historial de Compras</b></div>
+<div class="form-group" style="padding: 0.5em;">
+	<div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>Historial de Compras</b></div>
 </div>
 
 <c:set var="count" value="0" scope="page"/>
