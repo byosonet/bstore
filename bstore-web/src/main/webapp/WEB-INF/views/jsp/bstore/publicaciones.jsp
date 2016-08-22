@@ -65,10 +65,10 @@ $("#publicacion").gridalicious({
 				        	</div>
 				        	<div class="col-md-6">
 				        		<h5 style="text-align: center;"><b>Sinopsis</b></h5>
-				          		<p style="text-indent: 2em;text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
+				          		<p class="text" style="text-indent: 2em;text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
 				        	</div>
 				        </div>
-				        	 <h5 style="text-align: center;" class="alert alert-info">Ultima fecha de actualizaci&oacute;n: <b><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5>
+				        	 <h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5>
 					         <div class="row">
 							      <div class="col-md-6">
 							        <b>Autor/Fuente</b>
@@ -78,10 +78,10 @@ $("#publicacion").gridalicious({
 							      </div>
 						     </div>
 						     <div class="row">
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        <c:out value="${publicacion.fuente.autor}"/>
 							      </div>
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        <c:out value="${publicacion.nombre}"/>
 							      </div>
 						     </div>
@@ -95,10 +95,10 @@ $("#publicacion").gridalicious({
 							      </div>
 						     </div>
 						     <div class="row">
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        <c:out value="${publicacion.isbn}"/>
 							      </div>
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        <c:out value="${publicacion.numeroPaginas}"/>
 							      </div>
 						     </div>
@@ -112,10 +112,10 @@ $("#publicacion").gridalicious({
 							      </div>
 						     </div>
 						     <div class="row">
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        $ <c:out value="${publicacion.precio}"/> MXN
 							      </div>
-							      <div class="col-md-6">
+							      <div class="text col-md-6">
 							        $ <c:out value="${publicacion.descuento}"/> MXN
 							      </div>
 						     </div>
