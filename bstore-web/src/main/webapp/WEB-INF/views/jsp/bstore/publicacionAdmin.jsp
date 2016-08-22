@@ -6,6 +6,7 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		 $('[data-toggle="tooltip"]').tooltip(); 
 			$('#tablaPublicaciones').DataTable({
 				responsive: true,
 				"lengthMenu": [5, 10, 15, 20, 25],
@@ -103,12 +104,12 @@
 								<td class="text" style="text-align: center;"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></td>
 								<td class="text" style="text-align: center;">
 								<c:if test="${publicacion.estatus eq 1}">
-								    <label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
+								    <label data-toggle="tooltip" data-placement="top" title="Activado" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-info">
 										<span class="glyphicon glyphicon-ok"></span>
 									</label>
 								</c:if>
 								<c:if test="${publicacion.estatus eq 0}">
-									<label style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
+									<label data-toggle="tooltip" data-placement="top" title="Desactivado" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="text alert btn-warning">
 										<span class="glyphicon glyphicon-remove"></span>
 									</label>
 								</c:if>
@@ -117,8 +118,8 @@
 									<img style="width:200px;height: auto;border-radius: 10px;"src="${publicacion.portadaUrl}">
 								</td>
 								<td class="text" style="text-align: center;">
-									<a href="#${publicacion.id}" id="edit" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-									<a href="#${publicacion.id}" id="delete" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
+									<a data-toggle="tooltip" data-placement="top" title="Editar" href="#${publicacion.id}" id="edit" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
+									<a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#${publicacion.id}" id="delete" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 								</td>
 							</tr>
 						</c:forEach>

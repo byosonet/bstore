@@ -47,7 +47,7 @@
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-migrate-1.2.1.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery-ui.min.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/blockUI.js"></script>
-<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/dataTables.min.js"></script>
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/dataTables2.min.js"></script>
 
 <!-- VERSION ANTERIOR
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/bootstrap/bootstrap.min.js"></script>
