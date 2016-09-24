@@ -93,13 +93,19 @@
 						</div>
 					</div>
 
-					<div class="row" align="right">
+					<div class="row" style="padding-right: 12px; padding-top: 40px">
+						<div class="col-sm-8">
+						</div>
+						<div class="col-sm-2">
 							<a
 								href="${contextpath}/editorial/getAll" class="btn btn-default"
-								style="font-size: 15; width: 10%; padding: 5px; text-align: center; align: right;">
+								style="font-size: 15; width: 100%; padding: 10px; text-align: center;">
 								<i class="glyphicon glyphicon-remove"></i> <c:out value="Cancelar" />
 							</a>
-							<button id="saveEditorial" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+						</div>
+						<div class="col-sm-2">
+							<button id="saveEditorial" class="btn btn-primary" style="font-size: 15; width: 100%; padding: 10px; text-align: center;" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+						</div>
 					</div>
 				</form:form>
 			</div>

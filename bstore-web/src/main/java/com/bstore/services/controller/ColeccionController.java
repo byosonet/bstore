@@ -133,4 +133,19 @@ public class ColeccionController {
 		return "redirect:/coleccionAdmin";
 //		return "coleccionAdmin";
 	}
+
+	@RequestMapping(value="/coleccion/delete/{id}", method = RequestMethod.GET)
+	public String coleccionDelete(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("coleccionController.coleccionDelete(): "+NAME_CONTROLLER+"/delete");
+		log.info("");
+
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+//			model.addAttribute("coleccion", new Coleccion());
+		}else{
+//			response.sendRedirect(request.getContextPath());
+		}
+
+		return "redirect:/coleccionAdmin";
+	}
 }

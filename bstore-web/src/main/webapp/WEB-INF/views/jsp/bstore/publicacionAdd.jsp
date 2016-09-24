@@ -168,17 +168,20 @@
 					</div>
 					<br/>
 					<br/>
-					
-					
 
-					<div class="row" align="right">
-							<a
-								href="${contextpath}/publicacion/getAll" class="btn btn-default"
-								style="font-size: 15; width: 10%; padding: 5px; text-align: center; align: right;">
-								<i class="glyphicon glyphicon-remove"></i> <c:out value="Cancelar" />
+					<div class="row" style="padding-right: 12px; padding-top: 40px">
+						<div class="col-sm-8">
+						</div>
+						<div class="col-sm-2">
+            				<a style="font-size: 15; width: 100%; padding: 10px; text-align: center;" class="btn btn-default" href="/bstore/publicacion/getAll">
+								<i class="glyphicon glyphicon-remove"></i> Cancelar
 							</a>
-							<button id="savePublicacion" class="btn btn-primary" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            			</div>
+            			<div class="col-sm-2">
+							<button type="submit" class="btn btn-primary" style="font-size: 15; width: 100%; padding: 10px; text-align: center;" id="savePublicacion"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+            			</div>
 					</div>
+					
 				</form:form>
 			</div>
 		</div>

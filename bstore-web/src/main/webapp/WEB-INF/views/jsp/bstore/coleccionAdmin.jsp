@@ -91,7 +91,7 @@
 								</td>
 								<td class="text" style="text-align: center;">
 									<a data-toggle="tooltip" data-placement="top" title="Editar" href="#${coleccion.id}" id="edit" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-pencil"></span></a>
-									<a data-toggle="tooltip" data-placement="top" title="Ver" href="${contextpath}/coleccion/${coleccion.id}" id="see" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
+									<a data-toggle="tooltip" data-placement="top" title="Ver" href="${contextpath}/coleccion/delete/${coleccion.id}" id="see" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-success"><span class="glyphicon glyphicon-eye-open"></span></a>
 									<a data-toggle="tooltip" data-placement="top" title="Eliminar" href="#${coleccion.id}" id="delete" style="padding: 7px; margin-top: 5px;margin-bottom: 0px;" class="btn btn-danger"><span class="glyphicon glyphicon-trash"></span></a>
 								</td>
 							</tr>
