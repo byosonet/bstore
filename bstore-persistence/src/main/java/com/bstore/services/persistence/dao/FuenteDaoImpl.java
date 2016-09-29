@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.pojo.Fuente;
-import com.bstore.services.persistence.utils.TransacctionMySQL;
+import com.bstore.services.persistence.utils.HibernateUtil;
 
 /**
  * 
@@ -15,23 +15,22 @@ import com.bstore.services.persistence.utils.TransacctionMySQL;
  */
 public class FuenteDaoImpl extends HibernateDaoSupport implements FuenteDao {
 	private final Logger logger = Logger.getLogger(FuenteDaoImpl.class);
-	TransacctionMySQL mysql = new TransacctionMySQL();
 	
 	public Fuente getFuente(int id) {
 		logger.info("getFuente, id: "+id);
 		
-		return (Fuente) this.getSession().createQuery("FROM Fuente f WHERE f.id = :fuenteId").setParameter("fuenteId", id).uniqueResult();
+		return (Fuente) HibernateUtil.getSessionFactory().createQuery("FROM Fuente f WHERE f.id = :fuenteId").setParameter("fuenteId", id).uniqueResult();
 	}
 	
 	@SuppressWarnings("unchecked")
 	public List<Fuente> getAll(){
 		logger.info("getAll");
 		
-		return (List<Fuente>) this.getSession().createQuery("FROM Fuente f").list();
+		return (List<Fuente>) HibernateUtil.getSessionFactory().createQuery("FROM Fuente f").list();
 	}
 
 	public void saveOrUpdateFuente(Fuente fuente) {
 		logger.info("saveOrUpdateFuente: "+fuente);
-		this.getSession().saveOrUpdate(fuente);
+		HibernateUtil.getSessionFactory().saveOrUpdate(fuente);
 	}
 }

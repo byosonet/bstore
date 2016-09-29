@@ -6,6 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.pojo.Perfil;
+import com.bstore.services.persistence.utils.HibernateUtil;
 
 /**
  * 
@@ -19,8 +20,7 @@ public class PerfilDaoImpl extends HibernateDaoSupport implements PerfilDao {
 	public Perfil getPerfil(int id) {
 		logger.info("Buscando perfil por id: "+id);
 
-		return (Perfil) this
-				.getSession()
+		return (Perfil) HibernateUtil.getSessionFactory()
 				.createQuery("FROM Perfil p WHERE p.id = :id")
 				.setParameter("id", id)
 				.uniqueResult();
@@ -29,7 +29,7 @@ public class PerfilDaoImpl extends HibernateDaoSupport implements PerfilDao {
 	@SuppressWarnings("unchecked")
 	public List<Perfil> getAll() {
 		logger.info("getAll");
-		return (List<Perfil>) this.getSession().createQuery("FROM Perfil p").list();
+		return (List<Perfil>) HibernateUtil.getSessionFactory().createQuery("FROM Perfil p").list();
 	}
 
 }

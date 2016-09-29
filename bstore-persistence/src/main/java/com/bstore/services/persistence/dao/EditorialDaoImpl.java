@@ -6,7 +6,7 @@ import org.apache.log4j.Logger;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.pojo.Editorial;
-import com.bstore.services.persistence.utils.TransacctionMySQL;
+import com.bstore.services.persistence.utils.HibernateUtil;
 
 /**
  * 
@@ -15,13 +15,12 @@ import com.bstore.services.persistence.utils.TransacctionMySQL;
  */
 public class EditorialDaoImpl extends HibernateDaoSupport implements EditorialDao {
 	private static Logger logger = Logger.getLogger(EditorialDaoImpl.class);
-	TransacctionMySQL mysql = new TransacctionMySQL();
+
 	
 	public Editorial getEditorial(int id) {
 		logger.info("Buscando editorial by id:: "+id);
         
-		return (Editorial) this
-                .getSession()
+		return (Editorial) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Editorial e WHERE e.id = :id")
                 .setParameter("id", id)
                 .uniqueResult();
@@ -29,14 +28,14 @@ public class EditorialDaoImpl extends HibernateDaoSupport implements EditorialDa
 
 	public void saveOrUpdate(Editorial editorial) {
 		logger.info("saveOrUpdateEditorial: "+editorial.toString());
-		this.getSession().saveOrUpdate(editorial);
-		this.getSession().flush();
+		HibernateUtil.getSessionFactory().saveOrUpdate(editorial);
+		HibernateUtil.getSessionFactory().flush();
 	}
 
 	
 	@SuppressWarnings("unchecked")
 	public List<Editorial> getAll(){
 		logger.info("getAll");
-		return (List<Editorial>) getSession().createQuery("FROM Editorial e").list();
+		return (List<Editorial>) HibernateUtil.getSessionFactory().createQuery("FROM Editorial e").list();
 	}
 }

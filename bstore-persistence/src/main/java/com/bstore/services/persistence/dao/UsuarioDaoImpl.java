@@ -6,36 +6,34 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 import org.hibernate.HibernateException;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.dao.UsuarioDaoImpl;
 import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
-import com.bstore.services.persistence.utils.TransacctionMySQL;
+import com.bstore.services.persistence.utils.HibernateUtil;
 
 public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     private final Logger log = Logger.getLogger(UsuarioDaoImpl.class);
-    TransacctionMySQL mysql = new TransacctionMySQL();
 
     @SuppressWarnings("unchecked")
 	public List<Usuario> getUser() {
        this.log.info(" -- Buscando por lista de usuarios::");
-       return (List<Usuario>) this.getSession().createQuery("FROM Usuario u " + "ORDER BY u.id ASC").list();
+       return (List<Usuario>) HibernateUtil.getSessionFactory().createQuery("FROM Usuario u " + "ORDER BY u.id ASC").list();
     }
 
     public Usuario validaUsuario(String email, String password) {
         this.log.info(" -- Buscando usuario by email:: "+email);
         
         
-        Usuario usuario = (Usuario) this
-                .getSession()
+        Usuario usuario = (Usuario) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Usuario u WHERE u.email = :email AND u.password = :password")
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .uniqueResult();
         if(usuario==null){
-        	usuario = (Usuario) this
-                    .getSession()
+        	usuario = (Usuario) HibernateUtil.getSessionFactory()
                     .createQuery("FROM Usuario u WHERE u.login = :login AND u.password = :password")
                     .setParameter("login", email)
                     .setParameter("password", password)
@@ -46,88 +44,86 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
     public Usuario validaEmailSistema(String email) {
         this.log.info(" -- Verificando email en BD:: "+email);
-        return (Usuario) this
-                .getSession()
+        return (Usuario) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Usuario u WHERE u.email = :email")
                 .setParameter("email", email)
                 .uniqueResult();
     }
     
     public void actualizarConexionUsuario(Usuario usuario) {
-         try {
-            this.mysql.iniciarOperacion();
+        Transaction tx = HibernateUtil.beginTransaction(); 
+    	try {
             if(usuario!=null){
                 Timestamp stamp = new Timestamp(System.currentTimeMillis());
                 this.log.info("-- Datetime::: "+stamp);
                 Date date = new Date(stamp.getTime());
                 this.log.info("-- Date::: "+date);
                 usuario.setUltConexion(date);
-                this.mysql.getSesion().saveOrUpdate(usuario);
-                this.mysql.getSesion().flush();
-                this.mysql.getTx().commit();
+                HibernateUtil.getCurrentSession().saveOrUpdate(usuario);
+                HibernateUtil.getCurrentSession().flush();
+                tx.commit();
             }
         } catch (HibernateException he) {
-            this.mysql.manejarException(he);
+            tx.rollback();
             throw he;
         } finally {
-            this.mysql.getSesion().close();
+        	HibernateUtil.getCurrentSession().close();
         }
     }
 
     public void agregarUsuario(Usuario usuario) {
+    	Transaction tx = HibernateUtil.beginTransaction();
         try {
-            this.mysql.iniciarOperacion();
             usuario.setEstatus(1);
             Perfil perfil = new Perfil();
             perfil.setId(2);
             usuario.setPerfil(perfil);
-            this.mysql.getSesion().save(usuario);
-            this.mysql.getSesion().flush();
-            this.mysql.getTx().commit();
+            HibernateUtil.getCurrentSession().save(usuario);
+            HibernateUtil.getCurrentSession().flush();
+            tx.commit();
         } catch (HibernateException he) {
-            this.mysql.manejarException(he);
+            tx.rollback();
             throw he;
         } finally {
-            this.mysql.getSesion().close();
+        	HibernateUtil.getCurrentSession().close();
         }
     }
 
     public void actualizarDatosUsuario(Usuario user) {
+    	Transaction tx = HibernateUtil.beginTransaction();
         try {
-            this.mysql.iniciarOperacion();
             if(user!=null){
-                this.mysql.getSesion().saveOrUpdate(user);
-                this.mysql.getSesion().flush();
-                this.mysql.getTx().commit();
+            	HibernateUtil.getCurrentSession().saveOrUpdate(user);
+            	HibernateUtil.getCurrentSession().flush();
+            	tx.commit();
             }
         } catch (HibernateException he) {
-            this.mysql.manejarException(he);
+        	tx.rollback();
             throw he;
         } finally {
-            this.mysql.getSesion().close();
+        	HibernateUtil.closeCurrentSession();
         }
     }
 
     public void deleteUser(Usuario usuario) {
+    	Transaction tx = HibernateUtil.beginTransaction();
         try {
-            this.mysql.iniciarOperacion();
             if(usuario!=null){
-                this.mysql.getSesion().delete(usuario);
-                this.mysql.getSesion().flush();
-                this.mysql.getTx().commit();
+            	HibernateUtil.getCurrentSession().delete(usuario);
+            	HibernateUtil.getCurrentSession().flush();
+                tx.commit();
             }
         } catch (HibernateException he) {
-            this.mysql.manejarException(he);
+            tx.rollback();
             throw he;
         } finally {
-            this.mysql.getSesion().close();
+        	HibernateUtil.getCurrentSession().close();
         }
     }
 
     public Usuario byId(int idUser) {
         this.log.info(" -- Buscando usuario by id:: "+idUser);
-        return (Usuario) this
-                .getSession()
+        return (Usuario) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Usuario u WHERE u.id = :idUser")
                 .setParameter("idUser", idUser)
                 .uniqueResult();
@@ -135,15 +131,14 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
     @SuppressWarnings("unchecked")
 	public List<Usuario> getListaEmailNotificaciones(String notificar) {
-        return (List<Usuario>) this.getSession().createQuery("FROM Usuario u WHERE u.notificaciones = :tipo")
+        return (List<Usuario>) HibernateUtil.getSessionFactory().createQuery("FROM Usuario u WHERE u.notificaciones = :tipo")
                 .setParameter("tipo", notificar)
                 .list();
     }
 
 	public Usuario validaLoginSistema(String login) {
 		 this.log.info(" -- Verificando login en BD:: "+login);
-	        return (Usuario) this
-	                .getSession()
+	        return (Usuario) HibernateUtil.getSessionFactory()
 	                .createQuery("FROM Usuario u WHERE u.login = :login")
 	                .setParameter("login", login)
 	                .uniqueResult();

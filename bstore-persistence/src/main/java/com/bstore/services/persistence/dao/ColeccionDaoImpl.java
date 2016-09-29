@@ -3,14 +3,14 @@ package com.bstore.services.persistence.dao;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
 import com.bstore.services.persistence.pojo.Coleccion;
-import com.bstore.services.persistence.utils.TransacctionMySQL;
+import com.bstore.services.persistence.utils.HibernateUtil;
 
 public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDao{
 	private final Logger logger = Logger.getLogger(ColeccionDaoImpl.class);
-	TransacctionMySQL mysql = new TransacctionMySQL();
 	
 	@SuppressWarnings("unchecked")
 	public List<Coleccion> getColecion(boolean tipoOrden) {
@@ -21,8 +21,8 @@ public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDa
 		}else{
 			order = "asc";
 		}
-		return (List<Coleccion>) this
-				.getSession()
+		return (List<Coleccion>) 
+				 HibernateUtil.getSessionFactory()
 				.createQuery("FROM Coleccion c WHERE c.estatus = :estatus order by c.ranking desc")
 				.setParameter("estatus", 1)
 				.list();
@@ -32,23 +32,22 @@ public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDa
 	public List<Coleccion> getAll(){
 		logger.info("getAll colecciones");
 
-		return (List<Coleccion>) this
-				.getSession()
+		return (List<Coleccion>) HibernateUtil.getSessionFactory()
 				.createQuery("FROM Coleccion c")
 				.list();
 	}
 
 	public void saveOrUpdate(Coleccion coleccion) {
 		try{
-			this.mysql.iniciarOperacion();
+			Transaction tx = HibernateUtil.beginTransaction();
 			logger.info("saveOrUpdate coleccion: "+coleccion.toString());
-			this.mysql.getSesion().saveOrUpdate(coleccion);
-			this.mysql.getSesion().flush();
-			this.mysql.getTx().commit();
+			HibernateUtil.getCurrentSession().saveOrUpdate(coleccion);
+			HibernateUtil.getCurrentSession().flush();
+			tx.commit();
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			this.mysql.getSesion().close();
+			HibernateUtil.getCurrentSession().close();
 		}
 	}
 }
