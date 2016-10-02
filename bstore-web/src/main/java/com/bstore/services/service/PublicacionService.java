@@ -11,4 +11,5 @@ public interface PublicacionService {
 	List<Publicacion> getAll();
 	BigDecimal precioRealPublicacion(int idPublicacion);
 	void saveOrUpdate(Publicacion publicacion);
+	List<Publicacion> search(Publicacion publicacion);
 }

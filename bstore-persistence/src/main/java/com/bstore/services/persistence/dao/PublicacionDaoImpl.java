@@ -41,4 +41,14 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
 		HibernateUtil.getSessionFactory().saveOrUpdate(publicacion);
 		HibernateUtil.getSessionFactory().flush();
 	}
+
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> search(Publicacion publicacion) {
+		logger.info("search");
+		return (List<Publicacion>) HibernateUtil.getSessionFactory()
+				.createQuery("FROM Publicacion p WHERE p.coleccion.resumen like :resumen or p.coleccion.nombre like :nombre")
+				.setParameter("resumen", publicacion.getResumen())
+				.setParameter("nombre", publicacion.getNombre())
+				.list();
+	}
 }

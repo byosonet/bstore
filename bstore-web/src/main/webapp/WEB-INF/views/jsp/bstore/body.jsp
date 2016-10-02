@@ -4,7 +4,7 @@
 <html>
 <body>
      <div class="row">
-        <div class="col-lg-12" style="text-align: justify;">
+     	<div class="col-lg-12" style="text-align: justify;">
         	<div style="text-align: right;"><img style="width: 80%;border-radius:20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
 			<br>
 			<br>

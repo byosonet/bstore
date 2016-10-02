@@ -159,4 +159,29 @@ public class PublicacionController {
 		}
 		return "publicacionesAdmin";
 	}
+	
+	@RequestMapping(value="/publicacion/search",method = RequestMethod.GET)
+	public String search(Model model, HttpServletRequest request, HttpServletResponse response,
+			@ModelAttribute("publicacion") @Validated Publicacion publicacion) throws IOException{
+		log.info("PublicacionController.search(): "+NAME_CONTROLLER+"/search; publicacion es: "+publicacion!=null?publicacion.toString():"Publicacion es NULL!!!");
+
+		HttpSession session= (HttpSession) request.getSession(false);
+		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+			List<Publicacion> publicacionList = publicacionService.search(publicacion);
+			if(publicacionList != null){
+				//procesando usuarios
+//				for(Publicacion pub: publicacionList){
+//					Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
+//					if(u!=null){
+//						pub.setUsuarioMail(u.getEmail());
+//					}
+//				}
+				model.addAttribute("publicaciones", publicacionList);
+			}
+			model.addAttribute("publicacion", new Publicacion());
+		}else{
+			response.sendRedirect(request.getContextPath());
+		}
+		return "publicacionesAdmin";//Poner la página a donde hay que redireccionar, deberíar ser la misma...
+	}
 }

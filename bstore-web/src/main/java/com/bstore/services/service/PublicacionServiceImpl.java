@@ -140,5 +140,11 @@ public class PublicacionServiceImpl implements PublicacionService{
 		log.info("saveOrUpdate publicacion: "+publicacion.toString());
 		publicacionDao.saveOrUpdate(publicacion);
 	}
+
+	@Override
+	public List<Publicacion> search(Publicacion publicacion) {
+		log.info("search: "+publicacion.toString());
+		return publicacionDao.search(publicacion);
+	}
 	
 }

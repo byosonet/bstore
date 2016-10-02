@@ -9,4 +9,5 @@ public interface PublicacionDao {
 	List<Publicacion> getPublicaciones(int idColeccion);
 	List<Publicacion> getAll();
 	void saveOrUpdate(Publicacion publicacion);
+	List<Publicacion> search(Publicacion publicacion);
 }
