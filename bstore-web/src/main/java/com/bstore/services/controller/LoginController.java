@@ -378,7 +378,8 @@ public class LoginController {
 		String result = ValidarSesion.validarSesionUsuarioActual(session);
 		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
 			log.info(ValidarSesion.MSG_FORBIDDEN);
-			//return "forbidden";
+			response.sendRedirect(request.getContextPath());
+			return;
 		}
 		log.info("Sesion activa Token === " + result);
 		Usuario usuario = (Usuario) session.getAttribute("usuario");

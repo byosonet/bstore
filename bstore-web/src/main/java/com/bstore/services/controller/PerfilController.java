@@ -68,7 +68,10 @@ public class PerfilController {
 		String result = ValidarSesion.validarSesionUsuarioActual(session);
 		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
 			log.info(ValidarSesion.MSG_FORBIDDEN);
-			//return "forbidden";
+            responseLocal.setCodigo("403");
+            responseLocal.setMensaje("Se ha vencido la sesion del usuario");
+            status = HttpStatus.FORBIDDEN;
+			return new ResponseEntity<ErrorService>(responseLocal, status);
 		}
 	       log.info("Sesion activa Token === "+result);
 			String idUsuario = request.getParameter("idUsuario");

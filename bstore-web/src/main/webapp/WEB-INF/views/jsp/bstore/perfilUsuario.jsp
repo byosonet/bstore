@@ -101,6 +101,7 @@
 		                             status = JSON.parse(msj.responseText);
 		                             $.unblockUI();
 		                             muestraMsjSistemaError(status.mensaje);
+		                             window.location.href = '${contextpath}';
 		                          }
 			        });
 		        });
