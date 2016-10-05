@@ -24,6 +24,7 @@ import com.bstore.services.persistence.pojo.Fuente;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.FuenteService;
 import com.bstore.services.service.UsuarioService;
+import com.bstore.services.util.ValidarSesion;
 import com.bstore.services.validator.FuenteValidator;
 
 /**
@@ -56,23 +57,26 @@ public class FuenteController {
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		logger.info("fuenteController.getAll(): "+NAME_CONTROLLER+"/getAll");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Fuente> fuenteList = fuenteService.getAll();
-			if(fuenteList != null){
-				//procesando usuarios
-				for(Fuente fue: fuenteList){
-					Usuario u = this.usuarioService.byIdUser(fue.getIdUsuarioUmodif());
-					if(u!=null){
-						fue.setUsuario(u.getEmail());
-					}
-				}
-				model.addAttribute("fuentes",fuenteList);
-			}
-			model.addAttribute("fuente", new Fuente());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		logger.info("Sesion activa Token === " + result);
+		List<Fuente> fuenteList = fuenteService.getAll();
+		if (fuenteList != null) {
+			// procesando usuarios
+			for (Fuente fue : fuenteList) {
+				Usuario u = this.usuarioService.byIdUser(fue.getIdUsuarioUmodif());
+				if (u != null) {
+					fue.setUsuario(u.getEmail());
+				}
+			}
+			model.addAttribute("fuentes", fuenteList);
+		}
+		model.addAttribute("fuente", new Fuente());
+
 		return "fuentesAdmin";
 	}
 	
@@ -81,12 +85,14 @@ public class FuenteController {
 		logger.info("fuenteController.fuenteAdd(): "+NAME_CONTROLLER+"/add");
 		logger.info("---------------------------------------------------------------------------------");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			model.addAttribute("fuente", new Fuente());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		logger.info("Sesion activa Token === " + result);
+		model.addAttribute("fuente", new Fuente());
 
 		return "fuenteAdd";
 	}
@@ -100,29 +106,26 @@ public class FuenteController {
 		if(result.hasErrors()){
 			return "fuenteAdd";
 		}
-		
-		logger.info("fuenteObject: "+fuente.toString());
-		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-//			if(publicacion!=null){
-				Usuario usuario = (Usuario) session.getAttribute("usuario");
-				logger.info("Se va a guardar la nueva fuente");
-				
-				fuente.setFechaUmodif(new Date());
-				fuente.setIdUsuarioUmodif(usuario.getId());
-				fuenteService.saveOrUpdateFuente(fuente);
-				
-				List<Fuente> coleccionList = fuenteService.getAll();
-				model.addAttribute("fuentes", coleccionList);	
-//			}
-//			else{
-//				log.info("La nueva editorial es null, regresamos a la misma pantalla");
-//				return "editorialAdd";
-//			}
-		}else{
-			response.sendRedirect(request.getContextPath());
+
+		logger.info("fuenteObject: " + fuente.toString());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String results = ValidarSesion.validarSesionUsuarioActual(session);
+		if (results.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		logger.info("Sesion activa Token === " + results);
+
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		logger.info("Se va a guardar la nueva fuente");
+
+		fuente.setFechaUmodif(new Date());
+		fuente.setIdUsuarioUmodif(usuario.getId());
+		fuenteService.saveOrUpdateFuente(fuente);
+
+		List<Fuente> coleccionList = fuenteService.getAll();
+		model.addAttribute("fuentes", coleccionList);
+
 		return "fuentesAdmin";
 	}
 }

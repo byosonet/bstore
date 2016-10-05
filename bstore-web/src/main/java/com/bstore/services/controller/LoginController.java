@@ -11,6 +11,8 @@ import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
+import com.bstore.services.util.ValidarSesion;
+
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.sql.Timestamp;
@@ -108,17 +110,18 @@ public class LoginController {
    
    @RequestMapping(value="/equivira",method = RequestMethod.GET)
    public String ingresarGET(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
-	   HttpSession session= (HttpSession) request.getSession(false);
-	   if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+	       HttpSession session = (HttpSession) request.getSession(false);
+	       String result = ValidarSesion.validarSesionUsuarioActual(session);
+	       if(result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)){
+	    	   log.info(ValidarSesion.MSG_FORBIDDEN);
+	    	   return "forbidden";
+	       }
+	       log.info("Sesion activa Token === "+result);
 		   @SuppressWarnings("unchecked")
 		   Map<Coleccion, List<Publicacion>> menu= (Map<Coleccion, List<Publicacion>>) session.getAttribute("menu");
 		   model.addAttribute("menu",menu);
 		   log.info("Recuperando de sesion menu: "+session.getAttribute("menu").toString());
-	   }else{
-		   log.info("Enviando a login, token no existe");
-		   response.sendRedirect(request.getContextPath());
-	   }
-	   return "indexPrincipal";
+		   return "indexPrincipal";
    }
    
    
@@ -370,20 +373,22 @@ public class LoginController {
     @RequestMapping(value = "/sistema/salir", method = RequestMethod.POST)
     public void exitSistema(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException, Exception {
        this.log.info(" -- Registrando salida en sistema."); 
-       HttpSession session= (HttpSession) request.getSession(false);
-       if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-	       Usuario usuario = (Usuario) session.getAttribute("usuario");
-	       this.usuarioService.actulizarConexionUsuario(usuario);
-	       session.removeAttribute("menu");
-	       session.removeAttribute("usuario");
-	       session.removeAttribute("token");
-	       session.removeAttribute("ultimasCompras");
-	       session.invalidate();
-	       log.info("Removiendo datos de la session");
-	       response.sendRedirect(request.getContextPath());
-       }else{
-    	   log.info("Enviando a login, token no existe");
-    	   response.sendRedirect(request.getContextPath());
-       }
-    }
+       
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			//return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		this.usuarioService.actulizarConexionUsuario(usuario);
+		session.removeAttribute("menu");
+		session.removeAttribute("usuario");
+		session.removeAttribute("token");
+		session.removeAttribute("ultimasCompras");
+		session.invalidate();
+		log.info("Removiendo datos de la session");
+		response.sendRedirect(request.getContextPath());
+	}
 }

@@ -24,6 +24,7 @@ import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.ColeccionService;
 import com.bstore.services.service.UsuarioService;
+import com.bstore.services.util.ValidarSesion;
 import com.bstore.services.validator.ColeccionValidator;
 
 @Controller
@@ -49,48 +50,54 @@ public class ColeccionController {
 	public String colecciones(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("Cargando colecciones. "+NAME_CONTROLLER);
 		HttpSession session = (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
-			log.info("Total colecciones encontradas: "+lista.size());
-			model.addAttribute("colecciones", lista);
-		}else{
-			response.sendRedirect(request.getContextPath());
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+		log.info("Total colecciones encontradas: " + lista.size());
+		model.addAttribute("colecciones", lista);
 		return "colecciones";
 	}
 
 	@RequestMapping(value="/coleccionAdmin",method = RequestMethod.GET)
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
-		log.info("Colecciones getAll"+NAME_CONTROLLER);
+		log.info("Colecciones getAll" + NAME_CONTROLLER);
 		HttpSession session = (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Coleccion> lista = this.coleccionService.getAll();
-			log.info("Total colecciones encontradas: "+lista.size());
-			//procesando usuarios
-			for(Coleccion col: lista){
-				Usuario u = this.usuarioService.byIdUser(col.getIdUsuarioUmodif());
-				if(u!=null){
-					col.setUsuario(u.getEmail());
-				}
-			}
-			model.addAttribute("colecciones", lista);
-		}else{
-			response.sendRedirect(request.getContextPath());
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		List<Coleccion> lista = this.coleccionService.getAll();
+		log.info("Total colecciones encontradas: " + lista.size());
+		// procesando usuarios
+		for (Coleccion col : lista) {
+			Usuario u = this.usuarioService.byIdUser(col.getIdUsuarioUmodif());
+			if (u != null) {
+				col.setUsuario(u.getEmail());
+			}
+		}
+		model.addAttribute("colecciones", lista);
 		return "coleccionAdmin";
 	}
 
 	@RequestMapping(value="/coleccion/add", method = RequestMethod.GET)
 	public String coleccionAdd(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
-		log.info("coleccionController.coleccionAdd(): "+NAME_CONTROLLER+"/add");
+		log.info("coleccionController.coleccionAdd(): " + NAME_CONTROLLER + "/add");
 		log.info("---------------------------------------------------------------------------------");
-
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			model.addAttribute("coleccion", new Coleccion());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+
+		model.addAttribute("coleccion", new Coleccion());
 
 		return "coleccionAdd";
 	}
@@ -105,33 +112,29 @@ public class ColeccionController {
 			return "coleccionAdd";
 		}
 		
-//		log.info("coleccionObject: "+coleccion.toString());
-		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-//			if(publicacion!=null){
-				Usuario usuario = (Usuario) session.getAttribute("usuario");
-				
-				coleccion.setFechaUmodif(new Date());
-				coleccion.setIdUsuarioUmodif(usuario.getId());
-				
-				log.info("Antes de guardar coleccion: "+coleccion.toString());
-				
-				coleccionService.saveOrUpdate(coleccion);
-				
-				//Para regresar a lista de publicaciones
-				List<Coleccion> coleccionList = coleccionService.getAll();
-				model.addAttribute("colecciones", coleccionList);	
-//			}
-//			else{
-//				log.info("La nueva editorial es null, regresamos a la misma pantalla");
-//				return "editorialAdd";
-//			}
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String results = ValidarSesion.validarSesionUsuarioActual(session);
+		if (results.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + results);
+
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+
+		coleccion.setFechaUmodif(new Date());
+		coleccion.setIdUsuarioUmodif(usuario.getId());
+
+		log.info("Antes de guardar coleccion: " + coleccion.toString());
+
+		coleccionService.saveOrUpdate(coleccion);
+
+		// Para regresar a lista de publicaciones
+		List<Coleccion> coleccionList = coleccionService.getAll();
+		model.addAttribute("colecciones", coleccionList);
+
 		return "redirect:/coleccionAdmin";
-//		return "coleccionAdmin";
+
 	}
 
 	@RequestMapping(value="/coleccion/delete/{id}", method = RequestMethod.GET)
@@ -139,12 +142,13 @@ public class ColeccionController {
 		log.info("coleccionController.coleccionDelete(): "+NAME_CONTROLLER+"/delete");
 		log.info("");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-//			model.addAttribute("coleccion", new Coleccion());
-		}else{
-//			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
 
 		return "redirect:/coleccionAdmin";
 	}

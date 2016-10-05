@@ -24,6 +24,7 @@ import com.bstore.services.persistence.pojo.Editorial;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.EditorialService;
 import com.bstore.services.service.UsuarioService;
+import com.bstore.services.util.ValidarSesion;
 import com.bstore.services.validator.EditorialValidator;
 
 /**
@@ -56,23 +57,26 @@ public class EditorialController {
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		logger.info("editorialController.getAll(): "+NAME_CONTROLLER+"/getAll");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Editorial> editorialList = editorialService.getAll();
-			if(editorialList != null){
-				//procesando usuarios
-				for(Editorial edi: editorialList){
-					Usuario u = this.usuarioService.byIdUser(edi.getIdUsuarioUmodif());
-					if(u!=null){
-						edi.setUsuario(u.getEmail());
-					}
-				}
-				model.addAttribute("editoriales",editorialList);
-			}
-			model.addAttribute("editorial", new Editorial());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		logger.info("Sesion activa Token === " + result);
+		List<Editorial> editorialList = editorialService.getAll();
+		if (editorialList != null) {
+			// procesando usuarios
+			for (Editorial edi : editorialList) {
+				Usuario u = this.usuarioService.byIdUser(edi.getIdUsuarioUmodif());
+				if (u != null) {
+					edi.setUsuario(u.getEmail());
+				}
+			}
+			model.addAttribute("editoriales", editorialList);
+		}
+		model.addAttribute("editorial", new Editorial());
+
 		return "editoriales";
 	}
 
@@ -81,13 +85,15 @@ public class EditorialController {
 		logger.info("editorialController.editorialAdd(): "+NAME_CONTROLLER+"/add");
 		logger.info("---------------------------------------------------------------------------------");
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			model.addAttribute("editorial", new Editorial());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
-		
+		logger.info("Sesion activa Token === " + result);
+		model.addAttribute("editorial", new Editorial());
+
 		return "editorialAdd";
 	}
 	
@@ -104,28 +110,29 @@ public class EditorialController {
 		
 		logger.info("editorialObject: "+editorial);
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			//logger.info("nombre de la nueva editorial: "+editorial.getNombre());
-			if(editorial!=null){
-				Usuario usuario = (Usuario) session.getAttribute("usuario");
-				logger.info("Se va a guardar la nueva editorial");
-				
-				editorial.setFechaUmodif(new Date());
-				editorial.setIdUsuarioUmodif(usuario.getId());
-				editorialService.saveOrUpdate(editorial);
-				
-				//Para regresar a lista de editoriales
-				List<Editorial> editorialList = editorialService.getAll();
-				model.addAttribute("editoriales",editorialList);	
-			}
-			else{
-				logger.info("La nueva editorial es null, regresamos a la misma pantalla");
-				return "editorialAdd";
-			}
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String results = ValidarSesion.validarSesionUsuarioActual(session);
+		if (results.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			logger.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		logger.info("Sesion activa Token === " + results);
+		if (editorial != null) {
+			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			logger.info("Se va a guardar la nueva editorial");
+
+			editorial.setFechaUmodif(new Date());
+			editorial.setIdUsuarioUmodif(usuario.getId());
+			editorialService.saveOrUpdate(editorial);
+
+			// Para regresar a lista de editoriales
+			List<Editorial> editorialList = editorialService.getAll();
+			model.addAttribute("editoriales", editorialList);
+		} else {
+			logger.info("La nueva editorial es null, regresamos a la misma pantalla");
+			return "editorialAdd";
+		}
+
 		return "editoriales";
 	}
 }

@@ -37,6 +37,7 @@ import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.FormaPagoService;
 import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
+import com.bstore.services.util.ValidarSesion;
 
 
 @Controller
@@ -82,13 +83,16 @@ public class CompraController {
 			   HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("Cargando detalle de compra: "+NAME_CONTROLLER);
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			Publicacion publicacion = this.publicacionService.getPublicacion(id);
-			model.addAttribute("publicacion", publicacion);
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		Publicacion publicacion = this.publicacionService.getPublicacion(id);
+		model.addAttribute("publicacion", publicacion);
+
 		return "detalleCompra";
 	   }
 	
@@ -96,28 +100,32 @@ public class CompraController {
 	   public String historialCompras(Model model, 
 			   HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("Cargando historial de compras: "+NAME_CONTROLLER);
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			log.info("Procesando historial de compra...");
-			Usuario usuario = (Usuario) session.getAttribute("usuario");
-			List<Compra> mapaCompras = new ArrayList<Compra>();
-			List<Compra> listaCompras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
-			if(listaCompras!=null && listaCompras.size()>0){
-				for(Compra buy: listaCompras){
-					Publicacion pub = this.publicacionService.getPublicacion(buy.getId().getIdPublicacion());
-					if(pub!=null){
-						log.info("compra id: "+"id: "+buy.getId()+" fecha: "+buy.getFechaCompra());
-						log.info("pub id: "+"id: "+pub.getId());
-						buy.setPublicacion(pub);
-						mapaCompras.add(buy);
-					}
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		log.info("Procesando historial de compra...");
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Compra> mapaCompras = new ArrayList<Compra>();
+		List<Compra> listaCompras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
+		if (listaCompras != null && listaCompras.size() > 0) {
+			for (Compra buy : listaCompras) {
+				Publicacion pub = this.publicacionService.getPublicacion(buy.getId().getIdPublicacion());
+				if (pub != null) {
+					log.info("compra id: " + "id: " + buy.getId() + " fecha: " + buy.getFechaCompra());
+					log.info("pub id: " + "id: " + pub.getId());
+					buy.setPublicacion(pub);
+					mapaCompras.add(buy);
 				}
 			}
-			log.info("Total de compras encontradas: "+mapaCompras.size());
-			model.addAttribute("mapaCompras", mapaCompras);
-		}else{
-			response.sendRedirect(request.getContextPath());
 		}
+		log.info("Total de compras encontradas: " + mapaCompras.size());
+		model.addAttribute("mapaCompras", mapaCompras);
+
 		return "historialCompra";
 	   }
 	
@@ -128,8 +136,13 @@ public class CompraController {
 		log.info("Controller::: "+NAME_CONTROLLER);
 		log.info("Procesar compra de publicacion con ID::: "+id);
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
 		  Usuario usuario = (Usuario) session.getAttribute("usuario");
 		  Publicacion publicacion = this.publicacionService.getPublicacion(id);
 		  /*String nombre = request.getParameter("nombre");
@@ -273,9 +286,6 @@ public class CompraController {
             	model.addAttribute("publicacion", publicacion);
             	return "detalleCompra";
 	        } 
-		}else{
-			response.sendRedirect(request.getContextPath());
-		}
 		return "pagoCompra";
 	   }
 	

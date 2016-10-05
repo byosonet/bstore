@@ -25,6 +25,7 @@ import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PerfilService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
+import com.bstore.services.util.ValidarSesion;
 
 @Controller
 public class PerfilController {
@@ -41,15 +42,17 @@ public class PerfilController {
 	   public String perfil(Model model, HttpServletRequest request){
 		log.info("Cargando perfil de usuario: "+NAME_CONTROLLER);
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			Usuario usuario = (Usuario) session.getAttribute("usuario");
-			model.addAttribute("usuario",usuario);
-			return "perfilUsuario";
-		}else{
-			log.info("Enviando a login, token no existe");
-			return "redirect:/index.jsp";
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		model.addAttribute("usuario", usuario);
+		return "perfilUsuario";
+		
 	 }
 	
 	
@@ -61,8 +64,13 @@ public class PerfilController {
 		HttpStatus status = HttpStatus.NOT_FOUND;
 		ErrorService responseLocal = new ErrorService();
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			//return "forbidden";
+		}
+	       log.info("Sesion activa Token === "+result);
 			String idUsuario = request.getParameter("idUsuario");
 	        String nombreUsuario = request.getParameter("nombre");
 	        String apaternoUsuario = request.getParameter("apaterno");
@@ -132,9 +140,7 @@ public class PerfilController {
 	            session.setAttribute("usuario", user);
 	            model.addAttribute("usuario",user);
 	        }
-		}else{
-			response.sendRedirect(request.getContextPath());
-		}
+		
         return new ResponseEntity<ErrorService>(responseLocal, status);
 	   }
 	
@@ -143,16 +149,19 @@ public class PerfilController {
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("PerfilController.getAll(): "+NAME_CONTROLLER+"/getAll");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Perfil> perfilList = perfilService.getAll();
-			if(perfilList != null){
-				model.addAttribute("perfiles", perfilList);
-			}
-			model.addAttribute("perfil", new Perfil());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		List<Perfil> perfilList = perfilService.getAll();
+		if (perfilList != null) {
+			model.addAttribute("perfiles", perfilList);
+		}
+		model.addAttribute("perfil", new Perfil());
+
 		return "perfilesAdmin";
 	}
 }

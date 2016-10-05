@@ -21,11 +21,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.bstore.services.persistence.pojo.Fuente;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
 import com.bstore.services.service.UsuarioService;
+import com.bstore.services.util.ValidarSesion;
 import com.bstore.services.validator.PublicacionValidator;
 
 @Controller
@@ -53,18 +53,22 @@ public class PublicacionController {
 		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
 		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			Usuario usuario = (Usuario) session.getAttribute("usuario");
-			List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue(), usuario.getId());
-			log.info("Total publicaciones encontradas: "+lista.size());
-			
-			model.addAttribute("publicaciones", lista);
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Publicacion> lista = this.publicacionService.getPublicacionesByColeccionID(Integer.valueOf(id).intValue(),
+				usuario.getId());
+		log.info("Total publicaciones encontradas: " + lista.size());
+
+		model.addAttribute("publicaciones", lista);
+
 		return "publicaciones";
-	   }
+	}
 	
 	@RequestMapping(value="/publicacion/{id}",method = RequestMethod.GET)
 	   public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request, 
@@ -72,16 +76,18 @@ public class PublicacionController {
 		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/publicacion/{id}");
 		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/publicacion/{id}");
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
-			log.info("URL Encontrada: "+pub.getUrlArchivo());
-			model.addAttribute("urlPublicacion", pub.getUrlArchivo());
-			model.addAttribute("nombrePublicacion", pub.getNombre());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
-		
+		log.info("Sesion activa Token === " + result);
+		Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
+		log.info("URL Encontrada: " + pub.getUrlArchivo());
+		model.addAttribute("urlPublicacion", pub.getUrlArchivo());
+		model.addAttribute("nombrePublicacion", pub.getNombre());
+
 		return "publicacionHTML";
 	   }
 
@@ -89,23 +95,26 @@ public class PublicacionController {
 	public String getAll(Model model, HttpServletRequest request, HttpServletResponse response) throws IOException{
 		log.info("PublicacionController.getAll(): "+NAME_CONTROLLER+"/getAll");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Publicacion> publicacionList = publicacionService.getAll();
-			if(publicacionList != null){
-				//procesando usuarios
-				for(Publicacion pub: publicacionList){
-					Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
-					if(u!=null){
-						pub.setUsuarioMail(u.getEmail());
-					}
-				}
-				model.addAttribute("publicaciones", publicacionList);
-			}
-			model.addAttribute("publicacion", new Publicacion());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + result);
+		List<Publicacion> publicacionList = publicacionService.getAll();
+		if (publicacionList != null) {
+			// procesando usuarios
+			for (Publicacion pub : publicacionList) {
+				Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
+				if (u != null) {
+					pub.setUsuarioMail(u.getEmail());
+				}
+			}
+			model.addAttribute("publicaciones", publicacionList);
+		}
+		model.addAttribute("publicacion", new Publicacion());
+
 		return "publicacionesAdmin";
 	}
 	
@@ -114,13 +123,15 @@ public class PublicacionController {
 		log.info("publicacionController.publicacionAdd(): "+NAME_CONTROLLER+"/add");
 		log.info("---------------------------------------------------------------------------------");
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			model.addAttribute("publicacion", new Publicacion());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
-		
+		log.info("Sesion activa Token === " + result);
+		model.addAttribute("publicacion", new Publicacion());
+
 		return "publicacionAdd";
 	}
 	
@@ -136,27 +147,24 @@ public class PublicacionController {
 		
 		log.info("publicacionObject: "+publicacion.toString());
 		
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-//			if(publicacion!=null){
-				Usuario usuario = (Usuario) session.getAttribute("usuario");
-				log.info("Se va a guardar la nueva publicacion");
-				
-				publicacion.setFechaUmodif(new Date());
-				publicacion.setIdUsuarioUmodif(usuario.getId());
-				publicacionService.saveOrUpdate(publicacion);
-				
-				//Para regresar a lista de publicaciones
-				List<Publicacion> publicacionList = publicacionService.getAll();
-				model.addAttribute("publicaciones", publicacionList);	
-//			}
-//			else{
-//				log.info("La nueva editorial es null, regresamos a la misma pantalla");
-//				return "editorialAdd";
-//			}
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String results = ValidarSesion.validarSesionUsuarioActual(session);
+		if (results.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
+		log.info("Sesion activa Token === " + results);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		log.info("Se va a guardar la nueva publicacion");
+
+		publicacion.setFechaUmodif(new Date());
+		publicacion.setIdUsuarioUmodif(usuario.getId());
+		publicacionService.saveOrUpdate(publicacion);
+
+		// Para regresar a lista de publicaciones
+		List<Publicacion> publicacionList = publicacionService.getAll();
+		model.addAttribute("publicaciones", publicacionList);
+
 		return "publicacionesAdmin";
 	}
 	
@@ -165,23 +173,20 @@ public class PublicacionController {
 			@ModelAttribute("publicacion") @Validated Publicacion publicacion) throws IOException{
 		log.info("PublicacionController.search(): "+NAME_CONTROLLER+"/search; publicacion es: "+publicacion!=null?publicacion.toString():"Publicacion es NULL!!!");
 
-		HttpSession session= (HttpSession) request.getSession(false);
-		if(session!=null && session instanceof HttpSession && session.getAttribute("token")!=null){
-			List<Publicacion> publicacionList = publicacionService.search(publicacion);
-			if(publicacionList != null){
-				//procesando usuarios
-//				for(Publicacion pub: publicacionList){
-//					Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
-//					if(u!=null){
-//						pub.setUsuarioMail(u.getEmail());
-//					}
-//				}
-				model.addAttribute("publicaciones", publicacionList);
-			}
-			model.addAttribute("publicacion", new Publicacion());
-		}else{
-			response.sendRedirect(request.getContextPath());
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
 		}
-		return "publicacionesAdmin";//Poner la página a donde hay que redireccionar, deberíar ser la misma...
+		log.info("Sesion activa Token === " + result);
+		List<Publicacion> publicacionList = publicacionService.search(publicacion);
+		if (publicacionList != null) {
+			model.addAttribute("publicaciones", publicacionList);
+		}
+		model.addAttribute("publicacion", new Publicacion());
+
+		return "publicacionesAdmin";// Poner la página a donde hay que
+									// redireccionar, deberíar ser la misma...
 	}
 }
