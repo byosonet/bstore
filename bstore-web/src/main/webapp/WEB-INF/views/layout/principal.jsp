@@ -19,7 +19,8 @@
 	</style>
     
     	<script type="text/javascript">
-            $(document).ready(function() {                               
+            $(document).ready(function() { 
+            	    $('a#showMenu').hide();
                     $('a#exit').click(function(){
                         $.ajax({
                             type: 'POST',
@@ -29,7 +30,13 @@
                                    muestraMsjSistemaSuccessIndex("Gracias por tu visita, vuelve pronto.");
                             }  
                           });
-                    });          
+                    });
+                    
+                    $('a#showMenu').click(function(){
+                    	$('ul.nav.navbar-nav').show();
+                		$('#wrapper').css('padding-left','');
+                		$('a#showMenu').hide();
+                    });       
                               
                     function muestraMsjSistemaSuccessIndex(msjStatus){
                        BootstrapDialog.show({
@@ -71,11 +78,12 @@
                     <span class="icon-bar"></span>
                 </button>
                 <a id="exit" class="navbar-brand" href="#" style="color: white;">eQuivira</a>
+                <a id="showMenu" class="navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Men&uacute;</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
             	<c:if test="${not empty ultimasCompras}">
-                <li class="dropdown">
+                <!--<li class="dropdown">
                     <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
                     <ul class="dropdown-menu message-dropdown">
                     	<c:forEach var="publicacion" items="${ultimasCompras}">
@@ -98,9 +106,9 @@
 	                        </li>
                         </c:forEach>
                     </ul>
-                </li>
+                </li>-->
                 </c:if>
-                <li class="dropdown">
+                <!-- <li class="dropdown">
                 	<c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
                     	<a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Administrador </a>
                     </c:if>
@@ -108,7 +116,7 @@
                     	<a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Lector </a>
                     </c:if>
                     
-                </li>
+                </li>-->
                 <li class="dropdown">
                     <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
                     <ul class="dropdown-menu">
