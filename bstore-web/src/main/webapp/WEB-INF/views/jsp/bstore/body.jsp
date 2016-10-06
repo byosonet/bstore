@@ -5,7 +5,15 @@
 <body>
      <div class="row">
      	<div class="col-lg-12" style="text-align: justify;">
-        	<div style="text-align: right;"><img style="width: 80%;border-radius:20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
+        	<div class="col-lg-12" style="position: relative;">
+			  <!-- div style="position: absolute; left: 30px; top: 50px;"> CONTENIDO UNO </div-->
+			  <div class="col-lg-12" style="text-align: right;"><img style="width: 80%;border-radius:20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
+			  <div class="col-lg-12" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+			  	<div class="col-lg-2"></div>
+			  	<input type="text" class="col-lg-8" style="height:30%;font-size:14pt;" placeholder="Busque publicaciones por resumen y titulo...">
+			  	<div class="col-lg-2"></div>
+			  </div>
+			</div>
 			<br>
 			<br>
             <p class="text">Ediciones Quivira surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la Inquisición del Virreinato de la Nueva España. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
