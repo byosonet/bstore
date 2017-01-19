@@ -28,13 +28,13 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
         
         
         Usuario usuario = (Usuario) HibernateUtil.getSessionFactory()
-                .createQuery("FROM Usuario u WHERE u.email = :email AND u.password = :password")
+                .createQuery("FROM Usuario u WHERE u.email = :email AND u.password = :password AND u.estatus = 1")
                 .setParameter("email", email)
                 .setParameter("password", password)
                 .uniqueResult();
         if(usuario==null){
         	usuario = (Usuario) HibernateUtil.getSessionFactory()
-                    .createQuery("FROM Usuario u WHERE u.login = :login AND u.password = :password")
+                    .createQuery("FROM Usuario u WHERE u.login = :login AND u.password = :password AND u.estatus = 1")
                     .setParameter("login", email)
                     .setParameter("password", password)
                     .uniqueResult();
