@@ -127,10 +127,8 @@
                 action: function(dialog) {
                     dialog.close();
                     $.blockUI();
-                    var urlAction = '${contextpath}' + '/equivira';
-                    document.getElementById('ingresar').action = urlAction;
-                    document.getElementById('ingresar').method = 'POST';
-                    document.getElementById('ingresar').submit();
+                    var urlAction = '${contextpath}';
+                    document.location.href = urlAction;
                 }
             }]
         });

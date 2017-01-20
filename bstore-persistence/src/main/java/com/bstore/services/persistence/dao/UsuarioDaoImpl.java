@@ -74,7 +74,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     public void agregarUsuario(Usuario usuario) {
     	Transaction tx = HibernateUtil.beginTransaction();
         try {
-            usuario.setEstatus(1);
+            usuario.setEstatus(2);
             Perfil perfil = new Perfil();
             perfil.setId(2);
             usuario.setPerfil(perfil);

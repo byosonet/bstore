@@ -272,7 +272,7 @@ public class LoginController {
                 this.log.info(" -- Usuario correcto");
                 ErrorService data = new ErrorService();
                 data.setCodigo("200");
-                data.setMensaje("El email: "+usuario.getEmail()+" ha sido registrado.");
+                data.setMensaje("Para continuar debes de activar tu cuenta y para ello te hemos enviado un email a: "+usuario.getEmail());
                 return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
            } catch (Exception ex) {
                this.log.info(" -- No se puedo llevar a cabo el registro del usuario en el sistema.");    
