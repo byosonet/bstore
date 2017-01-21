@@ -2,6 +2,7 @@ package com.bstore.services.service;
 
 import java.io.BufferedReader;
 import java.io.StringWriter;
+import java.text.SimpleDateFormat;
 
 import javax.mail.internet.MimeMessage;
 
@@ -126,7 +127,8 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
         context.put("nombrePublicacion", compra.getPublicacion().getNombre());
         context.put("isbnPublicacion", compra.getPublicacion().getIsbn());
         context.put("editorial", compra.getPublicacion().getEditorial().getNombre());
-        context.put("fechaCompra", compra.getFechaCompra());
+        String dateBuy = new SimpleDateFormat("dd/MM/yyyy").format(compra.getFechaCompra());
+        context.put("fechaCompra", dateBuy);
         context.put("numeroTransaccion", compra.getIdConekta());
         context.put("numeroAutorizacion", compra.getAuthCodeCard());
         context.put("tipoTarjeta", compra.getBrandCard().equalsIgnoreCase("visa")?BRAND_CARD_VISA:BRAND_CARD_MC);

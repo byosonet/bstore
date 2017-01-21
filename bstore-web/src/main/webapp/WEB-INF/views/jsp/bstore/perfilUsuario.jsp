@@ -292,7 +292,8 @@
             <form id="perfil"></form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR</button>
+                <button id="cancelar" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> CANCELAR CUENTA</button>
+                <button id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR DATOS</button>
                 </div>
             </div>
         </div>
