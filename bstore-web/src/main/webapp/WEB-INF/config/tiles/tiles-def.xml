@@ -98,6 +98,10 @@
             <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/registrar.jsp"/>
 	</definition>
 	
+	<definition name="activacion" extends="login">
+            <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/activacion.jsp"/>
+	</definition>
+	
 	<definition name="password" extends="login">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/password.jsp"/>
 	</definition>

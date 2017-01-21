@@ -25,7 +25,7 @@ public class UtilService {
 		System.out.println("-- Encriptar mail: "+mail);
 		System.out.println("-- Encriptado: "+token);
 		try{
-		System.out.println("-- Desencriptado: "+Desencriptar(token));
+		System.out.println("-- Desencriptado:  "+Desencriptar(token));
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
@@ -47,6 +47,7 @@ public class UtilService {
             byte[] plainTextBytes = password.getBytes("utf-8");
             byte[] buf = cipher.doFinal(plainTextBytes);
             byte[] base64Bytes = Base64.encodeBase64(buf);
+            base64Bytes = Base64.encodeBase64(base64Bytes);
             base64EncryptedString = new String(base64Bytes);
 
         } catch (Exception ex) {
@@ -61,6 +62,7 @@ public class UtilService {
 
         try {
             byte[] message = Base64.decodeBase64(password.getBytes("utf-8"));
+            message = Base64.decodeBase64(message);
             MessageDigest md = MessageDigest.getInstance("MD5");
             byte[] digestOfPassword = md.digest(secretKey.getBytes("utf-8"));
             byte[] keyBytes = Arrays.copyOf(digestOfPassword, 24);

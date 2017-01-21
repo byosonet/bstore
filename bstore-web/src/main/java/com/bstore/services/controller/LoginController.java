@@ -167,6 +167,32 @@ public class LoginController {
         return "registrar";
     }
     
+    @RequestMapping(value="/confirmarTuCuenta", method = RequestMethod.GET)
+    public String confirmarTuCuenta(HttpServletRequest request, Model model){
+		String token="";
+    	try {
+			token = request.getParameter("token");
+			this.log.info("-- Token recibido ="+token);
+			String email = UtilService.Desencriptar(token);
+			this.log.info("-- Email: "+ email);
+			Usuario usuario = this.usuarioService.validaEmailSistema(email);
+			if (usuario != null) {
+				usuario.setEstatus(1);
+				this.usuarioService.actualizarDatosUsuario(usuario);
+				model.addAttribute("activado", true);
+				this.log.info("-- Activacion de cuenta correcta para: "+email);
+			}else{
+				model.addAttribute("activado", false);
+				this.log.info("-- No se puede activar cuenta email/token invalido: "+email);
+			}
+		} catch (Exception ex) {
+			this.log.error("-- Error al descifrar el token para activacion de cuenta ===-> "+token);
+			model.addAttribute("activado", false);
+			ex.printStackTrace();
+		}
+		return "activacion";
+    }
+    
     
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
     public ResponseEntity<ErrorService> registrarUsuarionNuevo(HttpServletRequest request, Model model){
@@ -268,7 +294,9 @@ public class LoginController {
             	   this.log.info("-- Url request actual::: "+request.getRequestURL());
             	   String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
             	   String emailEncriptado = UtilService.Encriptar(usuario.getEmail());
-            	   String nuevaUrlParaConfirmacion = urlServer + "confirmarTuCuenta?token="+emailEncriptado;
+            	   String nuevaUrlParaConfirmacion = urlServer 
+            			   + this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue() + "/"
+            			   + "confirmarTuCuenta?token="+emailEncriptado;
             	   this.log.info("-- Url para activacion de cuenta "+ usuario.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
                    this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario,nuevaUrlParaConfirmacion);
                    this.log.info(" -- Enviado");

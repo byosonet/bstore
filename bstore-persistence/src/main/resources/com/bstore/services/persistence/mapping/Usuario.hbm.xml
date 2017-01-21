@@ -39,7 +39,7 @@
             <column name="TELEFONO" />
         </property>
     	<property name="password" type="string">
-            <column name="PASSWORD" length="100" not-null="true" />
+            <column name="PASSWORD" length="200" not-null="true" />
         </property>
     	<property name="fechaNacimiento" type="date">
       		<column name="NACIMIENTO"/>
