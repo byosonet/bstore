@@ -41,7 +41,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarEmailRegistro(final String toEmail, final String bccEmail, Usuario usuario)
+	public void enviarEmailRegistro(final String toEmail, final String bccEmail, Usuario usuario, String urlConfirmacion)
 			throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_REGISTRO);
         final StringWriter swRegistro = new StringWriter();
@@ -49,6 +49,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
         VelocityContext context = new VelocityContext();
         context.put("nombre", usuario.getNombre());
         context.put("emailApp", bccEmail);
+        context.put("urlToken", urlConfirmacion);
         Velocity.evaluate(
                 context,
                 swRegistro,

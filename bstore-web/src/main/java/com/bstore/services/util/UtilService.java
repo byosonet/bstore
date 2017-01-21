@@ -18,6 +18,19 @@ import org.apache.commons.codec.binary.Base64;
  * @author User
  */
 public class UtilService {
+	
+	public static void main (String args[]){
+		String mail = "prueba@gmail.com";
+		String token = Encriptar(mail);
+		System.out.println("-- Encriptar mail: "+mail);
+		System.out.println("-- Encriptado: "+token);
+		try{
+		System.out.println("-- Desencriptado: "+Desencriptar(token));
+		}catch(Exception ex){
+			ex.printStackTrace();
+		}
+	}
+	
     public static String Encriptar(String password){
         String secretKey = "soloadioslagloria"; //llave para encriptar datos
         String base64EncryptedString = "";

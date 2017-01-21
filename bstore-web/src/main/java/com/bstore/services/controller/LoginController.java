@@ -62,6 +62,7 @@ public class LoginController {
 	
    private final Logger log = Logger.getLogger(LoginController.class);
    private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+   private final String CONTEXT_SYSTEM = "com.bstore.context";
    
    @RequestMapping(value="/equivira",method = RequestMethod.POST)
 
@@ -264,7 +265,12 @@ public class LoginController {
             this.log.info(" -- El usuario se agrego correctamente");
            try {
                try {
-                   this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario);
+            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
+            	   String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
+            	   String emailEncriptado = UtilService.Encriptar(usuario.getEmail());
+            	   String nuevaUrlParaConfirmacion = urlServer + "confirmarTuCuenta?token="+emailEncriptado;
+            	   this.log.info("-- Url para activacion de cuenta "+ usuario.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
+                   this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario,nuevaUrlParaConfirmacion);
                    this.log.info(" -- Enviado");
                } catch (Exception ex) {
                    this.log.error(" -- No se puedo enviar mail de registro: "+ex.getMessage());
