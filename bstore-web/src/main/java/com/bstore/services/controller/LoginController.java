@@ -180,14 +180,17 @@ public class LoginController {
 				usuario.setEstatus(1);
 				this.usuarioService.actualizarDatosUsuario(usuario);
 				model.addAttribute("activado", true);
+				model.addAttribute("email", email);
 				this.log.info("-- Activacion de cuenta correcta para: "+email);
 			}else{
 				model.addAttribute("activado", false);
+				model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
 				this.log.info("-- No se puede activar cuenta email/token invalido: "+email);
 			}
 		} catch (Exception ex) {
 			this.log.error("-- Error al descifrar el token para activacion de cuenta ===-> "+token);
 			model.addAttribute("activado", false);
+			model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
 			ex.printStackTrace();
 		}
 		return "activacion";

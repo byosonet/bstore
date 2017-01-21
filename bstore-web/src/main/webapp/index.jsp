@@ -73,9 +73,7 @@
           $('button#registrar').click(function(){
                 $.blockUI();
                 var urlAction = '${contextpath}' + '/registrar/usuario';
-				document.getElementById('ingresar').action = urlAction;
-                document.getElementById('ingresar').method = 'GET';
-				document.getElementById('ingresar').submit();
+                document.location.href = urlAction;
           });
 
         function muestraMsjSistemaError(msjStatus){
