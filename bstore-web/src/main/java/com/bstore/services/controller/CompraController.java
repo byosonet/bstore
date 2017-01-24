@@ -177,7 +177,12 @@ public class CompraController {
 	        
 		  	Details details = new Details();
 		        details.setName(usuario.getNombre() +" "+usuario.getAPaterno());
-		        details.setPhone(usuario.getTelefono()==null?"0000000000":usuario.getTelefono());
+		        try{
+		        	Integer.valueOf(usuario.getTelefono());
+		        	details.setPhone(usuario.getTelefono());
+		        }catch(Exception ex){
+		        	details.setPhone("0000000000");
+		        }
 		        details.setEmail(usuario.getEmail());
 	        
 	        Item item = new Item();
