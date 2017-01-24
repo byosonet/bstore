@@ -32,6 +32,9 @@
     	<property name="notificaciones" type="string">
       		<column length="2" name="NOTIFICACIONES"/>
     	</property>
+    	<property name="aceptoTerminos" type="string">
+      		<column length="5" name="ACEPTO_TERMINOS"/>
+    	</property>
     	<property name="login" type="string">
             <column name="LOGIN" length="30" not-null="true" unique="true" />
         </property>

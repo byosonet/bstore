@@ -182,6 +182,13 @@ public class LoginController {
 				model.addAttribute("activado", true);
 				model.addAttribute("email", email);
 				this.log.info("-- Activacion de cuenta correcta para: "+email);
+				HttpSession session = (HttpSession) request.getSession(false);
+				session.removeAttribute("menu");
+				session.removeAttribute("usuario");
+				session.removeAttribute("token");
+				session.removeAttribute("ultimasCompras");
+				session.invalidate();
+				log.info("-- Removiendo datos de la session");
 			}else{
 				model.addAttribute("activado", false);
 				model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
@@ -240,6 +247,7 @@ public class LoginController {
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
     public ResponseEntity<ErrorService> registrarUsuarionNuevo(HttpServletRequest request, Model model){
         String notificar = request.getParameter("notificar")!=null?request.getParameter("notificar"):"NO";
+        String condiciones = request.getParameter("condiciones")!=null?request.getParameter("condiciones"):"NO";
         String nombre = request.getParameter("nombre").toUpperCase();
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -268,6 +276,7 @@ public class LoginController {
             this.log.info(" -- Email: "+email);
             this.log.info(" -- Password: "+password);
             this.log.info(" -- Sexo: "+sexo);
+            this.log.info(" -- Acepto condiciones: "+condiciones);
             this.log.info(" -- Notificar: "+notificar);
             this.log.info(" -- Dia: "+dia);
             this.log.info(" -- Mes: "+mes);
@@ -285,6 +294,7 @@ public class LoginController {
             usuario.setNombre(nombre);
             usuario.setEmail(email);
             usuario.setSexo(sexo);
+            usuario.setAceptoTerminos(condiciones);
             String encriptado = UtilService.Encriptar(password);
             usuario.setPassword(encriptado);
             usuario.setFechaAlta(fechaAlta);

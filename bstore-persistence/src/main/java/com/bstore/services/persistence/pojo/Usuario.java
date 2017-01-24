@@ -31,13 +31,14 @@ public class Usuario implements java.io.Serializable {
 	private int estatus;
 	private Perfil perfil;
 	private String telefono;
+	private String aceptoTerminos;
 
 	public Usuario() {
 	}
 
 	public Usuario(int id, String nombre, String aMaterno, String aPaterno, String sexo, Date fechaAlta, Date fechaBaja, Date ultConexion,
 			String notificaciones, String login, String email, String password, Date fechaNacimiento, String actividad,
-			byte[] foto, int estatus, Perfil perfil, String telefono) {
+			byte[] foto, int estatus, Perfil perfil, String telefono, String aceptoTerminos) {
 		this.id = id;
 		this.nombre = nombre;
 		AMaterno = aMaterno;
@@ -56,6 +57,7 @@ public class Usuario implements java.io.Serializable {
 		this.estatus = estatus;
 		this.perfil = perfil;
 		this.telefono = telefono;
+		this.aceptoTerminos = aceptoTerminos;
 	}
 
 	public int getId() {
@@ -200,6 +202,14 @@ public class Usuario implements java.io.Serializable {
 
 	public void setFechaBaja(Date fechaBaja) {
 		this.fechaBaja = fechaBaja;
+	}
+
+	public String getAceptoTerminos() {
+		return aceptoTerminos;
+	}
+
+	public void setAceptoTerminos(String aceptoTerminos) {
+		this.aceptoTerminos = aceptoTerminos;
 	}
 
 	@Override
