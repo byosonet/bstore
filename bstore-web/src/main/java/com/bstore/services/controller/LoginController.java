@@ -206,7 +206,11 @@ public class LoginController {
 			this.log.info("-- Email: "+ email);
 			Usuario usuario = this.usuarioService.validaEmailSistema(email);
 			if (usuario != null) {
+				Timestamp stamp = new Timestamp(System.currentTimeMillis());
+		        this.log.info(" -- Fecha de Baja::: "+stamp);
+		        Date fechaBaja = new Date(stamp.getTime());
 				usuario.setEstatus(2);
+				usuario.setFechaBaja(fechaBaja);
 				this.usuarioService.actualizarDatosUsuario(usuario);
 				model.addAttribute("baja", true);
 				model.addAttribute("email", email);

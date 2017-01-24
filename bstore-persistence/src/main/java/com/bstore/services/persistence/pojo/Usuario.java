@@ -19,6 +19,7 @@ public class Usuario implements java.io.Serializable {
 	private String APaterno;
 	private String sexo;
     private Date fechaAlta;
+    private Date fechaBaja;
     private Date ultConexion;
     private String notificaciones;
     private String login;
@@ -34,7 +35,7 @@ public class Usuario implements java.io.Serializable {
 	public Usuario() {
 	}
 
-	public Usuario(int id, String nombre, String aMaterno, String aPaterno, String sexo, Date fechaAlta, Date ultConexion,
+	public Usuario(int id, String nombre, String aMaterno, String aPaterno, String sexo, Date fechaAlta, Date fechaBaja, Date ultConexion,
 			String notificaciones, String login, String email, String password, Date fechaNacimiento, String actividad,
 			byte[] foto, int estatus, Perfil perfil, String telefono) {
 		this.id = id;
@@ -43,6 +44,7 @@ public class Usuario implements java.io.Serializable {
 		APaterno = aPaterno;
 		this.sexo = sexo;
 		this.fechaAlta = fechaAlta;
+		this.fechaBaja = fechaBaja;
 		this.ultConexion = ultConexion;
 		this.notificaciones = notificaciones;
 		this.login = login;
@@ -190,6 +192,14 @@ public class Usuario implements java.io.Serializable {
 
 	public void setTelefono(String telefono) {
 		this.telefono = telefono;
+	}
+
+	public Date getFechaBaja() {
+		return fechaBaja;
+	}
+
+	public void setFechaBaja(Date fechaBaja) {
+		this.fechaBaja = fechaBaja;
 	}
 
 	@Override

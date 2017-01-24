@@ -23,6 +23,9 @@
         <property name="fechaAlta" type="timestamp">
       		<column name="FECHA_ALTA"/>
     	</property>
+    	 <property name="fechaBaja" type="timestamp">
+      		<column name="FECHA_BAJA"/>
+    	</property>
     	<property name="ultConexion" type="timestamp">
       		<column name="ULT_CONEXION"/>
     	</property>
