@@ -102,6 +102,10 @@
             <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/activacion.jsp"/>
 	</definition>
 	
+	<definition name="cancelar" extends="login">
+            <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/baja.jsp"/>
+	</definition>
+	
 	<definition name="password" extends="login">
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/page/password.jsp"/>
 	</definition>

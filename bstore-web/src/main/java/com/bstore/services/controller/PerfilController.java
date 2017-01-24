@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PerfilService;
+import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import com.bstore.services.util.ValidarSesion;
@@ -31,12 +33,20 @@ import com.bstore.services.util.ValidarSesion;
 public class PerfilController {
 	private final Logger log = Logger.getLogger(PerfilController.class);
 	private static final String NAME_CONTROLLER = "[--PerfilController--]";
+	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+	private final String CONTEXT_SYSTEM = "com.bstore.context";
 	
 	@Autowired
 	private UsuarioService usuarioService;
 	
 	@Autowired
 	private PerfilService perfilService;
+	
+	@Autowired
+	EnviarEmailService enviarEmailService;
+	
+	@Autowired
+	private PropertyService propertyService;
 	
 	@RequestMapping(value="/perfil",method = RequestMethod.GET)
 	   public String perfil(Model model, HttpServletRequest request){
@@ -105,7 +115,7 @@ public class PerfilController {
 	            	user.setPassword(encriptarPassword);
 	            }
 	            user.setNombre(nombreUsuario);
-	            user.setEmail(emailUsuario);
+	            //user.setEmail(emailUsuario);
 	            user.setLogin(login);
 	            user.setAPaterno(apaternoUsuario);
 	            user.setAMaterno(amaternoUsuario);
@@ -146,6 +156,56 @@ public class PerfilController {
 		
         return new ResponseEntity<ErrorService>(responseLocal, status);
 	   }
+	
+	@RequestMapping(value="/perfil/cancelar",method = RequestMethod.POST)
+	   public ResponseEntity<ErrorService> perfilCancelar(Model model, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cancelar cuenta de perfil de usuario: "+NAME_CONTROLLER);
+		
+		HttpStatus status = HttpStatus.NOT_FOUND;
+		ErrorService responseLocal = new ErrorService();
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+         responseLocal.setCodigo("403");
+         responseLocal.setMensaje("Se ha vencido la sesion del usuario");
+         status = HttpStatus.FORBIDDEN;
+			return new ResponseEntity<ErrorService>(responseLocal, status);
+		}
+	       log.info("Sesion activa Token === "+result);
+			String idUsuario = request.getParameter("idUsuario");
+	        Usuario user = this.usuarioService.byIdUser(Integer.valueOf(idUsuario));
+	        if(user!=null){
+	        		try {
+	            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
+	            	   String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
+	            	   String emailEncriptado = UtilService.Encriptar(user.getEmail());
+	            	   String nuevaUrlParaConfirmacion = urlServer 
+	            			   + this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue() + "/"
+	            			   + "confirmarBajaDeTuCuenta?token="+emailEncriptado;
+	            	   this.log.info("-- Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
+	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), user,nuevaUrlParaConfirmacion);
+	                   this.log.info(" -- Enviado");
+	                   this.log.info(" -- Se envia a usuario confirmacion para cancelacion de cuenta: "+user.getEmail());
+			           responseLocal.setCodigo("200");
+			           responseLocal.setMensaje("Se ha enviado un correo a tu cuenta, para que confirmes la baja del servicio.");
+			           status = HttpStatus.OK;
+	        		} catch (Exception ex) {
+	                   this.log.error(" -- No se puedo enviar mail de baja de cuenta: "+ex.getMessage());
+	                   responseLocal.setCodigo("404");
+			           responseLocal.setMensaje("Por el momento no ha sido posible continuar con el proceso, intenta más tarde.");
+			           return new ResponseEntity<ErrorService>(responseLocal, HttpStatus.NOT_FOUND);
+	               	}
+	        }else{
+	        	 this.log.info(" -- Usuario no tiene cuenta valida");
+		            responseLocal.setCodigo("404");
+		            responseLocal.setMensaje("Por el momento no ha sido posible continuar con el proceso, intenta más tarde.");
+		            return new ResponseEntity<ErrorService>(responseLocal, HttpStatus.NOT_FOUND);
+	        }
+	        return new ResponseEntity<ErrorService>(responseLocal, status);
+	 }
 	
 	
 	@RequestMapping(value="perfil/getAll",method = RequestMethod.GET)

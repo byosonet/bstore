@@ -55,10 +55,6 @@
                 }else if(amaterno.val() === ""){
                 	muestraMsjSistemaError('El apellido materno es requerido.');
                 	return false;
-                }
-                else if(email.val() === ""){
-                    muestraMsjSistemaError('El email es requerido.');
-                    return false;
                 }else if(login.val() === ""){
                     muestraMsjSistemaError('El login es requerido.');
                     return false;
@@ -148,6 +144,58 @@
 		            }]
 		        });
 		        }
+		        
+		        $('button#cancelar').click(function(){
+		        	muestraMsjSistemaSuccessCancelar("¿Estás seguro de que quieres cancelar tu cuenta?");
+		        });
+		        
+		        function muestraMsjSistemaSuccessCancelar(msjStatus){
+			           BootstrapDialog.show({
+			            size: BootstrapDialog.SIZE_SMALL,
+			            title: 'Mensaje del Sistema',
+			            closable: false,
+			            message: msjStatus,
+			            type: BootstrapDialog.TYPE_DANGER,
+			            cssClass: 'login-dialog',
+			            buttons: [{
+			            	icon: 'glyphicon glyphicon-remove',
+			            	label: 'CANCELAR',
+			            	action: function(dialog){
+			            		dialog.close();}
+			            	},{
+			                icon: 'glyphicon glyphicon-check',
+			                label: 'CONTINUAR',
+			                cssClass: 'btn-primary',
+			                action: function(dialog) {
+			                    dialog.close();
+			                    $.blockUI();
+				                $.ajax({
+					              type: 'POST',
+					              url: '${contextpath}'+'/perfil/cancelar',
+					              data: $('form#formRegistrar').serialize(),
+				                  success: function (data) {
+			                             $.unblockUI();
+			                             if(data.mensaje === undefined){
+			                            	 $.blockUI();
+			     		                     var urlAction = '${contextpath}' + '/perfil';
+			     		                     document.getElementById('perfil').action = urlAction;
+			     		                     document.getElementById('perfil').method = 'GET';
+			     		                     document.getElementById('perfil').submit();
+			                             }else{
+			                            	 muestraMsjSistemaSuccess(data.mensaje);
+			                             }
+				              			},
+			                     error: function(msj){
+			                             status = JSON.parse(msj.responseText);
+			                             $.unblockUI();
+			                             muestraMsjSistemaError(status.mensaje);
+			                             window.location.href = '${contextpath}';
+			                          }
+					        	});
+			                }
+			            }]
+			        });
+			        }
       });
   </script>
     </head>
@@ -183,7 +231,7 @@
                     
                     <label class="control-label col-sm-1"  for="email">Email:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}">
+                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}" readonly>
                     </div>
                 </div>
                 

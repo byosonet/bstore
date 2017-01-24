@@ -30,6 +30,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 	private final int ID_PLANTILLA_REGISTRO = 1;
 	private final int ID_PLANTILLA_PASSWORD = 2;
 	private final int ID_PLANTILLA_COMPRA = 3;
+	private final int ID_PLANTILLA_BAJA = 4;
 	
 	private final String BRAND_CARD_VISA = "VISA";
 	private final String BRAND_CARD_MC = "MASTERCARD";
@@ -58,6 +59,43 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 new BufferedReader(mail.getPlantilla().getCharacterStream()));
         final String actualMessageRegistro = swRegistro.toString();
         this.log.info(" -- Merge Template Registro Usuario: " + actualMessageRegistro);
+
+        try {
+        	MimeMessagePreparator preparator = new MimeMessagePreparator() {
+                public void prepare(MimeMessage mimeMessage) throws Exception {
+                    MimeMessageHelper messageHelper = new MimeMessageHelper(
+                            mimeMessage, "UTF-8");
+                    messageHelper.setSubject(mail.getSubject());
+                    messageHelper.setTo(toEmail);
+                    messageHelper.setBcc(bccEmail);
+                    messageHelper.setText(actualMessageRegistro, true);
+                }
+            };
+            this.mailSender.send(preparator);
+            this.log.info(" -- Correo enviado a: "+toEmail);
+        } catch (MailException e) {
+            log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
+        }
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public void enviarEmailBaja(final String toEmail, final String bccEmail, Usuario usuario, String urlConfirmacion)
+			throws Exception {
+		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_BAJA);
+        final StringWriter swRegistro = new StringWriter();
+
+        VelocityContext context = new VelocityContext();
+        context.put("nombre", usuario.getNombre());
+        context.put("emailApp", bccEmail);
+        context.put("urlToken", urlConfirmacion);
+        Velocity.evaluate(
+                context,
+                swRegistro,
+                "velocity-mail-baja",
+                new BufferedReader(mail.getPlantilla().getCharacterStream()));
+        final String actualMessageRegistro = swRegistro.toString();
+        this.log.info(" -- Merge Template Baja Usuario: " + actualMessageRegistro);
 
         try {
         	MimeMessagePreparator preparator = new MimeMessagePreparator() {

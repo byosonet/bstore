@@ -196,6 +196,42 @@ public class LoginController {
 		return "activacion";
     }
     
+    @RequestMapping(value="/confirmarBajaDeTuCuenta", method = RequestMethod.GET)
+    public String confirmarBajaDeTuCuenta(HttpServletRequest request, Model model){
+		String token="";
+    	try {
+			token = request.getParameter("token");
+			this.log.info("-- Token recibido ="+token);
+			String email = UtilService.Desencriptar(token);
+			this.log.info("-- Email: "+ email);
+			Usuario usuario = this.usuarioService.validaEmailSistema(email);
+			if (usuario != null) {
+				usuario.setEstatus(2);
+				this.usuarioService.actualizarDatosUsuario(usuario);
+				model.addAttribute("baja", true);
+				model.addAttribute("email", email);
+				this.log.info("-- Cancelacion de cuenta correcta para: "+email);
+				HttpSession session = (HttpSession) request.getSession(false);
+				session.removeAttribute("menu");
+				session.removeAttribute("usuario");
+				session.removeAttribute("token");
+				session.removeAttribute("ultimasCompras");
+				session.invalidate();
+				log.info("-- Removiendo datos de la session");
+			}else{
+				model.addAttribute("baja", false);
+				model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
+				this.log.info("-- No se puede desactivar cuenta email/token invalido: "+email);
+			}
+		} catch (Exception ex) {
+			this.log.error("-- Error al descifrar el token para desactivacion de cuenta ===-> "+token);
+			model.addAttribute("baja", false);
+			model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
+			ex.printStackTrace();
+		}
+		return "cancelar";
+    }
+    
     
     @RequestMapping(value="/usuario/nuevo", method = RequestMethod.POST)
     public ResponseEntity<ErrorService> registrarUsuarionNuevo(HttpServletRequest request, Model model){
@@ -319,7 +355,7 @@ public class LoginController {
         this.log.info(" -- Usuario ya se encuentra en sistema registrado");
         ErrorService data = new ErrorService();
         data.setCodigo("404");
-        data.setMensaje("Este email ya ha sido registrado con anterioridad: "+email);
+        data.setMensaje("Este email ya ha sido registrado con anterioridad o la cuenta esta desactivada: "+email);
         return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
     }
     
