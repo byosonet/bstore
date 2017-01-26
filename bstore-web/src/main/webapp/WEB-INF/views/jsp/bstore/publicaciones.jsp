@@ -10,6 +10,17 @@ $("#publicacion").gridalicious({
 	width:200,
     animate: true
 	});
+	
+$(".listaPublicaciones").select2({
+	theme: "classic",
+	language: "es"
+});
+
+$("#listaPub").change(function(){
+    window.location.href = $(this).val();
+});
+
+
 }          
 );
 </script>
@@ -22,6 +33,21 @@ $("#publicacion").gridalicious({
 		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="btn btn-success">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="btn btn-warning">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="btn btn-warning">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<select class="listaPublicaciones" id="listaPub">
+			<option value="buscar" selected>Buscar..</option>
+			<c:forEach var="publicacion" items="${publicaciones}">
+			  <c:choose>
+    		 	<c:when test="${publicacion.comprada}">
+    		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
+    		 		<option value="${valueUrl}">${publicacion.nombre}</option>
+    		 	</c:when>
+    		 	<c:otherwise>
+    		 		<c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
+    		 		<option value="${valueUrl}">${publicacion.nombre}</option>
+    		 	</c:otherwise>
+    		 </c:choose>
+		   </c:forEach>
+		</select>
    </div>
 </div>
 </c:if>    
