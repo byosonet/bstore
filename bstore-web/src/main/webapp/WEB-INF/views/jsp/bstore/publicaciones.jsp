@@ -15,6 +15,17 @@ $("#publicacion").gridalicious({
 </script>
 </head>
 <body>
+<c:if test="${!empty publicaciones}">
+<div class="row">
+	<div style="text-align: center;">
+		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="btn btn-success">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="btn btn-success">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="btn btn-warning">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="btn btn-warning">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+   </div>
+</div>
+</c:if>    
+<br>
     <div id="publicacion">
     	<c:forEach var="publicacion" items="${publicaciones}">
     		 <c:choose>

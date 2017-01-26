@@ -7,6 +7,10 @@ import com.bstore.services.persistence.pojo.Publicacion;
 
 public interface PublicacionService {
 	List<Publicacion> getPublicacionesByColeccionID(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesByNombreAsc(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesByNombreDesc(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesByPrecioAsc(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesByPrecioDesc(int idColeccion, int idUsuario);
 	Publicacion getPublicacion(int id);
 	List<Publicacion> getAll();
 	BigDecimal precioRealPublicacion(int idPublicacion);

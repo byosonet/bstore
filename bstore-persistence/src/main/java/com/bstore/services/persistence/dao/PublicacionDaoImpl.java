@@ -28,6 +28,46 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
                 .setParameter("estatus", 1)
                 .list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesPorNombreAsc(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus order by p.nombre ASC")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesPorNombreDesc(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus order by p.nombre DESC")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesPorPrecioAsc(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus order by p.precio ASC")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesPorPrecioDesc(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus order by p.precio DESC")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Publicacion> getAll() {

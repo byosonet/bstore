@@ -66,6 +66,103 @@ public class PublicacionController {
 		log.info("Total publicaciones encontradas: " + lista.size());
 
 		model.addAttribute("publicaciones", lista);
+		model.addAttribute("coleccionId", id);
+
+		return "publicaciones";
+	}
+	
+	@RequestMapping(value="/coleccion/tema/asc/{id}",method = RequestMethod.GET)
+	   public String coleccionesByNombreAsc(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Publicacion> lista = this.publicacionService.getPublicacionesByNombreAsc(Integer.valueOf(id).intValue(),
+				usuario.getId());
+		log.info("Total publicaciones encontradas: " + lista.size());
+
+		model.addAttribute("publicaciones", lista);
+		model.addAttribute("coleccionId", id);
+
+		return "publicaciones";
+	}
+	
+	@RequestMapping(value="/coleccion/tema/desc/{id}",method = RequestMethod.GET)
+	   public String coleccionesByNombreDesc(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Publicacion> lista = this.publicacionService.getPublicacionesByNombreDesc(Integer.valueOf(id).intValue(),
+				usuario.getId());
+		log.info("Total publicaciones encontradas: " + lista.size());
+
+		model.addAttribute("publicaciones", lista);
+		model.addAttribute("coleccionId", id);
+
+		return "publicaciones";
+	}
+	
+	@RequestMapping(value="/coleccion/precio/asc/{id}",method = RequestMethod.GET)
+	   public String coleccionesByPrecioAsc(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Publicacion> lista = this.publicacionService.getPublicacionesByPrecioAsc(Integer.valueOf(id).intValue(),
+				usuario.getId());
+		log.info("Total publicaciones encontradas: " + lista.size());
+
+		model.addAttribute("publicaciones", lista);
+		model.addAttribute("coleccionId", id);
+
+		return "publicaciones";
+	}
+	
+	@RequestMapping(value="/coleccion/precio/desc/{id}",method = RequestMethod.GET)
+	   public String coleccionesByPrecioDesc(Model model, @PathVariable("id") String id, HttpServletRequest request, 
+			   HttpServletResponse response) throws IOException{
+		log.info("Cargando publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		log.info("Cargando Service publicacion: "+NAME_CONTROLLER+"/coleccion/{id}");
+		
+		HttpSession session = (HttpSession) request.getSession(false);
+		String result = ValidarSesion.validarSesionUsuarioActual(session);
+		if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+			log.info(ValidarSesion.MSG_FORBIDDEN);
+			return "forbidden";
+		}
+		log.info("Sesion activa Token === " + result);
+		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		List<Publicacion> lista = this.publicacionService.getPublicacionesByPrecioDesc(Integer.valueOf(id).intValue(),
+				usuario.getId());
+		log.info("Total publicaciones encontradas: " + lista.size());
+
+		model.addAttribute("publicaciones", lista);
+		model.addAttribute("coleccionId", id);
 
 		return "publicaciones";
 	}

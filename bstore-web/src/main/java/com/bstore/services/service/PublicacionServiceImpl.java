@@ -70,6 +70,142 @@ public class PublicacionServiceImpl implements PublicacionService{
 		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
 		return lista;
 	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Publicacion> getPublicacionesByNombreAsc(int idColeccion, int idUsuario) {
+		
+		List<Publicacion> lista = new ArrayList<Publicacion>();
+		List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+		List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+		if(compras!=null){
+			if(compras.size()>0){
+				for(Compra c: compras){
+					idPublicacionCompra.add(c.getId().getIdPublicacion());
+				}
+			}
+		}
+		lista = this.publicacionDao.getPublicacionesPorNombreAsc(idColeccion);
+		if(idPublicacionCompra.size()>0){
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+				idCompra: for(int id: idPublicacionCompra){
+					if(pub.getId() == id){
+						pub.setComprada(true);
+						break idCompra;
+					}
+				}
+			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
+		}
+		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
+		return lista;
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Publicacion> getPublicacionesByNombreDesc(int idColeccion, int idUsuario) {
+		
+		List<Publicacion> lista = new ArrayList<Publicacion>();
+		List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+		List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+		if(compras!=null){
+			if(compras.size()>0){
+				for(Compra c: compras){
+					idPublicacionCompra.add(c.getId().getIdPublicacion());
+				}
+			}
+		}
+		lista = this.publicacionDao.getPublicacionesPorNombreDesc(idColeccion);
+		if(idPublicacionCompra.size()>0){
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+				idCompra: for(int id: idPublicacionCompra){
+					if(pub.getId() == id){
+						pub.setComprada(true);
+						break idCompra;
+					}
+				}
+			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
+		}
+		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
+		return lista;
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Publicacion> getPublicacionesByPrecioAsc(int idColeccion, int idUsuario) {
+		
+		List<Publicacion> lista = new ArrayList<Publicacion>();
+		List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+		List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+		if(compras!=null){
+			if(compras.size()>0){
+				for(Compra c: compras){
+					idPublicacionCompra.add(c.getId().getIdPublicacion());
+				}
+			}
+		}
+		lista = this.publicacionDao.getPublicacionesPorPrecioAsc(idColeccion);
+		if(idPublicacionCompra.size()>0){
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+				idCompra: for(int id: idPublicacionCompra){
+					if(pub.getId() == id){
+						pub.setComprada(true);
+						break idCompra;
+					}
+				}
+			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
+		}
+		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
+		return lista;
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Publicacion> getPublicacionesByPrecioDesc(int idColeccion, int idUsuario) {
+		
+		List<Publicacion> lista = new ArrayList<Publicacion>();
+		List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+		List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+		if(compras!=null){
+			if(compras.size()>0){
+				for(Compra c: compras){
+					idPublicacionCompra.add(c.getId().getIdPublicacion());
+				}
+			}
+		}
+		lista = this.publicacionDao.getPublicacionesPorPrecioDesc(idColeccion);
+		if(idPublicacionCompra.size()>0){
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+				idCompra: for(int id: idPublicacionCompra){
+					if(pub.getId() == id){
+						pub.setComprada(true);
+						break idCompra;
+					}
+				}
+			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
+		}
+		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
+		return lista;
+	}
 
 	@Override
 	@Transactional(readOnly=true)
