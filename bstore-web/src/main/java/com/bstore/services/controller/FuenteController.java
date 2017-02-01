@@ -122,10 +122,11 @@ public class FuenteController {
 		fuente.setFechaUmodif(new Date());
 		fuente.setIdUsuarioUmodif(usuario.getId());
 		fuenteService.saveOrUpdateFuente(fuente);
-
+		logger.info("Fuente guardada...: "+fuente);
 		List<Fuente> coleccionList = fuenteService.getAll();
 		model.addAttribute("fuentes", coleccionList);
 
+		//return "redirect:/fuentesAdmin";
 		return "fuentesAdmin";
 	}
 }

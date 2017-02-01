@@ -6,7 +6,8 @@
     <class name="com.bstore.services.persistence.pojo.Fuente" table="FUENTE" catalog="bstore">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="assigned" />
+            <!-- generator class="assigned" / -->
+            <generator class="identity" />
         </id>
         <property name="nombreBiblioteca" type="string">
             <column name="NOMBRE_BIBLIOTECA" length="50" not-null="true" />
