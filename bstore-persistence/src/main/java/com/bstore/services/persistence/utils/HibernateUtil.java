@@ -8,14 +8,17 @@ import org.hibernate.cfg.Configuration;
 
 public class HibernateUtil {
 	private static final SessionFactory sessionFactory;
+	private static final SessionFactory sessionFactoryResources;
 	
 	static {
 		try {
 			sessionFactory = new Configuration().configure("/com/bstore/services/persistence/config/hibernate.cfg.xml")
 					.buildSessionFactory();
-		} catch (HibernateException he) {
-			System.err.println("Ocurrió un error en la inicialización de la SessionFactory: " + he);
-			throw new ExceptionInInitializerError(he);
+			sessionFactoryResources = new Configuration().configure("/com/bstore/services/persistence/config/hibernate_resources.cfg.xml")
+					.buildSessionFactory();
+		} catch (HibernateException ex) {
+			System.err.println("-- Ocurrió un error en la inicialización de la SessionFactory/sessionFactoryResources: " + ex);
+			throw new ExceptionInInitializerError(ex);
 		}
 	}
 
@@ -33,5 +36,9 @@ public class HibernateUtil {
 
 	public static void closeCurrentSession() {
 		sessionFactory.getCurrentSession().close();
+	}
+	
+	public static SessionFactory openConexionResources() {
+        return sessionFactoryResources;
 	}
 }
