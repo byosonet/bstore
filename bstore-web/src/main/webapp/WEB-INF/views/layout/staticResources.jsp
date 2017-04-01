@@ -89,3 +89,7 @@
 
 <!-- datatables responsive js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/dataTables.responsive.min.js"></script>
+
+
+<!-- zoom for image js -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/elevatezoom.min.js"></script>
