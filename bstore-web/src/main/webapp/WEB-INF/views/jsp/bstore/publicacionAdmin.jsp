@@ -94,7 +94,7 @@
 								<td class="text" style="text-align: center;"><b>$ ${publicacion.precio}</b></td>
 								<td class="text" style="text-align: center;">$ ${publicacion.descuento}</td>
 								<td class="text">
-									<a href="${publicacion.urlArchivo}" target="_blank">${publicacion.urlArchivo}</a>
+									<a href="#">${publicacion.urlArchivo}</a>
 								</td>
 								<td class="text">${publicacion.coleccion.nombre}</td>
 								<td class="text">${publicacion.fuente.nombreBiblioteca}</td>
