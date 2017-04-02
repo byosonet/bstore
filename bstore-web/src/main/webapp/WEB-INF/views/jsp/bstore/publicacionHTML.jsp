@@ -9,21 +9,15 @@
 		$('#wrapper').css('padding-left','0px');
 		$('a#showMenu').show();
 		
-		$("#publicacion1").elevateZoom({
-		  zoomType	: "lens",
-		  lensShape : "round",
-		  lensSize  : 120,
-		  borderSize: 4,
-		  borderColour: "#fff"
-		});
-		
-		$("#publicacion2").elevateZoom({
+		<c:forEach items="${anexos}" var="anexo" varStatus="loop">
+		$("#pub${anexo.id}").elevateZoom({
 			  zoomType	: "lens",
 			  lensShape : "round",
 			  lensSize  : 120,
 			  borderSize: 4,
 			  borderColour: "#fff"
-			});
+			});    
+    	</c:forEach>
 
         var listaPublicacion = $('#listaPublicacion')
         .dataTable(
@@ -64,15 +58,18 @@
 div.estilo {
     word-wrap: break-word;
 }
+.cabecera{
+	left: 0px;
+	right: 0px;
+}
 </style>
 </head>
 <body>
     <div class="row" style="padding: 0.5em;">
-    	<div style="text-align: center;">
-  		<label class="btn btn-primary alert-info" style="position: unset; z-index: 1;right:15px;top:82px"><b><c:out value="${nombrePublicacion}"/></b></label>
-  		<br/>
-  		<br/>
-  		</div>  
+    	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('${contextpath}/static/resources/img/cabecera_publicacion.png');">
+  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:100px"><b><c:out value="${nombrePublicacion}"/></b></label>
+  		</div>
+  		<br/>  
   		  <div>
           <div class="table-responsive">
             <table class="table table-hover" id="listaPublicacion">
@@ -97,7 +94,7 @@ div.estilo {
 				          </div>
 	                </td>
 	                <td style="text-align: center;width: 50%;">
-	                	<img width="70%" height="auto" id="publicacion1" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
+	                	<img width="65%" height="auto" id="pub${anexo.id}" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
 	                </td>
                 </tr> 
                 </c:forEach>  
