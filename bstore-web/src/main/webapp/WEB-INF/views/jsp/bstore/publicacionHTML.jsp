@@ -97,7 +97,7 @@ div.estilo {
 				          </div>
 	                </td>
 	                <td style="text-align: center;width: 50%;">
-	                	<img width="70%" height="auto" id="publicacion1" src="data:image/png;base64,${anexo.resultImage}" data-zoom-image="data:image/png;base64,${anexo.resultImage}"/>
+	                	<img width="70%" height="auto" id="publicacion1" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
 	                </td>
                 </tr> 
                 </c:forEach>  

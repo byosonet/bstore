@@ -289,12 +289,15 @@ public class PublicacionServiceImpl implements PublicacionService{
 	}
 
 	@Override
+	@Transactional
 	public List<Anexo> buscarAnexos(int idPublicacion) {
-		List<Anexo> list = this.anexoDao.getAnexosByIdPublicacion(idPublicacion);
+		List<Anexo> list = new ArrayList<Anexo>();
+		list = this.anexoDao.getAnexosByIdPublicacion(idPublicacion);
 		if(list!=null){
-			this.log.info("-- Se encontrador anexos para la idPublicacion: "+idPublicacion);
+			this.log.info("Anexos encontrados para la idPublicacion: "+idPublicacion);
+			this.log.info("Anexos: "+list.toString());
 		}else{
-			this.log.info("-- No se encontraon anexos para la publicacion: "+idPublicacion);
+			this.log.info("No se encontraon anexos para la publicacion: "+idPublicacion);
 		}
 		return list;
 	}

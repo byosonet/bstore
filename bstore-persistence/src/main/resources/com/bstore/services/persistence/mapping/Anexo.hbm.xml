@@ -14,8 +14,8 @@
         <property name="traduccion" type="clob">
       		<column name="TRADUCCION"/>
     	</property>
-        <property name="nombreImagen" type="string">
-            <column name="NOMBRE_IMAGEN" length="255" not-null="true"/>
+        <property name="tipoImagen" type="string">
+            <column name="TIPO_IMAGEN" length="255" not-null="true"/>
         </property>
         <property name="imagen" type="binary">
       		<column name="IMAGEN" not-null="true"/>
@@ -28,6 +28,9 @@
         </property>
         <property name="activo" type="int">
             <column name="ACTIVO" not-null="true" />
+        </property>
+        <property name="recargar" type="int">
+            <column name="RECARGAR" not-null="true" />
         </property>
         <property name="fechaAlta" type="timestamp">
             <column name="FECHA_ALTA"/>

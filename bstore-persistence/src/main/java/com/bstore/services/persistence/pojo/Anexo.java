@@ -1,7 +1,6 @@
 package com.bstore.services.persistence.pojo;
 
 import java.sql.Clob;
-import java.util.Arrays;
 import java.util.Date;
 
 public class Anexo implements java.io.Serializable{
@@ -12,11 +11,12 @@ public class Anexo implements java.io.Serializable{
 	private int id;
 	private int idPublicacion;
 	private Clob traduccion;
-	private String nombreImagen;
+	private String tipoImagen;
 	private byte[] imagen;
 	private String origenImagen;
 	private int foja;
 	private int activo;
+	private int recargar;
 	private Date fechaAlta;
 	private Date fechaModificacion;
 	private String resultImage;
@@ -25,16 +25,17 @@ public class Anexo implements java.io.Serializable{
 		
 	}
 	
-	public Anexo(int id, int idPublicacion, Clob traductor, String nombreImagen, byte[] imagen, String origenImagen, int foja, int activo,
-			Date fechaAlta, Date fechaModificacion){
+	public Anexo(int id, int idPublicacion, Clob traductor, String tipoImagen, byte[] imagen, String origenImagen, int foja, int activo,
+			int recargar, Date fechaAlta, Date fechaModificacion){
 		this.id = id;
 		this.idPublicacion = idPublicacion;
 		this.traduccion = traductor;
-		this.nombreImagen = nombreImagen;
+		this.tipoImagen = tipoImagen;
 		this.imagen = imagen;
 		this.origenImagen = origenImagen;
 		this.foja = foja;
 		this.activo = activo;
+		this.recargar = recargar;
 		this.fechaAlta = fechaAlta;
 		this.fechaModificacion = this.fechaAlta; 
 	}
@@ -63,12 +64,12 @@ public class Anexo implements java.io.Serializable{
 		this.traduccion = traduccion;
 	}
 
-	public String getNombreImagen() {
-		return nombreImagen;
+	public String getTipoImagen() {
+		return tipoImagen;
 	}
 
-	public void setNombreImagen(String nombreImagen) {
-		this.nombreImagen = nombreImagen;
+	public void setTipoImagen(String tipoImagen) {
+		this.tipoImagen = tipoImagen;
 	}
 
 	public byte[] getImagen() {
@@ -127,14 +128,22 @@ public class Anexo implements java.io.Serializable{
 		this.resultImage = resultImage;
 	}
 
+	public int getRecargar() {
+		return recargar;
+	}
+
+	public void setRecargar(int recargar) {
+		this.recargar = recargar;
+	}
+
 	@Override
 	public String toString() {
 		return "Anexo [id=" + id + ", idPublicacion=" + idPublicacion
-				+ ", traduccion=" + traduccion + ", nombreImagen="
-				+ nombreImagen + ", imagen=" + Arrays.toString(imagen)
+				+ ", traduccion=" + traduccion + ", tipoImagen=" + tipoImagen
 				+ ", origenImagen=" + origenImagen + ", foja=" + foja
-				+ ", activo=" + activo + ", fechaAlta=" + fechaAlta
-				+ ", fechaModificacion=" + fechaModificacion + "]";
+				+ ", activo=" + activo + ", recargar=" + recargar
+				+ ", fechaAlta=" + fechaAlta + ", fechaModificacion="
+				+ fechaModificacion + "]";
 	}
 
 }
