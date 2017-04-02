@@ -40,4 +40,7 @@
       <bean id="plantillaDao"
         class="com.bstore.services.persistence.dao.PlantillaDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+      <bean id="anexoDao"
+        class="com.bstore.services.persistence.dao.AnexoDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 </beans>

@@ -8,9 +8,11 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.bstore.services.persistence.dao.AnexoDao;
 import com.bstore.services.persistence.dao.CompraDao;
 import com.bstore.services.persistence.dao.PropertyDao;
 import com.bstore.services.persistence.dao.PublicacionDao;
+import com.bstore.services.persistence.pojo.Anexo;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
@@ -36,6 +38,9 @@ public class PublicacionServiceImpl implements PublicacionService{
 	
 	@Autowired
 	private PropertyDao propertyDao;
+	
+	@Autowired
+	private AnexoDao anexoDao;
 
 	@Override
 	@Transactional(readOnly=true)
@@ -281,6 +286,17 @@ public class PublicacionServiceImpl implements PublicacionService{
 	public List<Publicacion> search(Publicacion publicacion) {
 		log.info("search: "+publicacion.toString());
 		return publicacionDao.search(publicacion);
+	}
+
+	@Override
+	public List<Anexo> buscarAnexos(int idPublicacion) {
+		List<Anexo> list = this.anexoDao.getAnexosByIdPublicacion(idPublicacion);
+		if(list!=null){
+			this.log.info("-- Se encontrador anexos para la idPublicacion: "+idPublicacion);
+		}else{
+			this.log.info("-- No se encontraon anexos para la publicacion: "+idPublicacion);
+		}
+		return list;
 	}
 	
 }

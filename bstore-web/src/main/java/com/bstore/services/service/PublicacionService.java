@@ -3,6 +3,7 @@ package com.bstore.services.service;
 import java.math.BigDecimal;
 import java.util.List;
 
+import com.bstore.services.persistence.pojo.Anexo;
 import com.bstore.services.persistence.pojo.Publicacion;
 
 public interface PublicacionService {
@@ -16,4 +17,5 @@ public interface PublicacionService {
 	BigDecimal precioRealPublicacion(int idPublicacion);
 	void saveOrUpdate(Publicacion publicacion);
 	List<Publicacion> search(Publicacion publicacion);
+	List<Anexo> buscarAnexos(int idPublicacion);
 }

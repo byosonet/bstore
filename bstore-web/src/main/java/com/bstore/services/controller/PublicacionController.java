@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.apache.commons.codec.binary.Base64;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -21,6 +22,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.bstore.services.persistence.pojo.Anexo;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.PublicacionService;
@@ -182,8 +184,26 @@ public class PublicacionController {
 		log.info("Sesion activa Token === " + result);
 		Publicacion pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
 		log.info("URL Encontrada: " + pub.getUrlArchivo());
-		model.addAttribute("urlPublicacion", pub.getUrlArchivo());
+		//model.addAttribute("urlPublicacion", pub.getUrlArchivo());
 		model.addAttribute("nombrePublicacion", pub.getNombre());
+		
+		/**
+		 * Recuperando Anexos
+		 */
+		List<Anexo> anexos = this.publicacionService.buscarAnexos(pub.getId());
+		if(anexos != null && anexos.size()>0){
+			for(Anexo a: anexos){
+				if(a.getImagen()!=null){
+					this.log.info("-- Imagen encontrada: "+a.getNombreImagen());
+					byte[] bytes = a.getImagen();
+		            byte[] encodeBase64 = Base64.encodeBase64(bytes);
+		            String base64Encoded = new String(encodeBase64, "UTF-8");
+		            a.setResultImage(base64Encoded);
+		            this.log.info("-- Encode generado correctamente para: "+a.getNombreImagen());
+				}
+			}
+			model.addAttribute("anexos", anexos);
+		}
 
 		return "publicacionHTML";
 	   }

@@ -45,16 +45,7 @@
     <property name="hibernate.c3p0.validate">true</property>
     
     <!-- MAPPING PARA BSTORE -->
-    <mapping resource="com/bstore/services/persistence/mapping/Usuario.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Compra.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/FormaPago.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Publicacion.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Fuente.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Editorial.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Coleccion.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Perfil.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Properties.hbm.xml"/>
-    <mapping resource="com/bstore/services/persistence/mapping/Plantilla.hbm.xml"/>
+    <mapping resource="com/bstore/services/persistence/mapping/Anexo.hbm.xml"/>
     
     <!-- OTHER MYSAL
     	SET GLOBAL MAX_CONNECTIONS = 5000;
