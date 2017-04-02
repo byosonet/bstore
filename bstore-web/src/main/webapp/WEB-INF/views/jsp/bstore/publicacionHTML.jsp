@@ -22,7 +22,7 @@
         var listaPublicacion = $('#listaPublicacion')
         .dataTable(
             {
-            "aoColumns": [ {"bSearchable": true}, {"bSearchable": true},{"bSearchable": false}],
+            "aoColumns": [ {"bSearchable": true,"bSortable": false}, {"bSearchable": true,"bSortable": false},{"bSearchable": false,"bSortable": false}],
             "sPaginationType": "full_numbers",
             "bPaginate": true,
             "bLengthChange" : false,
@@ -32,8 +32,8 @@
                   "sLengthMenu":     "Mostrar _MENU_ registros",
                   "sZeroRecords":    "No se encontraron resultados",
                   "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                  "sInfo":           "",
-                  "sInfoEmpty":      "",
+                  "sInfo":           "Mostrando Foja <b>_START_</b> de _TOTAL_.",
+                  "sInfoEmpty":      "No existe información asociada a tu búsqueda.",
                   "sInfoFiltered":   "",
                   "sInfoPostFix":    "",
                   "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
@@ -55,7 +55,10 @@
 	});
 </script>
 <style>
-div.estilo {
+.estilo *{
+	font-family: cursive, geneva;
+	font-size: 14px!important;
+    text-align:justify;
     word-wrap: break-word;
 }
 .cabecera{
@@ -89,12 +92,12 @@ div.estilo {
 	                	</b>
 	                </td>
 	                <td style="width: 40%;">
-	                	  <div class="estilo"style="text-align:justify;">
+	                	  <div class="estilo">
 	                	  	<c:out value="${anexo.traduccion.getCharacterStream()}" escapeXml="false"/>
 				          </div>
 	                </td>
 	                <td style="text-align: center;width: 50%;">
-	                	<img width="65%" height="auto" id="pub${anexo.id}" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
+	                	<img style="border-radius:10px;" width="65%" height="auto" id="pub${anexo.id}" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
 	                </td>
                 </tr> 
                 </c:forEach>  
