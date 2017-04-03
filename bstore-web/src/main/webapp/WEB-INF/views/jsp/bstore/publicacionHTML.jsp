@@ -64,6 +64,7 @@
 .cabecera{
 	left: 0px;
 	right: 0px;
+        background-repeat: round;
 }
 </style>
 </head>
