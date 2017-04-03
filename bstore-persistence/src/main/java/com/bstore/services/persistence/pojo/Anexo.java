@@ -13,26 +13,31 @@ public class Anexo implements java.io.Serializable{
 	private Clob traduccion;
 	private String tipoImagen;
 	private byte[] imagen;
+        private byte[] imagenZoom;
 	private String origenImagen;
+        private String origenImagenZoom;
 	private int foja;
 	private int activo;
 	private int recargar;
 	private Date fechaAlta;
 	private Date fechaModificacion;
 	private String resultImage;
+        private String resultImageZoom;
 	
 	public Anexo(){
 		
 	}
 	
-	public Anexo(int id, int idPublicacion, Clob traductor, String tipoImagen, byte[] imagen, String origenImagen, int foja, int activo,
+	public Anexo(int id, int idPublicacion, Clob traductor, String tipoImagen, byte[] imagen, byte[] imagenZoom, String origenImagen, String origenImagenZoom, int foja, int activo,
 			int recargar, Date fechaAlta, Date fechaModificacion){
 		this.id = id;
 		this.idPublicacion = idPublicacion;
 		this.traduccion = traductor;
 		this.tipoImagen = tipoImagen;
 		this.imagen = imagen;
+                this.imagenZoom = imagenZoom;
 		this.origenImagen = origenImagen;
+                this.origenImagenZoom = origenImagenZoom;
 		this.foja = foja;
 		this.activo = activo;
 		this.recargar = recargar;
@@ -136,6 +141,30 @@ public class Anexo implements java.io.Serializable{
 		this.recargar = recargar;
 	}
 
+        public byte[] getImagenZoom() {
+            return imagenZoom;
+        }
+
+        public void setImagenZoom(byte[] imagenZoom) {
+            this.imagenZoom = imagenZoom;
+        }
+
+        public String getOrigenImagenZoom() {
+            return origenImagenZoom;
+        }
+
+        public void setOrigenImagenZoom(String origenImagenZoom) {
+            this.origenImagenZoom = origenImagenZoom;
+        }
+
+        public String getResultImageZoom() {
+            return resultImageZoom;
+        }
+
+        public void setResultImageZoom(String resultImageZoom) {
+            this.resultImageZoom = resultImageZoom;
+        }
+        
 	@Override
 	public String toString() {
 		return "Anexo [id=" + id + ", idPublicacion=" + idPublicacion

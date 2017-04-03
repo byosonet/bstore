@@ -20,8 +20,14 @@
         <property name="imagen" type="binary">
       		<column name="IMAGEN" not-null="true"/>
     	</property>
+        <property name="imagenZoom" type="binary">
+      		<column name="IMAGEN_ZOOM" not-null="true"/>
+    	</property>
     	<property name="origenImagen" type="string">
-            <column name="ORIGEN_IMAGEN" length="255" not-null="true"/>
+            <column name="ORIGEN_IMAGEN" length="255"/>
+        </property>
+        <property name="origenImagenZoom" type="string">
+            <column name="ORIGEN_IMAGEN_ZOOM" length="255"/>
         </property>
     	<property name="foja" type="int">
             <column name="FOJA" not-null="true" />

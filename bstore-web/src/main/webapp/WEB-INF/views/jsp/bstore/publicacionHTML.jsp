@@ -98,7 +98,7 @@
 				          </div>
 	                </td>
 	                <td style="text-align: center;width: 50%;">
-	                	<img style="border-radius:10px;" width="65%" height="auto" id="pub${anexo.id}" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}"/>
+	                	<img style="border-radius:10px;" width="65%" height="auto" id="pub${anexo.id}" src="data:image/${anexo.tipoImagen};base64,${anexo.resultImage}" data-zoom-image="data:image/${anexo.tipoImagen};base64,${anexo.resultImageZoom}"/>
 	                </td>
                 </tr> 
                 </c:forEach>  

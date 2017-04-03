@@ -188,20 +188,28 @@ public class PublicacionController {
 		/**
 		 * Recuperando Anexos
 		 */
-		List<Anexo> anexos = this.publicacionService.buscarAnexos(pub.getId());
-		if(anexos != null && anexos.size()>0){
-			for(Anexo a: anexos){
-				if(a.getImagen()!=null){
-					this.log.info("Imagen encontrada: "+a.getOrigenImagen());
-					byte[] bytes = a.getImagen();
-		            byte[] encodeBase64 = Base64.encodeBase64(bytes);
-		            String base64Encoded = new String(encodeBase64, "UTF-8");
-		            a.setResultImage(base64Encoded);
-		            this.log.info("Encode generado correctamente para: "+a.getOrigenImagen());
-				}
-			}
-			model.addAttribute("anexos", anexos);
-		}
+                List<Anexo> anexos = this.publicacionService.buscarAnexos(pub.getId());
+                if (anexos != null && anexos.size() > 0) {
+                    for (Anexo a : anexos) {
+                        if (a.getImagen() != null) {
+                            this.log.info("Imagen encontrada: " + a.getOrigenImagen());
+                            byte[] bytes = a.getImagen();
+                            byte[] encodeBase64 = Base64.encodeBase64(bytes);
+                            String base64Encoded = new String(encodeBase64, "UTF-8");
+                            a.setResultImage(base64Encoded);
+                            this.log.info("Encode generado correctamente para: " + a.getOrigenImagen());
+                        }
+                        if(a.getImagenZoom() !=null){
+                            this.log.info("Imagen encontrada Zoom: " + a.getOrigenImagenZoom());
+                            byte[] bytes = a.getImagenZoom();
+                            byte[] encodeBase64 = Base64.encodeBase64(bytes);
+                            String base64Encoded = new String(encodeBase64, "UTF-8");
+                            a.setResultImageZoom(base64Encoded);
+                            this.log.info("Encode generado correctamente para Imagen Zoom: " + a.getOrigenImagenZoom());
+                        }
+                    }
+                    model.addAttribute("anexos", anexos);
+                }
 
 		return "publicacionHTML";
 	   }
