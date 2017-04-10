@@ -5,6 +5,21 @@
 <head>
 <script type="text/javascript">
 	$(document).ready(function() {
+		
+		$('body').bind('cut copy paste',function (e) {
+			var navType = $("body").attr("data-browsername");
+			if (navType==="MSIE"){
+				window.clipboardData.setData("Text","${copyright}");
+			}else{
+				e.originalEvent.clipboardData.setData("Text","${copyright}");
+			}
+			e.preventDefault();
+			return false;
+		});
+		$("body").on("contextmenu",function(e){
+			return false;
+		});
+
 		$('ul.nav.navbar-nav').hide();
 		$('#wrapper').css('padding-left','0px');
 		$('a#showMenu').show();

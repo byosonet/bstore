@@ -23,8 +23,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Anexo;
+import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.ValidarSesion;
@@ -34,6 +36,7 @@ import com.bstore.services.validator.PublicacionValidator;
 public class PublicacionController {
 	private final Logger log = Logger.getLogger(PublicacionController.class);
 	private static final String NAME_CONTROLLER="[--PublicacionController--]";
+	private static final String KEY_COPY_PASTE = "com.copy.paste.text";
 	
 	@Autowired
 	private PublicacionService publicacionService;
@@ -43,6 +46,9 @@ public class PublicacionController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
+	
+	@Autowired
+	private PropertyService propertyService;
 
 	@InitBinder
 	protected void initBinder(WebDataBinder binder){
@@ -209,6 +215,9 @@ public class PublicacionController {
                         }
                     }
                     model.addAttribute("anexos", anexos);
+                    Properties prop = this.propertyService.getValueKey(KEY_COPY_PASTE);
+                    model.addAttribute("copyright", prop!=null?prop.getValue():"");
+                    
                 }
 
 		return "publicacionHTML";
