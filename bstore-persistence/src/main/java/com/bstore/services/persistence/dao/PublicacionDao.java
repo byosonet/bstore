@@ -7,6 +7,7 @@ import com.bstore.services.persistence.pojo.Publicacion;
 public interface PublicacionDao {
 	Publicacion getPublicacion(int idPublicacion);
 	List<Publicacion> getPublicaciones(int idColeccion);
+	List<Publicacion> getPublicacionesActivas();
 	List<Publicacion> getAll();
 	void saveOrUpdate(Publicacion publicacion);
 	List<Publicacion> search(Publicacion publicacion);

@@ -9,6 +9,7 @@ import com.bstore.services.model.ErrorService;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
+import com.bstore.services.service.PublicacionService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import com.bstore.services.util.ValidarSesion;
@@ -50,6 +51,9 @@ public class LoginController {
 	
 	@Autowired
 	CompraService compraService;
+	
+	@Autowired
+	PublicacionService publicacionService;
 	
 	@Autowired
 	private DroolRuleAge droolRuleAgeAdapter;
@@ -95,6 +99,10 @@ public class LoginController {
             	  List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
             	  model.addAttribute("ultimasCompras",ultimasCompras);
             	  
+            	  List<Publicacion> publicacionesActivas = this.publicacionService.getPublicacionesActivas(usuario.getId());
+            	  model.addAttribute("publicacionesActivas",publicacionesActivas);
+            	  
+            	  session.setAttribute("publicacionesActivas", publicacionesActivas);
             	  session.setAttribute("ultimasCompras", ultimasCompras);
             	  session.setAttribute("menu",menu);
             	  session.setAttribute("usuario", usuario);
@@ -187,6 +195,7 @@ public class LoginController {
 				session.removeAttribute("usuario");
 				session.removeAttribute("token");
 				session.removeAttribute("ultimasCompras");
+				session.removeAttribute("publicacionesActivas");
 				session.invalidate();
 				log.info("-- Removiendo datos de la session");
 			}else{
@@ -227,6 +236,7 @@ public class LoginController {
 				session.removeAttribute("usuario");
 				session.removeAttribute("token");
 				session.removeAttribute("ultimasCompras");
+				session.removeAttribute("publicacionesActivas");
 				session.invalidate();
 				log.info("-- Removiendo datos de la session");
 			}else{
@@ -475,6 +485,7 @@ public class LoginController {
 		session.removeAttribute("usuario");
 		session.removeAttribute("token");
 		session.removeAttribute("ultimasCompras");
+		session.removeAttribute("publicacionesActivas");
 		session.invalidate();
 		log.info("Removiendo datos de la session");
 		response.sendRedirect(request.getContextPath());

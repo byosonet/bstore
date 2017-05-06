@@ -2,6 +2,22 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
+<head>
+<script type="text/javascript">
+	$(document).ready(function() {
+		
+		$(".listaPublicaciones").select2({
+			theme : "classic",
+			language : "es",
+			width: 600
+		});
+
+		$("#listaPub").change(function() {
+			window.location.href = $(this).val();
+		});
+	});
+</script>
+</head>
 <body>
      <div class="row">
      	<div class="col-lg-12" style="text-align: justify;">
@@ -9,9 +25,25 @@
 			  <!-- div style="position: absolute; left: 30px; top: 50px;"> CONTENIDO UNO </div-->
 			  <div class="col-lg-12" style="text-align: right;"><img style="width: 80%;border-radius:20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
 			  <div class="col-lg-12" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
-			  	<div class="col-lg-2"></div>
-			  	<input type="text" class="col-lg-8" style="height:30%;font-size:14pt;" placeholder="Busque publicaciones por resumen y titulo...">
-			  	<div class="col-lg-2"></div>
+			  		<c:if test="${!empty publicacionesActivas}">
+							<div style="text-align: center;">
+								<select class="listaPublicaciones" id="listaPub">
+									<option value="buscar" selected>Buscar..</option>
+									<c:forEach var="publicacion" items="${publicacionesActivas}">
+									  <c:choose>
+						    		 	<c:when test="${publicacion.comprada}">
+						    		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
+						    		 		<option value="${valueUrl}">${publicacion.nombre}</option>
+						    		 	</c:when>
+						    		 	<c:otherwise>
+						    		 		<c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
+						    		 		<option value="${valueUrl}">${publicacion.nombre}</option>
+						    		 	</c:otherwise>
+						    		 </c:choose>
+								   </c:forEach>
+								</select>
+						   </div>
+					</c:if>
 			  </div>
 			</div>
 			<br>

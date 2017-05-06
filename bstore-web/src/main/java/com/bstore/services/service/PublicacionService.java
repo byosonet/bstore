@@ -12,6 +12,7 @@ public interface PublicacionService {
 	List<Publicacion> getPublicacionesByNombreDesc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesByPrecioAsc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesByPrecioDesc(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesActivas(int idUsuario);
 	Publicacion getPublicacion(int id);
 	List<Publicacion> getAll();
 	BigDecimal precioRealPublicacion(int idPublicacion);

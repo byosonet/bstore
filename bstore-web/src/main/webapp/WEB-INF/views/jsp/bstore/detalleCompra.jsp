@@ -146,9 +146,10 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 		</c:if>
 		
   		<div class="col-md-12 alert alert-info" style="text-align: center">1.- Valida el detalle de tu compra</div>
-  		
   			<div class="form-group">
-  				<div class="col-md-4" style="padding: 0.5em;text-align: center;margin-top: -20px">
+  				<div class="col-md-12 alert alert-success">
+  				<span><b>Resumen:</b> ${publicacion.resumen}</span></div>
+  				<div class="col-md-4" style="padding: 0.5em;text-align: center;margin-top: -10px">
   					<img style="width: 40%;height:auto;border-radius:5px;" src="${publicacion.portadaUrl}">
   				</div>
   				

@@ -30,6 +30,15 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
 	}
 	
 	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesActivas() {
+		this.log.info("Buscando Publicaciones Activas..");
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.estatus = :estatus")
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
 	public List<Publicacion> getPublicacionesPorNombreAsc(int idColeccion) {
 		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
         return (List<Publicacion>) HibernateUtil.getSessionFactory()

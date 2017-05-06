@@ -2,6 +2,8 @@ package com.bstore.services.service;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -73,6 +75,46 @@ public class PublicacionServiceImpl implements PublicacionService{
 			}
 		}
 		log.info("Buscando publicaciones por idColeccion: "+idColeccion);
+		if(lista!=null && lista.size()>0){
+			this.ordenarPublicaciones(lista);
+		}
+		return lista;
+	}
+	
+	@Override
+	@Transactional(readOnly=true)
+	public List<Publicacion> getPublicacionesActivas(int idUsuario) {
+		
+		List<Publicacion> lista = new ArrayList<Publicacion>();
+		List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+		List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+		if(compras!=null){
+			if(compras.size()>0){
+				for(Compra c: compras){
+					idPublicacionCompra.add(c.getId().getIdPublicacion());
+				}
+			}
+		}
+		lista = this.publicacionDao.getPublicacionesActivas();
+		if(idPublicacionCompra.size()>0){
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+				idCompra: for(int id: idPublicacionCompra){
+					if(pub.getId() == id){
+						pub.setComprada(true);
+						break idCompra;
+					}
+				}
+			}
+		}else{
+			for(Publicacion pub: lista){
+				pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+			}
+		}
+		log.info("Buscando publicaciones Activas por usuario...IdUser ==== "+idUsuario);
+		if(lista!=null && lista.size()>0){
+			this.ordenarPublicaciones(lista);
+		}
 		return lista;
 	}
 	
@@ -300,6 +342,16 @@ public class PublicacionServiceImpl implements PublicacionService{
 			this.log.info("No se encontraon anexos para la publicacion: "+idPublicacion);
 		}
 		return list;
+	}
+	
+	@SuppressWarnings("unused")
+	private void ordenarPublicaciones(List<Publicacion> lista){
+		 Collections.sort(lista, new Comparator<Publicacion>() {
+		      @Override
+		      public int compare(final Publicacion object1, final Publicacion object2) {
+		          return object1.getNombre().compareTo(object2.getNombre());
+		      }
+		  });
 	}
 	
 }
