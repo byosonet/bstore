@@ -4,12 +4,12 @@
   <session-factory>
   
   	<!-- DIALECT PARA MYSQL -->
-    <property name="connection.url">jdbc:mysql://localhost:3306/resource?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</property>
+    <property name="connection.url">jdbc:mysql://50.21.179.206:3306/resource?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
     <property name="hibernate.default_schema">resource</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.username">root</property>
-    <property name="connection.password">root</property>
+    <property name="connection.username">dbstore</property>
+    <property name="connection.password">*elfindelmundo.2017*</property>
     
     <!-- CONEXION A DEV1 PUBLICO -->
     <!-- 
@@ -23,6 +23,13 @@
     <property name="hibernate.connection.url">jdbc:mysql://127.11.143.130:3306/bstore</property>
     <property name="hibernate.connection.username">adminMpvg6Nv</property>
     <property name="hibernate.connection.password">X6wd5_Z3pJ65</property> 
+    -->
+    
+        <!-- CONEXION A VPS PUBLICO -->
+    <!-- 
+    <property name="hibernate.connection.url">jdbc:mysql://50.21.179.206:3306/bstore</property>
+    <property name="hibernate.connection.username">dbstore</property>
+    <property name="hibernate.connection.password">*elfindelmundo.2017*</property> 
     -->
     
     <!-- PROPIEDADES HIBERNATE -->

@@ -236,7 +236,7 @@
                         <configuration>
                             <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
                             <packagingExcludes>
-                                <!--
+                                
                                 WEB-INF/lib/activation-1.1.jar,	       
                                 WEB-INF/lib/commons-digester-2.0.jar,			   
                                 WEB-INF/lib/jackson-core-2.4.1.jar,	
@@ -317,8 +317,8 @@
                                 WEB-INF/lib/httpclient-4.2.1.jar,
                                 WEB-INF/lib/httpcore-4.2.1.jar,
                                 WEB-INF/lib/json-20090211.jar,
-                                WEB-INF/lib/spring-test-4.1.4.RELEASE.jar
-                                -->
+                                WEB-INF/lib/spring-test-4.1.4.RELEASE.jar,
+                                WEB-INF/lib/commons-io-2.5.jar
                             </packagingExcludes>
                         </configuration>
                     </plugin>

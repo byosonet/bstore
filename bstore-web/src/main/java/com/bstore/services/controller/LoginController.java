@@ -67,6 +67,7 @@ public class LoginController {
    private final Logger log = Logger.getLogger(LoginController.class);
    private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
    private final String CONTEXT_SYSTEM = "com.bstore.context";
+   private final String DOMAIN_BSTORE = "com.domain.quivira";
    
    @RequestMapping(value="/equivira",method = RequestMethod.POST)
 
@@ -355,7 +356,8 @@ public class LoginController {
            try {
                try {
             	   this.log.info("-- Url request actual::: "+request.getRequestURL());
-            	   String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
+            	   //String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
+            	   String urlServer = this.propertyService.getValueKey(DOMAIN_BSTORE).getValue();
             	   String emailEncriptado = UtilService.Encriptar(usuario.getEmail());
             	   String nuevaUrlParaConfirmacion = urlServer 
             			   + this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue() + "/"
