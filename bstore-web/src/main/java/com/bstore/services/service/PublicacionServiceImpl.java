@@ -290,7 +290,7 @@ public class PublicacionServiceImpl implements PublicacionService{
 		Properties valueCantidad = this.propertyDao.getValueByKey(VALUE_AMOUNT);
 		Properties valueIva = this.propertyDao.getValueByKey(VALUE_TAXE);
 		Properties valueRedondeo = this.propertyDao.getValueByKey(VALUE_ROUND);
-		if(valuePorcentaje!=null && valueCantidad!=null && valueIva!=null && valueRedondeo!=null){
+		if(valuePorcentaje!=null && valueCantidad!=null && valueIva!=null && valueRedondeo!=null && price!=null && price.intValue()>0){
 			this.log.info("Price recibido para calcular:::"+price);
 			BigDecimal nPrice = BigDecimal.ZERO;
 			BigDecimal fporcentaje = new BigDecimal(this.propertyDao.getValueByKey(VALUE_PERCENTAGE).getValue());
@@ -313,7 +313,7 @@ public class PublicacionServiceImpl implements PublicacionService{
 			this.log.info("Operacion Final precio de Conekta + factor de Redondeo::: "+nPrice);
 			return nPrice;
 		}else{
-			this.log.info("No se aplica ninguna comision las propiedades no has sido definidas en sistemas:::");
+			this.log.info("No se aplica ninguna comision, las propiedades no han sido definidas en sistema o la publicacion tiene precio -> $ 0.00 <-");
 			return price;
 		}
 	}

@@ -42,13 +42,13 @@
             <column name="FECHA_UMODIF" length="19" not-null="true" />
         </property>
         <property name="idUsuarioUmodif" type="int">
-            <column name="ID_USUARIO_UMODIF" not-null="true" />
+            <column name="ID_USUARIO_MODIF" not-null="true" />
         </property>
         <many-to-one name="coleccion" class="com.bstore.services.persistence.pojo.Coleccion" fetch="select" lazy="false"> 
         	<column name="ID_COLECCION"/> 
         </many-to-one>
         <many-to-one name="usuario" class="com.bstore.services.persistence.pojo.Usuario" fetch="select" lazy="false"> 
-        	<column name="USUARIOALTA"/> 
+        	<column name="ID_USUARIO_ALTA"/> 
         </many-to-one>
         <many-to-one name="fuente" class="com.bstore.services.persistence.pojo.Fuente" fetch="select" lazy="false"> 
         	<column name="ID_FUENTE"/> 
