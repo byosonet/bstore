@@ -74,7 +74,7 @@ $("#listaPub").change(function(){
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">Tema: <c:out value="${publicacion.nombre}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
-				   <span class="text" style="float:left;"><c:out value="${publicacion.editorial.nombre}"/></span>
+				   <span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span>
 				 <c:if test="${publicacion.descuento == '0.00'}">
              		<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15">$ ${publicacion.precio} MXN</b></div>
              	 </c:if>

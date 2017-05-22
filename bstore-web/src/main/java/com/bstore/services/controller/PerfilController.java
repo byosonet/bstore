@@ -34,7 +34,7 @@ public class PerfilController {
 	private final Logger log = Logger.getLogger(PerfilController.class);
 	private static final String NAME_CONTROLLER = "[--PerfilController--]";
 	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
-	private final String CONTEXT_SYSTEM = "com.bstore.context";
+	private final String DOMAIN_BSTORE = "com.domain.quivira";
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -180,11 +180,12 @@ public class PerfilController {
 	        if(user!=null){
 	        		try {
 	            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
-	            	   String urlServer = request.getRequestURL().toString().split(this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue())[0];
+	            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
+	            	   String urlServer = this.propertyService.getValueKey(DOMAIN_BSTORE).getValue();
 	            	   String emailEncriptado = UtilService.Encriptar(user.getEmail());
-	            	   String nuevaUrlParaConfirmacion = urlServer 
-	            			   + this.propertyService.getValueKey(CONTEXT_SYSTEM).getValue() + "/"
+	            	   String nuevaUrlParaConfirmacion = urlServer + "/"
 	            			   + "confirmarBajaDeTuCuenta?token="+emailEncriptado;
+	            	   
 	            	   this.log.info("-- Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
 	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), user,nuevaUrlParaConfirmacion);
 	                   this.log.info(" -- Enviado");
