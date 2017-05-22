@@ -4,12 +4,12 @@
   <session-factory>
   
   	<!-- DIALECT PARA MYSQL -->
-    <property name="connection.url">jdbc:mysql://50.21.179.206:3306/bstore?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</property>
+    <property name="connection.url">jdbc:mysql://localhost:3306/bstore?useUnicode=true&amp;characterEncoding=UTF-8&amp;autoReconnect=true</property>
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</property>
     <property name="hibernate.default_schema">bstore</property>
     <property name="connection.driver_class">com.mysql.jdbc.Driver</property>
-    <property name="connection.username">dbstore</property>
-    <property name="connection.password">*elfindelmundo.2017*</property>
+    <property name="connection.username">root</property>
+    <property name="connection.password">root</property>
     
     <!-- CONEXION A DEV1 PUBLICO -->
     <!-- 

@@ -236,7 +236,6 @@
                         <configuration>
                             <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
                             <packagingExcludes>
-                                
                                 WEB-INF/lib/activation-1.1.jar,	       
                                 WEB-INF/lib/commons-digester-2.0.jar,			   
                                 WEB-INF/lib/jackson-core-2.4.1.jar,	

@@ -23,7 +23,10 @@ function NacimientoModel() {
     
     var m = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO",
             "JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
-    var act = ["ESTUDIANTE","INGENIERO","PROFESIONISTA"];
+    var act = ["ESTUDIANTE","PROFESIONISTA"];
+    
+    var d = new Date();
+    var n = d.getFullYear()-17;
     
     for(i=0; i<act.length;i++){
        self.activities.push(new Activity({ activity: act[i] }));
@@ -42,7 +45,7 @@ function NacimientoModel() {
         }else{
             self.days.push(new Day({id: i,day : i}));
         }
-    for(i=1900; i<2006;i++)
+    for(i=1900; i<n;i++)
         self.years.push(new Year({year: i}));
 }
 ko.applyBindings(new NacimientoModel());

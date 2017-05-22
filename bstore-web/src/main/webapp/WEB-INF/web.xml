@@ -63,4 +63,30 @@
   <session-config>
     <session-timeout>20</session-timeout>
   </session-config>
+  
+  <security-constraint>
+	<web-resource-collection>
+		<web-resource-name>HTTPSOnly</web-resource-name>
+		<url-pattern>/*</url-pattern>
+	</web-resource-collection>
+	<user-data-constraint>
+		<transport-guarantee>CONFIDENTIAL</transport-guarantee>
+	</user-data-constraint>
+  </security-constraint>
+  
+  <security-constraint>
+	<web-resource-collection>
+		<web-resource-name>HTTPSOrHTTP</web-resource-name>
+		<url-pattern>*.ico</url-pattern>
+		<url-pattern>*.png</url-pattern>
+		<url-pattern>*.jpg</url-pattern>
+		<url-pattern>*.jpeg</url-pattern>
+		<url-pattern>*.gif</url-pattern>
+		<url-pattern>*.css</url-pattern>
+		<url-pattern>*.js</url-pattern>
+	</web-resource-collection>
+	<user-data-constraint>
+		<transport-guarantee>NONE</transport-guarantee>
+	</user-data-constraint>
+  </security-constraint>
 </web-app>

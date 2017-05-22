@@ -77,7 +77,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a id="exit" class="navbar-brand" href="#" style="color: white;">eQuivira</a>
+                
                 <a id="showMenu" class="navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Men&uacute;</a>
             </div>
             <!-- Top Menu Items -->
