@@ -293,5 +293,12 @@ public class CompraController {
 	        } 
 		return "pagoCompra";
 	   }
-	
+           
+           @RequestMapping(value="/pagar/publicacion/gratis/{id}",method = RequestMethod.POST)
+	   public String pagarPublicacionGratis(Model model, @PathVariable("id") int id, 
+			   HttpServletRequest request, HttpServletResponse response) throws IOException{
+		log.info("Controller::: "+NAME_CONTROLLER);
+		log.info("Procesar compra de publicacion GRATIS con ID::: "+id);
+		return "";
+	   }
 }

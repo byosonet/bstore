@@ -102,6 +102,14 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                 document.getElementById('card-form').method = 'POST';
                 document.getElementById('card-form').submit();
 	        }
+                
+                $('#pagarPublicacion').click(function(){
+                    $.blockUI();
+                    var urlAction = '${contextpath}' + '/pagar/publicacion/gratis/'+${publicacion.id};
+                    document.getElementById('formPagarPublicacion').action = urlAction;
+                    document.getElementById('formPagarPublicacion').method = 'POST';
+                    document.getElementById('formPagarPublicacion').submit();
+                });
 		
 		$('input#visa').click(function(){
             $('input#mastercard').attr('checked',false);
@@ -145,7 +153,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 			</div>
 		</c:if>
 		
-  		<div class="col-md-12 alert alert-info" style="text-align: center">1.- Valida el detalle de tu compra</div>
+            <div class="col-md-12 alert alert-info" style="text-align: center"><b>1.- DETALLE DE TU COMPRA</b></div>
   			<div class="form-group">
   				<div class="col-md-12 alert alert-success">
   				<span><b>Resumen:</b> ${publicacion.resumen}</span></div>
@@ -187,11 +195,17 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 					</table>
 				</div>
   			</div>
-	<div class="col-md-12 alert alert-info" style="text-align: center;margin-top: 20px;">2.- Selecciona tu forma de pago</div>
+                        <div class="col-md-12 alert alert-info" style="text-align: right;${publicacion.precio != '0.00'? 'display: none;':''}">
+                            <form class="form-horizontal" action="" method="POST" id="formPagarPublicacion">
+                            </form>
+                            <button id="pagarPublicacion" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> COMPRAR</button>
+                        </div>
+                                                                
+                        <div class="col-md-12 alert alert-info" style="text-align: center;margin-top: 20px;${publicacion.precio == '0.00'? 'display: none;':''}"><b>2.- ELIGE TU FORMA DE PAGO</b></div>
 </div>
 
 
-<div class="container-fluid">
+<div class="container-fluid" style="${publicacion.precio == '0.00'? 'display: none;':''}">
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-11">
 			<form class="form-horizontal" action="" method="POST" id="card-form">
@@ -290,7 +304,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 		</div>
 	</div>
 </div>
-<div class="row" style="padding: 0.5em;">
+<div class="row" style="padding: 0.5em;${publicacion.precio == '0.00'? 'display: none;':''}">
 		<div class="col-md-12 alert alert-danger" style="text-align: center">
 			<p>En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
 			<p>y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
