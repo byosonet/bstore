@@ -148,8 +148,8 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 	<div class="row" style="padding: 0.5em;">
 		<c:if test="${errorMessage}">
 			<div class="col-md-12 alert alert-danger" style="text-align: center">
-				<p><b><c:out value="${messageError}"/></b></p>
-				<p><b><c:out value="${messageErrorConekta}"/></b></p>
+				<p><b class="text"><c:out value="${messageError}"/></b></p>
+				<p><b class="text"><c:out value="${messageErrorConekta}"/></b></p>
 			</div>
 		</c:if>
 		

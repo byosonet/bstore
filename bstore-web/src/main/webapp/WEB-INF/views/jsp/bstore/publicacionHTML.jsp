@@ -86,7 +86,7 @@
 <body>
     <div class="row" style="padding: 0.5em;">
     	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('${contextpath}/static/resources/img/cabecera_publicacion.png');">
-  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:100px"><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
+  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:140px"><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
   		</div>
   		<br/>  
   		  <div>

@@ -28,7 +28,7 @@
 
 @media(min-width:768px) {
     #wrapper {
-        padding-left: 200px;
+        padding-left: 300px;
     }
 
     #page-wrapper {
@@ -101,7 +101,7 @@ li.message-footer {
 }
 
 ul.alert-dropdown {
-    width: 200px;
+    width: 300px;
 }
 
 /* Side Navigation */
@@ -110,9 +110,9 @@ ul.alert-dropdown {
     .side-nav {
         position: fixed;
         top: 51px;
-        left: 200px;
-        width: 200px;
-        margin-left: -200px;
+        left: 300px;
+        width: 300px;
+        margin-left: -300px;
         border: none;
         border-radius: 0;
         overflow-y: auto;
@@ -123,7 +123,7 @@ ul.alert-dropdown {
     }
 
     .side-nav>li>a {
-        width: 200px;
+        width: 250px;
     }
 
     .side-nav li a:hover,

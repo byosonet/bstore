@@ -86,11 +86,11 @@ $("#listaPub").change(function(){
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">
-				  <div class="modal-dialog">
+                                    <div class="modal-dialog">
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title"><b><c:out value="${publicacion.nombre}"/></b></h4>
+				          <h4 class="modal-title"><b class="text"><c:out value="${publicacion.nombre}"/></b></h4>
 				        </div>
 				        <div class="modal-body">
 				        
@@ -101,17 +101,17 @@ $("#listaPub").change(function(){
 				          		</div>
 				        	</div>
 				        	<div class="col-md-6">
-				        		<h5 style="text-align: center;"><b>Sinopsis</b></h5>
+				        		<h5 style="text-align: center;"><b class="text">Sinopsis</b></h5>
 				          		<p class="text" style="text-indent: 2em;text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
 				        	</div>
 				        </div>
-				        	 <h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5>
+                  <br/><!--h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5-->
 					         <div class="row">
 							      <div class="col-md-6">
-							        <b>Autor/Fuente</b>
+							        <b class="text">Autor/Fuente</b>
 							      </div>
 							      <div class="col-md-6">
-							        <b>Tema</b>
+							        <b class="text">Tema</b>
 							      </div>
 						     </div>
 						     <div class="row">
@@ -125,10 +125,10 @@ $("#listaPub").change(function(){
 						     <br>
 						     <div class="row">
 							      <div class="col-md-6">
-							        <b>ISBN</b>
+                                                                  <b class="text">ISBN</b>
 							      </div>
 							      <div class="col-md-6">
-							        <b>P&aacute;ginas</b>
+							        <b class="text">P&aacute;ginas</b>
 							      </div>
 						     </div>
 						     <div class="row">
@@ -142,10 +142,10 @@ $("#listaPub").change(function(){
 						     <br>
 						     <div class="row">
 							      <div class="col-md-6">
-							        <b>Precio p&uacute;blico</b>
+                                                                  <b class="text">Precio p&uacute;blico</b>
 							      </div>
 							      <div class="col-md-6">
-							        <b>Descuento disponible</b>
+							        <b class="text">Descuento disponible</b>
 							      </div>
 						     </div>
 						     <div class="row">
@@ -170,7 +170,7 @@ $("#listaPub").change(function(){
           </c:forEach>
           <c:if test="${empty publicaciones}">
 		 	<div class="row alert alert-danger">
-		 	    <p style="text-align: center;">Aun no existen publicaciones asociadas a esta colecci&oacute;n, intente m&aacute;s tarde.</p>
+                            <p style="text-align: center;"><b class="text">Aun no existen publicaciones asociadas a esta colecci&oacute;n, intente m&aacute;s tarde.</b></p>
 		 	</div>
 		 </c:if>          
      </div>

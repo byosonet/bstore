@@ -11,7 +11,7 @@ $(document).ready(function() {
 <body>
 <div class="row">
     <div class="alert alert-danger">
-        <p style="text-align: center;"><b>${mensajeError}</b></p>
+        <p style="text-align: center;" class="text"><b>${mensajeError}</b></p>
     </div>
 </div>
 </body>
