@@ -97,6 +97,13 @@ public class CompraController {
             idGenerado = Integer.valueOf(id);
             Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
             model.addAttribute("publicacion", publicacion);
+            
+            if(publicacion==null){
+                log.info("Publicacion encontrada: "+publicacion);
+                 log.info("Error al procesar: /comprar/publicacion/{id}" + id);
+                model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+                return "muestraError";
+            }
         }catch(Exception ex){
             log.info("Error al procesar: /comprar/publicacion/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");

@@ -23,9 +23,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.persistence.pojo.Anexo;
+import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Properties;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
+import com.bstore.services.service.CompraService;
 import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
 import com.bstore.services.service.UsuarioService;
@@ -51,6 +53,9 @@ public class PublicacionController {
 
     @Autowired
     private PropertyService propertyService;
+    
+    @Autowired
+    private CompraService compraService;
 
     @InitBinder
     protected void initBinder(WebDataBinder binder) {
@@ -240,11 +245,31 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
+         Usuario usuario = (Usuario) session.getAttribute("usuario");
+        List<Compra> compras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
         
         int idGenerado = 0;
+        boolean encontrado = false;
         Publicacion pub = new Publicacion();
         try{
             idGenerado = Integer.valueOf(id);
+            
+            if (compras != null && compras.size() > 0) {
+                log.info("Compras: "+compras.toString());
+                for (Compra compra : compras) {
+                    if (idGenerado == compra.getId().getIdPublicacion()) {
+                        encontrado = true;
+                        break;
+                    }
+                }
+            }
+            
+            if (!encontrado) {
+                log.info("Error al procesar: /publicacion/{id}" + id);
+                model.addAttribute("mensajeError", "Lo sentimos para poder ver está publicación, primero debes comprarla.");
+                return "muestraError";
+            }
+            
             pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
             model.addAttribute("nombrePublicacion", pub.getNombre());
         }catch(Exception ex){

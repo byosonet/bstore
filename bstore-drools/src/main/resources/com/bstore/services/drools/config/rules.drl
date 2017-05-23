@@ -3,7 +3,7 @@ import com.bstore.services.drools.vo.UserTemp;
 
 rule "Validar_Mayoria_Edad"
 	when
-		userteamp: UserTemp(edad > 18)
+		userteamp: UserTemp(edad > 17)
 	then
 		userteamp.setValidado(true); 
                 System.out.println(" -- El usuario si cumple la edad requerida: " + userteamp.getNombre());
