@@ -89,14 +89,14 @@
 		     		                     document.getElementById('perfil').method = 'GET';
 		     		                     document.getElementById('perfil').submit();
 		                             }else{
-		                            	 muestraMsjSistemaSuccess(data.mensaje);
+		                            	 muestraMsjSistemaSuccess("<span class='text'>"+data.mensaje+"</span>");
 		                             }
 		                             
 			              },
 		                         error: function(msj){
 		                             status = JSON.parse(msj.responseText);
 		                             $.unblockUI();
-		                             muestraMsjSistemaError(status.mensaje);
+		                             muestraMsjSistemaError("<span class='text'>"+status.mensaje+"</span>");
 		                             //window.location.href = '${contextpath}';
 		                          }
 			        });
@@ -112,7 +112,7 @@
 		            cssClass: 'login-dialog',
 		            buttons: [{
 		                icon: 'glyphicon glyphicon-check',
-		                label: 'OK',
+		                label: "<span class='text'>OK</span>",
 		                cssClass: 'btn-primary',
 		                action: function(dialog) {
 		                    dialog.close();
@@ -131,7 +131,7 @@
 		            cssClass: 'login-dialog',
 		            buttons: [{
 		                icon: 'glyphicon glyphicon-check',
-		                label: 'CONTINUAR',
+		                label: "<span class='text'>CONTINUAR</span>",
 		                cssClass: 'btn-primary',
 		                action: function(dialog) {
 		                    dialog.close();
@@ -146,7 +146,7 @@
 		        }
 		        
 		        $('button#cancelar').click(function(){
-		        	muestraMsjSistemaSuccessCancelar("¿Estás seguro de que quieres cancelar tu cuenta?");
+		        	muestraMsjSistemaSuccessCancelar("<span class='text'>¿Estás seguro de que quieres cancelar tu cuenta?</span>");
 		        });
 		        
 		        function muestraMsjSistemaSuccessCancelar(msjStatus){
@@ -159,12 +159,12 @@
 			            cssClass: 'login-dialog',
 			            buttons: [{
 			            	icon: 'glyphicon glyphicon-remove',
-			            	label: 'CANCELAR',
+			            	label: "<span class='text'>CANCELAR</span>",
 			            	action: function(dialog){
 			            		dialog.close();}
 			            	},{
 			                icon: 'glyphicon glyphicon-check',
-			                label: 'CONTINUAR',
+			                label: "<span class='text'>CONTINUAR</span>",
 			                cssClass: 'btn-primary',
 			                action: function(dialog) {
 			                    dialog.close();
@@ -182,13 +182,13 @@
 			     		                     document.getElementById('perfil').method = 'GET';
 			     		                     document.getElementById('perfil').submit();
 			                             }else{
-			                            	 muestraMsjSistemaSuccess(data.mensaje);
+			                            	 muestraMsjSistemaSuccess("<span class='text'>"+data.mensaje+"</span>");
 			                             }
 				              			},
 			                     error: function(msj){
 			                             status = JSON.parse(msj.responseText);
 			                             $.unblockUI();
-			                             muestraMsjSistemaError(status.mensaje);
+			                             muestraMsjSistemaError("<span class='text'>"+status.mensaje+"</span>");
 			                             window.location.href = '${contextpath}';
 			                          }
 					        	});
@@ -207,55 +207,55 @@
             <form class="form-horizontal" id="formRegistrar">
             	<input type="hidden" name="idUsuario" value="${usuario.id}">
             	<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>1.- DATOS DEL USUARIO</b></div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b class="text">1.- DATOS DEL USUARIO</b></div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2"  for="nombre">Nombre:</label>
+                    <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}" >
+                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}" >
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
+                    <label class="text control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${usuario.APaterno}">
+                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${usuario.APaterno}">
                     </div>
                     
                 </div>
                 
                  <div class="form-group">
-                    <label class="control-label col-sm-2"  for="amaterno">Apellido Materno:</label>
+                    <label class="text control-label col-sm-2"  for="amaterno">Apellido Materno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${usuario.AMaterno}">
+                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${usuario.AMaterno}">
                     </div>
                     
-                    <label class="control-label col-sm-1"  for="email">Email:</label>
+                    <label class="text control-label col-sm-1"  for="email">Email:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}" readonly>
+                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                	<label class="control-label col-sm-2"  for="login">Usuario/Login:</label>
+                	<label class="text control-label col-sm-2"  for="login">Usuario/Login:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="Ingesa tu login" value="${usuario.login}">
+                        <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login" value="${usuario.login}">
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="telefono">Tel&eacute;fono:</label>
+                    <label class="text control-label col-sm-2"  for="telefono">Tel&eacute;fono:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${usuario.telefono}">
+                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${usuario.telefono}">
                     </div>
                 </div>
 
                 <div class="form-group">
-                   <label class="control-label col-sm-2"  for="pass1">Password:</label>
+                   <label class="text control-label col-sm-2"  for="pass1">Password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
+                        <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
                     </div>
                    
-                   <label class="control-label col-sm-2"  for="pass2">Confirmar password:</label>
+                   <label class="text control-label col-sm-2"  for="pass2">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
+                        <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
                     </div>
                 </div>
                 
@@ -263,30 +263,30 @@
                 </br>
                 </br>
                 <div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>2.- DATOS ADICIONALES</b></div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b class="text">2.- DATOS ADICIONALES</b></div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" >Día:</label>
+                    <label class="text control-label col-sm-2" >Día:</label>
                     <div class="col-sm-1">
                         <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
                         <option data-bind="value: id,text:day"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1" >Mes:</label>
+                    <label class="text control-label col-sm-1" >Mes:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
                         <option data-bind="value: id,text:mes"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1" >Año:</label>
+                    <label class="text control-label col-sm-1" >Año:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
                         <option data-bind="value: year,text:year"></option></select>
                     </div>
                    
                     
-                    <label class="control-label col-sm-1" >Actividad:</label>
+                    <label class="text control-label col-sm-1" >Actividad:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
                         <option data-bind="value: activity,text:activity"></option></select>
@@ -295,7 +295,7 @@
                 
                 
                  <div class="form-group">
-                    <label class="control-label col-sm-2" >Sexo:</label>
+                    <label class="text control-label col-sm-2" >Sexo:</label>
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
                             <c:if test="${usuario.sexo == 'M'}">
@@ -305,7 +305,7 @@
                             	<input type="radio" id="masculino" name="sexo" value="M">
                             </c:if>
                             
-                            <label > Masculino </label>
+                            <label class="text"> Masculino </label>
                         </div>
                     </div>
 
@@ -317,11 +317,11 @@
                        		<c:if test="${usuario.sexo == 'M'}">
                        			<input type="radio" id="femenino" name="sexo" value="F">
                        		</c:if>
-                            <label > Femenino </label>
+                            <label class="text"> Femenino </label>
                         </div>
                     </div>
      
-                    <label class="control-label col-sm-3" >Deseo recibir notificaciones:</label>
+                    <label class="text control-label col-sm-3" >Deseo recibir notificaciones:</label>
                     <div class="col-sm-3">
                        <div class="checkbox checkbox-primary">
                        <c:if test="${usuario.notificaciones == 'SI'}">
@@ -330,7 +330,7 @@
                        <c:if test="${usuario.notificaciones == 'NO'}">
                        		<input type="checkbox" value="SI" name="notificar" id="notificar">
                        </c:if>
-                        <label>
+                        <label class="text">
                             Sí
                         </label>
                     </div>
@@ -340,8 +340,8 @@
             <form id="perfil"></form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="cancelar" class="btn btn-danger"><span class="glyphicon glyphicon-remove"></span> CANCELAR CUENTA</button>
-                <button id="actualizar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR DATOS</button>
+                <button id="cancelar" class="text btn btn-danger"><span class="glyphicon glyphicon-remove"></span> CANCELAR CUENTA</button>
+                <button id="actualizar" class="text btn btn-primary"><span class="glyphicon glyphicon-user"></span> ACTUALIZAR DATOS</button>
                 </div>
             </div>
         </div>

@@ -17,13 +17,13 @@
               var email = $('input#email');
               var confEmail = $('input#confEmail');
               if(email.val() === ""){
-                  muestraMsjSistemaError('El email es requerido.');
+                  muestraMsjSistemaError("<span class='text'>El email es requerido.</span>");
                   return false;
               }else if(confEmail.val() === ""){
-                  muestraMsjSistemaError('El email es requerido.');
+                  muestraMsjSistemaError("<span class='text'>El email es requerido.</span>");
                   return false;
               }else if(email.val() !== confEmail.val()){
-                  muestraMsjSistemaError('El email no coincide.');
+                  muestraMsjSistemaError("<span class='text'>El email no coincide.</span>");
                   return false;
               }
               
@@ -34,12 +34,12 @@
 	              data: $('form#recuperar').serialize(),
 	                  success: function (data) {
                              $.unblockUI();
-                             muestraMsjSistemaSuccess(data.mensaje);
+                             muestraMsjSistemaSuccess("<span class='text'>"+data.mensaje+"</span>");
 	              },
                          error: function(msj){
                              status = JSON.parse(msj.responseText);
                              $.unblockUI();
-                             muestraMsjSistemaError(status.mensaje);
+                             muestraMsjSistemaError("<span class='text'>"+status.mensaje+"</span>");
                           }
 	        });
           });
@@ -58,7 +58,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-check',
-                label: 'OK',
+                label: "<span class='text'>OK</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -77,7 +77,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-check',
-                label: 'CONTINUAR',
+                label: "<span class='text'>CONTINUAR</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -103,30 +103,30 @@
         	</br>
             <form id="recuperar" class="form-horizontal">
             	<div class="form-group">
-                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;">RECUPERA TU PASSWORD</h5>
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">RECUPERAR CUENTA</b></h5>
                 </div>
                 </br>
         		</br>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-4" style="color:black;" for="nombre">Usuario:</label>
+                    <label class="text control-label col-sm-4" style="color:black;" for="nombre">Email:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingresa tu email">
+                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingresa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-4" style="color:black;" for="email">Confirmar usuario:</label>
+                    <label class="text control-label col-sm-4" style="color:black;" for="email">Confirmar Email:</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
+                        <input type="text" class="text form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
                     </div>
                 </div>
             </form>
             <form id="regresar"></form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                <button id="enviar" class="btn btn-primary"><span class="glyphicon glyphicon-send"></span> ENVIAR</button>
+                <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
+                <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
                 </div>
             </div>
         </div>

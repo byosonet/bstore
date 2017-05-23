@@ -29,10 +29,10 @@ $("#listaPub").change(function(){
 <c:if test="${!empty publicaciones}">
 <div class="row">
 	<div style="text-align: center;">
-		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="btn btn-success">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
-		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="btn btn-success">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="btn btn-warning">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="btn btn-warning">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-success">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-success">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-warning">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-warning">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
 		<select class="listaPublicaciones" id="listaPub">
 			<option value="buscar" selected>Buscar..</option>
 			<c:forEach var="publicacion" items="${publicaciones}">
@@ -82,7 +82,7 @@ $("#listaPub").change(function(){
 				 	<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="text banner-title"> <b>Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
              	 </c:if>
-				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">
@@ -159,8 +159,8 @@ $("#listaPub").change(function(){
 				        </div>
 				        <div class="modal-footer">
 					      <div class="col-md-12">
-					      	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
-					        <b><a href="${valueUrl}" class="${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+					      	<button type="button" class="text btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+					        <b><a href="${valueUrl}" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
 					      </div>
 				        </div>
 				      </div>

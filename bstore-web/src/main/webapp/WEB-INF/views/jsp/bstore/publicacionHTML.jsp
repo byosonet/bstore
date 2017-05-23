@@ -43,23 +43,23 @@
             "bLengthChange" : false,
             "pageLength": 1,
             "oLanguage" : {
-                  "sProcessing":     "Procesando...",
-                  "sLengthMenu":     "Mostrar _MENU_ registros",
-                  "sZeroRecords":    "No se encontraron resultados",
-                  "sEmptyTable":     "Ningún dato disponible en esta tabla",
-                  "sInfo":           "Mostrando Foja <b>_START_</b> de _TOTAL_.",
-                  "sInfoEmpty":      "No existe información asociada a tu búsqueda.",
+                  "sProcessing":     "<span class='text'>Procesando...</span>",
+                  "sLengthMenu":     "<span class='text'>Mostrar _MENU_ registros</span>",
+                  "sZeroRecords":    "<span class='text'>No se encontraron resultados</span>",
+                  "sEmptyTable":     "<span class='text'>Ningún dato disponible en esta tabla</span>",
+                  "sInfo":           "<span class='text'>Mostrando Foja <b>_START_</b> de _TOTAL_.</span>",
+                  "sInfoEmpty":      "<span class='text'>No existe información asociada a tu búsqueda.</span>",
                   "sInfoFiltered":   "",
                   "sInfoPostFix":    "",
                   "sSearch":         "<span class='glyphicon glyphicon-search'></span>",
                   "sUrl":            "",
                   "sInfoThousands":  ",",
-                  "sLoadingRecords": "Cargando...",
+                  "sLoadingRecords": "<span class='text'>Cargando...</span>",
                   "oPaginate": {
-                      "sFirst":    "Primero",
-                      "sLast":     "Último",
-                      "sNext":     "Siguiente",
-                      "sPrevious": "Anterior"
+                      "sFirst":    "<span class='text'>Primero</span>",
+                      "sLast":     "<span class='text'>Último</span>",
+                      "sNext":     "<span class='text'>Siguiente</span>",
+                      "sPrevious": "<span class='text'>Anterior</span>"
                   },
                   "oAria": {
                       "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
@@ -86,7 +86,7 @@
 <body>
     <div class="row" style="padding: 0.5em;">
     	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('${contextpath}/static/resources/img/cabecera_publicacion.png');">
-  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:100px"><b><c:out value="${nombrePublicacion}"/></b></label>
+  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:100px"><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
   		</div>
   		<br/>  
   		  <div>
@@ -94,16 +94,16 @@
             <table class="table table-hover" id="listaPublicacion">
               <thead>
                 <tr>
-                  <th style="text-align: center" class="alert alert-dismissible">N° FOJA</th>
-                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-list"> <b>TRADUCCIÓN</b></span></th>
-                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-camera"> <b>ANEXO</b></span></th>
+                  <th style="text-align: center" class="text alert alert-dismissible">N° FOJA</th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-list"> <b class="text">TRADUCCIÓN</b></span></th>
+                  <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-camera"> <b class="text">ANEXO</b></span></th>
                 </tr>
               </thead>
               <tbody>
                <c:forEach var="anexo" items="${anexos}">
                <tr style="background-repeat: no-repeat;" background="${contextpath}/static/resources/img/fondo_publicacion.png">
 	                <td style="text-align: center;width: 10%;">
-	                	<b>
+	                	<b class="text">
 	                		F<c:out value="${anexo.foja}"/>
 	                	</b>
 	                </td>

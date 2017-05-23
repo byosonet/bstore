@@ -31,45 +31,45 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 	            var pais = $('input#pais');
 	            
 	            if(nombre.val() === ""){
-	                muestraMsjSistemaError('El nombre es un campo requerido.');
+	                muestraMsjSistemaError("<span class='text'>El nombre es un campo requerido.</span>");
 	                return false;
 	            }else if(numeroTarjeta.val() === ""){
-	            	muestraMsjSistemaError('El numero de tarjeta es requerido.');
+	            	muestraMsjSistemaError("<span class='text'>El numero de tarjeta es requerido.</span>");
 	            	return false;
 	            }else if(cvv.val() === ""){
-	            	muestraMsjSistemaError('El cvv es requerido');
+	            	muestraMsjSistemaError("<span class='text'>El cvv es requerido.</span>");
 	            	return false;
 	            }
 	            else if(fechaExpiracionMes.val() === ""){
-	                muestraMsjSistemaError('El mes es requerido');
+	                muestraMsjSistemaError("<span class='text'>El mes es requerido.</span>");
 	                return false;
 	            }else if(fechaExpiracionAnio.val() === ""){
-	                muestraMsjSistemaError('El año es requerido.');
+	                muestraMsjSistemaError("<span class='text'>El año es requerido.</span>");
 	                return false;
 	            }else if(calle.val() === ""){
-	                muestraMsjSistemaError('La calle es requerida.');
+	                muestraMsjSistemaError("<span class='text'>La calle es requerida.</span>");
 	                return false; 
 	            }else if(colonia.val() === ""){
-	                muestraMsjSistemaError('La colonia es requerida.');
+	                muestraMsjSistemaError("<span class='text'>La colonia es requerida.</span>");
 	                return false; 
 	            }else if(ciudad.val() === ""){
-	                muestraMsjSistemaError('La ciudad es requerida.');
+	                muestraMsjSistemaError("<span class='text'>La ciudad es requerida.</span>");
 	                return false; 
 	            }else if(estado.val() === ""){
-	                muestraMsjSistemaError('El estado es requerida.');
+	                muestraMsjSistemaError("<span class='text'>El estado es requerido.</span>");
 	                return false; 
 	            }else if(codigo.val() === ""){
-	                muestraMsjSistemaError('El código postal es requerido.');
+	                muestraMsjSistemaError("<span class='text'>El código postal es requerido.</span>");
 	                return false; 
 	            }else if(pais.val() === ""){
-	                muestraMsjSistemaError('País es requerida.');
+	                muestraMsjSistemaError("<span class='text'>País es requerido.</span>");
 	                return false; 
 	            }
 
 	            var m = $('input#visa').filter(":checked").val();
 	            var f = $('input#mastercard').filter(":checked").val();
 				if(m === undefined && f === undefined){
-					  muestraMsjSistemaError('Debes seleccionar una forma de pago, Visa/Mastercard.');
+					  muestraMsjSistemaError("<span class='text'>Debes seleccionar una forma de pago, Visa/Mastercard.</span>");
 					  return false;
 				}
 				return true;
@@ -85,7 +85,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 	            cssClass: 'login-dialog',
 	            buttons: [{
 	                icon: 'glyphicon glyphicon-ok',
-	                label: 'ACEPTAR',
+	                label: "<span class='text'>ACEPTAR</span>",
 	                cssClass: 'btn-primary',
 	                action: function(dialog) {
 	                    dialog.close();
@@ -153,10 +153,10 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 			</div>
 		</c:if>
 		
-            <div class="col-md-12 alert alert-info" style="text-align: center"><b>1.- DETALLE DE TU COMPRA</b></div>
+            <div class="col-md-12 alert alert-info" style="text-align: center"><b class="text">1.- DETALLE DE TU COMPRA</b></div>
   			<div class="form-group">
   				<div class="col-md-12 alert alert-success">
-  				<span><b>Resumen:</b> ${publicacion.resumen}</span></div>
+  				<span class="text"><b>Resumen:</b> ${publicacion.resumen}</span></div>
   				<div class="col-md-4" style="padding: 0.5em;text-align: center;margin-top: -10px">
   					<img style="width: 40%;height:auto;border-radius:5px;" src="${publicacion.portadaUrl}">
   				</div>
@@ -165,30 +165,30 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 				  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th style="text-align: center;width: 30%;" class="alert alert-success">Nombre de la publicaci&oacute;n</th>
-								<th style="text-align: center;" class="alert alert-success">ISBN</th>
-								<th style="text-align: center;" class="alert alert-success">Descuento</th>
-								<th style="text-align: center;" class="alert alert-success">Precio Venta</th>
+								<th style="text-align: center;width: 30%;" class="text alert alert-success">Nombre de la publicaci&oacute;n</th>
+								<th style="text-align: center;" class="text alert alert-success">ISBN</th>
+								<th style="text-align: center;" class="text alert alert-success">Descuento</th>
+								<th style="text-align: center;" class="text alert alert-success">Precio Venta</th>
 							</tr>
 						</thead>
 						<tfoot>
 							<tr>
 								<th></th>
 								<th></th>
-								<th class="alert alert-warning" style="text-align: center;">Total a Pagar </th>
-								<th class="alert alert-warning" style="text-align: center;">$ ${publicacion.precio - publicacion.descuento} MXN</th>
+								<th class="text alert alert-warning" style="text-align: center;">Total a Pagar </th>
+								<th class="text alert alert-warning" style="text-align: center;">$ ${publicacion.precio - publicacion.descuento} MXN</th>
 							</tr>
 						</tfoot>
 						<tbody>
 							<tr>
-								<td style="text-align: center;">${publicacion.nombre}</td>
-								<td style="text-align: center;">${publicacion.isbn}</td>
-								<td style="text-align: center;">$ ${publicacion.descuento}</td>
+								<td class="text" style="text-align: center;">${publicacion.nombre}</td>
+								<td class="text" style="text-align: center;">${publicacion.isbn}</td>
+								<td class="text" style="text-align: center;">$ ${publicacion.descuento}</td>
 								<c:if test="${publicacion.descuento != '0.00'}">
-									<td style="text-align: center;text-decoration:line-through;">$ ${publicacion.precio}</td>
+									<td class="text" style="text-align: center;text-decoration:line-through;">$ ${publicacion.precio}</td>
 								</c:if>
 								<c:if test="${publicacion.descuento == '0.00'}">
-									<td style="text-align: center;">$ ${publicacion.precio}</td>
+									<td class="text" style="text-align: center;">$ ${publicacion.precio}</td>
 								</c:if>
 							</tr>
 						</tbody>
@@ -198,10 +198,10 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                         <div class="col-md-12 alert alert-info" style="text-align: right;${publicacion.precio != '0.00'? 'display: none;':''}">
                             <form class="form-horizontal" action="" method="POST" id="formPagarPublicacion">
                             </form>
-                            <button id="pagarPublicacion" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> COMPRAR</button>
+                            <button id="pagarPublicacion" class="text btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> COMPRAR</button>
                         </div>
                                                                 
-                        <div class="col-md-12 alert alert-info" style="text-align: center;margin-top: 20px;${publicacion.precio == '0.00'? 'display: none;':''}"><b>2.- ELIGE TU FORMA DE PAGO</b></div>
+                        <div class="col-md-12 alert alert-info" style="text-align: center;margin-top: 20px;${publicacion.precio == '0.00'? 'display: none;':''}"><b class="text">2.- ELIGE TU FORMA DE PAGO</b></div>
 </div>
 
 
@@ -231,73 +231,73 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                 
                 
 				<div class="form-group">
-                    <label class="control-label col-sm-2"  for="nombre">Nombre:</label>
+                    <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[name]" type="text" class="form-control" id="nombre" maxlength="50" name="nombre" placeholder="Nombre del cuenta habiente" value="" >
+                        <input data-conekta="card[name]" type="text" class="text form-control" id="nombre" maxlength="50" name="nombre" placeholder="Nombre del cuenta habiente" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="numeroTarjeta">Numero tarjeta:</label>
+                    <label class="text control-label col-sm-2"  for="numeroTarjeta">Numero tarjeta:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[number]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="numeroTarjeta" maxlength="16" name="numeroTarjeta" placeholder="N&uacute;mero de tarjeta" value="">
+                        <input data-conekta="card[number]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="numeroTarjeta" maxlength="16" name="numeroTarjeta" placeholder="N&uacute;mero de tarjeta" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
-                    <label class="control-label col-sm-2"  for="cvv">CVC/CVV:</label>
+                    <label class="text control-label col-sm-2"  for="cvv">CVC/CVV:</label>
                     <div class="col-sm-2">
-                        <input data-conekta="card[cvc]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="cvv" maxlength="4" name="cvv" placeholder="CVC/CVV" value="" >
+                        <input data-conekta="card[cvc]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="cvv" maxlength="4" name="cvv" placeholder="CVC/CVV" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-4"  for="fechaExpiracionMes">Fecha de expiraci&oacute;n: MM/YYYY</label>
+                    <label class="text control-label col-sm-4"  for="fechaExpiracionMes">Fecha de expiraci&oacute;n: MM/YYYY</label>
                     <div class="col-sm-2">
-                        <input data-conekta="card[exp_month]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="fechaExpiracionMes" maxlength="2" name="fechaExpiracionMes" placeholder="MM" value="">
+                        <input data-conekta="card[exp_month]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="fechaExpiracionMes" maxlength="2" name="fechaExpiracionMes" placeholder="MM" value="">
                     </div>
                     <div class="col-sm-2">
-                    	<input data-conekta="card[exp_year]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="fechaExpiracionAnio" maxlength="4" name="fechaExpiracionAnio" placeholder="YYYY" value="">
+                    	<input data-conekta="card[exp_year]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="fechaExpiracionAnio" maxlength="4" name="fechaExpiracionAnio" placeholder="YYYY" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
-                    <label class="control-label col-sm-2"  for="calle">Calle:</label>
+                    <label class="text control-label col-sm-2"  for="calle">Calle:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][street1]" type="text" class="form-control" id="calle" maxlength="40" name="calle" placeholder="Calle" value="" >
+                        <input data-conekta="card[address][street1]" type="text" class="text form-control" id="calle" maxlength="40" name="calle" placeholder="Calle" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="colonia">Colonia:</label>
+                    <label class="text control-label col-sm-2"  for="colonia">Colonia:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][street2]" type="text" class="form-control" id="colonia" maxlength="30" name="colonia" placeholder="Colonia" value="">
+                        <input data-conekta="card[address][street2]" type="text" class="text form-control" id="colonia" maxlength="30" name="colonia" placeholder="Colonia" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2"  for="ciudad">Ciudad:</label>
+                    <label class="text control-label col-sm-2"  for="ciudad">Ciudad:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][city]" type="text" class="form-control" id="ciudad" maxlength="30" name="ciudad" placeholder="Ciudad" value="" >
+                        <input data-conekta="card[address][city]" type="text" class="text form-control" id="ciudad" maxlength="30" name="ciudad" placeholder="Ciudad" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="estado">Estado:</label>
+                    <label class="text control-label col-sm-2"  for="estado">Estado:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][state]" type="text" class="form-control" id="estado" maxlength="30" name="estado" placeholder="Estado" value="">
+                        <input data-conekta="card[address][state]" type="text" class="text form-control" id="estado" maxlength="30" name="estado" placeholder="Estado" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2"  for="codigo">C&oacute;digo Postal:</label>
+                    <label class="text control-label col-sm-2"  for="codigo">C&oacute;digo Postal:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][zip]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="form-control" id="codigo" maxlength="5" name="codigo" placeholder="C&oacute;digo postal" value="" >
+                        <input data-conekta="card[address][zip]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="codigo" maxlength="5" name="codigo" placeholder="C&oacute;digo postal" value="" >
                     </div>
                     
-                    <label class="control-label col-sm-2"  for="pais">Pa&iacute;s:</label>
+                    <label class="text control-label col-sm-2"  for="pais">Pa&iacute;s:</label>
                     <div class="col-sm-4">
-                        <input data-conekta="card[address][country]" type="text" class="form-control" id="pais" maxlength="25" name="pais" placeholder="Pa&iacute;s" value="">
+                        <input data-conekta="card[address][country]" type="text" class="text form-control" id="pais" maxlength="25" name="pais" placeholder="Pa&iacute;s" value="">
                     </div>
                 </div>
 
 			  <div class="row">
 			  	<input id="key" name="key" type="hidden" />
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                 <button type="reset" id="reset" class="btn btn-default"><span class="glyphicon glyphicon-refresh"></span> LIMPIAR</button>
-                <button type="submit" id="pagar" class="btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
+                 <button type="reset" id="reset" class="text btn btn-default"><span class="glyphicon glyphicon-refresh"></span> LIMPIAR</button>
+                <button type="submit" id="pagar" class="text btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
                 </div>
             </div>
 			</form>
@@ -306,8 +306,8 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 </div>
 <div class="row" style="padding: 0.5em;${publicacion.precio == '0.00'? 'display: none;':''}">
 		<div class="col-md-12 alert alert-danger" style="text-align: center">
-			<p>En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
-			<p>y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
+                    <p class="text">En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
+			<p class="text">y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
 		</div>
 </div>	
 </body>

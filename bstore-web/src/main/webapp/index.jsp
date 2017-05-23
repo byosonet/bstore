@@ -42,10 +42,10 @@
         	  var email = $('input#login');
               var password = $('input#password');
               if(email.val() === ""){
-                  muestraMsjSistemaError('El login es requerido.');
+                  muestraMsjSistemaError("<span class='text'>El login es requerido.</span>");
                   return false;
               }else if(password.val() === ""){
-                  muestraMsjSistemaError('El password es requerido.');
+                  muestraMsjSistemaError("<span class='text'>El password es requerido.</span>");
                   return false;
               }
               
@@ -65,7 +65,7 @@
                          error: function(msj){
                              status = JSON.parse(msj.responseText);
                              $.unblockUI();
-                             muestraMsjSistemaError(status.mensaje);
+                             muestraMsjSistemaError("<span class='text'>"+status.mensaje+"</span>");
                           }
 	        });
           }
@@ -86,7 +86,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-check',
-                label: 'OK',
+                label: "<span class='text'>OK</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -105,7 +105,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-ok',
-                label: 'CONTINUAR',
+                label: "<span class='text'>CONTINUAR</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -158,32 +158,32 @@
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>
                     <div class="col-sm-9">
-                        <div style="text-align:center;color:black"><h5><b>e Q u i v i r a</b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
+                        <div style="text-align:center;color:black"><h5><b class="text">e Q u i v i r a</b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
                       </div>
                     </div>
                 </div>
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:black;" for="nombre">Usuario</label>
+                    <label class="text control-label col-sm-3" style="color:black;" for="nombre">Usuario</label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control" id="login" name="user" placeholder="Ingresa tu login">
+                        <input type="text" class="text form-control" id="login" name="user" placeholder="Ingresa tu login">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-3" style="color:black;" for="email">Password</label>
+                    <label class="text control-label col-sm-3" style="color:black;" for="email">Password</label>
                     <div class="col-sm-9">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingresa tu password">
+                        <input type="password" class="text form-control" id="password" name="password" placeholder="Ingresa tu password">
                     </div>
                 </div>
 
                 <div class="form-group">
-                    <label class="control-label col-sm-12" style="color:black;">¿Olvidé mi contraseña? <a href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                    <label class="text control-label col-sm-12" style="color:black;">¿Olvidé mi contraseña? <a class="text" href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
                 </div>
             </form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="registrar" class="btn btn-default"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
-                <button id="acceder" class="btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACCEDER</button>
+                <button id="registrar" class="text btn btn-default"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
+                <button id="acceder" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACCEDER</button>
                 </div>
             </div>
         </div>

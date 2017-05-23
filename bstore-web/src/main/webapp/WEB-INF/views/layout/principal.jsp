@@ -53,7 +53,7 @@
                             url:  '${contextpath}'+'/sistema/salir',
                             data: $('form#regresar').serialize(),
                              success: function (data) {
-                                   muestraMsjSistemaSuccessIndex("Gracias por tu visita, vuelve pronto.");
+                                   muestraMsjSistemaSuccessIndex("<span class='text'>Gracias por tu visita, vuelve pronto.</span>");
                             }  
                           });
                     });
@@ -74,7 +74,7 @@
                         cssClass: 'login-dialog',
                         buttons: [{
                             icon: 'glyphicon glyphicon-ok',
-                            label: 'ACEPTAR',
+                            label: "<span class='text'>ACEPTAR</span>",
                             cssClass: 'btn-primary',
                             action: function(dialog) {
                                 dialog.close();

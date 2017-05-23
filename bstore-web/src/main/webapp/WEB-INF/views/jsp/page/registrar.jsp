@@ -40,39 +40,39 @@
                 var passw = $('input#password');
                 var confPassword = $('input#confPassword');
                 if(login.val() === ""){
-                	muestraMsjSistemaError('El login es requerido.');
+                	muestraMsjSistemaError("<span class='text'>El login es requerido.</span>");
                     return false;
                 }else if(nombre.val() === ""){
-                    muestraMsjSistemaError('El nombre es requerido.');
+                    muestraMsjSistemaError("<span class='text'>El nombre es requerido.</span>");
                     return false;
                 }else if(apaterno.val() === ""){
-                	 muestraMsjSistemaError('El apellido paterno es requerido.');
+                	 muestraMsjSistemaError("<span class='text'>El apellido paterno es requerido.</span>");
                      return false;
                 }else if(amaterno.val() === ""){
-                	 muestraMsjSistemaError('El apellido materno es requerido.');
+                	 muestraMsjSistemaError("<span class='text'>El apellido materno es requerido.</span>");
                      return false;
                 }else if(telefono.val() === ""){
-                	muestraMsjSistemaError('El teléfono es requerido.');
+                	muestraMsjSistemaError("<span class='text'>El teléfono es requerido.</span>");
                     return false;
                 }else if(email.val() === ""){
-                    muestraMsjSistemaError('El email es requerido.');
+                    muestraMsjSistemaError("<span class='text'>El email es requerido.</span>");
                     return false;
                 }else if(passw.val() === "" || confPassword.val() === ""){
-                    muestraMsjSistemaError('El password es requerido.');
+                    muestraMsjSistemaError("<span class='text'>El password es requerido.</span>");
                     return false;
                 }else if(passw.val() != confPassword.val()){
-                    muestraMsjSistemaError('El password no coincide.');
+                    muestraMsjSistemaError("<span class='text'>El password no coincide.</span>");
                     return false; 
                 }
                 var m = $('input#masculino').filter(":checked").val();
                 var f = $('input#femenino').filter(":checked").val();
                 var condiciones = $('input#condiciones').filter(":checked").val();
 		if(m === undefined && f === undefined){
-			  muestraMsjSistemaError('El sexo es un campo requerido.');
+			  muestraMsjSistemaError("<span class='text'>El sexo es un campo requerido.</span>");
 			  return false;
 		}
 		if(condiciones === undefined){
-			muestraMsjSistemaError('Debes aceptar los Términos y Condiciones.');
+			muestraMsjSistemaError("<span class='text'>Debes aceptar los Términos y Condiciones.</span>");
 			return false;
 		}
                 $('input#idEmail').val(email.val());
@@ -84,12 +84,12 @@
 	              data: $('form#formRegistrar').serialize(),
 	                  success: function (data) {
                              $.unblockUI();
-                             muestraMsjSistemaSuccess(data.mensaje);
+                             muestraMsjSistemaSuccess("<span class='text'>"+data.mensaje+"</span>");
 	              },
                          error: function(msj){
                              status = JSON.parse(msj.responseText);
                              $.unblockUI();
-                             muestraMsjSistemaError(status.mensaje);
+                             muestraMsjSistemaError("<span class='text'>"+status.mensaje+"</span>");
                           }
 	        });
         });
@@ -108,7 +108,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-check',
-                label: 'OK',
+                label: "<span class='text'>OK</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -127,7 +127,7 @@
             cssClass: 'login-dialog',
             buttons: [{
                 icon: 'glyphicon glyphicon-check',
-                label: 'CONTINUAR',
+                label: "<span class='text'>CONTINUAR</span>",
                 cssClass: 'btn-primary',
                 action: function(dialog) {
                     dialog.close();
@@ -155,89 +155,80 @@
             <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
             
             	<div class="form-group">
-                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;">REGISTRO DE USUARIO</h5>
+                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">REGISTRO NUEVO USUARIO</b></h5>
                 </div>
                 </br>
                 </br>
                 
                 <div class="form-group">
-                	<label class="control-label col-sm-2" style="color:black;" for="login">Login:</label>
+                	<label class="text control-label col-sm-2" style="color:black;" for="login">Login:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="login" name="login" placeholder="Ingesa tu login">
+                        <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login">
                     </div>
                     
-                    <label class="control-label col-sm-2" style="color:black;" for="nombre">Nombre(s):</label>
+                    <label class="text control-label col-sm-2" style="color:black;" for="nombre">Nombre(s):</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
                     </div>
                 </div>
                     
                 <div class="form-group">
-                    <label class="control-label col-sm-2" style="color:black;" for="apaterno">Apellido Paterno:</label>
+                    <label class="text control-label col-sm-2" style="color:black;" for="apaterno">Apellido Paterno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno">
+                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno">
                     </div>
                     
-                    <label class="control-label col-sm-2" style="color:black;" for="amaterno">Apellido Materno:</label>
+                    <label class="text control-label col-sm-2" style="color:black;" for="amaterno">Apellido Materno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="amaterno" name="amaterno" placeholder="Ingesa tu apellido materno">
+                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingesa tu apellido materno">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="control-label col-sm-2" style="color:black;" for="telefono">Tel&eacute;fono:</label>
+                    <label class="text control-label col-sm-2" style="color:black;" for="telefono">Tel&eacute;fono:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="telefono" name="telefono" placeholder="Ingresa tu tel&eacute;fono">
+                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingresa tu tel&eacute;fono">
                     </div>
                     
-                    <label class="control-label col-sm-2" style="color:black;" for="email">Email:</label>
+                    <label class="text control-label col-sm-2" style="color:black;" for="email">Email:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="email" name="email" placeholder="Ingesa tu email">
+                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email">
                     </div>
                 </div>
 
                 <div class="form-group">
-                   <label class="control-label col-sm-2" style="color:black;" for="email">Password:</label>
+                   <label class="text control-label col-sm-2" style="color:black;" for="email">Password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="password" name="password" placeholder="Ingesa tu password">
+                        <input type="password" class="text form-control" id="password" name="password" placeholder="Ingesa tu password">
                     </div>
                    
-                   <label class="control-label col-sm-2" style="color:black;" for="email">Confirmar password:</label>
+                   <label class="text control-label col-sm-2" style="color:black;" for="email">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control" id="confPassword" name="confPassword" placeholder="Confirma tu password">
+                        <input type="password" class="text form-control" id="confPassword" name="confPassword" placeholder="Confirma tu password">
                     </div>
                 </div>
-                
-                
-                
                 </br>
                 <div class="form-group">
-                    <h5 class="control-label col-sm-12" style="text-align: center;color:black;">FECHA DE NACIMIENTO</h5>
-                </div>
-                </br>
-                
-                
-                <div class="form-group">
-                    <label class="control-label col-sm-2" style="color:black;">Día:</label>
+                    <label class="text control-label col-sm-2" style="color:black;">Día:</label>
                     <div class="col-sm-1">
                         <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
                         <option data-bind="value: id,text:day"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1" style="color:black;">Mes:</label>
+                    <label class="text control-label col-sm-1" style="color:black;">Mes:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
                         <option data-bind="value: id,text:mes"></option></select>
                     </div>
                     
-                    <label class="control-label col-sm-1" style="color:black;">Año:</label>
+                    <label class="text control-label col-sm-1" style="color:black;">Año:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
                         <option data-bind="value: year,text:year"></option></select>
                     </div>
                    
                     
-                    <label class="control-label col-sm-1" style="color:black;">Actividad:</label>
+                    <label class="text control-label col-sm-1" style="color:black;">Actividad:</label>
                     <div class="col-sm-2">
                         <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
                         <option data-bind="value: activity,text:activity"></option></select>
@@ -246,36 +237,36 @@
                 
                 
                  <div class="form-group">
-                    <label class="control-label col-sm-2" style="color:black;">Sexo:</label>
+                    <label class="text control-label col-sm-2" style="color:black;">Sexo:</label>
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
                             <input type="radio" id="masculino" name="sexo" value="M">
-                            <label style="color:black;"> Masculino </label>
+                            <label class="text" style="color:black;"> Masculino </label>
                         </div>
                     </div>
 
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
                             <input type="radio" id="femenino" name="sexo" value="F">
-                            <label style="color:black;"> Femenino </label>
+                            <label class="text" style="color:black;"> Femenino </label>
                         </div>
                     </div>
      
-                    <label class="control-label col-sm-2" style="color:black;">Deseo recibir notificaciones:</label>
+                    <label class="text control-label col-sm-2" style="color:black;">Deseo recibir notificaciones:</label>
                     <div class="col-sm-1">
                        <div class="checkbox checkbox-primary">
                         <input type="checkbox" value="SI" name="notificar" id="notificar">
-                        <label style="color:black;">
+                        <label class="text" style="color:black;">
                             Sí
                         </label>
                     </div>
                     </div>
                     
-                    <label class="control-label col-sm-2" style="color:black;"><a href="#" data-toggle="modal" data-target="#modalCondiciones">Acepto T&eacute;rminos y Condiciones:</a></label>
+                    <label class="control-label col-sm-2" style="color:black;"><a href="#" class="text" data-toggle="modal" data-target="#modalCondiciones">Acepto T&eacute;rminos y Condiciones:</a></label>
                     <div class="col-sm-1">
                        <div class="checkbox checkbox-primary">
                         <input type="checkbox" value="SI" name="condiciones" id="condiciones">
-                        <label style="color:black;">
+                        <label class="text" style="color:black;">
                             Sí
                         </label>
                     </div>
@@ -289,8 +280,8 @@
             </form>
             <div class="row">
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                <button id="limpiar" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                <button id="registrar" class="btn btn-primary"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
+                <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
+                <button id="registrar" class="text btn btn-primary"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
                 </div>
             </div>
             
@@ -300,7 +291,7 @@
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
-				          <h4 class="modal-title"><b><c:out value="TÉRMINOS Y CONDICIONES DE SERVICIO Y USO DE NOVOHISPANORUM"/></b></h4>
+				          <h4 class="modal-title"><b class="text"><c:out value="TÉRMINOS Y CONDICIONES DE SERVICIO Y USO DE NOVOHISPANORUM"/></b></h4>
 				        </div>
 				        <div class="modal-body">
 					        <div class="row">
@@ -309,27 +300,27 @@
 									<tr>
 									<td width="50"></td>
 									<td width="800">
-									<h5>ESTE ACUERDO LEGAL ENTRE USTED ("USUARIO") Y EDICIONES QUIVIRA, S.A.
+									<h5 class="text">ESTE ACUERDO LEGAL ENTRE USTED ("USUARIO") Y EDICIONES QUIVIRA, S.A.
 									 DE C.V. ("QUIVIRA") RIGE EL SERVICIO Y LAS REGLAS DE USO DE LA 
 									APLICACIÓN NOVOHISPANORUM Y DE SUS CONTENIDOS.</h5>
 									<p>Febrero 15 de 2015.</p>
 									<br>
 									<p>
-									<a href="#servicio">1. Servicio</a><br>
-									<a href="#responsabilidad">1.1 Limitación de responsabilidad</a><br>
-									<a href="#privacidad">2. Privacidad</a><br>
-									<a href="#cuenta">2.1 Su cuenta</a><br>
-									<a href="#seguimiento">2.2 Seguimiento</a><br>
-									<a href="#contenido">3. Contenido</a><br>
-									<a href="#disponibilidad">3.1 Disponibilidad</a><br>
-									<a href="#reglas">3.2 Reglas de uso</a><br>
-									<a href="#propiedad">3.3 Propiedad intelectual</a><br>
-									<a href="#desarrollador">4. Sobre el desarrollador</a><br>
+									<a class="text" href="#servicio">1. Servicio</a><br>
+									<a class="text" href="#responsabilidad">1.1 Limitación de responsabilidad</a><br>
+									<a class="text" href="#privacidad">2. Privacidad</a><br>
+									<a class="text" href="#cuenta">2.1 Su cuenta</a><br>
+									<a class="text" href="#seguimiento">2.2 Seguimiento</a><br>
+									<a class="text" href="#contenido">3. Contenido</a><br>
+									<a class="text" href="#disponibilidad">3.1 Disponibilidad</a><br>
+									<a class="text" href="#reglas">3.2 Reglas de uso</a><br>
+									<a class="text" href="#propiedad">3.3 Propiedad intelectual</a><br>
+									<a class="text" href="#desarrollador">4. Sobre el desarrollador</a><br>
 									<br>
 									<br>
-									</p><h4 id="servicio">1. El servicio</h4>
+									</p><h4 id="servicio" class="text">1. El servicio</h4>
 									<br>
-									<p style="text-align: justify">
+									<p class="text" style="text-align: justify">
 									Quivira es una editorial que le permite comprar y descargar contenido 
 									digital de su colección Novohispanorum ("Publicaciones"), a través de 
 									Chrome Store, para uso personal exclusivamente bajo los términos y las 
@@ -358,9 +349,9 @@
 									<br>
 									<br>
 									</p>
-									<h4 id="responsabilidad">1.1 Limitación de responsabilidad</h4>
+									<h4 id="responsabilidad" class="text">1.1 Limitación de responsabilidad</h4>
 									<br>
-									<p style="text-align: justify"> 
+									<p style="text-align: justify" class="text"> 
 									Quivira no garantiza ni declara que el uso del servicio estará libre de 
 									error y sea ininterrumpido, lo cual depende de su conexión a internet, 
 									de la capacidad de su computadora y de los conocimientos que usted tenga
@@ -410,11 +401,11 @@
 									<br>
 									<br>
 									</p>
-									<h4 id="privacidad">2. Privacidad</h4>
+									<h4 id="privacidad" class="text">2. Privacidad</h4>
 									<br>
-									<h4 id="cuenta">2.1 Su cuenta</h4>
+									<h4 id="cuenta" class="text">2.1 Su cuenta</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									La compra, el uso y acceso a las "publicaciones" es a través de Google 
 									Chrome Store y está relacionado con una cuenta de Google, por lo que 
 									usted necesita una cuenta activa para poder comprar las "publicaciones".
@@ -440,9 +431,9 @@
 									<br>
 									<br> 
 									</p> 
-									<h4 id="seguimiento">2.2 Seguimiento</h4>
+									<h4 id="seguimiento" class="text">2.2 Seguimiento</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									Las "publicaciones" emplean la herramienta de seguimiento de uso de 
 									Google Analytics, la cual  permite medir la forma en que el "usuario" 
 									interactúa con el contenido de la aplicación. Google Analytics emplea 
@@ -456,12 +447,12 @@
 									disposición, funcionalidad y experiencia que el "usuario" tiene con la 
 									aplicación.
 									<br> 
-									Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
+									Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a class="text" href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
 									<br>
 									</p> 
-									<h4 id="contenido">3. Contenido</h4>
+									<h4 id="contenido" class="text">3. Contenido</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									Quivira se compromete a publicar contenido fiable, verídico, con 
 									contenidos de alta calidad editorial que constituyan una referencia, 
 									ayuda y soporte al desarrollo de actividades culturales, sociales y 
@@ -477,9 +468,9 @@
 									descargada.
 									<br> 
 									</p>
-									<h4 id="disponibilidad">3.1 Disponibilidad del contenido</h4>
+									<h4 id="disponibilidad" class="text">3.1 Disponibilidad del contenido</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									Quivira se reserva el derecho de cambiar el diseño, las opciones de 
 									contenido, las funcionalidades de las "publicaciones" durante sus 
 									actualizaciones sin previo aviso, de acuerdo con su programa editorial y
@@ -490,9 +481,9 @@
 									funcionalidad en cantidad mínima.
 									<br>
 									</p>
-									<h4 id="reglas">3.2 Reglas de uso</h4>
+									<h4 id="reglas" class="text">3.2 Reglas de uso</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									Usted acepta que el uso de las "publicaciones" están determinadas por 
 									las Reglas de Uso que establezca Quivira de acuerdo con las leyes en 
 									materia de Derechos de Autor y Propiedad Intelectual vigentes. Cualquier
@@ -561,9 +552,9 @@
 									resultar en responsabilidad civil o penal en contra del "usuario".
 									<br>
 									</p> 
-									<h4 id="propiedad">3.3 Propiedad intelectual</h4>
+									<h4 id="propiedad" class="text">3.3 Propiedad intelectual</h4>
 									<br>
-									<p style="text-align: justify">
+									<p style="text-align: justify" class="text">
 									Usted acepta que las "publicaciones" y todo su contenido editorial, 
 									gráfico, visual, transcripciones, índices, notas explicativas, interfaz,
 									 logotipos, nombres de la colección o Quivira utilizados en las 
@@ -593,14 +584,14 @@
 									mencionadas.
 									<br>
 									</p> 
-									<h4 id="desarrollador">4. Sobre el desarrollador</h4>
+									<h4 id="desarrollador" class="text">4. Sobre el desarrollador</h4>
 									<br>
-									<p style="text-align: justify"> 
+									<p style="text-align: justify" class="text"> 
 									Quivira es una editorial constituida conforme las leyes mexicanas, la 
 									cual tiene como objeto la publicación y distribución de publicaciones a 
 									través de medios electrónicos e impresos sobre diversos temas.
 									<br> 
-									Si desea descargar una versión impresa de los términos y condiciones puede acceder a la página:  <a href="http://novohispanorum.mx/Novohispanorum/termsnovohipanorum.pdf">Términos y condiciones</a>
+									Si desea descargar una versión impresa de los términos y condiciones puede acceder a la página:  <a class="text" href="http://novohispanorum.mx/Novohispanorum/termsnovohipanorum.pdf">Términos y condiciones</a>
 									<br>
 									<br>
 									También puede escribir a la dirección quivira@edicionesquivira.com para cualquier aclaración o comentario.
@@ -622,7 +613,7 @@
 					        </div>
 					        <div class="modal-footer">
 						      <div class="col-md-12">
-						      	<button type="button" class="btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+						      	<button type="button" class="text btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
 						      </div>
 					        </div>
 				      	</div>
