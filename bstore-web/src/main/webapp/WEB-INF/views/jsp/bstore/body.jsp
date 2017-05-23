@@ -22,7 +22,7 @@
         <div class="row">
             
                 <div class="col-md-12" style="position: relative;">
-                    <div class="col-md-12" style="text-align: right;"><img style="width: 80%;border-radius:20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
+                    <div class="col-md-12" style="text-align: center;"><img style="width: 100%;border-radius:20px;height: 500px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
                     <div class="col-md-12" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
                         <c:if test="${!empty publicacionesActivas}">
                             <div style="text-align: center;">

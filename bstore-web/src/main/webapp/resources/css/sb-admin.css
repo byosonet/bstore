@@ -6,11 +6,6 @@
 
 /* Global Styles */
 
-body {
-    margin-top: 100px;
-    background-color: #fff;
-}
-
 @media(min-width:768px) {
     body {
         margin-top: 50px;
@@ -24,7 +19,6 @@ body {
 #page-wrapper {
     width: 100%;
     padding: 0;
-    background-color: #fff;
 }
 
 .huge {

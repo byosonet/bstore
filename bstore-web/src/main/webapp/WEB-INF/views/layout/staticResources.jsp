@@ -13,6 +13,26 @@
 <!-- NUEVO THEME PORTAL BSTORE -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/bootstrap.min.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/sb-admin.css">
+
+<style>
+    body {
+        margin-top: 100px;
+        background: url('${contextpath}/static/resources/img/web-background.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+
+    .wallpaper{
+        background: url('${contextpath}/static/resources/img/web-background.jpg') no-repeat center center fixed; 
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+    }
+</style>
+
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/plugins/morris.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/font-awesome/css/font-awesome.min.css">
 
