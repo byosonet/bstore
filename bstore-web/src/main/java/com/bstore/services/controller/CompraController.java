@@ -80,7 +80,7 @@ public class CompraController {
     EnviarEmailService enviarEmailService;
 
     @RequestMapping(value = "/comprar/publicacion/{id}", method = RequestMethod.GET)
-    public String getDetalleCompra(Model model, @PathVariable("id") int id,
+    public String getDetalleCompra(Model model, @PathVariable("id") String id,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
         log.info("Cargando detalle de compra: " + NAME_CONTROLLER);
 
@@ -91,9 +91,18 @@ public class CompraController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Publicacion publicacion = this.publicacionService.getPublicacion(id);
-        model.addAttribute("publicacion", publicacion);
-
+        
+        int idGenerado = 0;
+        try{
+            idGenerado = Integer.valueOf(id);
+            Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
+            model.addAttribute("publicacion", publicacion);
+        }catch(Exception ex){
+            log.info("Error al procesar: /comprar/publicacion/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
+        
         return "detalleCompra";
     }
 
@@ -131,11 +140,20 @@ public class CompraController {
     }
 
     @RequestMapping(value = "/pagar/publicacion/{id}", method = RequestMethod.POST)
-    public String pagarPublicacion(Model model, @PathVariable("id") int id,
+    public String pagarPublicacion(Model model, @PathVariable("id") String id,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         log.info("Controller::: " + NAME_CONTROLLER);
         log.info("Procesar compra de publicacion con ID::: " + id);
+        
+        int idGenerado = 0;
+        try{
+            idGenerado = Integer.valueOf(id);
+        }catch(Exception ex){
+            log.info("Error al procesar: /pagar/publicacion/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
 
         HttpSession session = (HttpSession) request.getSession(false);
         String result = ValidarSesion.validarSesionUsuarioActual(session);
@@ -145,7 +163,7 @@ public class CompraController {
         }
         log.info("Sesion activa Token === " + result);
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        Publicacion publicacion = this.publicacionService.getPublicacion(id);
+        Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
         /*String nombre = request.getParameter("nombre");
 		  String cvv = request.getParameter("cvv");
 		  String fechaExpriacionMes = request.getParameter("fechaExpiracionMes");
@@ -233,7 +251,7 @@ public class CompraController {
                 compra.setPhoneUser(responseCharge.getDetails().getPhone());
                 compra.setEmailUser(responseCharge.getDetails().getEmail());
 
-                compra.setPrecioOriginal(this.publicacionService.precioRealPublicacion(id));
+                compra.setPrecioOriginal(this.publicacionService.precioRealPublicacion(idGenerado));
                 compra.setDescuentoOriginal(publicacion.getDescuento());
                 Properties valuePorcentaje = this.propertyService.getValueKey(VALUE_PERCENTAGE);
                 Properties valueCantidad = this.propertyService.getValueKey(VALUE_AMOUNT);
@@ -296,11 +314,20 @@ public class CompraController {
     }
 
     @RequestMapping(value = "/pagar/publicacion/gratis/{id}", method = RequestMethod.POST)
-    public String pagarPublicacionGratis(Model model, @PathVariable("id") int id,
+    public String pagarPublicacionGratis(Model model, @PathVariable("id") String id,
             HttpServletRequest request, HttpServletResponse response) throws IOException {
 
         log.info("Controller::: " + NAME_CONTROLLER);
         log.info("Procesar compra de publicacion con ID::: " + id);
+        
+        int idGenerado = 0;
+        try{
+            idGenerado = Integer.valueOf(id);
+        }catch(Exception ex){
+            log.info("Error al procesar: /pagar/publicacion/gratis/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
 
         HttpSession session = (HttpSession) request.getSession(false);
         String result = ValidarSesion.validarSesionUsuarioActual(session);
@@ -310,7 +337,7 @@ public class CompraController {
         }
         log.info("Sesion activa Token === " + result);
         Usuario usuario = (Usuario) session.getAttribute("usuario");
-        Publicacion publicacion = this.publicacionService.getPublicacion(id);
+        Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
         
         if(publicacion==null){
             log.info("-- Estan intentando procesar una compra con una publicacion invalida");
@@ -361,7 +388,7 @@ public class CompraController {
             compra.setPhoneUser(usuario.getTelefono()!= null ? usuario.getTelefono():"NA");
             compra.setEmailUser(usuario.getEmail());
 
-            compra.setPrecioOriginal(this.publicacionService.precioRealPublicacion(id));
+            compra.setPrecioOriginal(this.publicacionService.precioRealPublicacion(idGenerado));
             compra.setDescuentoOriginal(publicacion.getDescuento());
             Properties valuePorcentaje = this.propertyService.getValueKey(VALUE_PERCENTAGE);
             Properties valueCantidad = this.propertyService.getValueKey(VALUE_AMOUNT);

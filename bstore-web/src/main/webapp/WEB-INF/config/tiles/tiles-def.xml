@@ -25,6 +25,12 @@
 		<put-attribute name="header" value="Publicaciones"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicaciones.jsp"/>
 	</definition>
+        
+        <definition name="muestraError" extends="principal">
+		<put-attribute name="header" value="Error"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/errorPageLibrero.jsp"/>
+	</definition>
+        
 	<definition name="publicacionesAdmin" extends="principal">
 		<put-attribute name="header" value="Publicaciones"/>
 		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/publicacionAdmin.jsp"/>
