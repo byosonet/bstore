@@ -11,7 +11,8 @@
     font-family: verdana;
 }
 .text{
-	font-family: monospace;
+	font-family: 'Architects Daughter', cursive;
+        font-size: 125%;
 }
 .zoom{
 	border-radius:10px;

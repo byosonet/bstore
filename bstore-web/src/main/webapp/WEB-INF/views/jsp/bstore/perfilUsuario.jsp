@@ -207,7 +207,7 @@
             <form class="form-horizontal" id="formRegistrar">
             	<input type="hidden" name="idUsuario" value="${usuario.id}">
             	<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;">Informaci&oacute;n de Usuario</div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>1.- DATOS DEL USUARIO</b></div>
                 </div>
                 
                 <div class="form-group">
@@ -263,7 +263,7 @@
                 </br>
                 </br>
                 <div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;">Datos personales (Fecha Nacimiento)</div>
+                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b>2.- DATOS ADICIONALES</b></div>
                 </div>
                 
                 <div class="form-group">
