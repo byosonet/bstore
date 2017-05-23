@@ -2,44 +2,37 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <c:set var="urlhref"><spring:message code="url.menu.href"/></c:set>
-
-
-    <html>
-        <head>
-
-            <title>Novohispanorum</title>
-            <meta name="author" content="Ediciones Quivira : Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía">
-            <meta name="description" content=" Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI, XVII y XVIII del Oficio de la Santa Inquisición del Virreinato de la Nueva España.">
-            <meta name="keywords" content="virreinato de méxico, reino de portugal, tribunal santa inquisición, historia de méxico, juicio inquisitorial, estudios novohispanos">
-            <meta name="geo.placename" content="Mexico" />
-            <meta name="geo.position" content="x;x" />
-            <meta name="geo.region" content="MX" />
-            <meta name="ICBM" content="x,x" />
-            <link rel="alternate" hreflang="es-mx" href="www.novohispanorum.com">
-            <meta name="googlebot" content="..., ..." />
-
-            <!-- Dublin Core MetaData================================================== -->
-            <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-            <meta name="DC.Title" content="Novohispanorum">
-            <meta name="DC.Creator" content="Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
-            <meta name="DC.Subject" content="Librero Novohispanorum">
-            <meta name="DC.Description" content="Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI y XVII del Oficio de la Santa Inquisición del Virreinato de la Nueva España. ">
-            <meta name="DC.Publisher" content="Ediciones Quivira, S.A. de C.V.">
-            <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Programación; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
-            <meta name="DC.Date" content="2017-05-15">
-            <meta name="DC.Type" content="txt">
-            <meta name="DC.Type" content="image">
-            <meta name="DC.Format" content="txt/html">
-            <link rel="DC.Identifier" href="http://www.novohispanorum.mx/index.html">
-            <meta name="DC.Source" content="Novohispanorum">
-            <meta name="DC.Language" content="ES">
-            <meta name="DC.Relation" content="Digital editions">
-            <meta name="DC.Coverage" content="México">
-            <meta name="DC.Coverage" content="Nueva España">
-            <meta name="DC.Rights" content="Copyright 2010-2017, Ediciones Quivira, S.A. de C.V. All rights reserved.">
-
+<html>
+<head>
+    <title>Novohispanorum</title>
+    <meta name="author" content="Ediciones Quivira : Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía">
+    <meta name="description" content=" Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI, XVII y XVIII del Oficio de la Santa Inquisición del Virreinato de la Nueva España.">
+    <meta name="keywords" content="virreinato de méxico, reino de portugal, tribunal santa inquisición, historia de méxico, juicio inquisitorial, estudios novohispanos">
+    <meta name="geo.placename" content="Mexico" />
+    <meta name="geo.position" content="x;x" />
+    <meta name="geo.region" content="MX" />
+    <meta name="ICBM" content="x,x" />
+    <link rel="alternate" hreflang="es-mx" href="www.novohispanorum.com">
+    <meta name="googlebot" content="..., ..." />
+    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+    <meta name="DC.Title" content="Novohispanorum">
+    <meta name="DC.Creator" content="Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
+    <meta name="DC.Subject" content="Librero Novohispanorum">
+    <meta name="DC.Description" content="Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI y XVII del Oficio de la Santa Inquisición del Virreinato de la Nueva España. ">
+    <meta name="DC.Publisher" content="Ediciones Quivira, S.A. de C.V.">
+    <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Programación; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
+    <meta name="DC.Date" content="2017-05-15">
+    <meta name="DC.Type" content="txt">
+    <meta name="DC.Type" content="image">
+    <meta name="DC.Format" content="txt/html">
+    <link rel="DC.Identifier" href="http://www.novohispanorum.mx/index.html">
+    <meta name="DC.Source" content="Novohispanorum">
+    <meta name="DC.Language" content="ES">
+    <meta name="DC.Relation" content="Digital editions">
+    <meta name="DC.Coverage" content="México">
+    <meta name="DC.Coverage" content="Nueva España">
+    <meta name="DC.Rights" content="Copyright 2010-2017, Ediciones Quivira, S.A. de C.V. All rights reserved.">
         <jsp:include page="staticResources.jsp"></jsp:include>
-
             <script type="text/javascript">
                 $(document).ready(function () {
                     $('a#showMenu').hide();
@@ -123,43 +116,8 @@
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
-                    <c:if test="${not empty ultimasCompras}">
-                        <!--<li class="dropdown">
-                            <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-envelope"></i> Compras recientes <b class="caret"></b></a>
-                            <ul class="dropdown-menu message-dropdown">
-                        <c:forEach var="publicacion" items="${ultimasCompras}">
-                                <li class="message-preview">
-                                    <a href="${contextpath}/publicacion/${publicacion.id}">
-                                        <div class="media">
-                                            <span class="pull-left">
-                                                <img alt="" src="${contextpath}/static/resources/img/user.png" class="media-object" style="width: 20px;height: 20px">
-                                            </span>
-                                            <div class="media-body">
-                                                <h5 class="media-heading"><strong><c:out value="${sessionScope.usuario.email}"/></strong>
-                                                </h5>
-                                                <p class="small text-muted"><i class="fa fa-fw fa-calendar"></i> Comprado el <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd-MM-yyyy HH:mm:ss"/></p>
-                                                <p class="small text-muted"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombre}"/></p>
-                                                <p class="small text-muted"><i class="fa fa-fw fa-user"></i> <c:out value="${publicacion.fuente.autor}"/></p>
-                                                <p class="small text-muted"><i class="fa fa-fw fa-check"></i> ISBN <c:out value="${publicacion.isbn}"/></p>
-                                            </div>
-                                        </div>
-                                    </a>
-                                </li>
-                        </c:forEach>
-                    </ul>
-                </li>-->
-                    </c:if>
-                    <!-- <li class="dropdown">
-                    <c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
-                    <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Administrador </a>
-                    </c:if>
-                    <c:if test="${sessionScope.usuario.perfil.nombre == 'LECTOR'}">
-                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-fw fa-key"></i> Nivel: Lector </a>
-                    </c:if>
-                    
-                </li>-->
                     <li class="dropdown">
-                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><i class="fa fa-user"></i> Hola <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
+                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class="fa fa-user"></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="text" href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
@@ -215,9 +173,6 @@
                                     <li>
                                         <a class="text" style="color: white;" href="${contextpath}/fuente/getAll"><i class="fa fa-fw fa-folder-open"></i> Fuentes</a>
                                     </li>
-                                    <!-- li>
-                                        <a style="color: white;" href="${contextpath}/perfil/getAll"><i class="fa fa-fw fa-folder-open"></i> Perfiles</a>
-                                    </li-->
                                     <li>
                                         <a class="text" style="color: white;" href="${contextpath}/publicacion/getAll"><i class="fa fa-fw fa-folder-open"></i> Publicaciones</a>
                                     </li>
@@ -234,21 +189,9 @@
                         <tiles:insertAttribute name="contenido" />
                     </div>
                 </div>
-
-                <!-- Footer pagina -->
-                <!-- <div class="row" style="margin:5px;">
-                    <br>
-                    <br>
-                <p style="text-align: center;" class="alert alert-success"><b>Copyright &copy; 2010 - 2016 | Ediciones Quivira</b></p>
-                </div>-->
-
             </div>
         </div>
-
-        <form id="regresar">
-            <input type="hidden" id="cifrar" name="cifrar" value="${cifrar}">
-        </form>
-        <form id="index">
-        </form>
+        <form id="regresar"><input type="hidden" id="cifrar" name="cifrar" value="${cifrar}"></form>
+        <form id="index"></form>
     </body>
 </html>
