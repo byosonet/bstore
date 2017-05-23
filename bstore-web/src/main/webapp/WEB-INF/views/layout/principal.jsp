@@ -40,10 +40,6 @@
 
     <jsp:include page="staticResources.jsp"></jsp:include>
     
-    <style type="text/css">
-		html * {font-family: Verdana;font-size: 12;}
-	</style>
-    
     	<script type="text/javascript">
             $(document).ready(function() { 
             	    $('a#showMenu').hide();

@@ -56,7 +56,7 @@
                 <p class="text">En la mayoría de los casos, generamos nuestros propios contenidos, en los cuales intervienen colaboradores y especialistas que enriquecen las colecciones de nuestro acervo.</p>
                 
                 <div style="float: right;">
-                    <p style="float: left;padding: 5px">Vis&iacute;tanos en: </p>
+                    <p style="float: left;padding: 5px" class="text">Vis&iacute;tanos en: </p>
                     <a href="https://www.facebook.com/edicionesquivira?ref=hl" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/facebook.png"></a>
                     <a href="https://twitter.com/equivira" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/twitter.png"></a>
                     <a href="https://plus.google.com/+Edicionesquivira666/videos" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/googleplus.png"></a>

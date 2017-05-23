@@ -9,10 +9,6 @@
   <title>eQuivira</title>
   <jsp:include page="./WEB-INF/views/layout/staticResources.jsp"></jsp:include>
 
-  <style type="text/css">
-	html * {font-family: Verdana;font-size: 12;}
-  </style>
-
   
   <script type="text/javascript">
       $(function(){
