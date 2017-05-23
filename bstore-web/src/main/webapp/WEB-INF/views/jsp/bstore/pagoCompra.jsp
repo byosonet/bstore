@@ -56,8 +56,8 @@ $(document).ready(function() {
 			
 				<div class="form-group">
 					 <br>
-                    <label class="control-label col-sm-6">Tu pago fu&eacute; realizado con: </label>
-                    <div class="col-sm-6">
+                    <label class="control-label col-sm-6">Detalle de tu pago: </label>
+                    <div class="col-sm-6" style="${publicacion.precio == '0.00'?'display:none;':''}">
                        <div class="">
                        		<c:choose>
                        			<c:when test="${compra.brandCard == 'mc'}">

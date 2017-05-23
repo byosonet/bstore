@@ -1,6 +1,7 @@
 package com.bstore.services.util;
 
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.sql.Timestamp;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -12,6 +13,7 @@ import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
 import javax.crypto.spec.SecretKeySpec;
 import org.apache.commons.codec.binary.Base64;
+import org.apache.commons.lang.RandomStringUtils;
 
 /**
  *
@@ -110,5 +112,24 @@ public class UtilService {
     public static Timestamp getFechaTimeStamp(){
         Timestamp stamp = new Timestamp(System.currentTimeMillis());
         return stamp;
+    }
+    
+    public static String generateTokenMD5() {
+        MessageDigest md;
+        try {
+            md = MessageDigest.getInstance("MD5");
+        } catch (NoSuchAlgorithmException e) {
+            System.out.println("No se puede calcular HASH MD5:" + e.getMessage());
+            throw new RuntimeException(e);
+        }
+
+        StringBuilder hexString = new StringBuilder();
+        byte[] data = md.digest(RandomStringUtils.randomAlphabetic(10).getBytes());
+        for (int i = 0; i < data.length; i++) {
+            hexString.append(Integer.toHexString((data[i] >> 4) & 0x0F));
+            hexString.append(Integer.toHexString(data[i] & 0x0F));
+        }
+        System.out.println("HASH MD5 Calculado === " + hexString.toString());
+        return hexString.toString();
     }
 }

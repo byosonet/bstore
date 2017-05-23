@@ -33,7 +33,8 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 	private final int ID_PLANTILLA_BAJA = 4;
 	
 	private final String BRAND_CARD_VISA = "VISA";
-	private final String BRAND_CARD_MC = "MASTERCARD";
+	private final String BRAND_CARD_MC = "MC";
+        private final String BRAND_CARD_NA = "NA";
 	
 	@Autowired
     JavaMailSender mailSender;
@@ -169,7 +170,18 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
         context.put("fechaCompra", dateBuy);
         context.put("numeroTransaccion", compra.getIdConekta());
         context.put("numeroAutorizacion", compra.getAuthCodeCard());
-        context.put("tipoTarjeta", compra.getBrandCard().equalsIgnoreCase("visa")?BRAND_CARD_VISA:BRAND_CARD_MC);
+        
+        String formaPago = "";
+        if(BRAND_CARD_VISA.equalsIgnoreCase(compra.getBrandCard())){
+            formaPago = BRAND_CARD_VISA;
+        }else if(BRAND_CARD_MC.equalsIgnoreCase(compra.getBrandCard())){
+            formaPago = BRAND_CARD_MC;
+        }else if(BRAND_CARD_NA.equalsIgnoreCase(compra.getBrandCard())){
+            formaPago = BRAND_CARD_NA;
+        }
+        
+        context.put("tipoTarjeta", formaPago);
+        
         context.put("ultimoNumeroTarjeta", compra.getLast4Card());
         context.put("total", compra.getPrecioCompra());
         
