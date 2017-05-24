@@ -32,7 +32,7 @@ import com.bstore.services.util.ValidarSesion;
 @Controller
 public class PerfilController {
 	private final Logger log = Logger.getLogger(PerfilController.class);
-	private static final String NAME_CONTROLLER = "[--PerfilController--]";
+	private static final String NAME_CONTROLLER = "[PerfilController]";
 	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
 	private final String DOMAIN_BSTORE = "com.domain.quivira";
 	
@@ -109,7 +109,7 @@ public class PerfilController {
 	        	responseLocal.setCodigo("404");
 	        	responseLocal.setMensaje("Este login ya ha sido utilizado, "+login);
 	        } else if(user!=null){
-	            this.log.info(" -- Usuario encontrado: "+user.toString());
+	            this.log.info("Usuario encontrado: "+user.toString());
 	            if(!user.getPassword().equalsIgnoreCase(passwordUsuario1)){
 	            	String encriptarPassword = UtilService.Encriptar(passwordUsuario1);
 	            	user.setPassword(encriptarPassword);
@@ -129,24 +129,24 @@ public class PerfilController {
 	            String dateInString = dia+"/"+mes+"/"+anio;
 	            try {
 	                Date date = formatter.parse(dateInString);
-	                this.log.info(" -- Año de Nacimiento: " + date);
+	                this.log.info("Año de Nacimiento: " + date);
 	                if (LoginController.validaFecha(dateInString)) {
-	                    this.log.info(" -- Fecha es Valida: " + date);
+	                    this.log.info("Fecha es Valida: " + date);
 	                    user.setFechaNacimiento(date);
 	                } else {
-	                    this.log.info(" -- Fecha Invalida: " + dateInString);
+	                    this.log.info("Fecha Invalida: " + dateInString);
 	                    ErrorService data = new ErrorService();
 	                    data.setCodigo("404");
 	                    data.setMensaje("La fecha de nacimiento es inválida: "+dateInString);
 	                    return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
 	                }
 	            } catch (ParseException e) {
-	                this.log.error(" -- Error al crear la fecha de nacimiento: " + e.getMessage());
+	                this.log.error("Error al crear la fecha de nacimiento: " + e.getMessage());
 	            }
 	            
 	            this.usuarioService.actualizarDatosUsuario(user);
 	            
-	            this.log.info(" -- El usuario fue actualizado");
+	            this.log.info("El usuario fue actualizado");
 	            responseLocal.setCodigo("200");
 	            responseLocal.setMensaje("La información fue actualizada con éxito.");
 	            status = HttpStatus.OK;
@@ -179,28 +179,28 @@ public class PerfilController {
 	        Usuario user = this.usuarioService.byIdUser(Integer.valueOf(idUsuario));
 	        if(user!=null){
 	        		try {
-	            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
-	            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
+	            	   this.log.info("Url request actual::: "+request.getRequestURL());
+	            	   this.log.info("Url request actual::: "+request.getRequestURL());
 	            	   String urlServer = this.propertyService.getValueKey(DOMAIN_BSTORE).getValue();
 	            	   String emailEncriptado = UtilService.Encriptar(user.getEmail());
 	            	   String nuevaUrlParaConfirmacion = urlServer + "/"
 	            			   + "confirmarBajaDeTuCuenta?token="+emailEncriptado;
 	            	   
-	            	   this.log.info("-- Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
+	            	   this.log.info("Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
 	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), user,nuevaUrlParaConfirmacion);
-	                   this.log.info(" -- Enviado");
-	                   this.log.info(" -- Se envia a usuario confirmacion para cancelacion de cuenta: "+user.getEmail());
+	                   this.log.info("Enviado");
+	                   this.log.info("Se envia a usuario confirmacion para cancelacion de cuenta: "+user.getEmail());
 			           responseLocal.setCodigo("200");
 			           responseLocal.setMensaje("Se ha enviado un correo a tu cuenta, para que confirmes la baja del servicio.");
 			           status = HttpStatus.OK;
 	        		} catch (Exception ex) {
-	                   this.log.error(" -- No se puedo enviar mail de baja de cuenta: "+ex.getMessage());
+	                   this.log.error("No se puedo enviar mail de baja de cuenta: "+ex.getMessage());
 	                   responseLocal.setCodigo("404");
 			           responseLocal.setMensaje("Por el momento no ha sido posible continuar con el proceso, intenta más tarde.");
 			           return new ResponseEntity<ErrorService>(responseLocal, HttpStatus.NOT_FOUND);
 	               	}
 	        }else{
-	        	 this.log.info(" -- Usuario no tiene cuenta valida");
+	        	 this.log.info("Usuario no tiene cuenta valida");
 		            responseLocal.setCodigo("404");
 		            responseLocal.setMensaje("Por el momento no ha sido posible continuar con el proceso, intenta más tarde.");
 		            return new ResponseEntity<ErrorService>(responseLocal, HttpStatus.NOT_FOUND);

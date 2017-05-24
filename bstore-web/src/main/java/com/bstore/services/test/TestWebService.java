@@ -52,7 +52,7 @@ public class TestWebService {
     temp2 = temp2.replace("&#xF3;", "ó");
     temp2 = temp2.replace("&#xE9;", "é");
     
-    System.out.println(" -- Xml Banxico: "+temp2);
+    System.out.println("Xml Banxico: "+temp2);
     sc.close();
     inputStream.close();
     }

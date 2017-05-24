@@ -23,7 +23,7 @@ public class PlantillaServiceImpl implements PlantillaService {
 			try {
 				this.logger.info("Mail Obtenido: "+plantilla.convertClobToString(plantilla.getPlantilla()));
 			} catch (Exception e) {
-				this.logger.error(" -- Error: "+e.getMessage());
+				this.logger.error("Error: "+e.getMessage());
 				e.printStackTrace();
 			}
 		}

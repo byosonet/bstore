@@ -10,7 +10,7 @@ public class PlantillaDaoImpl extends HibernateDaoSupport implements PlantillaDa
 	private final Logger log = Logger.getLogger(PlantillaDaoImpl.class);
 
 	public Plantilla getPlantillaHTMl(int idPlantilla) {
-        this.log.info(" -- Obteniendo html para el Id: "+idPlantilla);
+        this.log.info("Obteniendo html para el Id: "+idPlantilla);
         return (Plantilla) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Plantilla p WHERE p.id = :idPlantilla")
                 .setParameter("idPlantilla", idPlantilla)

@@ -17,7 +17,7 @@ public class PropertyServiceImpl implements PropertyService{
 	@Override
 	@Transactional
 	public Properties getValueKey(String key) {
-		 this.log.info(" -- Obteniendo valor de la propiedad::::");
+		 this.log.info("Obteniendo valor de la propiedad::::");
 	        Properties prop = this.propertyDao.getValueByKey(key);
 	        if(prop!=null){
 	        	return prop;

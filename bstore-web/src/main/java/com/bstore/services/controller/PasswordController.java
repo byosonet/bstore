@@ -44,13 +44,13 @@ public class PasswordController {
         String email = request.getParameter("email");
         String confEmail = request.getParameter("confEmail");
         HttpStatus status = HttpStatus.NOT_FOUND;
-        this.log.info(" -- Request recibido emai: "+email);
-        this.log.info(" -- Request recibido emai: "+confEmail);
+        this.log.info("Request recibido emai: "+email);
+        this.log.info("Request recibido emai: "+confEmail);
         
         ErrorService response = new ErrorService();
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
-            this.log.info(" -- Enviar email de password a usuario: "+user.getNombre());
+            this.log.info("Enviar email de password a usuario: "+user.getNombre());
             response.setCodigo("202");
             response.setMensaje("Hola "+user.getNombre()+", tu password ha sido enviado a: "+user.getEmail());
             status = HttpStatus.OK;
@@ -58,16 +58,16 @@ public class PasswordController {
             try
             {
                 this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(),user);
-                this.log.info(" -- El correo fue enviado con tu password a: " + email);
+                this.log.info("El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
                  response.setCodigo("404");
                  response.setMensaje("Por el momento no se pudo enviar tu password a tu correo, intenta más tarde.");
                  status = HttpStatus.NOT_FOUND;
-                 this.log.info(" -- El password no pudo ser enviado por el sistema");    
+                 this.log.info("El password no pudo ser enviado por el sistema");    
             }
             
         }else{
-            this.log.info(" -- Este email no esta registrado en el sistema");
+            this.log.info("Este email no esta registrado en el sistema");
             response.setCodigo("404");
             response.setMensaje("Este email "+email+" no ha sido registrado en el sistema.");
         }

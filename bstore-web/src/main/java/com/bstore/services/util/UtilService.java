@@ -24,10 +24,10 @@ public class UtilService {
 	public static void main (String args[]){
 		String mail = "prueba@gmail.com";
 		String token = Encriptar(mail);
-		System.out.println("-- Encriptar mail: "+mail);
-		System.out.println("-- Encriptado: "+token);
+		System.out.println("Encriptar mail: "+mail);
+		System.out.println("Encriptado: "+token);
 		try{
-		System.out.println("-- Desencriptado:  "+Desencriptar(token));
+		System.out.println("Desencriptado:  "+Desencriptar(token));
 		}catch(Exception ex){
 			ex.printStackTrace();
 		}
@@ -104,7 +104,7 @@ public class UtilService {
             age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR)) + factor;
             return age;
         } catch (ParseException e) {
-            System.err.println(" -- No se puede calcular la edad");
+            System.err.println("No se puede calcular la edad");
             return -1;
         }
     }

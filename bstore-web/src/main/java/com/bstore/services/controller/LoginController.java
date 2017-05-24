@@ -76,10 +76,10 @@ public class LoginController {
 	  HttpSession session= request.getSession(true);
       String requestEmail = request.getParameter("user");
       String requestPassword = request.getParameter("password");  
-      this.log.info(" -- Ingresando al sistema");
-      this.log.info(" -- Request: "+request);
-      this.log.info(" -- User: "+requestEmail);
-      this.log.info(" -- Password: "+requestPassword);
+      this.log.info("Ingresando al sistema");
+      this.log.info("Request: "+request);
+      this.log.info("User: "+requestEmail);
+      this.log.info("Password: "+requestPassword);
       
       if(requestEmail!=null && requestPassword!=null){
           String user = requestEmail;
@@ -87,7 +87,7 @@ public class LoginController {
           String encriptarPassword = UtilService.Encriptar(password);
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
           if(usuario!=null){
-              this.log.info(" -- Ingresando al sistema como: "+usuario.getNombre());
+              this.log.info("Ingresando al sistema como: "+usuario.getNombre());
               try {
             	  String cifrar = UtilService.Encriptar(usuario.getEmail()+";"+password);
                   model.addAttribute("cifrar",cifrar);
@@ -136,10 +136,10 @@ public class LoginController {
    
    @RequestMapping(value="/validar/usuario",method = RequestMethod.POST)
    public ResponseEntity<ErrorService> validar(Model model, HttpServletRequest request) {
-      this.log.info(" -- Ingresando al sistema");
-      this.log.info(" -- Request: "+request.toString());
-      this.log.info(" -- User: "+request.getParameter("user"));
-      this.log.info(" -- Password: "+request.getParameter("password"));
+      this.log.info("Ingresando al sistema");
+      this.log.info("Request: "+request.toString());
+      this.log.info("User: "+request.getParameter("user"));
+      this.log.info("Password: "+request.getParameter("password"));
       
       if(request.getParameter("user")!=null && request.getParameter("password")!=null){
           String user = request.getParameter("user");
@@ -149,7 +149,7 @@ public class LoginController {
           Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
             
           if(usuario!=null){
-              this.log.info(" -- Usuario correcto");
+              this.log.info("Usuario correcto");
               ErrorService data = new ErrorService();
               data.setCodigo("200");
               data.setMensaje("Hola Bienvenido: "+usuario.getNombre());
@@ -162,7 +162,7 @@ public class LoginController {
           }
       }
       
-    this.log.info(" -- Usuario incorrecto");
+    this.log.info("Usuario incorrecto");
     ErrorService data = new ErrorService();
     data.setCodigo("404");
     data.setMensaje("Esta email y password no ha sido registrado: "+request.getParameter("user"));
@@ -180,16 +180,16 @@ public class LoginController {
 		String token="";
     	try {
 			token = request.getParameter("token");
-			this.log.info("-- Token recibido ="+token);
+			this.log.info("Token recibido ="+token);
 			String email = UtilService.Desencriptar(token);
-			this.log.info("-- Email: "+ email);
+			this.log.info("Email: "+ email);
 			Usuario usuario = this.usuarioService.validaEmailSistema(email);
 			if (usuario != null) {
 				usuario.setEstatus(1);
 				this.usuarioService.actualizarDatosUsuario(usuario);
 				model.addAttribute("activado", true);
 				model.addAttribute("email", email);
-				this.log.info("-- Activacion de cuenta correcta para: "+email);
+				this.log.info("Activacion de cuenta correcta para: "+email);
 				HttpSession session = (HttpSession) request.getSession(false);
 				session.removeAttribute("menu");
 				session.removeAttribute("usuario");
@@ -197,14 +197,14 @@ public class LoginController {
 				session.removeAttribute("ultimasCompras");
 				session.removeAttribute("publicacionesActivas");
 				session.invalidate();
-				log.info("-- Removiendo datos de la session");
+				log.info("Removiendo datos de la session");
 			}else{
 				model.addAttribute("activado", false);
 				model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
-				this.log.info("-- No se puede activar cuenta email/token invalido: "+email);
+				this.log.info("No se puede activar cuenta email/token invalido: "+email);
 			}
 		} catch (Exception ex) {
-			this.log.error("-- Error al descifrar el token para activacion de cuenta ===-> "+token);
+			this.log.error("Error al descifrar el token para activacion de cuenta ===-> "+token);
 			model.addAttribute("activado", false);
 			model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
 			ex.printStackTrace();
@@ -217,20 +217,20 @@ public class LoginController {
 		String token="";
     	try {
 			token = request.getParameter("token");
-			this.log.info("-- Token recibido ="+token);
+			this.log.info("Token recibido ="+token);
 			String email = UtilService.Desencriptar(token);
-			this.log.info("-- Email: "+ email);
+			this.log.info("Email: "+ email);
 			Usuario usuario = this.usuarioService.validaEmailSistema(email);
 			if (usuario != null) {
 				Timestamp stamp = new Timestamp(System.currentTimeMillis());
-		        this.log.info(" -- Fecha de Baja::: "+stamp);
+		        this.log.info("Fecha de Baja::: "+stamp);
 		        Date fechaBaja = new Date(stamp.getTime());
 				usuario.setEstatus(2);
 				usuario.setFechaBaja(fechaBaja);
 				this.usuarioService.actualizarDatosUsuario(usuario);
 				model.addAttribute("baja", true);
 				model.addAttribute("email", email);
-				this.log.info("-- Cancelacion de cuenta correcta para: "+email);
+				this.log.info("Cancelacion de cuenta correcta para: "+email);
 				HttpSession session = (HttpSession) request.getSession(false);
 				session.removeAttribute("menu");
 				session.removeAttribute("usuario");
@@ -238,14 +238,14 @@ public class LoginController {
 				session.removeAttribute("ultimasCompras");
 				session.removeAttribute("publicacionesActivas");
 				session.invalidate();
-				log.info("-- Removiendo datos de la session");
+				log.info("Removiendo datos de la session");
 			}else{
 				model.addAttribute("baja", false);
 				model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
-				this.log.info("-- No se puede desactivar cuenta email/token invalido: "+email);
+				this.log.info("No se puede desactivar cuenta email/token invalido: "+email);
 			}
 		} catch (Exception ex) {
-			this.log.error("-- Error al descifrar el token para desactivacion de cuenta ===-> "+token);
+			this.log.error("Error al descifrar el token para desactivacion de cuenta ===-> "+token);
 			model.addAttribute("baja", false);
 			model.addAttribute("emailApp", this.propertyService.getValueKey(EMAIL_SYSTEM).getValue());
 			ex.printStackTrace();
@@ -275,30 +275,30 @@ public class LoginController {
         Usuario userLogin = this.usuarioService.validaLoginSistema(login);
         if(user == null){
         	if(userLogin!=null){
-        		this.log.info(" -- Usuario ya se encuentra en sistema registrado");
+        		this.log.info("Usuario ya se encuentra en sistema registrado");
                 ErrorService data = new ErrorService();
                 data.setCodigo("404");
                 data.setMensaje("Este login ya ha sido registrado con anterioridad: "+login);
                 return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
         	}
-            this.log.info(" -- Agregando nuevo usuario:");
-            this.log.info(" -- Nombre: "+nombre);
-            this.log.info(" -- Email: "+email);
-            this.log.info(" -- Password: "+password);
-            this.log.info(" -- Sexo: "+sexo);
-            this.log.info(" -- Acepto condiciones: "+condiciones);
-            this.log.info(" -- Notificar: "+notificar);
-            this.log.info(" -- Dia: "+dia);
-            this.log.info(" -- Mes: "+mes);
-            this.log.info(" -- Anio: "+anio);
-            this.log.info(" -- Actividad: "+actividad);
-            this.log.info(" -- Apaterno: "+apaterno);
-            this.log.info(" -- Amaterno: "+amaterno);
-            this.log.info(" -- Login: "+login);
-            this.log.info(" -- Telefono: "+telefono);
+            this.log.info("Agregando nuevo usuario:");
+            this.log.info("Nombre: "+nombre);
+            this.log.info("Email: "+email);
+            this.log.info("Password: "+password);
+            this.log.info("Sexo: "+sexo);
+            this.log.info("Acepto condiciones: "+condiciones);
+            this.log.info("Notificar: "+notificar);
+            this.log.info("Dia: "+dia);
+            this.log.info("Mes: "+mes);
+            this.log.info("Anio: "+anio);
+            this.log.info("Actividad: "+actividad);
+            this.log.info("Apaterno: "+apaterno);
+            this.log.info("Amaterno: "+amaterno);
+            this.log.info("Login: "+login);
+            this.log.info("Telefono: "+telefono);
 
             Timestamp stamp = new Timestamp(System.currentTimeMillis());
-            this.log.info(" -- Fecha de Alta::: "+stamp);
+            this.log.info("Fecha de Alta::: "+stamp);
             Date fechaAlta = new Date(stamp.getTime());
             Usuario usuario = new Usuario();
             usuario.setNombre(nombre);
@@ -319,63 +319,63 @@ public class LoginController {
             String dateInString = dia+"/"+mes+"/"+anio;
             try {
                 Date date = formatter.parse(dateInString);
-                this.log.info(" -- Año de Nacimiento: " + date);
+                this.log.info("Año de Nacimiento: " + date);
                 if (LoginController.validaFecha(dateInString)) {
-                    this.log.info(" -- Fecha es Valida: " + date);
+                    this.log.info("Fecha es Valida: " + date);
                     usuario.setFechaNacimiento(date);
                 } else {
-                    this.log.info(" -- Fecha Invalida: " + dateInString);
+                    this.log.info("Fecha Invalida: " + dateInString);
                     ErrorService data = new ErrorService();
                     data.setCodigo("404");
                     data.setMensaje("La fecha de nacimiento es inválida: "+dateInString);
                     return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
                 }
             } catch (ParseException e) {
-                this.log.error(" -- Error al crear la fecha de nacimiento: " + e.getMessage());
+                this.log.error("Error al crear la fecha de nacimiento: " + e.getMessage());
             }
             int edad = UtilService.calcularEdad(dateInString);
-            this.log.info(" -- La edad del usuario a registrar es de: "+edad);
-            this.log.info(" -- Disparando las reglas con Drools");
+            this.log.info("La edad del usuario a registrar es de: "+edad);
+            this.log.info("Disparando las reglas con Drools");
             UserTemp userTemp = new UserTemp();
             userTemp.setEdad(edad);
             userTemp.setEmail(email);
             userTemp.setNombre(nombre);
             userTemp = this.droolRuleAgeAdapter.validarReglasAge(userTemp);
             if(userTemp.isValidado()){
-                this.log.info(" -- El usuario ha validado todas las reglas");
+                this.log.info("El usuario ha validado todas las reglas");
             }else{
-                this.log.info(" -- El usuario no ha cumplido las reglas del sistema");
+                this.log.info("El usuario no ha cumplido las reglas del sistema");
                 ErrorService data = new ErrorService();
                 data.setCodigo("404");
                 data.setMensaje(userTemp.getMensaje());
                 return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
             }
             this.usuarioService.agregaUsuarioNuevo(usuario);
-            this.log.info(" -- El usuario se agrego correctamente");
+            this.log.info("El usuario se agrego correctamente");
            try {
                try {
-            	   this.log.info("-- Url request actual::: "+request.getRequestURL());
+            	   this.log.info("Url request actual::: "+request.getRequestURL());
             	   String urlServer = this.propertyService.getValueKey(DOMAIN_BSTORE).getValue();
             	   String emailEncriptado = UtilService.Encriptar(usuario.getEmail());
             	   String nuevaUrlParaConfirmacion = urlServer + "/"
             			   + "confirmarTuCuenta?token="+emailEncriptado;
-            	   this.log.info("-- Url para activacion de cuenta "+ usuario.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
+            	   this.log.info("Url para activacion de cuenta "+ usuario.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
                    this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario,nuevaUrlParaConfirmacion);
-                   this.log.info(" -- Enviado");
+                   this.log.info("Enviado");
                } catch (Exception ex) {
-                   this.log.error(" -- No se puedo enviar mail de registro: "+ex.getMessage());
+                   this.log.error("No se puedo enviar mail de registro: "+ex.getMessage());
                }
-                this.log.info(" -- Usuario correcto");
+                this.log.info("Usuario correcto");
                 ErrorService data = new ErrorService();
                 data.setCodigo("200");
                 data.setMensaje("Para continuar debes de activar tu cuenta y para ello te hemos enviado un email a: "+usuario.getEmail());
                 return new ResponseEntity<ErrorService>(data, HttpStatus.OK);
            } catch (Exception ex) {
-               this.log.info(" -- No se puedo llevar a cabo el registro del usuario en el sistema.");    
+               this.log.info("No se puedo llevar a cabo el registro del usuario en el sistema.");    
                
            }
         }
-        this.log.info(" -- Usuario ya se encuentra en sistema registrado");
+        this.log.info("Usuario ya se encuentra en sistema registrado");
         ErrorService data = new ErrorService();
         data.setCodigo("404");
         data.setMensaje("Este email ya ha sido registrado con anterioridad o la cuenta esta desactivada: "+email);
@@ -392,13 +392,13 @@ public class LoginController {
             sb.append(str);
         }    
         JSONObject jObj = new JSONObject(sb.toString());
-        this.log.info(" -- JSON: "+jObj.toString());
+        this.log.info("JSON: "+jObj.toString());
         
         ErrorService response = new ErrorService();
         String email = jObj.getString("email");
         Usuario user = this.usuarioService.validaEmailSistema(email);
         if(user!=null){
-            this.log.info(" -- Usuario encontrado: "+user.getEmail());
+            this.log.info("Usuario encontrado: "+user.getEmail());
             response.setMensaje(user.getNombre());
         }else{
             response.setMensaje("NO LOCALIZADO");
@@ -421,15 +421,15 @@ public class LoginController {
         String sexo = request.getParameter("sexo");
         
         
-        this.log.info(" -- Email Usuario: "+emailUsuario);
-        this.log.info(" -- Password Usuario: "+passwordUsuario);
+        this.log.info("Email Usuario: "+emailUsuario);
+        this.log.info("Password Usuario: "+passwordUsuario);
         
-        this.log.info(" -- Nombre Usuario: "+nombreUsuario);
-        this.log.info(" -- Fecha Alta Usuario: "+falta);
-        this.log.info(" -- Fecha Ultima Conexion Usuario: "+fconexion);
-        this.log.info(" -- Actividad Usuario: "+actividad);
-        this.log.info(" -- Fecha Nacimiento Usuario: "+fnacimiento);
-        this.log.info(" -- Sexo Usuario: "+sexo);
+        this.log.info("Nombre Usuario: "+nombreUsuario);
+        this.log.info("Fecha Alta Usuario: "+falta);
+        this.log.info("Fecha Ultima Conexion Usuario: "+fconexion);
+        this.log.info("Actividad Usuario: "+actividad);
+        this.log.info("Fecha Nacimiento Usuario: "+fnacimiento);
+        this.log.info("Sexo Usuario: "+sexo);
         
         ErrorService response = new ErrorService();
         response.setCodigo("404");
@@ -440,12 +440,12 @@ public class LoginController {
         if(user!=null){
             if(!UtilService.Desencriptar(user.getPassword()).equals(passwordUsuario))
                 return new ResponseEntity<ErrorService>(response, status);
-            this.log.info(" -- Usuario encontrado: "+user.toString());
+            this.log.info("Usuario encontrado: "+user.toString());
             String encriptarPassword = UtilService.Encriptar(passwordUsuario);
             user.setPassword(encriptarPassword);
             user.setNombre(nombreUsuario);
             this.usuarioService.actualizarDatosUsuario(user);
-            this.log.info(" -- El password fue actualizado");
+            this.log.info("El password fue actualizado");
             response.setCodigo("200");
             response.setMensaje("La información fue actualizada con éxito, "
                     + "para continuar tendrá que reingresar al sistema.");
@@ -460,7 +460,7 @@ public class LoginController {
             formatoFecha.setLenient(false);
             formatoFecha.parse(fecha);
         } catch (ParseException e) {
-            System.out.println(" -- Fecha Invalida: "+fecha);
+            System.out.println("Fecha Invalida: "+fecha);
             return false;
         }
         return true;
@@ -468,7 +468,7 @@ public class LoginController {
     
     @RequestMapping(value = "/sistema/salir", method = RequestMethod.POST)
     public void exitSistema(HttpServletRequest request, HttpServletResponse response) throws IOException, JSONException, Exception {
-       this.log.info(" -- Registrando salida en sistema."); 
+       this.log.info("Registrando salida en sistema."); 
        
 		HttpSession session = (HttpSession) request.getSession(false);
 		String result = ValidarSesion.validarSesionUsuarioActual(session);

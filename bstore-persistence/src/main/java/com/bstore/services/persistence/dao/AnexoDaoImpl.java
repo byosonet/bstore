@@ -21,7 +21,7 @@ public class AnexoDaoImpl extends HibernateDaoSupport implements AnexoDao {
 
     @SuppressWarnings("unchecked")
     public List<Anexo> getAnexosByIdPublicacion(int idPublicacion) {
-        this.logger.info("-- Iniciando recuperacion de Anexos para la plantilla numero: " + idPublicacion);
+        this.logger.info("Iniciando recuperacion de Anexos para la plantilla numero: " + idPublicacion);
 
         Session sessionConsulta = HibernateUtil.openConexionResources()
                 .openSession();

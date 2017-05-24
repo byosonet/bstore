@@ -10,7 +10,7 @@ import org.apache.log4j.Logger;
 public class MonitorFechaImpl implements MonitorFecha{
     private final Logger log = Logger.getLogger(MonitorFechaImpl.class);
     public void fecha() {
-        this.log.info(" -- Fecha de Sistema: "+new Date());
+        this.log.info("Fecha de Sistema: "+new Date());
     }
     
     public static MonitorFechaImpl getInstance(){

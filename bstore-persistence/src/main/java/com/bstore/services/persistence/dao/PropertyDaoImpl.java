@@ -11,7 +11,7 @@ public class PropertyDaoImpl extends HibernateDaoSupport implements PropertyDao{
 	private final Logger log = Logger.getLogger(PropertyDaoImpl.class);
 	
 	public Properties getValueByKey(String key) {
-		this.log.info(" -- Buscando usuario valor de la propiedad by: "+key);
+		this.log.info("Buscando usuario valor de la propiedad by: "+key);
         return (Properties) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Properties p WHERE p.key = :key")
                 .setParameter("key", key)

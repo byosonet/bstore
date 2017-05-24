@@ -19,12 +19,12 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
 
     @SuppressWarnings("unchecked")
 	public List<Usuario> getUser() {
-       this.log.info(" -- Buscando por lista de usuarios::");
+       this.log.info("Buscando por lista de usuarios::");
        return (List<Usuario>) HibernateUtil.getSessionFactory().createQuery("FROM Usuario u " + "ORDER BY u.id ASC").list();
     }
 
     public Usuario validaUsuario(String email, String password) {
-        this.log.info(" -- Buscando usuario by email:: "+email);
+        this.log.info("Buscando usuario by email:: "+email);
         
         
         Usuario usuario = (Usuario) HibernateUtil.getSessionFactory()
@@ -43,7 +43,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     }
 
     public Usuario validaEmailSistema(String email) {
-        this.log.info(" -- Verificando email en BD:: "+email);
+        this.log.info("Verificando email en BD:: "+email);
         return (Usuario) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Usuario u WHERE u.email = :email")
                 .setParameter("email", email)
@@ -55,9 +55,9 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     	try {
             if(usuario!=null){
                 Timestamp stamp = new Timestamp(System.currentTimeMillis());
-                this.log.info("-- Datetime::: "+stamp);
+                this.log.info("Datetime::: "+stamp);
                 Date date = new Date(stamp.getTime());
-                this.log.info("-- Date::: "+date);
+                this.log.info("Date::: "+date);
                 usuario.setUltConexion(date);
                 HibernateUtil.getCurrentSession().saveOrUpdate(usuario);
                 HibernateUtil.getCurrentSession().flush();
@@ -122,7 +122,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     }
 
     public Usuario byId(int idUser) {
-        this.log.info(" -- Buscando usuario by id:: "+idUser);
+        this.log.info("Buscando usuario by id:: "+idUser);
         return (Usuario) HibernateUtil.getSessionFactory()
                 .createQuery("FROM Usuario u WHERE u.id = :idUser")
                 .setParameter("idUser", idUser)
@@ -137,7 +137,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
     }
 
 	public Usuario validaLoginSistema(String login) {
-		 this.log.info(" -- Verificando login en BD:: "+login);
+		 this.log.info("Verificando login en BD:: "+login);
 	        return (Usuario) HibernateUtil.getSessionFactory()
 	                .createQuery("FROM Usuario u WHERE u.login = :login")
 	                .setParameter("login", login)

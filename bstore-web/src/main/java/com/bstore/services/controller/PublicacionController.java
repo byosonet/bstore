@@ -39,7 +39,7 @@ import java.util.ArrayList;
 public class PublicacionController {
 
     private final Logger log = Logger.getLogger(PublicacionController.class);
-    private static final String NAME_CONTROLLER = "[--PublicacionController--]";
+    private static final String NAME_CONTROLLER = "[PublicacionController]";
     private static final String KEY_COPY_PASTE = "com.copy.paste.text";
 
     @Autowired

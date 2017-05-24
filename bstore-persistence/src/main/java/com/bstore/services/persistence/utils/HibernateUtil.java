@@ -17,7 +17,7 @@ public class HibernateUtil {
 			sessionFactoryResources = new Configuration().configure("/com/bstore/services/persistence/config/hibernate_resources.cfg.xml")
 					.buildSessionFactory();
 		} catch (HibernateException ex) {
-			System.err.println("-- Ocurrió un error en la inicialización de la SessionFactory/sessionFactoryResources: " + ex);
+			System.err.println("Ocurrió un error en la inicialización de la SessionFactory/sessionFactoryResources: " + ex);
 			throw new ExceptionInInitializerError(ex);
 		}
 	}

@@ -37,7 +37,7 @@ import com.bstore.services.validator.FuenteValidator;
 public class FuenteController {
 
 	private Logger logger = Logger.getLogger(FuenteController.class);
-	private static final String NAME_CONTROLLER="[--FuenteController--]";
+	private static final String NAME_CONTROLLER="[FuenteController]";
 
 	@Autowired
 	private FuenteService fuenteService;

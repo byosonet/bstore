@@ -11,9 +11,9 @@ public class MonitorStatusImpl implements MonitorStatus{
     private final Logger log = Logger.getLogger(MonitorStatusImpl.class);
     
     public void status() {
-        this.log.info(" -- Status del servidor: OK");
+        this.log.info("Status del servidor: OK");
         String date = new Date().toString();
-        this.log.info(" -- DateSystem save: "+date);
+        this.log.info("DateSystem save: "+date);
     }
     
     public MonitorStatusImpl getInstance(){

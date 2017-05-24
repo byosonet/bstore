@@ -28,19 +28,19 @@ public class TestCase {
 }
     
     public static void methodFor(int i){
-         System.err.println(" -- Valor del Case: ");
+         System.err.println("Valor del Case: ");
         switch(i){
             case 1:
-                System.err.println(" -- Case 1, sin break");
+                System.err.println("Case 1, sin break");
             case 2:
-                System.err.println(" -- Case 2, sin break");
+                System.err.println("Case 2, sin break");
             case 3:
-                System.err.println(" -- Case 3 con break");
+                System.err.println("Case 3 con break");
                 break;
             case 4:
-                System.err.println(" -- Case 4 sin break");
+                System.err.println("Case 4 sin break");
             default:
-                System.err.println(" -- No Aplica: "+i);
+                System.err.println("No Aplica: "+i);
         }
     }
     
@@ -66,7 +66,7 @@ public class TestCase {
                 haveSerie = false;
             }
         }
-        System.err.println(" -- La suma de la seria mayor es: "+SumaActual(sumaTemporal));
+        System.err.println("La suma de la seria mayor es: "+SumaActual(sumaTemporal));
     }
     
     public static int SumaActual(int[] sumaTemporal){

@@ -30,7 +30,7 @@ import com.bstore.services.validator.ColeccionValidator;
 @Controller
 public class ColeccionController {
 	private final Logger log = Logger.getLogger(ColeccionController.class);
-	private static final String NAME_CONTROLLER = "[--ColeccionController--]";
+	private static final String NAME_CONTROLLER = "[ColeccionController]";
 
 	@Autowired
 	private ColeccionService coleccionService;

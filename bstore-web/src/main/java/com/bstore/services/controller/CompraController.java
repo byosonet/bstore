@@ -44,7 +44,7 @@ import com.bstore.services.util.ValidarSesion;
 public class CompraController {
 
     private final Logger log = Logger.getLogger(CompraController.class);
-    private static final String NAME_CONTROLLER = "[--CompraController--]";
+    private static final String NAME_CONTROLLER = "[CompraController]";
     private final static String TYPE_CARD_VISA = "VISA";
     private final static String TYPE_CARD_MASTERCARD = "MASTERCARD";
     private final static String TYPE_CARD_NA = "na";
@@ -294,9 +294,9 @@ public class CompraController {
                 try {
                     compra.setPublicacion(publicacion);
                     this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario, compra);
-                    this.log.info(" -- Enviado mail de compra exitosa");
+                    this.log.info("Enviado mail de compra exitosa");
                 } catch (Exception ex) {
-                    this.log.error(" -- No se puedo enviar mail de compa: " + ex.getMessage());
+                    this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
                 }
 
             } else {
@@ -347,14 +347,14 @@ public class CompraController {
         Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
         
         if(publicacion==null){
-            log.info("-- Estan intentando procesar una compra con una publicacion invalida");
+            log.info("Estan intentando procesar una compra con una publicacion invalida");
             model.addAttribute("errorMessage", true);
             model.addAttribute("messageError", "No se puede procesar está publicación, pongase en contacto con el Administrador.");
             model.addAttribute("messageErrorConekta", "Publicación Inválida");
             model.addAttribute("publicacion", publicacion);
             return "detalleCompra";
         }else if(publicacion.getPrecio()!=null && publicacion.getPrecio().intValue() > 0){
-            log.info("-- Estan intentando procesar una compra con una publicacion invalida");
+            log.info("Estan intentando procesar una compra con una publicacion invalida");
             model.addAttribute("errorMessage", true);
             model.addAttribute("messageError", "No se puede procesar está publicación, pongase en contacto con el Administrador.");
             model.addAttribute("messageErrorConekta", "Publicación con precio > $0.00");
@@ -431,9 +431,9 @@ public class CompraController {
             try {
                 compra.setPublicacion(publicacion);
                 this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario, compra);
-                this.log.info(" -- Enviado mail de compra exitosa");
+                this.log.info("Enviado mail de compra exitosa");
             } catch (Exception ex) {
-                this.log.error(" -- No se puedo enviar mail de compa: " + ex.getMessage());
+                this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
             }
 
         } catch (Exception e) {

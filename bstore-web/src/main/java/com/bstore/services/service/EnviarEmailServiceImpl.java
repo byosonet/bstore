@@ -59,7 +59,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 "velocity-mail-registro",
                 new BufferedReader(mail.getPlantilla().getCharacterStream()));
         final String actualMessageRegistro = swRegistro.toString();
-        this.log.info(" -- Merge Template Registro Usuario: " + actualMessageRegistro);
+        this.log.info("Merge Template Registro Usuario: " + actualMessageRegistro);
 
         try {
         	MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -73,9 +73,9 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 }
             };
             this.mailSender.send(preparator);
-            this.log.info(" -- Correo enviado a: "+toEmail);
+            this.log.info("Correo enviado a: "+toEmail);
         } catch (MailException e) {
-            log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
+            log.error("Correo no pudo ser enviado: "+ e.getMessage());
         }
 	}
 	
@@ -96,7 +96,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 "velocity-mail-baja",
                 new BufferedReader(mail.getPlantilla().getCharacterStream()));
         final String actualMessageRegistro = swRegistro.toString();
-        this.log.info(" -- Merge Template Baja Usuario: " + actualMessageRegistro);
+        this.log.info("Merge Template Baja Usuario: " + actualMessageRegistro);
 
         try {
         	MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -110,9 +110,9 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 }
             };
             this.mailSender.send(preparator);
-            this.log.info(" -- Correo enviado a: "+toEmail);
+            this.log.info("Correo enviado a: "+toEmail);
         } catch (MailException e) {
-            log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
+            log.error("Correo no pudo ser enviado: "+ e.getMessage());
         }
 	}
 
@@ -132,7 +132,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 "velocity-mail-password",
                 new BufferedReader(mail.getPlantilla().getCharacterStream()));
         final String actualMessagePassword = swPassword.toString();
-        this.log.info(" -- Merge Template Recuperacion Password: " + actualMessagePassword);
+        this.log.info("Merge Template Recuperacion Password: " + actualMessagePassword);
         
         try {
         MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -146,9 +146,9 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
             }
         };
             this.mailSender.send(preparator);
-            this.log.info(" -- Correo enviado a: "+usuario.getEmail());
+            this.log.info("Correo enviado a: "+usuario.getEmail());
         } catch (MailException e) {
-            log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
+            log.error("Correo no pudo ser enviado: "+ e.getMessage());
         }
 		
 	}
@@ -191,7 +191,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 "velocity-mail-compra",
                 new BufferedReader(mail.getPlantilla().getCharacterStream()));
         final String actualMessageCompra = swCompra.toString();
-        this.log.info(" -- Merge Template Compra publicacion: " + actualMessageCompra);
+        this.log.info("Merge Template Compra publicacion: " + actualMessageCompra);
 
         try {
         	MimeMessagePreparator preparator = new MimeMessagePreparator() {
@@ -205,9 +205,9 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
                 }
             };
             this.mailSender.send(preparator);
-            this.log.info(" -- Correo enviado a: "+toEmail);
+            this.log.info("Correo enviado a: "+toEmail);
         } catch (MailException e) {
-            log.error(" -- Correo no pudo ser enviado: "+ e.getMessage());
+            log.error("Correo no pudo ser enviado: "+ e.getMessage());
         }
 	}
 

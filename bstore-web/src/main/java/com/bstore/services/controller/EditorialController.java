@@ -37,7 +37,7 @@ import com.bstore.services.validator.EditorialValidator;
 public class EditorialController {
 
 	private Logger logger = Logger.getLogger(EditorialController.class);
-	private static final String NAME_CONTROLLER="[--EditorialController--]";
+	private static final String NAME_CONTROLLER="[EditorialController]";
 
 	@Autowired
 	private EditorialService editorialService;
