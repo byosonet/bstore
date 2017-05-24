@@ -57,7 +57,7 @@ public class PasswordController {
             
             try
             {
-                this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(),user);
+                this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"),user);
                 this.log.info("El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
                  response.setCodigo("404");

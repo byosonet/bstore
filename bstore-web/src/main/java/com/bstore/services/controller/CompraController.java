@@ -293,7 +293,7 @@ public class CompraController {
 
                 try {
                     compra.setPublicacion(publicacion);
-                    this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario, compra);
+                    this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra);
                     this.log.info("Enviado mail de compra exitosa");
                 } catch (Exception ex) {
                     this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
@@ -430,7 +430,7 @@ public class CompraController {
 
             try {
                 compra.setPublicacion(publicacion);
-                this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario, compra);
+                this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra);
                 this.log.info("Enviado mail de compra exitosa");
             } catch (Exception ex) {
                 this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());

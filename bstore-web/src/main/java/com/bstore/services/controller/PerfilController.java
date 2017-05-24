@@ -187,7 +187,7 @@ public class PerfilController {
 	            			   + "confirmarBajaDeTuCuenta?token="+emailEncriptado;
 	            	   
 	            	   this.log.info("Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
-	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), user,nuevaUrlParaConfirmacion);
+	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), user,nuevaUrlParaConfirmacion);
 	                   this.log.info("Enviado");
 	                   this.log.info("Se envia a usuario confirmacion para cancelacion de cuenta: "+user.getEmail());
 			           responseLocal.setCodigo("200");

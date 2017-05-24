@@ -44,7 +44,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarEmailRegistro(final String toEmail, final String bccEmail, Usuario usuario, String urlConfirmacion)
+	public void enviarEmailRegistro(final String toEmail, final String[] bccEmail, Usuario usuario, String urlConfirmacion)
 			throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_REGISTRO);
         final StringWriter swRegistro = new StringWriter();
@@ -81,7 +81,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 	
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarEmailBaja(final String toEmail, final String bccEmail, Usuario usuario, String urlConfirmacion)
+	public void enviarEmailBaja(final String toEmail, final String[] bccEmail, Usuario usuario, String urlConfirmacion)
 			throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_BAJA);
         final StringWriter swRegistro = new StringWriter();
@@ -118,7 +118,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarRecuperacionPassword(final String bccEmail, final Usuario usuario) throws Exception {
+	public void enviarRecuperacionPassword(final String[] bccEmail, final Usuario usuario) throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_PASSWORD);
         final StringWriter swPassword = new StringWriter();
 
@@ -155,7 +155,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService{
 
 	@Override
 	@Transactional(readOnly=true)
-	public void enviarCompraExitosa(final String toEmail,final String bccEmail, final Usuario usuario, final Compra compra) throws Exception {
+	public void enviarCompraExitosa(final String toEmail,final String[] bccEmail, final Usuario usuario, final Compra compra) throws Exception {
 		final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_COMPRA);
         final StringWriter swCompra = new StringWriter();
 

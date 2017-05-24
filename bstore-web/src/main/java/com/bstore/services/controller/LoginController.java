@@ -360,7 +360,7 @@ public class LoginController {
             	   String nuevaUrlParaConfirmacion = urlServer + "/"
             			   + "confirmarTuCuenta?token="+emailEncriptado;
             	   this.log.info("Url para activacion de cuenta "+ usuario.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
-                   this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue(), usuario,nuevaUrlParaConfirmacion);
+                   this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario,nuevaUrlParaConfirmacion);
                    this.log.info("Enviado");
                } catch (Exception ex) {
                    this.log.error("No se puedo enviar mail de registro: "+ex.getMessage());
