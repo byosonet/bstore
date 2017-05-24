@@ -17,7 +17,7 @@ import org.apache.commons.lang.RandomStringUtils;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class UtilService {
 	

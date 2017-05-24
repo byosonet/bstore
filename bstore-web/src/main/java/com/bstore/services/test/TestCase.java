@@ -2,7 +2,7 @@ package com.bstore.services.test;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class TestCase {
     

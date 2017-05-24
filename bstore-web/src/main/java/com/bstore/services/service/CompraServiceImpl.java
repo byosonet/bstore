@@ -19,13 +19,12 @@ import com.bstore.services.persistence.pojo.Publicacion;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashSet;
-import java.util.LinkedList;
 import java.util.Set;
 import java.util.TreeMap;
 
 /**
  *
- * @author hustler
+ * @author gtrejo
  *
  */
 public class CompraServiceImpl implements CompraService {
@@ -57,12 +56,12 @@ public class CompraServiceImpl implements CompraService {
         Map<Coleccion, List<Publicacion>> map = new HashMap<Coleccion, List<Publicacion>>();
         Map<Coleccion, List<Publicacion>> mapaOrdenado = new TreeMap<Coleccion, List<Publicacion>>(
                 new Comparator<Coleccion>() {
-                    @Override
-                    public int compare(Coleccion c1, Coleccion c2) {
-                        return c1.getNombreMostrar().compareTo(c2.getNombreMostrar());
-                    }
+            @Override
+            public int compare(Coleccion c1, Coleccion c2) {
+                return c1.getNombreMostrar().compareTo(c2.getNombreMostrar());
+            }
 
-                });
+        });
         if (lista != null) {
             this.log.info("Total encontrados: " + lista.size());
             Set<Coleccion> colecciones = new HashSet<Coleccion>();
@@ -83,11 +82,19 @@ public class CompraServiceImpl implements CompraService {
                         }
                     }
                 }
+
+                Collections.sort(publicacion, new Comparator<Publicacion>() {
+                    @Override
+                    public int compare(Publicacion p1, Publicacion p2) {
+                        return p1.getNombre().compareTo(p2.getNombre());
+                    }
+                });
+
                 map.put(coleccion, publicacion);
             }
-           
-           mapaOrdenado.putAll(map);
-            
+
+            mapaOrdenado.putAll(map);
+
             for (Map.Entry<Coleccion, List<Publicacion>> m : mapaOrdenado.entrySet()) {
                 log.info("Nombre de la Coleccion Ordenada: " + m.getKey().getNombreMostrar());
                 log.info("Total Publicaciones compradas en la coleccion: " + m.getValue().size());

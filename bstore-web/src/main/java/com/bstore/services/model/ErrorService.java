@@ -7,7 +7,7 @@ package com.bstore.services.model;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class ErrorService {
     private String codigo;

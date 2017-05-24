@@ -2,7 +2,7 @@ package com.bstore.services.conekta.service;
 
 /**
  *
- * @author david
+ * @author gtrejo
  */
 public class RequestChargesMSI {
     private String amount;

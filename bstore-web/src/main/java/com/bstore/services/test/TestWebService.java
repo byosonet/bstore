@@ -15,7 +15,7 @@ import java.util.Scanner;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class TestWebService {
     public static void main (String[] args) throws MalformedURLException, IOException{       

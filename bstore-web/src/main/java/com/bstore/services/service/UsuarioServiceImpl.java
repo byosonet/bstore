@@ -10,7 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 @Component("usuarioService")
 public class UsuarioServiceImpl implements UsuarioService{

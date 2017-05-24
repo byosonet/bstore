@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 @Controller
 @RequestMapping("/password")

@@ -2,7 +2,7 @@ package com.bstore.services.drools.vo;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class UserTemp {
     private String nombre;

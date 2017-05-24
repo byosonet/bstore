@@ -10,7 +10,7 @@ import java.util.List;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public interface UsuarioService {
     List<Usuario> getListaUsuarios();

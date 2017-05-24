@@ -7,7 +7,7 @@ package com.bstore.services.batch;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public interface MonitorStatus {
     public void status();

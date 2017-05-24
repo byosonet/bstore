@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author david
+ * @author gtrejo
  */
 public class RequestPaymentCard {
 	private String currency;

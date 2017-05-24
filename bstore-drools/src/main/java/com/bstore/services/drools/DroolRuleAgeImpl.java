@@ -12,7 +12,7 @@ import org.drools.runtime.StatefulKnowledgeSession;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class DroolRuleAgeImpl implements DroolRuleAge{
     public final UserTemp validarReglasAge(UserTemp user) {

@@ -2,7 +2,7 @@ package com.bstore.services.persistence.enums;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public enum TipoEnvioEmail {
     MAIL_REGISTRO("1"),

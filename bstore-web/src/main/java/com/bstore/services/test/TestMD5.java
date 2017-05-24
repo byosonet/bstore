@@ -11,7 +11,7 @@ import org.apache.commons.lang.RandomStringUtils;
 
 /**
  *
- * @author priscila
+ * @author gtrejo
  */
 public class TestMD5 {
     

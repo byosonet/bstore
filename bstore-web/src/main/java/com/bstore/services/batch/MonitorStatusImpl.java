@@ -5,7 +5,7 @@ import org.apache.log4j.Logger;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class MonitorStatusImpl implements MonitorStatus{
     private final Logger log = Logger.getLogger(MonitorStatusImpl.class);

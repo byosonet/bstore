@@ -2,7 +2,7 @@ package com.bstore.services.test;
 
 /**
  *
- * @author Priscila
+ * @author gtrejo
  */
 import java.io.File;
 import java.util.HashMap;

@@ -146,8 +146,6 @@
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
         </br>
-        </br>
-        </br>
             <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
             
             	<div class="form-group">

@@ -7,7 +7,7 @@ import java.sql.SQLException;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class Plantilla {
     private int id;

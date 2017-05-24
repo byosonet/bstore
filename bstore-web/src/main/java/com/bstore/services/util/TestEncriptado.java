@@ -2,7 +2,7 @@ package com.bstore.services.util;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 public class TestEncriptado {
     public static void main(String[] args) throws Exception {

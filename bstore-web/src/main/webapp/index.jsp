@@ -149,7 +149,6 @@
         <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
         </br>
         </br>
-        </br>
             <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
                 <div class="form-group">
                     <label class="control-label col-sm-3" for="nombre"></label>

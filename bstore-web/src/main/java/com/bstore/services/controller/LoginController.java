@@ -41,7 +41,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 /**
  *
- * @author User
+ * @author gtrejo
  */
 @Controller
 public class LoginController {

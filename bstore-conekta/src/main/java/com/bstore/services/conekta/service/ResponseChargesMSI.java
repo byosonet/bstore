@@ -5,7 +5,7 @@ import java.util.List;
 
 /**
  *
- * @author david
+ * @author gtrejo
  */
 public class ResponseChargesMSI {
     private String id;

@@ -4,7 +4,7 @@ import java.util.List;
 
 /**
  *
- * @author david
+ * @author gtrejo
  */
 public class ResponsePaymentCard {
     private String id;
