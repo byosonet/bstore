@@ -3,6 +3,7 @@
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <html>
     <head>
+        <title>Novohispanorum</title>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/model/ModelNacimiento.js"></script>
 
