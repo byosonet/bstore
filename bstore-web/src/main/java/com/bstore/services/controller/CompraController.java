@@ -59,6 +59,7 @@ public class CompraController {
     private final String VALUE_ROUND = "com.conekta.factor.redondeo";
     private final static String NA = "N/A";
     private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+    private final String PAY_CONEKTA = "com.conekta.charge.prod";
 
     @Autowired
     private PublicacionService publicacionService;
@@ -68,7 +69,11 @@ public class CompraController {
 
     @Autowired
     @Qualifier("conektaDev")
-    private ConektaAdapter conektaAdapter;
+    private ConektaAdapter conektaAdapterDev;
+    
+    @Autowired
+    @Qualifier("conektaProd")
+    private ConektaAdapter conektaAdapterProd;
 
     @Autowired
     private FormaPagoService formaPagoService;
@@ -171,16 +176,6 @@ public class CompraController {
         log.info("Sesion activa Token === " + result);
         Usuario usuario = (Usuario) session.getAttribute("usuario");
         Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
-        /*String nombre = request.getParameter("nombre");
-		  String cvv = request.getParameter("cvv");
-		  String fechaExpriacionMes = request.getParameter("fechaExpiracionMes");
-		  String fechaExpiracionAnio = request.getParameter("fechaExpiracionAnio");
-		  String calle = request.getParameter("calle");
-		  String colonia = request.getParameter("colonia");
-		  String ciudad = request.getParameter("ciudad");
-		  String estado = request.getParameter("estado");
-		  String codigoPostal = request.getParameter("codigo");
-		  String pais = request.getParameter("pais");*/
         String tipoTarj = request.getParameter("visa");
         tipoTarj = tipoTarj != null ? TYPE_CARD_VISA : TYPE_CARD_MASTERCARD;
         String numeroTarjeta = request.getParameter("numeroTarjeta");
@@ -223,7 +218,15 @@ public class CompraController {
 
         try {
             log.info("Request Conekta: " + requestCharge.toString());
-            ResponsePaymentCard responseCharge = this.conektaAdapter.createChargeCard(requestCharge);
+             ResponsePaymentCard responseCharge;
+            String typeChargeConekta = this.propertyService.getValueKey(PAY_CONEKTA).getValue();
+            if("true".equalsIgnoreCase(typeChargeConekta)){
+                log.info("Conekta en Modo: PRODUCTIVO");
+                responseCharge = this.conektaAdapterProd.createChargeCard(requestCharge);
+            }else{
+                log.info("Conekta en Modo: DESARROLLO");
+                responseCharge = this.conektaAdapterDev.createChargeCard(requestCharge);
+            }
             log.info("Response Conekta: " + responseCharge.toString());
             if (responseCharge.getStatus() != null && responseCharge.getStatus().equalsIgnoreCase(STATUS_PAID)) {
                 log.info("Mensaje de Conekta: " + responseCharge.getStatus().toUpperCase());
