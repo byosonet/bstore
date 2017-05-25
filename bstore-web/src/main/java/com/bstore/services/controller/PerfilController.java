@@ -35,6 +35,8 @@ public class PerfilController {
 	private static final String NAME_CONTROLLER = "[PerfilController]";
 	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
 	private final String DOMAIN_BSTORE = "com.domain.quivira";
+        private final String USER_EMAIL_SYSTEM = "com.email.system";
+        private final String PASSWORD_EMAIL_SYSTEM = "com.password.system";
 	
 	@Autowired
 	private UsuarioService usuarioService;
@@ -187,7 +189,9 @@ public class PerfilController {
 	            			   + "confirmarBajaDeTuCuenta?token="+emailEncriptado;
 	            	   
 	            	   this.log.info("Url para baja de cuenta "+ user.getEmail()+" URL === "+nuevaUrlParaConfirmacion);
-	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), user,nuevaUrlParaConfirmacion);
+	                   this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), user,nuevaUrlParaConfirmacion,
+                                   this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
+                                   this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
 	                   this.log.info("Enviado");
 	                   this.log.info("Se envia a usuario confirmacion para cancelacion de cuenta: "+user.getEmail());
 			           responseLocal.setCodigo("200");

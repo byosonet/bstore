@@ -60,6 +60,9 @@ public class CompraController {
     private final static String NA = "N/A";
     private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
     private final String PAY_CONEKTA = "com.conekta.charge.prod";
+    
+    private final String USER_EMAIL_SYSTEM = "com.email.system";
+    private final String PASSWORD_EMAIL_SYSTEM = "com.password.system";
 
     @Autowired
     private PublicacionService publicacionService;
@@ -296,7 +299,10 @@ public class CompraController {
 
                 try {
                     compra.setPublicacion(publicacion);
-                    this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra);
+                    this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), 
+                            this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra,
+                            this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
+                            this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                     this.log.info("Enviado mail de compra exitosa");
                 } catch (Exception ex) {
                     this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
@@ -433,7 +439,9 @@ public class CompraController {
 
             try {
                 compra.setPublicacion(publicacion);
-                this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra);
+                this.enviarEmailService.enviarCompraExitosa(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, compra,
+                        this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
+                        this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                 this.log.info("Enviado mail de compra exitosa");
             } catch (Exception ex) {
                 this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());

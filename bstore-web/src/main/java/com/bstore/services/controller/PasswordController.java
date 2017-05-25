@@ -24,6 +24,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PasswordController {
 	
 	private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
+        private final String USER_EMAIL_SYSTEM = "com.email.system";
+        private final String PASSWORD_EMAIL_SYSTEM = "com.password.system";
 	
 	@Autowired
 	EnviarEmailService enviarEmailService;
@@ -57,7 +59,9 @@ public class PasswordController {
             
             try
             {
-                this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"),user);
+                this.enviarEmailService.enviarRecuperacionPassword(this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"),user,
+                        this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
+                        this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                 this.log.info("El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
                  response.setCodigo("404");
