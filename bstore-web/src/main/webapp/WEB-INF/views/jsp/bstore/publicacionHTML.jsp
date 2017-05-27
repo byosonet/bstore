@@ -26,11 +26,18 @@
 		
 		<c:forEach items="${anexos}" var="anexo" varStatus="loop">
 		$("#pub${anexo.id}").elevateZoom({
-			  zoomType	: "lens",
-			  lensShape : "round",
-			  lensSize  : 120,
-			  borderSize: 4,
-			  borderColour: "#fff"
+                          //easing : true,
+			  //tint:true, 
+                          //tintColour:'#F90', 
+                          //tintOpacity:0.5,
+                          zoomWindowPosition: 11,
+                          zoomWindowFadeIn: 500,
+                          zoomWindowFadeOut: 500
+			  //lensFadeIn: 500,
+			  //lensFadeOut: 500
+                          //scrollZoom : true
+                          //zoomWindowWidth:700,
+                          //zoomWindowHeight:600
 			});    
     	</c:forEach>
 
