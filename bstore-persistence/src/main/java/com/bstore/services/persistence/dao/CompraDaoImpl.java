@@ -54,6 +54,7 @@ public class CompraDaoImpl extends HibernateDaoSupport implements CompraDao {
 			 HibernateUtil.getCurrentSession().flush();
 	         tx.commit();
         } catch (HibernateException he) {
+                    he.printStackTrace();;
 	            tx.rollback();
 	            throw he;
         } finally {

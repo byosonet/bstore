@@ -9,7 +9,9 @@ import java.sql.SQLException;
  *
  * @author gtrejo
  */
-public class Plantilla {
+public class Plantilla implements java.io.Serializable{
+
+    private static final long serialVersionUID = 602530830786371688L;
     private int id;
     private String description;
     private String subject;

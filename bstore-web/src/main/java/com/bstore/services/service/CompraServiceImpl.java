@@ -1,5 +1,6 @@
 package com.bstore.services.service;
 
+import com.bstore.services.model.MenuModel;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -27,8 +28,10 @@ import java.util.TreeMap;
  * @author gtrejo
  *
  */
-public class CompraServiceImpl implements CompraService {
+public class CompraServiceImpl implements CompraService, java.io.Serializable {
 
+    private static final long serialVersionUID = 5219127401192754143L;
+    
     private final Logger log = Logger.getLogger(CompraServiceImpl.class);
 
     @Autowired
@@ -48,11 +51,12 @@ public class CompraServiceImpl implements CompraService {
 
     @Override
     @Transactional
-    public Map<Coleccion, List<Publicacion>> getMenuColeccion(int idUsuario) {
+    public List<MenuModel> getMenuColeccion(int idUsuario) {
         this.log.info("Buscando compras para el idUsuario: " + idUsuario);
         List<Compra> lista = null;
         lista = this.compraDao.getComprasPorUsuario(idUsuario);
 
+        List<MenuModel> listMenuModel = new ArrayList<MenuModel>();
         Map<Coleccion, List<Publicacion>> map = new HashMap<Coleccion, List<Publicacion>>();
         Map<Coleccion, List<Publicacion>> mapaOrdenado = new TreeMap<Coleccion, List<Publicacion>>(
                 new Comparator<Coleccion>() {
@@ -95,13 +99,24 @@ public class CompraServiceImpl implements CompraService {
 
             mapaOrdenado.putAll(map);
 
+            
             for (Map.Entry<Coleccion, List<Publicacion>> m : mapaOrdenado.entrySet()) {
-                log.info("Nombre de la Coleccion Ordenada: " + m.getKey().getNombreMostrar());
-                log.info("Total Publicaciones compradas en la coleccion: " + m.getValue().size());
-                log.info("Publicaciones toString: " + m.getValue().toString());
+                MenuModel menu = new MenuModel();
+                menu.setIdCol(m.getKey().getId());
+                menu.setNombreCol(m.getKey().getNombreMostrar());
+                List<MenuModel.Pub> pubs = new ArrayList<MenuModel.Pub>();
+                for (Publicacion p : m.getValue()) {
+                    MenuModel.Pub pub = new MenuModel.Pub();
+                    pub.setIdPub(p.getId());
+                    pub.setNombrePub(p.getNombre());
+                    pubs.add(pub);
+                }
+                menu.setPubs(pubs);
+                listMenuModel.add(menu);
             }
         }
-        return mapaOrdenado;
+        this.log.info("MenuModel: "+listMenuModel.toString());
+        return listMenuModel;
     }
 
     @Override

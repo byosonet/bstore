@@ -1,5 +1,6 @@
 package com.bstore.services.test;
 
+import com.bstore.services.model.MenuModel;
 import java.util.List;
 import java.util.Map;
 
@@ -52,7 +53,7 @@ public class CompraServiceTest {
 		
 		int userId = 1;
 		
-		Map<Coleccion, List<Publicacion>> menuColeccion = compraService.getMenuColeccion(userId);
+		List<MenuModel> menuColeccion = compraService.getMenuColeccion(userId);
 		if(menuColeccion != null){
 			logger.info("Se encontró el menu de las colecciones del usuario con id: "+userId);
 		}else{

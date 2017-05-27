@@ -148,11 +148,11 @@
                         </li>
                         <c:forEach var="entry" items="${menu}">
                             <li class="active">
-                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.key.id}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${empty entry.key.nombreMostrar?entry.key.nombre:entry.key.nombreMostrar}"/> </a>
-                                <ul id="${entry.key.id}" class="">
-                                    <c:forEach var="publicacion" items="${entry.value}">
+                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${entry.nombreCol}"/> </a>
+                                <ul id="${entry.idCol}" class="">
+                                    <c:forEach var="publicacion" items="${entry.pubs}">
                                         <li>
-                                            <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.id}"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombre}"/></a>
+                                            <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombrePub}"/></a>
                                         </li>
                                     </c:forEach>
                                 </ul>

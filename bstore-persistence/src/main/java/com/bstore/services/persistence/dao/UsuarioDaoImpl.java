@@ -64,6 +64,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
                 tx.commit();
             }
         } catch (HibernateException he) {
+            he.printStackTrace();
             tx.rollback();
             throw he;
         } finally {
@@ -82,6 +83,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
             HibernateUtil.getCurrentSession().flush();
             tx.commit();
         } catch (HibernateException he) {
+            he.printStackTrace();
             tx.rollback();
             throw he;
         } finally {
@@ -98,6 +100,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
             	tx.commit();
             }
         } catch (HibernateException he) {
+                he.printStackTrace();
         	tx.rollback();
             throw he;
         } finally {
@@ -114,6 +117,7 @@ public class UsuarioDaoImpl extends HibernateDaoSupport implements UsuarioDao{
                 tx.commit();
             }
         } catch (HibernateException he) {
+            he.printStackTrace();
             tx.rollback();
             throw he;
         } finally {

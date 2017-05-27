@@ -53,6 +53,7 @@ public class UtilService {
             base64EncryptedString = new String(base64Bytes);
 
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return base64EncryptedString.replace("/", "_");
     }
@@ -78,6 +79,7 @@ public class UtilService {
             base64EncryptedString = new String(plainText, "UTF-8");
 
         } catch (Exception ex) {
+            ex.printStackTrace();
         }
         return base64EncryptedString;
 }
@@ -104,6 +106,7 @@ public class UtilService {
             age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR)) + factor;
             return age;
         } catch (ParseException e) {
+            e.printStackTrace();
             System.err.println("No se puede calcular la edad");
             return -1;
         }
@@ -119,6 +122,7 @@ public class UtilService {
         try {
             md = MessageDigest.getInstance("MD5");
         } catch (NoSuchAlgorithmException e) {
+            e.printStackTrace();
             System.out.println("No se puede calcular HASH MD5:" + e.getMessage());
             throw new RuntimeException(e);
         }

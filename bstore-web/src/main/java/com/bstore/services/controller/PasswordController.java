@@ -64,6 +64,7 @@ public class PasswordController {
                         this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                 this.log.info("El correo fue enviado con tu password a: " + email);
             }catch(Exception ex){
+                ex.printStackTrace();
                  response.setCodigo("404");
                  response.setMensaje("Por el momento no se pudo enviar tu password a tu correo, intenta más tarde.");
                  status = HttpStatus.NOT_FOUND;

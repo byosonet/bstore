@@ -25,6 +25,7 @@ import com.bstore.services.conekta.service.RequestPaymentCard;
 import com.bstore.services.conekta.service.ResponsePaymentCard;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details.Item;
+import com.bstore.services.model.MenuModel;
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.CompraId;
@@ -113,6 +114,7 @@ public class CompraController {
                 return "muestraError";
             }
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /comprar/publicacion/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -165,6 +167,7 @@ public class CompraController {
         try{
             idGenerado = Integer.valueOf(id);
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /pagar/publicacion/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -205,6 +208,7 @@ public class CompraController {
             Integer.valueOf(usuario.getTelefono());
             details.setPhone(usuario.getTelefono());
         } catch (Exception ex) {
+            ex.printStackTrace();
             details.setPhone("0000000000");
         }
         details.setEmail(usuario.getEmail());
@@ -289,7 +293,7 @@ public class CompraController {
                 model.addAttribute("publicacion", publicacion);
                 log.info("Compra finalizada con exito: " + compra.toString());
 
-                Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
+                List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
                 model.addAttribute("menu", menu);
                 List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
                 model.addAttribute("ultimasCompras", ultimasCompras);
@@ -305,6 +309,7 @@ public class CompraController {
                             this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                     this.log.info("Enviado mail de compra exitosa");
                 } catch (Exception ex) {
+                    ex.printStackTrace();
                     this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
                 }
 
@@ -340,6 +345,7 @@ public class CompraController {
         try{
             idGenerado = Integer.valueOf(id);
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /pagar/publicacion/gratis/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -429,7 +435,7 @@ public class CompraController {
             model.addAttribute("publicacion", publicacion);
             log.info("Compra finalizada con exito: " + compra.toString());
 
-            Map<Coleccion, List<Publicacion>> menu = this.compraService.getMenuColeccion(usuario.getId());
+            List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
             model.addAttribute("menu", menu);
             List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
             model.addAttribute("ultimasCompras", ultimasCompras);
@@ -444,6 +450,7 @@ public class CompraController {
                         this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                 this.log.info("Enviado mail de compra exitosa");
             } catch (Exception ex) {
+                ex.printStackTrace();
                 this.log.error("No se puedo enviar mail de compa: " + ex.getMessage());
             }
 

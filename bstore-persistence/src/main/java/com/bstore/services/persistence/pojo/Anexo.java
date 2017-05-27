@@ -167,12 +167,7 @@ public class Anexo implements java.io.Serializable{
         
 	@Override
 	public String toString() {
-		return "Anexo [id=" + id + ", idPublicacion=" + idPublicacion
-				+ ", traduccion=" + traduccion + ", tipoImagen=" + tipoImagen
-				+ ", origenImagen=" + origenImagen + ", foja=" + foja
-				+ ", activo=" + activo + ", recargar=" + recargar
-				+ ", fechaAlta=" + fechaAlta + ", fechaModificacion="
-				+ fechaModificacion + "]";
+		return "Anexo [id=" + id + ", idPublicacion=" + idPublicacion+"]";
 	}
 
 }

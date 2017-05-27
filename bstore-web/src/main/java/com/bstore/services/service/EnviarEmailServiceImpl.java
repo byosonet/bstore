@@ -81,6 +81,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
             
             this.log.info("Correo enviado a: " + toEmail);
         } catch (MailException e) {
+            e.printStackTrace();
             log.error("Correo no pudo ser enviado: " + e.getMessage());
         }
     }
@@ -123,6 +124,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
             
             this.log.info("Correo enviado a: " + toEmail);
         } catch (MailException e) {
+            e.printStackTrace();
             log.error("Correo no pudo ser enviado: " + e.getMessage());
         }
     }
@@ -164,6 +166,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
 
             this.log.info("Correo enviado a: " + usuario.getEmail());
         } catch (MailException e) {
+            e.printStackTrace();
             log.error("Correo no pudo ser enviado: " + e.getMessage());
         }
 
@@ -228,6 +231,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
             
             this.log.info("Correo enviado a: " + toEmail);
         } catch (MailException e) {
+            e.printStackTrace();
             log.error("Correo no pudo ser enviado: " + e.getMessage());
         }
     }

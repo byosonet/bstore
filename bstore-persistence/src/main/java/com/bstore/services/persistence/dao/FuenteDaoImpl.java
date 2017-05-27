@@ -41,6 +41,7 @@ public class FuenteDaoImpl extends HibernateDaoSupport implements FuenteDao {
             HibernateUtil.getCurrentSession().flush();
             tx.commit();
 		} catch (HibernateException he) {
+            he.printStackTrace();
             tx.rollback();
             throw he;
         } finally {

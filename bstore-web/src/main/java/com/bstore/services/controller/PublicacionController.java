@@ -85,6 +85,7 @@ public class PublicacionController {
                     usuario.getId());
              log.info("Total publicaciones encontradas: " + lista.size());
         } catch (Exception ex) {
+            ex.printStackTrace();
             log.info("Error al procesar: /coleccion/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -119,6 +120,7 @@ public class PublicacionController {
                 usuario.getId());
         log.info("Total publicaciones encontradas: " + lista.size());
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /coleccion/tema/asc/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -153,6 +155,7 @@ public class PublicacionController {
                 usuario.getId());
         log.info("Total publicaciones encontradas: " + lista.size());
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /coleccion/tema/desc/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -187,6 +190,7 @@ public class PublicacionController {
                 usuario.getId());
         log.info("Total publicaciones encontradas: " + lista.size());
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /coleccion/precio/asc/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -221,6 +225,7 @@ public class PublicacionController {
                 usuario.getId());
         log.info("Total publicaciones encontradas: " + lista.size());
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /coleccion/precio/desc/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
@@ -273,6 +278,7 @@ public class PublicacionController {
             pub = this.publicacionService.getPublicacion(Integer.valueOf(id).intValue());
             model.addAttribute("nombrePublicacion", pub.getNombre());
         }catch(Exception ex){
+            ex.printStackTrace();
             log.info("Error al procesar: /publicacion/{id}" + id);
             model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
             return "muestraError";
