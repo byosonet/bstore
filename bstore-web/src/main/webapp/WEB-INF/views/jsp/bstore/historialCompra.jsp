@@ -46,16 +46,16 @@
 			<form class="form-horizontal">
 			
 				<div class="form-group">
-					 <br>
+					
                     <label class="text control-label col-sm-6">Tu pago fu&eacute; realizado con: </label>
                     <div class="col-sm-6">
                        <div class="">
                        		<c:choose>
                        			<c:when test="${compra.brandCard == 'mc'}">
-                       				<label><img width="35%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-25px;"></label>
+                       				<label><img width="25%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-25px;"></label>
                        			</c:when>
                        			<c:otherwise>
-                       				 <label><img width="35%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-25px;"></label>
+                       				 <label><img width="25%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-25px;"></label>
                        			</c:otherwise>
                        		</c:choose>
                         </div>
@@ -114,7 +114,7 @@
                 <div class="form-group">
                     <span class="text control-label col-sm-2">Fecha de Compra:</span>
                     <div class="col-sm-4">
-                        <label class="text control-label"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd-MM-yyyy HH:mm:ss"/></label>
+                        <label class="text control-label"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></label>
                     </div>
                     
                     <span class="text control-label col-sm-2">Estado de la Compra:</span>

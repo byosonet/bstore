@@ -2,44 +2,54 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <c:set var="urlhref"><spring:message code="url.menu.href"/></c:set>
-<html>
-<head>
-    <title>Novohispanorum</title>
-    <meta name="author" content="Ediciones Quivira : Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía">
-    <meta name="description" content=" Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI, XVII y XVIII del Oficio de la Santa Inquisición del Virreinato de la Nueva España.">
-    <meta name="keywords" content="virreinato de méxico, reino de portugal, tribunal santa inquisición, historia de méxico, juicio inquisitorial, estudios novohispanos">
-    <meta name="geo.placename" content="Mexico" />
-    <meta name="geo.position" content="x;x" />
-    <meta name="geo.region" content="MX" />
-    <meta name="ICBM" content="x,x" />
-    <link rel="alternate" hreflang="es-mx" href="www.novohispanorum.com">
-    <meta name="googlebot" content="..., ..." />
-    <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
-    <meta name="DC.Title" content="Novohispanorum">
-    <meta name="DC.Creator" content="Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
-    <meta name="DC.Subject" content="Librero Novohispanorum">
-    <meta name="DC.Description" content="Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI y XVII del Oficio de la Santa Inquisición del Virreinato de la Nueva España. ">
-    <meta name="DC.Publisher" content="Ediciones Quivira, S.A. de C.V.">
-    <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Programación; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
-    <meta name="DC.Date" content="2017-05-15">
-    <meta name="DC.Type" content="txt">
-    <meta name="DC.Type" content="image">
-    <meta name="DC.Format" content="txt/html">
-    <link rel="DC.Identifier" href="http://www.novohispanorum.mx/index.html">
-    <meta name="DC.Source" content="Novohispanorum">
-    <meta name="DC.Language" content="ES">
-    <meta name="DC.Relation" content="Digital editions">
-    <meta name="DC.Coverage" content="México">
-    <meta name="DC.Coverage" content="Nueva España">
-    <meta name="DC.Rights" content="Copyright 2010-2017, Ediciones Quivira, S.A. de C.V. All rights reserved.">
+    <html>
+        <head>
+            <title>Novohispanorum</title>
+            <meta name="author" content="Ediciones Quivira : Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía">
+            <meta name="description" content=" Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI, XVII y XVIII del Oficio de la Santa Inquisición del Virreinato de la Nueva España.">
+            <meta name="keywords" content="virreinato de méxico, reino de portugal, tribunal santa inquisición, historia de méxico, juicio inquisitorial, estudios novohispanos">
+            <meta name="geo.placename" content="Mexico" />
+            <meta name="geo.position" content="x;x" />
+            <meta name="geo.region" content="MX" />
+            <meta name="ICBM" content="x,x" />
+            <link rel="alternate" hreflang="es-mx" href="www.novohispanorum.com">
+            <meta name="googlebot" content="..., ..." />
+            <link rel="schema.DC" href="http://purl.org/dc/elements/1.1/">
+            <meta name="DC.Title" content="Novohispanorum">
+            <meta name="DC.Creator" content="Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
+            <meta name="DC.Subject" content="Librero Novohispanorum">
+            <meta name="DC.Description" content="Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI y XVII del Oficio de la Santa Inquisición del Virreinato de la Nueva España. ">
+            <meta name="DC.Publisher" content="Ediciones Quivira, S.A. de C.V.">
+            <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Programación; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
+            <meta name="DC.Date" content="2017-05-15">
+            <meta name="DC.Type" content="txt">
+            <meta name="DC.Type" content="image">
+            <meta name="DC.Format" content="txt/html">
+            <link rel="DC.Identifier" href="http://www.novohispanorum.mx/index.html">
+            <meta name="DC.Source" content="Novohispanorum">
+            <meta name="DC.Language" content="ES">
+            <meta name="DC.Relation" content="Digital editions">
+            <meta name="DC.Coverage" content="México">
+            <meta name="DC.Coverage" content="Nueva España">
+            <meta name="DC.Rights" content="Copyright 2010-2017, Ediciones Quivira, S.A. de C.V. All rights reserved.">
         <jsp:include page="staticResources.jsp"></jsp:include>
             <script type="text/javascript">
+                
+                $('ul.nav.navbar-nav').hide();
+                $('#wrapper').css('padding-left', '0px');
+                $('a#showMenu').show();
+
                 $(document).ready(function () {
-                    $('a#showMenu').hide();
+
+                    $('ul.nav.navbar-nav').hide();
+                    $('#wrapper').css('padding-left', '0px');
+                    $('a#showMenu').show();
+
+                    //$('a#showMenu').hide();
                     $('a#exit').click(function () {
                         $.ajax({
                             type: 'POST',
-                        url: '${contextpath}' + '/sistema/salir',
+                            url: '${contextpath}' + '/sistema/salir',
                             data: $('form#regresar').serialize(),
                             success: function (data) {
                                 muestraMsjSistemaSuccessIndex("<span class='text'>Gracias por tu visita, vuelve pronto.</span>");

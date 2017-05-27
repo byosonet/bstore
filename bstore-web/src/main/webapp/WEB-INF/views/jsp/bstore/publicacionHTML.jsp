@@ -20,9 +20,7 @@
 			return false;
 		});
 
-		$('ul.nav.navbar-nav').hide();
-		$('#wrapper').css('padding-left','0px');
-		$('a#showMenu').show();
+		
 		
 		<c:forEach items="${anexos}" var="anexo" varStatus="loop">
 		$("#pub${anexo.id}").elevateZoom({

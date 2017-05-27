@@ -203,10 +203,7 @@
         <div class="col-sm-12 col-sm-offset-0 col-md-12">
             <form class="form-horizontal" id="formRegistrar">
             	<input type="hidden" name="idUsuario" value="${usuario.id}">
-            	<div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b class="text">1.- DATOS DEL USUARIO</b></div>
-                </div>
-                
+                </br>
                 <div class="form-group">
                     <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
@@ -259,9 +256,6 @@
                 
                 </br>
                 </br>
-                <div class="form-group">
-                    <div class="control-label col-sm-12 alert alert-info" style="text-align: center;"><b class="text">2.- DATOS ADICIONALES</b></div>
-                </div>
                 
                 <div class="form-group">
                     <label class="text control-label col-sm-2" >Día:</label>
@@ -277,7 +271,7 @@
                     </div>
                     
                     <label class="text control-label col-sm-1" >Año:</label>
-                    <div class="col-sm-2">
+                    <div class="col-sm-1">
                         <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
                         <option data-bind="value: year,text:year"></option></select>
                     </div>

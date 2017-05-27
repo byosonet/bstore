@@ -291,7 +291,7 @@ public class PublicacionServiceImpl implements PublicacionService{
 		Properties valueIva = this.propertyDao.getValueByKey(VALUE_TAXE);
 		Properties valueRedondeo = this.propertyDao.getValueByKey(VALUE_ROUND);
 		if(valuePorcentaje!=null && valueCantidad!=null && valueIva!=null && valueRedondeo!=null && price!=null && price.intValue()>0){
-			this.log.info("Price recibido para calcular:::"+price);
+			//this.log.info("Price recibido para calcular:::"+price);
 			BigDecimal nPrice = BigDecimal.ZERO;
 			BigDecimal fporcentaje = new BigDecimal(this.propertyDao.getValueByKey(VALUE_PERCENTAGE).getValue());
 			fporcentaje = fporcentaje.divide(new BigDecimal(VALUE_100),REDONDEO_DECIMALES,BigDecimal.ROUND_HALF_UP);
@@ -299,16 +299,16 @@ public class PublicacionServiceImpl implements PublicacionService{
 			BigDecimal fiva = new BigDecimal(this.propertyDao.getValueByKey(VALUE_TAXE).getValue());
 			BigDecimal fredondeo = new BigDecimal(this.propertyDao.getValueByKey(VALUE_ROUND).getValue());
 			fiva = fiva.divide(new BigDecimal(VALUE_100),REDONDEO_DECIMALES,BigDecimal.ROUND_HALF_UP);
-			this.log.info("Factor porcentaje para conekta es de: "+fporcentaje);
-			this.log.info("Factor cantidad para conekta es de: "+fcantidad);
-			this.log.info("Factor iva para conekta es de: "+fiva);
+			//this.log.info("Factor porcentaje para conekta es de: "+fporcentaje);
+			//this.log.info("Factor cantidad para conekta es de: "+fcantidad);
+			//this.log.info("Factor iva para conekta es de: "+fiva);
 			this.log.info("Ejecutando operaciones...");
 			nPrice = price.multiply(fporcentaje).add(fcantidad);
-			this.log.info("Primera operacion: "+nPrice);
+			//this.log.info("Primera operacion: "+nPrice);
 			nPrice = nPrice.add(nPrice.multiply(fiva));
-			this.log.info("Segunda operacion: "+nPrice);
+			//this.log.info("Segunda operacion: "+nPrice);
 			nPrice = nPrice.add(price).setScale(2, BigDecimal.ROUND_HALF_UP);
-			this.log.info("Tercera operacion precio de Conekta: "+nPrice);
+			//this.log.info("Tercera operacion precio de Conekta: "+nPrice);
 			nPrice = nPrice.add(fredondeo);
 			this.log.info("Operacion Final precio de Conekta + factor de Redondeo::: "+nPrice);
 			return nPrice;
