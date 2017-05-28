@@ -19,15 +19,15 @@
         </script>
     </head>
     <body>
-        <div class="row">
+        <div class="">
             
-                <div class="col-md-12" style="position: relative;">
-                    <div class="col-md-12" style="text-align: center;"><img style="width: 100%;border-radius:20px;height: 500px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
-                    <div class="col-md-12" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);">
+                <div style="position: relative;">
+                    <div style="text-align: center;margin-top: -60px;"><img style="width: 100%;height: 450px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
+                    <div class="col-md-12" style="position: absolute; top: 47%; left: 45%; transform: translate(-50%, -50%);">
                         <c:if test="${!empty publicacionesActivas}">
                             <div style="text-align: center;">
                                 <select class="listaPublicaciones" id="listaPub">
-                                    <option value="buscar" selected>Buscar..</option>
+                                    <option value="buscar" selected>Publicaciones Novoshispanos</option>
                                     <c:forEach var="publicacion" items="${publicacionesActivas}">
                                         <c:choose>
                                             <c:when test="${publicacion.comprada}">
@@ -45,16 +45,15 @@
                         </c:if>
                     </div>
                 </div>
-
-                </br>
-                </br>
-                <div class="row col-md-12 alert alert-info" style="text-align: justify;word-wrap: break-word;margin-top:40px;width: 98%;margin-left: 0.5em;">
+                <div class="col-md-12 alert alert-info" style="margin-bottom: -9999px;text-align: justify;word-wrap: break-word;width: 100%;margin-top: -50px;">
                 <p class="text">Ediciones Quivira surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la Inquisición del Virreinato de la Nueva España. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
-                <p class="text"> En la actualidad, nuestra finalidad es encontrar la mejor manera de presentar un texto en pantalla, de manera que sea funcionales y sea posible aprovechar todas las ventajas que pueden brindar las herramientas digitales para su lectura, sin por ello alejarnos de la estructura y organización de las publicaciones impresas, considerando siempre las necesidades de nuestros lectores.</p>
                 </br>
-                <p class="text"> Nuestras publicaciones están planeadas para adaptarse a diferentes formatos y plataformas de equipos móviles y tabletas con sistema operativo Android o iOS. Para aquellos lectores que prefieran las ediciones impresas, en ciertos casos será posible adquirir algunos de éstos títulos en ediciones de colección. </p>
+                <p class="text">En la actualidad, nuestra finalidad es encontrar la mejor manera de presentar un texto en pantalla, de manera que sea funcionales y sea posible aprovechar todas las ventajas que pueden brindar las herramientas digitales para su lectura, sin por ello alejarnos de la estructura y organización de las publicaciones impresas, considerando siempre las necesidades de nuestros lectores.</p>
+                </br>
+                <p class="text"> Nuestras publicaciones están planeadas para adaptarse a diferentes formatos y plataformas de equipos móviles y tabletas con sistema operativo Android o iOS. Para aquellos lectores que prefieran las ediciones impresas, en ciertos casos será posible adquirir algunos de éstos títulos en ediciones de colección.</p>
+                </br>
                 <p class="text">En la mayoría de los casos, generamos nuestros propios contenidos, en los cuales intervienen colaboradores y especialistas que enriquecen las colecciones de nuestro acervo.</p>
-                
+                </br>
                 <div style="float: right;">
                     <p style="float: left;padding: 5px" class="text">Vis&iacute;tanos en: </p>
                     <a href="https://www.facebook.com/edicionesquivira?ref=hl" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/facebook.png"></a>

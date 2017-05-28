@@ -29,12 +29,12 @@ $("#listaPub").change(function(){
 <c:if test="${!empty publicaciones}">
 <div class="row">
 	<div style="text-align: center;">
-		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-success">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
-		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-success">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-warning">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-warning">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-info">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-info">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-info">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
+		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-info">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
 		<select class="listaPublicaciones" id="listaPub">
-			<option value="buscar" selected>Buscar..</option>
+			<option value="buscar" selected>Buscar</option>
 			<c:forEach var="publicacion" items="${publicaciones}">
 			  <c:choose>
     		 	<c:when test="${publicacion.comprada}">
