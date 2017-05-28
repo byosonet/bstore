@@ -102,7 +102,7 @@
 		        function muestraMsjSistemaError(msjStatus){
 		           BootstrapDialog.show({
 		            size: BootstrapDialog.SIZE_SMALL,
-		            title: 'Mensaje del Sistema',
+		            title: "<span class='text'>Mensaje de Novohispano</span>",
 		            closable: false,
 		            message: msjStatus,
 		            type: BootstrapDialog.TYPE_DANGER,
@@ -121,7 +121,7 @@
 		        function muestraMsjSistemaSuccess(msjStatus){
 		           BootstrapDialog.show({
 		            size: BootstrapDialog.SIZE_SMALL,
-		            title: 'Mensaje del Sistema',
+		            title: "<span class='text'>Mensaje de Novohispano</span>",
 		            closable: false,
 		            message: msjStatus,
 		            type: BootstrapDialog.TYPE_SUCCESS,
@@ -149,7 +149,7 @@
 		        function muestraMsjSistemaSuccessCancelar(msjStatus){
 			           BootstrapDialog.show({
 			            size: BootstrapDialog.SIZE_SMALL,
-			            title: 'Mensaje del Sistema',
+			            title: "<span class='text'>Mensaje de Novohispano</span>",
 			            closable: false,
 			            message: msjStatus,
 			            type: BootstrapDialog.TYPE_DANGER,

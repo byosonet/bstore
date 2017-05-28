@@ -52,7 +52,7 @@
                             url: '${contextpath}' + '/sistema/salir',
                             data: $('form#regresar').serialize(),
                             success: function (data) {
-                                muestraMsjSistemaSuccessIndex("<span class='text'>Gracias por tu visita, vuelve pronto.</span>");
+                                muestraMsjSistemaSuccessIndex("<span class='text'>Gracias por tu visita "+"<b>${sessionScope.usuario.nombre}</b>"+", vuelve pronto.</span>");
                             }
                         });
                     });
@@ -66,7 +66,7 @@
                     function muestraMsjSistemaSuccessIndex(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: 'Mensaje del Sistema',
+                            title: "<span class='text'>Mensaje de Novohispano</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_SUCCESS,
@@ -151,7 +151,7 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a class="text" href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Principal</a>
+                            <a class="text" href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Inicio</a>
                         </li>
                         <li class="active">
                             <a class="text" href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>

@@ -75,7 +75,7 @@
                     function muestraMsjSistemaError(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: 'Mensaje del Sistema:',
+                            title: "<span class='text'>Mensaje de Novohispano</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_DANGER,
@@ -94,7 +94,7 @@
                     function muestraMsjSistemaSuccess(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: 'Mensaje del Sistema:',
+                            title: "<span class='text'>Mensaje de Novohispano</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_SUCCESS,
@@ -165,7 +165,7 @@
                         <div class="form-group">
                             <label class="control-label col-sm-3" for="nombre"></label>
                             <div class="col-sm-9">
-                                <div style="text-align:center;color:black"><h5><b class="text">e Q u i v i r a</b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
+                                <div style="text-align:center;color:black"><h5><b class="text"></b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
                                 </div>
                             </div>
                         </div>
