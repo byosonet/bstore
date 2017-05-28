@@ -27,7 +27,7 @@
                         <c:if test="${!empty publicacionesActivas}">
                             <div style="text-align: center;">
                                 <select class="listaPublicaciones" id="listaPub">
-                                    <option value="buscar" selected>Publicaciones Novoshispanos</option>
+                                    <option value="buscar" selected>Documentos Novohispanos</option>
                                     <c:forEach var="publicacion" items="${publicacionesActivas}">
                                         <c:choose>
                                             <c:when test="${publicacion.comprada}">
@@ -46,7 +46,7 @@
                     </div>
                 </div>
                 <div class="col-md-12 alert alert-info" style="margin-bottom: -9999px;text-align: justify;word-wrap: break-word;width: 100%;margin-top: -50px;">
-                <p class="text">Ediciones Quivira surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la Inquisición del Virreinato de la Nueva España. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
+                    <p class="text"><b>Ediciones Quivira</b> surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la <b>Inquisición del Virreinato de la Nueva España</b>. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
                 </br>
                 <p class="text">En la actualidad, nuestra finalidad es encontrar la mejor manera de presentar un texto en pantalla, de manera que sea funcionales y sea posible aprovechar todas las ventajas que pueden brindar las herramientas digitales para su lectura, sin por ello alejarnos de la estructura y organización de las publicaciones impresas, considerando siempre las necesidades de nuestros lectores.</p>
                 </br>
@@ -55,7 +55,7 @@
                 <p class="text">En la mayoría de los casos, generamos nuestros propios contenidos, en los cuales intervienen colaboradores y especialistas que enriquecen las colecciones de nuestro acervo.</p>
                 </br>
                 <div style="float: right;">
-                    <p style="float: left;padding: 5px" class="text">Vis&iacute;tanos en: </p>
+                    <p style="float: left;padding: 5px" class="text"><b>Vis&iacute;tanos en: </b></p>
                     <a href="https://www.facebook.com/edicionesquivira?ref=hl" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/facebook.png"></a>
                     <a href="https://twitter.com/equivira" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/twitter.png"></a>
                     <a href="https://plus.google.com/+Edicionesquivira666/videos" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/googleplus.png"></a>

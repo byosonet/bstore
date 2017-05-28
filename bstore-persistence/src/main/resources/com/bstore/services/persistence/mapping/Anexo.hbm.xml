@@ -44,6 +44,9 @@
         <property name="fechaModificacion" type="timestamp">
             <column name="FECHA_MODIFICACION"/>
         </property>
+        <property name="fojaTxt" type="string">
+            <column name="FOJA_TXT" length="50"/>
+        </property>
         
     </class>
 </hibernate-mapping>

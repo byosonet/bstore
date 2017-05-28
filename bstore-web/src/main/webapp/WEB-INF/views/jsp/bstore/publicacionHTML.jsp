@@ -109,7 +109,7 @@
                <tr style="background-repeat: no-repeat;" background="${contextpath}/static/resources/img/fondo_publicacion.png">
 	                <td style="text-align: center;width: 10%;">
 	                	<b class="text">
-	                		F<c:out value="${anexo.foja}"/>
+	                		<c:out value="${anexo.fojaTxt}"/>
 	                	</b>
 	                </td>
 	                <td style="width: 40%;">

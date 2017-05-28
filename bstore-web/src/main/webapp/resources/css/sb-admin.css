@@ -60,7 +60,7 @@
 .top-nav>.open>a:hover,
 .top-nav>.open>a:focus {
     color: #fff;
-    background-color: darkcyan;
+    background-color: #61380B;
 }
 
 .top-nav>.open>.dropdown-menu {
