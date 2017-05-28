@@ -158,7 +158,7 @@
                         </li>
                         <c:forEach var="entry" items="${menu}">
                             <li class="active">
-                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class="fa fa-fw fa-folder-open"></i> <c:out value="${entry.nombreCol}"/> </a>
+                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class="fa fa-fw fa-floppy-o"></i> <c:out value="${entry.nombreCol}"/> </a>
                                 <ul id="${entry.idCol}" class="">
                                     <c:forEach var="publicacion" items="${entry.pubs}">
                                         <li>
