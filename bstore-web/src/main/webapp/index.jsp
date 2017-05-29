@@ -158,39 +158,36 @@
 
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
+                <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
                     </br>
                     </br>
                     <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
                         <div class="form-group">
-                            <label class="control-label col-sm-3" for="nombre"></label>
-                            <div class="col-sm-9">
+                            <div class="col-sm-12">
                                 <div style="text-align:center;color:black"><h5><b class="text"></b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
                                 </div>
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="text control-label col-sm-3" style="color:black;" for="nombre">Usuario</label>
-                            <div class="col-sm-9">
-                                <input type="text" class="text form-control" id="login" name="user" placeholder="Ingresa tu login">
+                            <div class="col-sm-12">
+                                <input type="text" class="text form-control" id="login" name="user" placeholder="Nombre de usuario o email">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-3" style="color:black;" for="email">Password</label>
-                            <div class="col-sm-9">
-                                <input type="password" class="text form-control" id="password" name="password" placeholder="Ingresa tu password">
+                            <div class="col-sm-12">
+                                <input type="password" class="text form-control" id="password" name="password" placeholder="Contrase&ncaron;a">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-12" style="color:black;">¿Olvidé mi contraseña? <a class="text" href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                            <label class="text col-sm-12" style="color:black;text-align: center;">¿Olvidé mi contraseña? <a class="text" href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
                         </div>
                     </form>
                     <div class="row">
-                        <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                            <button id="registrar" class="text btn btn-default"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
-                            <button id="acceder" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ACCEDER</button>
+                        <div class="col-sm-12" style="text-align: center;">
+                            <button id="registrar" class="text btn btn-default"><span class="glyphicon glyphicon-user"></span> CREAR CUENTA</button>
+                            <button id="acceder" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> INGRESAR</button>
                         </div>
                     </div>
                 </div>

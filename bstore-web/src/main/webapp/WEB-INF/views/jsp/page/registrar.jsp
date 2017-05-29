@@ -167,7 +167,7 @@
                     <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
 
                         <div class="form-group">
-                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">REGISTRO NUEVO USUARIO</b></h5>
+                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">CREAR NUEVA CUENTA</b></h5>
                         </div>
                         </br>
                         </br>

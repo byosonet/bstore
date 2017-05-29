@@ -111,36 +111,34 @@
     <body>  
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
+                <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
                     </br>
                     </br>
                     </br>
                     <form id="recuperar" class="form-horizontal">
                         <div class="form-group">
-                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">RECUPERAR CUENTA</b></h5>
+                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">RECUPERACI&Oacute;N DE CUENTA</b></h5>
                         </div>
                         </br>
                         </br>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-4" style="color:black;" for="nombre">Email:</label>
-                            <div class="col-sm-8">
-                                <input type="text" class="text form-control" id="email" name="email" placeholder="Ingresa tu email">
+                            <div class="col-sm-12">
+                                <input type="text" class="text form-control" id="email" name="email" placeholder="Email de usuario">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-4" style="color:black;" for="email">Confirmar Email:</label>
-                            <div class="col-sm-8">
+                            <div class="col-sm-12">
                                 <input type="text" class="text form-control" id="confEmail" name="confEmail" placeholder="Confirma tu email">
                             </div>
                         </div>
                     </form>
                     <form id="regresar"></form>
                     <div class="row">
-                        <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+                        <div class="col-sm-12" style="text-align: right;">
                             <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                            <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> ENVIAR</button>
+                            <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> RECUPERAR</button>
                         </div>
                     </div>
                 </div>
