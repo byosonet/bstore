@@ -22,7 +22,7 @@
         <div class="">
             
                 <div style="position: relative;">
-                    <div style="text-align: center;margin-top: -60px;"><img style="width: 100%;height: 450px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
+                    <div style="text-align: center;margin-top: 0px;"><img style="width: 100%;height: 450px;border-radius: 20px;" src="${contextpath}/static/resources/img/app-background.jpg"></div>
                     <div class="col-md-12" style="position: absolute; top: 47%; left: 45%; transform: translate(-50%, -50%);">
                         <c:if test="${!empty publicacionesActivas}">
                             <div style="text-align: center;">
@@ -45,7 +45,7 @@
                         </c:if>
                     </div>
                 </div>
-                <div class="col-md-12 alert alert-info" style="margin-bottom: -9999px;text-align: justify;word-wrap: break-word;width: 100%;margin-top: -50px;">
+                <div class="col-md-12 alert alert-info" style="margin-bottom: 30px;text-align: justify;word-wrap: break-word;width: 100%;margin-top: -50px;">
                     <p class="text"><b>Ediciones Quivira</b> surge con el propósito de crear una colección digital de documentos novohispanos inéditos de la <b>Inquisición del Virreinato de la Nueva España</b>. Además de publicar algunas obras en diversos temas y géneros como literatura, filosofía, historia, vocabularios, diccionarios y manuales de consulta.</p>
                 </br>
                 <p class="text">En la actualidad, nuestra finalidad es encontrar la mejor manera de presentar un texto en pantalla, de manera que sea funcionales y sea posible aprovechar todas las ventajas que pueden brindar las herramientas digitales para su lectura, sin por ello alejarnos de la estructura y organización de las publicaciones impresas, considerando siempre las necesidades de nuestros lectores.</p>

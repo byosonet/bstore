@@ -158,9 +158,7 @@
 
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
-                    </br>
-                    </br>
+                <div class="col-sm-12 col-sm-offset-0 col-md-3 col-md-offset-4 main">
                     <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
                         <div class="form-group">
                             <div class="col-sm-12">
