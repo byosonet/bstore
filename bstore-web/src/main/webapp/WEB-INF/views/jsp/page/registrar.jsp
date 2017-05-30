@@ -162,12 +162,12 @@
 
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-10 col-md-offset-1 main">
+                <div class="col-sm-12 col-sm-offset-0 col-md-11 col-md-offset-0 main">
                     </br>
                     <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
 
                         <div class="form-group">
-                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">CREAR NUEVA CUENTA</b></h5>
+                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info">CREAR NUEVA CUENTA EN NOVOHISPANO <span class="glyphicon glyphicon-user"></span></span></b></h4>
                         </div>
                         </br>
                         </br>
@@ -175,48 +175,48 @@
                         <div class="form-group">
                             <label class="text control-label col-sm-2" style="color:black;" for="login">Login:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login">
+                                <input type="text" class="text form-control" id="login" name="login" placeholder="Login">
                             </div>
 
                             <label class="text control-label col-sm-2" style="color:black;" for="nombre">Nombre(s):</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre">
+                                <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Nombre">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="text control-label col-sm-2" style="color:black;" for="apaterno">Apellido Paterno:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno">
+                                <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Apellido paterno">
                             </div>
 
                             <label class="text control-label col-sm-2" style="color:black;" for="amaterno">Apellido Materno:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingesa tu apellido materno">
+                                <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Apellido materno">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="text control-label col-sm-2" style="color:black;" for="telefono">Tel&eacute;fono:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingresa tu tel&eacute;fono">
+                                <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
                             </div>
 
                             <label class="text control-label col-sm-2" style="color:black;" for="email">Email:</label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email">
+                                <input type="text" class="text form-control" id="email" name="email" placeholder="Email">
                             </div>
                         </div>
 
                         <div class="form-group">
                             <label class="text control-label col-sm-2" style="color:black;" for="email">Password:</label>
                             <div class="col-sm-4">
-                                <input type="password" class="text form-control" id="password" name="password" placeholder="Ingesa tu password">
+                                <input type="password" class="text form-control" id="password" name="password" placeholder="Password">
                             </div>
 
                             <label class="text control-label col-sm-2" style="color:black;" for="email">Confirmar password:</label>
                             <div class="col-sm-4">
-                                <input type="password" class="text form-control" id="confPassword" name="confPassword" placeholder="Confirma tu password">
+                                <input type="password" class="text form-control" id="confPassword" name="confPassword" placeholder="Confirmar password">
                             </div>
                         </div>
                         </br>

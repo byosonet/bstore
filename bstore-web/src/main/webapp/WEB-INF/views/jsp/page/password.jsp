@@ -111,13 +111,13 @@
     <body>  
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
+                <div class="col-sm-12 col-sm-offset-0 col-md-4 col-md-offset-4 main">
                     </br>
                     </br>
                     </br>
                     <form id="recuperar" class="form-horizontal">
                         <div class="form-group">
-                            <h5 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text">RECUPERACI&Oacute;N DE CUENTA</b></h5>
+                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info">RECUPERACI&Oacute;N DE CUENTA <span class="glyphicon glyphicon-repeat"></span></span></b></h4>
                         </div>
                         </br>
                         </br>
@@ -138,7 +138,7 @@
                     <div class="row">
                         <div class="col-sm-12" style="text-align: right;">
                             <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                            <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> RECUPERAR</button>
+                            <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-repeat"></span> RECUPERAR</button>
                         </div>
                     </div>
                 </div>

@@ -45,7 +45,7 @@ function NacimientoModel() {
         }else{
             self.days.push(new Day({id: i,day : i}));
         }
-    for(i=1900; i<n;i++)
+    for(i=1940; i<n;i++)
         self.years.push(new Year({year: i}));
 }
 ko.applyBindings(new NacimientoModel());

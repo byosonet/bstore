@@ -4,7 +4,7 @@
        "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
 <tiles-definitions>
 	<definition name="principal" template="/WEB-INF/views/layout/principal.jsp">
-            <put-attribute name="title" value="eQuivira"/>
+            <put-attribute name="title" value="Novohispanorum"/>
 	</definition>
 	
 	<definition name="indexPrincipal" extends="principal">
@@ -95,7 +95,7 @@
 	</definition>
 	
 	<definition name="login" template="/WEB-INF/views/layout/login.jsp">
-            <put-attribute name="title" value="eQuivira"/>
+            <put-attribute name="title" value="Novohispanorum"/>
             <put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
             <put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
