@@ -200,7 +200,7 @@
 
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-12">
+        <div class="col-sm-12 col-sm-offset-0 col-md-11">
             <form class="form-horizontal" id="formRegistrar">
             	<input type="hidden" name="idUsuario" value="${usuario.id}">
                 </br>

@@ -29,10 +29,10 @@
 						</thead>
 						<tbody>
 							<tr>
-								<td style="text-align: center;"><b class="text">${count}.- ${publicacion.nombre}</b></td>
+								<td style="text-align: left;"><b class="text">${count}.- ${publicacion.nombre}</b></td>
 								<td style="text-align: center;" class="text">${publicacion.isbn}</td>
 								<td style="text-align: center;" class="text">${publicacion.numeroPaginas}</td>
-								<td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-success">Leer</a></b></td>
+                                                                <td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-default"><span class="glyphicon glyphicon-book"></span> Leer</a></b></td>
 							</tr>
 						</tbody>
 					</table>
@@ -114,7 +114,7 @@
                 <div class="form-group">
                     <span class="text control-label col-sm-2">Fecha de Compra:</span>
                     <div class="col-sm-4">
-                        <label class="text control-label"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></label>
+                        <label class="text control-label"><span class="label label-danger" style="font-size: 12px;"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></span></label>
                     </div>
                     
                     <span class="text control-label col-sm-2">Estado de la Compra:</span>
