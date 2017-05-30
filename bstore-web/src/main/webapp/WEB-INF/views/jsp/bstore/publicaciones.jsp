@@ -59,7 +59,7 @@ $("#listaPub").change(function(){
     		 		<c:set var="valueName" value="Leer" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
-    		 		<c:set var="valueColor" value="btn btn-success" />
+    		 		<c:set var="valueColor" value="btn btn-default" />
     		 	</c:when>
     		 	<c:otherwise>
     		 		<c:set var="valueName" value="Comprar" />
@@ -68,7 +68,7 @@ $("#listaPub").change(function(){
     		 		<c:set var="valueColor" value="btn btn-primary" />
     		 	</c:otherwise>
     		 </c:choose>
-             <div class="item banner-wrapper">
+             <div class="item banner-wrapper" style="${publicacion.comprada ? 'background-color:':''}">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
                    <span class="text" style="float:left;margin-top: -10px;margin-left:40px;"><b>Autor/Fuente</b></span>
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
@@ -80,9 +80,12 @@ $("#listaPub").change(function(){
              	 </c:if>
 				 <c:if test="${publicacion.descuento != '0.00' && valueName != 'Leer'}">
 				 	<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
-             		<div class="text banner-title"> <b>Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
+             		<div class="text banner-title"> <b class="text">Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
              	 </c:if>
-				 <b><a href="${valueUrl}" style="font-size:15;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+			  <c:if test="${publicacion.comprada}">
+			 	<span class="text label label-danger" style="float:left;margin-top: -10px;">Comprado: <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy HH:mm"/></span>
+                         </c:if>	 
+                        <b><a href="${valueUrl}" style="font-size:13;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">

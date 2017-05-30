@@ -33,7 +33,7 @@
 .banner-title {
     position: absolute;
     left: -10px;
-    bottom: 55px;
+    bottom: 60px;
     background: #FF6B0E;
     line-height: 1.5em;
     font-weight: normal;
@@ -41,8 +41,7 @@
     font-family: 'Oswald', sans-serif;
     color: #FFFFFF;
     font-size: 1.1em;
-    margin-left:11px;
-    width: 100%;
+    margin-left:20px;
     text-align: center;
     border-radius:20px;
 }
