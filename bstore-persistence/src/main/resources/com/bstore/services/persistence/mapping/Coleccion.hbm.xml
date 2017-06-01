@@ -27,7 +27,7 @@
             <column name="PORTADA_URL" length="200" />
         </property>
          <property name="descripcion" type="string">
-            <column name="DESCRIPCION" length="500" />
+            <column name="DESCRIPCION" length="1000" />
         </property>
         <property name="ranking" type="java.lang.Integer">
             <column name="RANKING" />

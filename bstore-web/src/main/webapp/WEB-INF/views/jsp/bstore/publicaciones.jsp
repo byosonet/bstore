@@ -70,7 +70,8 @@ $("#listaPub").change(function(){
     		 </c:choose>
              <div class="item banner-wrapper" style="${publicacion.comprada ? 'background-color:':''}">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
-                   <span class="text" style="float:left;margin-top: -10px;margin-left:40px;"><b>Autor/Fuente</b></span>
+                 <!--<span class="text" style="float:left;margin-top: -20px;margin-left:20px;color:orange;font-size: 16px;"><b class=""><span class="glyphicon glyphicon-star"></span>68</b> <span class="label label-warning">Me gusta</span></span>-->
+                   <span class="text" style="float:left;margin-top: -10px;margin-left:40px;"><b class="">Autor/Fuente</b></span>
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">Tema: <c:out value="${publicacion.nombre}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
