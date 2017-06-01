@@ -61,17 +61,18 @@
 <style>
     body {
         margin-top: 100px;
-        background: url('${contextpath}/static/resources/img/web-background.jpg') no-repeat center center fixed; 
+        background-color: #F7F7F7;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
     }
     .wallpaper{
-        background: url('${contextpath}/static/resources/img/web-background.jpg') no-repeat center center fixed; 
+        background-color: #F7F7F7;
         -webkit-background-size: cover;
         -moz-background-size: cover;
         -o-background-size: cover;
         background-size: cover;
     }
 </style>
+<link type="text/css" id="colors" rel="stylesheet" href="${contextpath}/static/resources/principal/css/green.css">
