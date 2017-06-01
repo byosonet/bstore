@@ -21,17 +21,19 @@ public class Coleccion implements java.io.Serializable {
 	private Integer ranking;
 	private String portadaUrl;
 	private String usuario;
+        private String descripcion;
 
 	public Coleccion() {
 	}
 
-	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif, String portadaUrl) {
+	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif, String portadaUrl, String descripcion) {
 		this.id = id;
 		this.estatus = estatus;
 		this.nombre = nombre;
 		this.fechaUmodif = fechaUmodif;
 		this.idUsuarioUmodif = idUsuarioUmodif;
 		this.portadaUrl = portadaUrl;
+                this.descripcion = descripcion;
 	}
 
 	public Coleccion(int id, int estatus, String nombre, Date fechaUmodif, int idUsuarioUmodif, String nombreMostrar,
@@ -117,6 +119,14 @@ public class Coleccion implements java.io.Serializable {
 	public void setUsuario(String usuario) {
 		this.usuario = usuario;
 	}
+
+        public String getDescripcion() {
+            return descripcion;
+        }
+
+        public void setDescripcion(String descripcion) {
+            this.descripcion = descripcion;
+        }
 
 	@Override
 	public String toString() {

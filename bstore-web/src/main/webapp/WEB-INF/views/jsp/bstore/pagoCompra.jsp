@@ -41,7 +41,7 @@ $(document).ready(function() {
 								<td class="text" style="text-align: center;">${publicacion.nombre}</td>
 								<td class="text" style="text-align: center;">${publicacion.isbn}</td>
 								<td class="text" style="text-align: center;">${publicacion.numeroPaginas}</td>
-								<td class="text" style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-success">Leer</a></b></td>
+								<td class="text" style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-success">Ver</a></b></td>
 							</tr>
 						</tbody>
 					</table>

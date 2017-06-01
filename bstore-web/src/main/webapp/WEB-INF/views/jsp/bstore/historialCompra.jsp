@@ -32,7 +32,7 @@
 								<td style="text-align: left;"><b class="text">${count}.- ${publicacion.nombre}</b></td>
 								<td style="text-align: center;" class="text">${publicacion.isbn}</td>
 								<td style="text-align: center;" class="text">${publicacion.numeroPaginas}</td>
-                                                                <td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-default"><span class="glyphicon glyphicon-book"></span> Leer</a></b></td>
+                                                                <td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-default"><span class="glyphicon glyphicon-book"></span> Ver</a></b></td>
 							</tr>
 						</tbody>
 					</table>

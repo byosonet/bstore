@@ -56,7 +56,7 @@ $("#listaPub").change(function(){
     	<c:forEach var="publicacion" items="${publicaciones}">
     		 <c:choose>
     		 	<c:when test="${publicacion.comprada}">
-    		 		<c:set var="valueName" value="Leer" />
+    		 		<c:set var="valueName" value="Ver" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
     		 		<c:set var="valueColor" value="btn btn-info" />

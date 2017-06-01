@@ -141,8 +141,8 @@ a.accordion-toggle:hover, .accordion-heading a.active {
 
 /*** tables ***/
 .table-hover tbody tr:hover td, .table-hover tbody tr:hover th {
-	background-color: #4F6266 !important;
-	color:white;
+/*	background-color: #4F6266 !important;
+	color:white; */
 }
 .table-striped tbody tr:nth-child(odd) td, .table-striped tbody tr:nth-child(odd) th {
  background-color: #F5F5F5;
