@@ -25,7 +25,7 @@
                 });
 
 
-                $('input#nombre').focus();
+                $('input#login').focus();
                 $('button#registrar').click(function () {
 
                     var nombre = $('input#nombre');

@@ -59,7 +59,7 @@ $("#listaPub").change(function(){
     		 		<c:set var="valueName" value="Leer" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
-    		 		<c:set var="valueColor" value="btn btn-default" />
+    		 		<c:set var="valueColor" value="btn btn-info" />
     		 	</c:when>
     		 	<c:otherwise>
     		 		<c:set var="valueName" value="Comprar" />

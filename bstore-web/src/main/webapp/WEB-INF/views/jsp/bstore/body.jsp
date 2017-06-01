@@ -7,9 +7,10 @@
             $(document).ready(function () {
 
                 $(".listaPublicaciones").select2({
+                    placeholder: "Select a state",
                     theme: "classic",
                     language: "es",
-                    width: 600
+                    width: '100%'
                 });
 
                 $("#listaPub").change(function () {
@@ -17,15 +18,50 @@
                 });
             });
         </script>
+        <style>
+            .cabecera{
+                left: 0px;
+                right: 0px;
+                background-repeat: round;
+            }
+        </style>
     </head>
     <body>
         <div id="globalWrapper" class="localscroll">
+            <br/>
             <section class="clearfix bgFullScreen" id="homeApp">
-                <div class="container" style="margin-top: -90px;width: 100%;text-align: center">
-                    <img style="text-align: center;height: auto;width: 90%;border-radius: 10px;" src="${contextpath}/static/resources/img/head_novohispanorum.jpg">
+                <div class="container">
+                    <div class="">
+                        <c:if test="${!empty publicacionesActivas}">
+                            <div style="text-align: center;">
+                                <select class="listaPublicaciones" id="listaPub">
+                                    <option value="buscar" selected>Documentos Novohispanos</option>
+                                    <c:forEach var="publicacion" items="${publicacionesActivas}">
+                                        <c:choose>
+                                            <c:when test="${publicacion.comprada}">
+                                                <c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
+                                                <option value="${valueUrl}">${publicacion.nombre}</option>
+                                            </c:when>
+                                            <c:otherwise>
+                                                <c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
+                                                <option value="${valueUrl}">${publicacion.nombre}</option>
+                                            </c:otherwise>
+                                        </c:choose>
+                                    </c:forEach>
+                                </select>
+                            </div>
+                        </c:if>
+                    </div>
                 </div>
             </section>
-                <br/>
+            
+            <section class="clearfix bgFullScreen" id="homeApp">
+                <div class="container">
+                    <div class="cabecera" style="margin-top:15px ;text-align: center;height: 16em;border-radius: 15px;background-image: url('${contextpath}/static/resources/img/head_novohispanorum.jpg');">
+                    </div>
+                </div>
+            </section>
+            <br/>
             <section class="noPaddingBottom" id="editorial">
                 <div class="container">
                     <div class="">
@@ -56,14 +92,14 @@
                             </div>
                         </div>
                     </div>
-                </br>
-                <div style="float: right;">
-                    <p style="float: left;padding: 5px" class="text"><b>Vis&iacute;tanos en: </b></p>
-                    <a href="https://www.facebook.com/edicionesquivira?ref=hl" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/facebook.png"></a>
-                    <a href="https://twitter.com/equivira" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/twitter.png"></a>
-                    <a href="https://plus.google.com/+Edicionesquivira666/videos" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/googleplus.png"></a>
-                    <a href="https://www.pinterest.com/equivira/" target="_blank"><img style="width: 30px;height: 30px;float: left;" src="${contextpath}/static/resources/images/pinterest.png"></a>
-                </div>
+                    </br>
+                    <div style="float: right;">
+                        <p style="float: left;padding: 5px" class="text"><b>Vis&iacute;tanos en: </b></p>
+                        <a href="https://www.facebook.com/edicionesquivira?ref=hl" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/facebook.png"></a>
+                        <a href="https://twitter.com/equivira" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/twitter.png"></a>
+                        <a href="https://plus.google.com/+Edicionesquivira666/videos" target="_blank"><img style="width: 30px;height: 30px;float: right;" src="${contextpath}/static/resources/images/googleplus.png"></a>
+                        <a href="https://www.pinterest.com/equivira/" target="_blank"><img style="width: 30px;height: 30px;float: left;" src="${contextpath}/static/resources/images/pinterest.png"></a>
+                    </div>
                 </div>
             </section>
         </div>
