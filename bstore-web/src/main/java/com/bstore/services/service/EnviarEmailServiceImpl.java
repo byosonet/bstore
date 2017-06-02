@@ -1,5 +1,6 @@
 package com.bstore.services.service;
 
+import com.bstore.services.model.UserSession;
 import java.io.BufferedReader;
 import java.io.StringWriter;
 import java.text.SimpleDateFormat;
@@ -45,14 +46,14 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
 
     @Override
     @Transactional(readOnly = true)
-    public void enviarEmailRegistro(final String toEmail, final String[] bccEmail, Usuario usuario, String urlConfirmacion, 
+    public void enviarEmailRegistro(final String toEmail, final String[] bccEmail, String usuario, String urlConfirmacion, 
             final String userSystem, final String passwordSystem)
             throws Exception {
         final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_REGISTRO);
         final StringWriter swRegistro = new StringWriter();
 
         VelocityContext context = new VelocityContext();
-        context.put("nombre", usuario.getNombre());
+        context.put("nombre", usuario);
         context.put("emailApp", bccEmail);
         context.put("urlToken", urlConfirmacion);
         Velocity.evaluate(
@@ -88,7 +89,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
 
     @Override
     @Transactional(readOnly = true)
-    public void enviarEmailBaja(final String toEmail, final String[] bccEmail, Usuario usuario, String urlConfirmacion,
+    public void enviarEmailBaja(final String toEmail, final String[] bccEmail, UserSession usuario, String urlConfirmacion,
             final String userSystem, final String passwordSystem)
             throws Exception {
         final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_BAJA);
@@ -174,7 +175,7 @@ public class EnviarEmailServiceImpl implements EnviarEmailService {
 
     @Override
     @Transactional(readOnly = true)
-    public void enviarCompraExitosa(final String toEmail, final String[] bccEmail, final Usuario usuario, final Compra compra,
+    public void enviarCompraExitosa(final String toEmail, final String[] bccEmail, final UserSession usuario, final Compra compra,
             final String userSystem, final String passwordSystem) throws Exception {
         final Plantilla mail = this.plantillaService.obtenerHTML(ID_PLANTILLA_COMPRA);
         final StringWriter swCompra = new StringWriter();

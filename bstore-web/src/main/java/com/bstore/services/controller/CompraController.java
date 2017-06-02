@@ -26,6 +26,7 @@ import com.bstore.services.conekta.service.ResponsePaymentCard;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details.Item;
 import com.bstore.services.model.MenuModel;
+import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.CompraId;
@@ -136,7 +137,7 @@ public class CompraController {
         }
         log.info("Sesion activa Token === " + result);
         log.info("Procesando historial de compra...");
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         List<Compra> mapaCompras = new ArrayList<Compra>();
         List<Compra> listaCompras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
         if (listaCompras != null && listaCompras.size() > 0) {
@@ -180,7 +181,7 @@ public class CompraController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
         String tipoTarj = request.getParameter("visa");
         tipoTarj = tipoTarj != null ? TYPE_CARD_VISA : TYPE_CARD_MASTERCARD;
@@ -203,7 +204,7 @@ public class CompraController {
         requestCharge.setReferenceId("Venta de ISBN: " + "[" + publicacion.getIsbn() + "]");
 
         Details details = new Details();
-        details.setName(usuario.getNombre() + " " + usuario.getAPaterno());
+        details.setName(usuario.getNombre() + " " + usuario.getPaterno());
         try {
             Integer.valueOf(usuario.getTelefono());
             details.setPhone(usuario.getTelefono());
@@ -252,8 +253,6 @@ public class CompraController {
                 idCompra.setIdPublicacion(publicacion.getId());
                 idCompra.setIdUsuario(usuario.getId());
                 compra.setId(idCompra);
-
-                //Agregando datos del response de conekta al objeto compra
                 compra.setIdConekta(responseCharge.getId());
                 compra.setLiveMode(String.valueOf(responseCharge.isLivemode()));
                 compra.setStatus(responseCharge.getStatus());
@@ -296,8 +295,6 @@ public class CompraController {
                 List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
                 model.addAttribute("menu", menu);
                 List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-                //model.addAttribute("ultimasCompras", ultimasCompras);
-
                 session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
                 session.setAttribute("menu", menu);
 
@@ -358,7 +355,7 @@ public class CompraController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         Publicacion publicacion = this.publicacionService.getPublicacion(idGenerado);
         
         if(publicacion==null){
@@ -438,7 +435,6 @@ public class CompraController {
             List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
             model.addAttribute("menu", menu);
             List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-            //model.addAttribute("ultimasCompras", ultimasCompras);
 
             session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
             session.setAttribute("menu", menu);

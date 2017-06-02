@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.model.ErrorService;
+import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.service.EnviarEmailService;
@@ -62,8 +63,9 @@ public class PerfilController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        model.addAttribute("usuario", usuario);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        Usuario user = this.usuarioService.byIdUser(usuario.getId());
+        model.addAttribute("user", user);
         return "perfilUsuario";
 
     }
@@ -86,6 +88,7 @@ public class PerfilController {
             return new ResponseEntity<ErrorService>(responseLocal, status);
         }
         log.info("Sesion activa Token === " + result);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         String idUsuario = request.getParameter("idUsuario");
         String nombreUsuario = request.getParameter("nombre");
         String apaternoUsuario = request.getParameter("apaterno");
@@ -117,7 +120,6 @@ public class PerfilController {
                 user.setPassword(encriptarPassword);
             }
             user.setNombre(nombreUsuario);
-            //user.setEmail(emailUsuario);
             user.setLogin(login);
             user.setAPaterno(apaternoUsuario);
             user.setAMaterno(amaternoUsuario);
@@ -153,8 +155,19 @@ public class PerfilController {
             responseLocal.setCodigo("200");
             responseLocal.setMensaje("La información fue actualizada con éxito.");
             status = HttpStatus.OK;
-            session.setAttribute("usuario", user);
-            model.addAttribute("usuario", user);
+
+            /**
+             * Se actualiza datos se sesion del usuario
+             */
+            usuario.setId(user.getId());
+            usuario.setNombre(user.getNombre());
+            usuario.setPaterno(user.getAPaterno());
+            usuario.setEmail(user.getEmail());
+            usuario.setTelefono(user.getTelefono());
+            usuario.setPerfil(user.getPerfil().getNombre());
+
+            model.addAttribute("user", user);
+            session.setAttribute("usuario", usuario);
         }
 
         return new ResponseEntity<ErrorService>(responseLocal, status);
@@ -178,6 +191,7 @@ public class PerfilController {
             return new ResponseEntity<ErrorService>(responseLocal, status);
         }
         log.info("Sesion activa Token === " + result);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         String idUsuario = request.getParameter("idUsuario");
         Usuario user = this.usuarioService.byIdUser(Integer.valueOf(idUsuario));
         if (user != null) {
@@ -190,7 +204,7 @@ public class PerfilController {
                         + "confirmarBajaDeTuCuenta?token=" + emailEncriptado;
 
                 this.log.info("Url para baja de cuenta " + user.getEmail() + " URL === " + nuevaUrlParaConfirmacion);
-                this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), user, nuevaUrlParaConfirmacion,
+                this.enviarEmailService.enviarEmailBaja(user.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, nuevaUrlParaConfirmacion,
                         this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
                         this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                 this.log.info("Enviado");

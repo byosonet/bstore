@@ -7,6 +7,7 @@ import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.model.MenuModel;
 import com.bstore.services.model.PublicacionActiva;
+import com.bstore.services.model.UserSession;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
@@ -88,24 +89,22 @@ public class LoginController {
             String user = requestEmail;
             String password = requestPassword;
             String encriptarPassword = UtilService.Encriptar(password);
-            Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
+            UserSession usuario = this.usuarioService.validaUsuarioModel(user, encriptarPassword);
             if (usuario != null) {
                 this.log.info("Ingresando al sistema como: " + usuario.getNombre());
                 try {
                     String cifrar = UtilService.Encriptar(usuario.getEmail() + ";" + password);
                     model.addAttribute("cifrar", cifrar);
                     model.addAttribute("user", usuario.getNombre());
-
                     List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
                     List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
                     List<PublicacionActiva> publicacionesActivas = this.publicacionService.getPublicacionesActivasModel(usuario.getId());                                        
                     model.addAttribute("publicacionesActivas", publicacionesActivas);
-                    //session.setAttribute("publicacionesActivas", publicacionesActivas);
                     session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
                     session.setAttribute("menu", menu);
                     session.setAttribute("usuario", usuario);
                     session.setAttribute("token", cifrar);
-
+                    session.setAttribute("userName", usuario.getEmail());
                     return "indexPrincipal";
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -128,6 +127,9 @@ public class LoginController {
         List<MenuModel> menu = (List<MenuModel>) session.getAttribute("menu");
         model.addAttribute("menu", menu);
         log.info("Recuperando de sesion menu: " + session.getAttribute("menu").toString());
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        List<PublicacionActiva> publicacionesActivas = this.publicacionService.getPublicacionesActivasModel(usuario.getId());                                        
+        model.addAttribute("publicacionesActivas", publicacionesActivas);
         return "indexPrincipal";
     }
 
@@ -192,7 +194,8 @@ public class LoginController {
                 session.removeAttribute("usuario");
                 session.removeAttribute("token");
                 session.removeAttribute("compras");
-                //session.removeAttribute("publicacionesActivas");
+                session.removeAttribute("userName");
+                session.removeAttribute("publicacionesActivas");
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -233,7 +236,8 @@ public class LoginController {
                 session.removeAttribute("usuario");
                 session.removeAttribute("token");
                 session.removeAttribute("compras");
-                //session.removeAttribute("publicacionesActivas");
+                session.removeAttribute("userName");
+                session.removeAttribute("publicacionesActivas");
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -357,7 +361,7 @@ public class LoginController {
                     String nuevaUrlParaConfirmacion = urlServer + "/"
                             + "confirmarTuCuenta?token=" + emailEncriptado;
                     this.log.info("Url para activacion de cuenta " + usuario.getEmail() + " URL === " + nuevaUrlParaConfirmacion);
-                    this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario, nuevaUrlParaConfirmacion,
+                    this.enviarEmailService.enviarEmailRegistro(usuario.getEmail(), this.propertyService.getValueKey(EMAIL_SYSTEM).getValue().split(";"), usuario.getNombre(), nuevaUrlParaConfirmacion,
                             this.propertyService.getValueKey(USER_EMAIL_SYSTEM).getValue(),
                             this.propertyService.getValueKey(PASSWORD_EMAIL_SYSTEM).getValue());
                     this.log.info("Enviado");
@@ -479,13 +483,15 @@ public class LoginController {
             return;
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
-        this.usuarioService.actulizarConexionUsuario(usuario);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        Usuario user = this.usuarioService.byIdUser(usuario.getId());
+        this.usuarioService.actulizarConexionUsuario(user);
         session.removeAttribute("menu");
         session.removeAttribute("usuario");
         session.removeAttribute("token");
         session.removeAttribute("compras");
-        //session.removeAttribute("publicacionesActivas");
+        session.removeAttribute("userName");
+        session.removeAttribute("publicacionesActivas");
         session.invalidate();
         log.info("Removiendo datos de la session");
         response.sendRedirect(request.getContextPath());

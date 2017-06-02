@@ -37,7 +37,7 @@ public class PublicacionActiva implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "PublicacionActiva{" + "id=" + id + ", name=" + name + '}';
+        return "{" + "id=" + id + ", name=" + name + '}';
     }
     
 }

@@ -1,5 +1,6 @@
 package com.bstore.services.controller;
 
+import com.bstore.services.model.UserSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -66,7 +67,6 @@ public class FuenteController {
 		logger.info("Sesion activa Token === " + result);
 		List<Fuente> fuenteList = fuenteService.getAll();
 		if (fuenteList != null) {
-			// procesando usuarios
 			for (Fuente fue : fuenteList) {
 				Usuario u = this.usuarioService.byIdUser(fue.getIdUsuarioUmodif());
 				if (u != null) {
@@ -116,7 +116,7 @@ public class FuenteController {
 		}
 		logger.info("Sesion activa Token === " + results);
 
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		UserSession usuario = (UserSession) session.getAttribute("usuario");
 		logger.info("Se va a guardar la nueva fuente");
 
 		fuente.setFechaUmodif(new Date());
@@ -125,8 +125,6 @@ public class FuenteController {
 		logger.info("Fuente guardada...: "+fuente);
 		List<Fuente> coleccionList = fuenteService.getAll();
 		model.addAttribute("fuentes", coleccionList);
-
-		//return "redirect:/fuentesAdmin";
 		return "fuentesAdmin";
 	}
 }

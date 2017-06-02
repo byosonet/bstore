@@ -33,7 +33,7 @@ public class MenuModel implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "Menu{"+ nombreCol + '}';
+        return "{"+ nombreCol + '}';
     }
 
     @Override

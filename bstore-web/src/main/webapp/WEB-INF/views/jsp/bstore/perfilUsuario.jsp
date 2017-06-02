@@ -2,7 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>" />
 <c:set var="fechaNacimiento">
-     <fmt:formatDate pattern="ddMMyyyy" value="${usuario.fechaNacimiento}" />
+     <fmt:formatDate pattern="ddMMyyyy" value="${user.fechaNacimiento}" />
 </c:set>
 <html>
     <head>
@@ -21,7 +21,7 @@
         $('select#mes option[value=${fechaNacimiento.substring(2,4)}]').attr('selected','selected'); 
         $('select#mes').select2();
         
-        $('select#actividad option[value=${usuario.actividad}]').attr('selected','selected');
+        $('select#actividad option[value=${user.actividad}]').attr('selected','selected');
         $('select#actividad').select2();
           
         var status;
@@ -33,7 +33,7 @@
             $('input#masculino').attr('checked',false);
         });
           
-        
+        $('input#nombre').focus();
         $('button#actualizar').click(function(){
                 var nombre = $('input#nombre');
                 var apaterno = $('input#apaterno');
@@ -202,17 +202,17 @@
     <div class="row">
         <div class="col-sm-12 col-sm-offset-0 col-md-11">
             <form class="form-horizontal" id="formRegistrar">
-            	<input type="hidden" name="idUsuario" value="${usuario.id}">
+            	<input type="hidden" name="idUsuario" value="${user.id}">
                 </br>
                 <div class="form-group">
                     <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${usuario.nombre}" >
+                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${user.nombre}" >
                     </div>
                     
                     <label class="text control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${usuario.APaterno}">
+                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${user.APaterno}">
                     </div>
                     
                 </div>
@@ -220,36 +220,36 @@
                  <div class="form-group">
                     <label class="text control-label col-sm-2"  for="amaterno">Apellido Materno:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${usuario.AMaterno}">
+                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${user.AMaterno}">
                     </div>
                     
                     <label class="text control-label col-sm-1"  for="email">Email:</label>
                     <div class="col-sm-5">
-                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email" value="${usuario.email}" readonly>
+                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email" value="${user.email}" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                 	<label class="text control-label col-sm-2"  for="login">Usuario/Login:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login" value="${usuario.login}">
+                        <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login" value="${user.login}">
                     </div>
                     
                     <label class="text control-label col-sm-2"  for="telefono">Tel&eacute;fono:</label>
                     <div class="col-sm-4">
-                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${usuario.telefono}">
+                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${user.telefono}">
                     </div>
                 </div>
 
                 <div class="form-group">
                    <label class="text control-label col-sm-2"  for="pass1">Password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${usuario.password}">
+                        <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${user.password}">
                     </div>
                    
                    <label class="text control-label col-sm-2"  for="pass2">Confirmar password:</label>
                     <div class="col-sm-4">
-                        <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${usuario.password}">
+                        <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${user.password}">
                     </div>
                 </div>
                 
@@ -289,10 +289,10 @@
                     <label class="text control-label col-sm-2" >Sexo:</label>
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
-                            <c:if test="${usuario.sexo == 'M'}">
+                            <c:if test="${user.sexo == 'M'}">
                             	<input type="radio" id="masculino" name="sexo" value="M" checked>
                             </c:if>
-                            <c:if test="${usuario.sexo == 'F'}">
+                            <c:if test="${user.sexo == 'F'}">
                             	<input type="radio" id="masculino" name="sexo" value="M">
                             </c:if>
                             
@@ -302,10 +302,10 @@
 
                     <div class="col-sm-2">
                        <div class="radio radio-info radio-inline">
-                       		<c:if test="${usuario.sexo == 'F'}">
+                       		<c:if test="${user.sexo == 'F'}">
                        			<input type="radio" id="femenino" name="sexo" value="F" checked>
                        		</c:if>
-                       		<c:if test="${usuario.sexo == 'M'}">
+                       		<c:if test="${user.sexo == 'M'}">
                        			<input type="radio" id="femenino" name="sexo" value="F">
                        		</c:if>
                             <label class="text"> Femenino </label>
@@ -315,10 +315,10 @@
                     <label class="text control-label col-sm-3" >Deseo recibir notificaciones:</label>
                     <div class="col-sm-3">
                        <div class="checkbox checkbox-primary">
-                       <c:if test="${usuario.notificaciones == 'SI'}">
+                       <c:if test="${user.notificaciones == 'SI'}">
                        		<input type="checkbox" value="SI" name="notificar" id="notificar" checked>
                        </c:if>
-                       <c:if test="${usuario.notificaciones == 'NO'}">
+                       <c:if test="${user.notificaciones == 'NO'}">
                        		<input type="checkbox" value="SI" name="notificar" id="notificar">
                        </c:if>
                         <label class="text">

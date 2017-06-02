@@ -1,5 +1,6 @@
 package com.bstore.services.controller;
 
+import com.bstore.services.model.UserSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -66,7 +67,6 @@ public class EditorialController {
 		logger.info("Sesion activa Token === " + result);
 		List<Editorial> editorialList = editorialService.getAll();
 		if (editorialList != null) {
-			// procesando usuarios
 			for (Editorial edi : editorialList) {
 				Usuario u = this.usuarioService.byIdUser(edi.getIdUsuarioUmodif());
 				if (u != null) {
@@ -118,14 +118,12 @@ public class EditorialController {
 		}
 		logger.info("Sesion activa Token === " + results);
 		if (editorial != null) {
-			Usuario usuario = (Usuario) session.getAttribute("usuario");
+			UserSession usuario = (UserSession) session.getAttribute("usuario");
 			logger.info("Se va a guardar la nueva editorial");
 
 			editorial.setFechaUmodif(new Date());
 			editorial.setIdUsuarioUmodif(usuario.getId());
 			editorialService.saveOrUpdate(editorial);
-
-			// Para regresar a lista de editoriales
 			List<Editorial> editorialList = editorialService.getAll();
 			model.addAttribute("editoriales", editorialList);
 		} else {

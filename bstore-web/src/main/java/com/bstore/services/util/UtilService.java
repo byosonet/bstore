@@ -34,7 +34,7 @@ public class UtilService {
 	}
 	
     public static String Encriptar(String password){
-        String secretKey = "soloadioslagloria"; //llave para encriptar datos
+        String secretKey = "soloadioslagloria";
         String base64EncryptedString = "";
 
         try {
@@ -60,7 +60,7 @@ public class UtilService {
     
     public static String Desencriptar(String password) throws Exception {
         password = password.replace("_", "/");
-        String secretKey = "soloadioslagloria"; //llave para desenciptar datos
+        String secretKey = "soloadioslagloria";
         String base64EncryptedString = "";
 
         try {
@@ -91,16 +91,16 @@ public class UtilService {
             int age = 0;
             int factor = 0;
             Date birthDate = new SimpleDateFormat("dd/MM/yyyy").parse(datetext);
-            Date currentDate = new Date(); //current date
+            Date currentDate = new Date();
             birth.setTime(birthDate);
             today.setTime(currentDate);
             if (today.get(Calendar.MONTH) <= birth.get(Calendar.MONTH)) {
                 if (today.get(Calendar.MONTH) == birth.get(Calendar.MONTH)) {
                     if (today.get(Calendar.DATE) > birth.get(Calendar.DATE)) {
-                        factor = -1; //Aun no celebra su cumpleaÃ±os
+                        factor = -1;
                     }
                 } else {
-                    factor = -1; //Aun no celebra su cumpleaÃ±os
+                    factor = -1;
                 }
             }
             age = (today.get(Calendar.YEAR) - birth.get(Calendar.YEAR)) + factor;

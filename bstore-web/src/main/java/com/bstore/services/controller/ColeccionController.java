@@ -1,5 +1,6 @@
 package com.bstore.services.controller;
 
+import com.bstore.services.model.UserSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -74,7 +75,7 @@ public class ColeccionController {
 		log.info("Sesion activa Token === " + result);
 		List<Coleccion> lista = this.coleccionService.getAll();
 		log.info("Total colecciones encontradas: " + lista.size());
-		// procesando usuarios
+		
 		for (Coleccion col : lista) {
 			Usuario u = this.usuarioService.byIdUser(col.getIdUsuarioUmodif());
 			if (u != null) {
@@ -120,7 +121,7 @@ public class ColeccionController {
 		}
 		log.info("Sesion activa Token === " + results);
 
-		Usuario usuario = (Usuario) session.getAttribute("usuario");
+		UserSession usuario = (UserSession) session.getAttribute("usuario");
 
 		coleccion.setFechaUmodif(new Date());
 		coleccion.setIdUsuarioUmodif(usuario.getId());
@@ -129,7 +130,6 @@ public class ColeccionController {
 
 		coleccionService.saveOrUpdate(coleccion);
 
-		// Para regresar a lista de publicaciones
 		List<Coleccion> coleccionList = coleccionService.getAll();
 		model.addAttribute("colecciones", coleccionList);
 

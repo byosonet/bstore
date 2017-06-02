@@ -20,7 +20,6 @@ public class ColeccionValidator implements Validator {
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombre", "coleccion.nombre.novacio");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "nombreMostrar", "coleccion.nombremostrar.novacio");
 		ValidationUtils.rejectIfEmptyOrWhitespace(errors, "portadaUrl", "coleccion.urlportada.novacio");
-		//ValidationUtils.rejectIfEmptyOrWhitespace(errors, "ranking", "coleccion.ranking.novacio");
 	}
 	
 }

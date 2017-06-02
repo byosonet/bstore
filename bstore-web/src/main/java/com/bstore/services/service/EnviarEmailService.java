@@ -1,5 +1,6 @@
 package com.bstore.services.service;
 
+import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Compra;
 import com.bstore.services.persistence.pojo.Usuario;
 
@@ -7,14 +8,14 @@ public interface EnviarEmailService {
 
     void enviarEmailRegistro(final String toEmail, 
             final String[] bccEmail, 
-            final Usuario usuario, 
+            final String usuario, 
             final String urlConfirmacion, 
             final String userSystem, 
             final String passwordSystem) throws Exception;
 
     void enviarEmailBaja(final String toEmail, 
             final String[] bccEmail, 
-            final Usuario usuario, 
+            final UserSession usuario, 
             final String urlConfirmacion, 
             final String userSystem, 
             final String passwordSystem) throws Exception;
@@ -26,7 +27,7 @@ public interface EnviarEmailService {
 
     void enviarCompraExitosa(final String toEmail, 
             final String[] bccEmail, 
-            final Usuario usuario, 
+            final UserSession usuario, 
             final Compra compra, 
             final String userSystem, 
             final String passwordSystem) throws Exception;

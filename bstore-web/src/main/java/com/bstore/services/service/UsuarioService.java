@@ -5,6 +5,7 @@
  */
 package com.bstore.services.service;
 
+import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Usuario;
 import java.util.List;
 
@@ -15,6 +16,7 @@ import java.util.List;
 public interface UsuarioService {
     List<Usuario> getListaUsuarios();
     Usuario validaUsuario(String email, String password);
+    UserSession validaUsuarioModel(String email, String password);
     void actulizarConexionUsuario(Usuario usuario);
     void agregaUsuarioNuevo(Usuario usuario);
     Usuario validaEmailSistema(String email);

@@ -127,12 +127,12 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class="fa fa-user"></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.APaterno}"/> <b class="caret"></b></a>
+                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class="fa fa-user"></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="text" href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
                             </li>
-                            <c:if test="${sessionScope.usuario.perfil.nombre == 'LECTOR'}">
+                            <c:if test="${sessionScope.usuario.perfil == 'LECTOR'}">
                                 <c:if test="${not empty compras}">
                                     <li>
                                         <a class="text" href="${contextpath}/historial/compras"><i class="fa fa-fw fa-shopping-cart"></i> Mi historial</a>
@@ -170,7 +170,7 @@
                         </c:forEach>
 
                         <!-- Menu del Admin -->
-                        <c:if test="${sessionScope.usuario.perfil.nombre == 'ADMIN'}">
+                        <c:if test="${sessionScope.usuario.perfil == 'ADMIN'}">
                             <li class="active">
                                 <a class="text" href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Cat&aacute;logos</a>
                                 <ul id="admin" class="">

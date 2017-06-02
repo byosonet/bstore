@@ -1,5 +1,6 @@
 package com.bstore.services.controller;
 
+import com.bstore.services.model.UserSession;
 import java.io.IOException;
 import java.util.Date;
 import java.util.List;
@@ -75,7 +76,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
 
         int idGenerado = 0;
         List<Publicacion> lista = new ArrayList<Publicacion>();
@@ -110,7 +111,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         
         int idGenerado = 0;
         List<Publicacion> lista = new ArrayList<Publicacion>();
@@ -145,7 +146,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         
         int idGenerado = 0;
         List<Publicacion> lista = new ArrayList<Publicacion>();
@@ -180,7 +181,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         
         int idGenerado = 0;
         List<Publicacion> lista = new ArrayList<Publicacion>();
@@ -215,7 +216,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         
         int idGenerado = 0;
         List<Publicacion> lista = new ArrayList<Publicacion>();
@@ -250,7 +251,7 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + result);
-         Usuario usuario = (Usuario) session.getAttribute("usuario");
+         UserSession usuario = (UserSession) session.getAttribute("usuario");
         List<Compra> compras = this.compraService.obtenetComprasbyUsuario(usuario.getId());
         
         int idGenerado = 0;
@@ -329,7 +330,6 @@ public class PublicacionController {
         log.info("Sesion activa Token === " + result);
         List<Publicacion> publicacionList = publicacionService.getAll();
         if (publicacionList != null) {
-            // procesando usuarios
             for (Publicacion pub : publicacionList) {
                 Usuario u = this.usuarioService.byIdUser(pub.getIdUsuarioUmodif());
                 if (u != null) {
@@ -379,14 +379,12 @@ public class PublicacionController {
             return "forbidden";
         }
         log.info("Sesion activa Token === " + results);
-        Usuario usuario = (Usuario) session.getAttribute("usuario");
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
         log.info("Se va a guardar la nueva publicacion");
 
         publicacion.setFechaUmodif(new Date());
         publicacion.setIdUsuarioUmodif(usuario.getId());
         publicacionService.saveOrUpdate(publicacion);
-
-        // Para regresar a lista de publicaciones
         List<Publicacion> publicacionList = publicacionService.getAll();
         model.addAttribute("publicaciones", publicacionList);
 
@@ -411,7 +409,6 @@ public class PublicacionController {
         }
         model.addAttribute("publicacion", new Publicacion());
 
-        return "publicacionesAdmin";// Poner la página a donde hay que
-        // redireccionar, deberíar ser la misma...
+        return "publicacionesAdmin";
     }
 }
