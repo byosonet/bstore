@@ -15,6 +15,9 @@
   <listener>
     <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
   </listener>
+  <listener>
+    <listener-class>com.bstore.services.batch.SessionListener</listener-class>
+  </listener>
   <servlet>
     <servlet-name>Resource Servlet</servlet-name>
     <servlet-class>org.springframework.js.resource.ResourceServlet</servlet-class>
@@ -74,19 +77,19 @@
 	</user-data-constraint>
   </security-constraint>
   
-  <security-constraint>
-	<web-resource-collection>
-		<web-resource-name>HTTPSOrHTTP</web-resource-name>
-		<url-pattern>*.ico</url-pattern>
-		<url-pattern>*.png</url-pattern>
-		<url-pattern>*.jpg</url-pattern>
-		<url-pattern>*.jpeg</url-pattern>
-		<url-pattern>*.gif</url-pattern>
-		<url-pattern>*.css</url-pattern>
-		<url-pattern>*.js</url-pattern>
-	</web-resource-collection>
-	<user-data-constraint>
-		<transport-guarantee>NONE</transport-guarantee>
-	</user-data-constraint>
-  </security-constraint-->
+    <security-constraint>
+          <web-resource-collection>
+                  <web-resource-name>HTTPSOrHTTP</web-resource-name>
+                  <url-pattern>*.ico</url-pattern>
+                  <url-pattern>*.png</url-pattern>
+                  <url-pattern>*.jpg</url-pattern>
+                  <url-pattern>*.jpeg</url-pattern>
+                  <url-pattern>*.gif</url-pattern>
+                  <url-pattern>*.css</url-pattern>
+                  <url-pattern>*.js</url-pattern>
+          </web-resource-collection>
+          <user-data-constraint>
+                  <transport-guarantee>NONE</transport-guarantee>
+          </user-data-constraint>
+    </security-constraint-->
 </web-app>
