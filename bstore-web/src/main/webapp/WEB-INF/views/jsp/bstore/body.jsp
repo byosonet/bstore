@@ -7,7 +7,6 @@
             $(document).ready(function () {
 
                 $(".listaPublicaciones").select2({
-                    placeholder: "Select a state",
                     theme: "classic",
                     language: "es",
                     width: '100%'

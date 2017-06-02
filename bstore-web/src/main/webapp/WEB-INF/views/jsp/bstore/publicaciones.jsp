@@ -13,7 +13,8 @@ $("#publicacion").gridalicious({
 	
 $(".listaPublicaciones").select2({
 	theme: "classic",
-	language: "es"
+	language: "es",
+        width: '100%'
 });
 
 $("#listaPub").change(function(){
@@ -27,13 +28,16 @@ $("#listaPub").change(function(){
 </head>
 <body>
 <c:if test="${!empty publicaciones}">
-<div class="row">
+<br/>
+<div class="container">
 	<div style="text-align: center;">
+                <div class="form-group" style="text-align: center;">
 		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-info">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
 		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-info">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-info">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-info">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
-		<select class="listaPublicaciones" id="listaPub">
+                </div>
+                <select class="listaPublicaciones" id="listaPub">
 			<option value="buscar" selected>Buscar</option>
 			<c:forEach var="publicacion" items="${publicaciones}">
 			  <c:choose>
