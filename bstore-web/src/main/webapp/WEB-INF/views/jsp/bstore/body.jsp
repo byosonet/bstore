@@ -38,13 +38,13 @@
                                     <option value="buscar" selected>Documentos Novohispanos</option>
                                     <c:forEach var="publicacion" items="${publicacionesActivas}">
                                         <c:choose>
-                                            <c:when test="${publicacion.comprada}">
+                                            <c:when test="${publicacion.purchased}">
                                                 <c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
-                                                <option value="${valueUrl}">${publicacion.nombre}</option>
+                                                <option value="${valueUrl}">${publicacion.name}</option>
                                             </c:when>
                                             <c:otherwise>
                                                 <c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
-                                                <option value="${valueUrl}">${publicacion.nombre}</option>
+                                                <option value="${valueUrl}">${publicacion.name}</option>
                                             </c:otherwise>
                                         </c:choose>
                                     </c:forEach>

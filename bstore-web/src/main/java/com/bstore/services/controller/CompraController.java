@@ -296,9 +296,9 @@ public class CompraController {
                 List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
                 model.addAttribute("menu", menu);
                 List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-                model.addAttribute("ultimasCompras", ultimasCompras);
+                //model.addAttribute("ultimasCompras", ultimasCompras);
 
-                session.setAttribute("ultimasCompras", ultimasCompras);
+                session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
                 session.setAttribute("menu", menu);
 
                 try {
@@ -438,9 +438,9 @@ public class CompraController {
             List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
             model.addAttribute("menu", menu);
             List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-            model.addAttribute("ultimasCompras", ultimasCompras);
+            //model.addAttribute("ultimasCompras", ultimasCompras);
 
-            session.setAttribute("ultimasCompras", ultimasCompras);
+            session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
             session.setAttribute("menu", menu);
 
             try {

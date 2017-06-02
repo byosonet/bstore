@@ -33,7 +33,7 @@ public class MenuModel implements java.io.Serializable{
 
     @Override
     public String toString() {
-        return "MenuModel{" + "idCol=" + idCol + ", nombreCol=" + nombreCol + ", pubs=" + pubs + '}';
+        return "Menu{"+ nombreCol + '}';
     }
 
     @Override
@@ -96,11 +96,6 @@ public class MenuModel implements java.io.Serializable{
 
         public void setNombrePub(String nombrePub) {
             this.nombrePub = nombrePub;
-        }
-
-        @Override
-        public String toString() {
-            return "Pub{" + "idPub=" + idPub + ", nombrePub=" + nombrePub + '}';
         }
 
         @Override

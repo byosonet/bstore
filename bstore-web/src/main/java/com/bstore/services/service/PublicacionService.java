@@ -1,5 +1,6 @@
 package com.bstore.services.service;
 
+import com.bstore.services.model.PublicacionActiva;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -13,6 +14,7 @@ public interface PublicacionService {
 	List<Publicacion> getPublicacionesByPrecioAsc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesByPrecioDesc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesActivas(int idUsuario);
+        List<PublicacionActiva> getPublicacionesActivasModel(int idUsuario);
 	Publicacion getPublicacion(int id);
 	List<Publicacion> getAll();
 	BigDecimal precioRealPublicacion(int idPublicacion);

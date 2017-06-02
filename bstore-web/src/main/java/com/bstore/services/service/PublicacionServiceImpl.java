@@ -1,5 +1,6 @@
 package com.bstore.services.service;
 
+import com.bstore.services.model.PublicacionActiva;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -146,6 +147,69 @@ public class PublicacionServiceImpl implements PublicacionService {
             this.ordenarPublicaciones(lista);
         }
         return lista;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<PublicacionActiva> getPublicacionesActivasModel(int idUsuario) {
+
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+        List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+        if (compras != null) {
+            if (compras.size() > 0) {
+                for (Compra c : compras) {
+                    idPublicacionCompra.add(c.getId().getIdPublicacion());
+                }
+            }
+        }
+        lista = this.publicacionDao.getPublicacionesActivas();
+        if (idPublicacionCompra.size() > 0) {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+                idCompra:
+                for (int id : idPublicacionCompra) {
+                    if (pub.getId() == id) {
+                        pub.setComprada(true);
+                        
+                         /**
+                         * Buscando fecha de compra
+                         */
+                        CompraId idCompra = new CompraId();
+                        idCompra.setIdUsuario(idUsuario);
+                        idCompra.setIdPublicacion(pub.getId());
+                        Compra comp = this.compraDao.getCompra(idCompra);
+                        if (comp != null) {
+                            pub.setFechaCompraTemporal(comp.getFechaCompra());
+                        } else {
+                            pub.setFechaCompraTemporal(null);
+                        }
+                        
+                        break idCompra;
+                    }
+                }
+            }
+        } else {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+            }
+        }
+        log.info("Buscando publicaciones Activas por usuario...IdUser ==== " + idUsuario);
+        if (lista != null && lista.size() > 0) {
+            this.ordenarPublicaciones(lista);
+        }
+        
+        List<PublicacionActiva> modelLista = new ArrayList<PublicacionActiva>();
+        if(lista!=null && lista.size()>0){
+            for(Publicacion pub: lista){
+                PublicacionActiva activa = new PublicacionActiva();
+                activa.setId(pub.getId());
+                activa.setName(pub.getNombre());
+                activa.setPurchased(pub.isComprada());
+                modelLista.add(activa);
+            }
+        }
+        return modelLista;
     }
 
     @Override

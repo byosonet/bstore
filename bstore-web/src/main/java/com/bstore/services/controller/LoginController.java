@@ -2,11 +2,11 @@ package com.bstore.services.controller;
 
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
-import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.model.MenuModel;
+import com.bstore.services.model.PublicacionActiva;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
@@ -23,7 +23,6 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
-import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -98,16 +97,11 @@ public class LoginController {
                     model.addAttribute("user", usuario.getNombre());
 
                     List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
-                    //model.addAttribute("menu", menu);
-
                     List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-                    model.addAttribute("ultimasCompras", ultimasCompras);
-
-                    List<Publicacion> publicacionesActivas = this.publicacionService.getPublicacionesActivas(usuario.getId());
+                    List<PublicacionActiva> publicacionesActivas = this.publicacionService.getPublicacionesActivasModel(usuario.getId());                                        
                     model.addAttribute("publicacionesActivas", publicacionesActivas);
-
-                    session.setAttribute("publicacionesActivas", publicacionesActivas);
-                    session.setAttribute("ultimasCompras", ultimasCompras);
+                    //session.setAttribute("publicacionesActivas", publicacionesActivas);
+                    session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
                     session.setAttribute("menu", menu);
                     session.setAttribute("usuario", usuario);
                     session.setAttribute("token", cifrar);
@@ -197,8 +191,8 @@ public class LoginController {
                 session.removeAttribute("menu");
                 session.removeAttribute("usuario");
                 session.removeAttribute("token");
-                session.removeAttribute("ultimasCompras");
-                session.removeAttribute("publicacionesActivas");
+                session.removeAttribute("compras");
+                //session.removeAttribute("publicacionesActivas");
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -238,8 +232,8 @@ public class LoginController {
                 session.removeAttribute("menu");
                 session.removeAttribute("usuario");
                 session.removeAttribute("token");
-                session.removeAttribute("ultimasCompras");
-                session.removeAttribute("publicacionesActivas");
+                session.removeAttribute("compras");
+                //session.removeAttribute("publicacionesActivas");
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -490,8 +484,8 @@ public class LoginController {
         session.removeAttribute("menu");
         session.removeAttribute("usuario");
         session.removeAttribute("token");
-        session.removeAttribute("ultimasCompras");
-        session.removeAttribute("publicacionesActivas");
+        session.removeAttribute("compras");
+        //session.removeAttribute("publicacionesActivas");
         session.invalidate();
         log.info("Removiendo datos de la session");
         response.sendRedirect(request.getContextPath());
