@@ -221,6 +221,22 @@
             <!--<finalName>${project.artifactId}##${project.version}</finalName>-->
             <finalName>bstore</finalName>
             <plugins>
+            	
+            	<plugin>
+			    	<groupId>org.eclipse.jetty</groupId>
+			        <artifactId>jetty-maven-plugin</artifactId>
+			        <version>9.2.8.v20150217</version>
+			        <configuration>
+		                <scanIntervalSeconds>10</scanIntervalSeconds>
+		                <httpConnector>
+		                    <port>8080</port>
+		                </httpConnector>
+		                <webApp>
+		                    <contextPath>/bstore</contextPath>
+		                </webApp>
+		            </configuration>
+				</plugin>
+	  
             		<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-compiler-plugin</artifactId>
