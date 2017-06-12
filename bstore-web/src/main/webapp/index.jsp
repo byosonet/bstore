@@ -168,7 +168,7 @@
                         </div>
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="text form-control" id="login" name="user" placeholder="Nombre de usuario o email">
+                                <input type="text" class="text form-control" id="login" name="user" placeholder="Cuenta">
                             </div>
                         </div>
 
@@ -179,13 +179,20 @@
                         </div>
 
                         <div class="form-group">
-                            <label class="text col-sm-12" style="color:black;text-align: center;">¿Olvidé mi contraseña? <a class="text" href="${contextpath}/password/recuperar">Recuperar contraseña</a></label>
+                            <label class="text col-sm-12" style="color:black;text-align: center;"> 
+                            	<a class="text" href="${contextpath}/password/recuperar">Recuperar contraseña</a>
+                            </label>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-sm-12" style="text-align: center;">
-                            <button id="registrar" class="text btn btn-default"><span class="glyphicon glyphicon-user"></span> CREAR CUENTA</button>
-                            <button id="acceder" class="text btn btn-primary"><span class="glyphicon glyphicon-ok"></span> INGRESAR</button>
+                            <button id="acceder" class="text btn btn-primary">ENTRAR</button>
+                        </div>
+                    </div>
+                    <br>
+                    <div class="row">
+                    	<div class="col-sm-12" style="text-align: center;">
+                        	<button id="registrar" class="text btn btn-default">CREAR CUENTA</button>
                         </div>
                     </div>
                 </div>
