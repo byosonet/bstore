@@ -7,6 +7,7 @@ import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
 import com.bstore.services.model.MenuModel;
 import com.bstore.services.model.PublicacionActiva;
+import com.bstore.services.model.SessionConstants;
 import com.bstore.services.model.UserSession;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
@@ -100,11 +101,11 @@ public class LoginController {
                     List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
                     List<PublicacionActiva> publicacionesActivas = this.publicacionService.getPublicacionesActivasModel(usuario.getId());                                        
                     model.addAttribute("publicacionesActivas", publicacionesActivas);
-                    session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
-                    session.setAttribute("menu", menu);
-                    session.setAttribute("usuario", usuario);
-                    session.setAttribute("token", cifrar);
-                    session.setAttribute("userName", usuario.getEmail());
+                    session.setAttribute(SessionConstants.COMPRAS, ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
+                    session.setAttribute(SessionConstants.MENU, menu);
+                    session.setAttribute(SessionConstants.USUARIO, usuario);
+                    session.setAttribute(SessionConstants.TOKEN, cifrar);
+                    session.setAttribute(SessionConstants.USER_NAME, usuario.getEmail());
                     return "indexPrincipal";
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -190,12 +191,11 @@ public class LoginController {
                 model.addAttribute("email", email);
                 this.log.info("Activacion de cuenta correcta para: " + email);
                 HttpSession session = (HttpSession) request.getSession(false);
-                session.removeAttribute("menu");
-                session.removeAttribute("usuario");
-                session.removeAttribute("token");
-                session.removeAttribute("compras");
-                session.removeAttribute("userName");
-                session.removeAttribute("publicacionesActivas");
+                session.removeAttribute(SessionConstants.MENU);
+                session.removeAttribute(SessionConstants.USUARIO);
+                session.removeAttribute(SessionConstants.TOKEN);
+                session.removeAttribute(SessionConstants.COMPRAS);
+                session.removeAttribute(SessionConstants.USER_NAME);
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -232,12 +232,11 @@ public class LoginController {
                 model.addAttribute("email", email);
                 this.log.info("Cancelacion de cuenta correcta para: " + email);
                 HttpSession session = (HttpSession) request.getSession(false);
-                session.removeAttribute("menu");
-                session.removeAttribute("usuario");
-                session.removeAttribute("token");
-                session.removeAttribute("compras");
-                session.removeAttribute("userName");
-                session.removeAttribute("publicacionesActivas");
+                session.removeAttribute(SessionConstants.MENU);
+                session.removeAttribute(SessionConstants.USUARIO);
+                session.removeAttribute(SessionConstants.TOKEN);
+                session.removeAttribute(SessionConstants.COMPRAS);
+                session.removeAttribute(SessionConstants.USER_NAME);
                 session.invalidate();
                 log.info("Removiendo datos de la session");
             } else {
@@ -486,12 +485,11 @@ public class LoginController {
         UserSession usuario = (UserSession) session.getAttribute("usuario");
         Usuario user = this.usuarioService.byIdUser(usuario.getId());
         this.usuarioService.actulizarConexionUsuario(user);
-        session.removeAttribute("menu");
-        session.removeAttribute("usuario");
-        session.removeAttribute("token");
-        session.removeAttribute("compras");
-        session.removeAttribute("userName");
-        session.removeAttribute("publicacionesActivas");
+        session.removeAttribute(SessionConstants.MENU);
+        session.removeAttribute(SessionConstants.USUARIO);
+        session.removeAttribute(SessionConstants.TOKEN);
+        session.removeAttribute(SessionConstants.COMPRAS);
+        session.removeAttribute(SessionConstants.USER_NAME);
         session.invalidate();
         log.info("Removiendo datos de la session");
         response.sendRedirect(request.getContextPath());

@@ -20,6 +20,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.bstore.services.model.ErrorService;
+import com.bstore.services.model.SessionConstants;
 import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
@@ -167,7 +168,7 @@ public class PerfilController {
             usuario.setPerfil(user.getPerfil().getNombre());
 
             model.addAttribute("user", user);
-            session.setAttribute("usuario", usuario);
+            session.setAttribute(SessionConstants.USUARIO, usuario);
         }
 
         return new ResponseEntity<ErrorService>(responseLocal, status);

@@ -26,6 +26,7 @@ import com.bstore.services.conekta.service.ResponsePaymentCard;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details;
 import com.bstore.services.conekta.service.RequestPaymentCard.Details.Item;
 import com.bstore.services.model.MenuModel;
+import com.bstore.services.model.SessionConstants;
 import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Compra;
@@ -295,8 +296,8 @@ public class CompraController {
                 List<MenuModel> menu = this.compraService.getMenuColeccion(usuario.getId());
                 model.addAttribute("menu", menu);
                 List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
-                session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
-                session.setAttribute("menu", menu);
+                session.setAttribute(SessionConstants.COMPRAS, ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
+                session.setAttribute(SessionConstants.MENU, menu);
 
                 try {
                     compra.setPublicacion(publicacion);
@@ -436,8 +437,8 @@ public class CompraController {
             model.addAttribute("menu", menu);
             List<Publicacion> ultimasCompras = this.compraService.ultimasCompras(usuario.getId());
 
-            session.setAttribute("compras", ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
-            session.setAttribute("menu", menu);
+            session.setAttribute(SessionConstants.COMPRAS, ultimasCompras!=null && ultimasCompras.size()>0 ? true:false);
+            session.setAttribute(SessionConstants.MENU, menu);
 
             try {
                 compra.setPublicacion(publicacion);
