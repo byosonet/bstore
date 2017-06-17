@@ -64,7 +64,7 @@
     <location>/</location>
   </error-page>
   <session-config>
-    <session-timeout>20</session-timeout>
+    <session-timeout>10</session-timeout>
   </session-config>
   
   <!--security-constraint>

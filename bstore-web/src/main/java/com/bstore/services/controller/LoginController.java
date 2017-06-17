@@ -1,5 +1,6 @@
 package com.bstore.services.controller;
 
+import com.bstore.services.batch.SessionTracker;
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
 import com.bstore.services.persistence.pojo.Publicacion;
@@ -9,10 +10,12 @@ import com.bstore.services.model.MenuModel;
 import com.bstore.services.model.PublicacionActiva;
 import com.bstore.services.model.SessionConstants;
 import com.bstore.services.model.UserSession;
+import com.bstore.services.persistence.pojo.Sesion;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
 import com.bstore.services.service.PublicacionService;
+import com.bstore.services.service.SesionService;
 import com.bstore.services.service.UsuarioService;
 import com.bstore.services.util.UtilService;
 import com.bstore.services.util.ValidarSesion;
@@ -65,6 +68,9 @@ public class LoginController {
 
     @Autowired
     private PropertyService propertyService;
+    
+    @Autowired
+    private SesionService sesionService;
 
     private final Logger log = Logger.getLogger(LoginController.class);
     private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
@@ -77,7 +83,7 @@ public class LoginController {
 
     public String ingresar(Model model, HttpServletRequest request) throws Exception {
         log.info("URL: value=/equivira,method = RequestMethod.POST");
-
+      
         HttpSession session = request.getSession(true);
         String requestEmail = request.getParameter("user");
         String requestPassword = request.getParameter("password");
@@ -92,6 +98,7 @@ public class LoginController {
             String encriptarPassword = UtilService.Encriptar(password);
             UserSession usuario = this.usuarioService.validaUsuarioModel(user, encriptarPassword);
             if (usuario != null) {
+                this.sesionService.cretaeSesionOnline(session.getId(), usuario.getEmail());
                 this.log.info("Ingresando al sistema como: " + usuario.getNombre());
                 try {
                     String cifrar = UtilService.Encriptar(usuario.getEmail() + ";" + password);
@@ -149,6 +156,23 @@ public class LoginController {
             Usuario usuario = this.usuarioService.validaUsuario(user, encriptarPassword);
 
             if (usuario != null) {
+                Sesion sesion = this.sesionService.getSesionOnline(usuario.getEmail());
+                if(sesion!=null){
+                    HttpSession ses = SessionTracker.instance().getSession(sesion.getIdSesion());
+                    if(ses!=null){
+                        log.info("Se encontro una sesion abierta del usuario: "+usuario.getEmail());
+                        log.info("Se invalida la session por seguridad: "+ses.getId());
+                        ses.removeAttribute(SessionConstants.MENU);
+                        ses.removeAttribute(SessionConstants.USUARIO);
+                        ses.removeAttribute(SessionConstants.TOKEN);
+                        ses.removeAttribute(SessionConstants.COMPRAS);
+                        ses.removeAttribute(SessionConstants.USER_NAME);
+                        ses.invalidate();
+                        this.sesionService.removeSesionOnline(sesion.getIdSesion());
+                    }else{
+                        this.sesionService.removeSesionOnline(sesion.getIdSesion());
+                    }
+                }
                 this.log.info("Usuario correcto");
                 ErrorService data = new ErrorService();
                 data.setCodigo("200");
@@ -191,6 +215,7 @@ public class LoginController {
                 model.addAttribute("email", email);
                 this.log.info("Activacion de cuenta correcta para: " + email);
                 HttpSession session = (HttpSession) request.getSession(false);
+                this.sesionService.removeSesionOnline(session.getId());
                 session.removeAttribute(SessionConstants.MENU);
                 session.removeAttribute(SessionConstants.USUARIO);
                 session.removeAttribute(SessionConstants.TOKEN);
@@ -232,6 +257,7 @@ public class LoginController {
                 model.addAttribute("email", email);
                 this.log.info("Cancelacion de cuenta correcta para: " + email);
                 HttpSession session = (HttpSession) request.getSession(false);
+                this.sesionService.removeSesionOnline(session.getId());
                 session.removeAttribute(SessionConstants.MENU);
                 session.removeAttribute(SessionConstants.USUARIO);
                 session.removeAttribute(SessionConstants.TOKEN);
@@ -485,6 +511,7 @@ public class LoginController {
         UserSession usuario = (UserSession) session.getAttribute("usuario");
         Usuario user = this.usuarioService.byIdUser(usuario.getId());
         this.usuarioService.actulizarConexionUsuario(user);
+        this.sesionService.removeSesionOnline(session.getId());
         session.removeAttribute(SessionConstants.MENU);
         session.removeAttribute(SessionConstants.USUARIO);
         session.removeAttribute(SessionConstants.TOKEN);

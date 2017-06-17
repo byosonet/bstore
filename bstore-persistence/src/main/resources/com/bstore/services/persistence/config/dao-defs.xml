@@ -43,4 +43,7 @@
       <bean id="anexoDao"
         class="com.bstore.services.persistence.dao.AnexoDaoImpl"
         p:sessionFactory-ref="sessionFactory"/>
+      <bean id="sesionDao"
+        class="com.bstore.services.persistence.dao.SesionDaoImpl"
+        p:sessionFactory-ref="sessionFactory"/>
 </beans>

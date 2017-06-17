@@ -9,7 +9,6 @@ import org.hibernate.HibernateException;
 import org.hibernate.Transaction;
 import org.springframework.orm.hibernate3.support.HibernateDaoSupport;
 
-import com.bstore.services.persistence.dao.UsuarioDaoImpl;
 import com.bstore.services.persistence.pojo.Perfil;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.persistence.utils.HibernateUtil;
