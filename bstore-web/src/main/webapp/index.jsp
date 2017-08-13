@@ -192,7 +192,7 @@
                     <br>
                     <div class="row">
                     	<div class="col-sm-12" style="text-align: center;">
-                        	<button id="registrar" class="text btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREAR CUENTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                        	<button id="registrar" class="text btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;CREAR CUENTA&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                 </div>

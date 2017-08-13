@@ -81,16 +81,16 @@ $("#listaPub").change(function(){
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
 				   <span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span>
 				 <c:if test="${publicacion.descuento == '0.00' && valueName != 'Leer'}">
-             		<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15">$ ${publicacion.precio} MXN</b></div>
+             		<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b>$ ${publicacion.precio} MXN</b></div>
              	 </c:if>
 				 <c:if test="${publicacion.descuento != '0.00' && valueName != 'Leer'}">
-				 	<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="font-size:15;text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
+				 	<div class="text" style="padding:5px;text-align:center;margin-bottom:-30px"><b style="text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="text banner-title"> <b class="text">Oferta: $ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
              	 </c:if>
 			  <c:if test="${publicacion.comprada}">
-			 	<span class="text label label-danger" style="float:left;margin-top: -10px;">Comprado: <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy HH:mm"/></span>
+			 	<span class="text label label-danger" style="float:left;margin-top: -10px;margin-left:-4px;">Comprado <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy"/></span>
                          </c:if>	 
-                        <b><a href="${valueUrl}" style="font-size:13;width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+                        <b><a href="${valueUrl}" style="width:100%;padding:5px;text-align:center;margin-bottom:-10px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">

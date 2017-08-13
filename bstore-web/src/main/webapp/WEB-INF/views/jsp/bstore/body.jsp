@@ -65,7 +65,7 @@
                 <div class="container">
                     <div class="">
                         <div class="span12">
-                            <span class="label label-default"><b class="text" style="font-size: 14;">Editorial</b></span>
+                            <span class="label label-default"><b class="text">Editorial</b></span>
                         </div>
                         <div class="span6" style="text-align: justify">
                             <h2></h2>
@@ -80,7 +80,7 @@
                 <div class="container">
                     <div class="">
                         <div class="span6 clearfix" style="text-align: justify">
-                            <span class="label label-default"><b class="text" style="font-size: 14;">En busca de la edición perfecta</b></span><br/>
+                            <span class="label label-default"><b class="text">En busca de la edición perfecta</b></span><br/>
                             <div class="one_half">
                                 <h3 class="text">Ediciones flexibles</h3>
                                 <p class="text"> Nuestras publicaciones están planeadas para adaptarse a diferentes formatos y plataformas de equipos móviles y tabletas con sistema operativo Android o iOS. Para aquellos lectores que prefieran las ediciones impresas, en ciertos casos será posible adquirir algunos de éstos títulos en ediciones de colección. </p>

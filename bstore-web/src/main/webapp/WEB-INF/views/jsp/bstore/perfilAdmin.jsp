@@ -42,7 +42,7 @@
 				<div class="form-group">
 					<a href="#"
 						class="btn btn-primary pull-right"
-						style="font-size: 15; width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align: right;">
+						style="width: 15%; padding: 5px; text-align: center; margin-bottom: 20px; margin-top: -20px; align: right;">
 						<i class="fa fa-plus"></i> <c:out value="Agregar perfil" />
 					</a>
 				</div>

@@ -104,7 +104,7 @@
 							</a>
 						</div>
 						<div class="col-sm-2">
-							<button id="saveEditorial" class="btn btn-primary" style="font-size: 15; width: 100%; padding: 10px; text-align: center;" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+							<button id="saveEditorial" class="btn btn-primary" style="width: 100%; padding: 10px; text-align: center;" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
 						</div>
 					</div>
 				</form:form>

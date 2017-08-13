@@ -122,7 +122,7 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a id="showMenu" class="navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Men&uacute;</a>
+                    <a id="showMenu" class="text navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Men&uacute;</a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">

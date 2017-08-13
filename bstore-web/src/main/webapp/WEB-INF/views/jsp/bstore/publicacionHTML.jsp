@@ -74,17 +74,17 @@
             });
 	});
 </script>
-<style>
-.estilo *{
-	font-family: cursive, geneva;
-	font-size: 14px!important;
+<style type="text/css">
+.estilo{
+	font-family: GaramondPremrPro!important;
+    font-size: 16px!important;
     text-align:justify;
     word-wrap: break-word;
 }
 .cabecera{
 	left: 0px;
 	right: 0px;
-        background-repeat: round;
+    background-repeat: round;
 }
 </style>
 </head>

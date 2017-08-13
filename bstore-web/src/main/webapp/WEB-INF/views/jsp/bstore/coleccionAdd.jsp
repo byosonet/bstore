@@ -101,12 +101,12 @@
 						<div class="col-sm-2">
 							<a
 								href="${contextpath}/coleccionAdmin" class="btn btn-default"
-								style="font-size: 15; width: 100%; padding: 10px; text-align: center;" >
+								style="width: 100%; padding: 10px; text-align: center;" >
 								<i class="glyphicon glyphicon-remove"></i> <c:out value="Cancelar" />
 							</a>
 						</div>
 						<div class="col-sm-2">
-							<button id="saveColeccion" class="btn btn-primary" style="font-size: 15; width: 100%; padding: 10px; text-align: center;" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
+							<button id="saveColeccion" class="btn btn-primary" style="width: 100%; padding: 10px; text-align: center;" type="submit"><i class="glyphicon glyphicon-floppy-disk"></i> Guardar</button>
 						</div>
 					</div>
 				</form:form>

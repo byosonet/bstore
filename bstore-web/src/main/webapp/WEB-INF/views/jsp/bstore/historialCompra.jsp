@@ -114,7 +114,7 @@
                 <div class="form-group">
                     <span class="text control-label col-sm-2">Fecha de Compra:</span>
                     <div class="col-sm-4">
-                        <label class="text control-label"><span class="label label-danger" style="font-size: 12px;"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></span></label>
+                        <label class="text control-label"><span class="label label-danger"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></span></label>
                     </div>
                     
                     <span class="text control-label col-sm-2">Estado de la Compra:</span>

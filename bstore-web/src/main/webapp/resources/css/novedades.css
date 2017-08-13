@@ -7,12 +7,7 @@
     word-break: break-all;
     word-wrap: break-word;
     font: -moz-field;
-    font-size: 12px;
-    font-family: verdana;
-}
-.text{
-	font-family: 'Architects Daughter', cursive;
-        font-size: 90%;
+    font-family: GaramondPremrPro;
 }
 .zoom{
 	border-radius:10px;
@@ -33,15 +28,12 @@
 .banner-title {
     position: absolute;
     left: -10px;
-    bottom: 60px;
     background: #FF6B0E;
-    line-height: 1.5em;
     font-weight: normal;
     padding: 7px 9px 6px;
-    font-family: 'Oswald', sans-serif;
     color: #FFFFFF;
-    font-size: 1.1em;
-    margin-left:20px;
+    margin-left:16px;
     text-align: center;
     border-radius:20px;
+  	font-family: GaramondPremrPro;
 }
