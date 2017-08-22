@@ -117,7 +117,7 @@
                     </br>
                     <form id="recuperar" class="form-horizontal">
                         <div class="form-group">
-                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info">RECUPERACI&Oacute;N DE CUENTA <span class="glyphicon glyphicon-repeat"></span></span></b></h4>
+                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info"></span></b></h4>
                         </div>
                         </br>
                         </br>
@@ -137,8 +137,8 @@
                     <form id="regresar"></form>
                     <div class="row">
                         <div class="col-sm-12" style="text-align: right;">
-                            <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                            <button id="enviar" class="text btn btn-primary"><span class="glyphicon glyphicon-repeat"></span> RECUPERAR</button>
+                            <button id="limpiar" class="text btn btn-default"><span class=""></span> LIMPIAR</button>
+                            <button id="enviar" class="text btn btn-primary"><span class=""></span> RECUPERAR</button>
                         </div>
                     </div>
                 </div>

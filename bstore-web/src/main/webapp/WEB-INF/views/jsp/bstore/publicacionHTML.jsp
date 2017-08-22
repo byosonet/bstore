@@ -45,6 +45,7 @@
             "aoColumns": [ {"bSearchable": true,"bSortable": false}, {"bSearchable": true,"bSortable": false},{"bSearchable": false,"bSortable": false}],
             "sPaginationType": "full_numbers",
             "bPaginate": true,
+            "searching": false,
             "bLengthChange" : false,
             "pageLength": 1,
             "oLanguage" : {
@@ -52,7 +53,7 @@
                   "sLengthMenu":     "<span class='text'>Mostrar _MENU_ registros</span>",
                   "sZeroRecords":    "<span class='text'>No se encontraron resultados</span>",
                   "sEmptyTable":     "<span class='text'>Ningún dato disponible en esta tabla</span>",
-                  "sInfo":           "<span class='text'>Mostrando Foja <b>_START_</b> de _TOTAL_.</span>",
+                  "sInfo":           "<span class='text'></span>",
                   "sInfoEmpty":      "<span class='text'>No existe información asociada a tu búsqueda.</span>",
                   "sInfoFiltered":   "",
                   "sInfoPostFix":    "",
@@ -61,10 +62,10 @@
                   "sInfoThousands":  ",",
                   "sLoadingRecords": "<span class='text'>Cargando...</span>",
                   "oPaginate": {
-                      "sFirst":    "<span class='text'>Primero</span>",
-                      "sLast":     "<span class='text'>Último</span>",
-                      "sNext":     "<span class='text'>Siguiente</span>",
-                      "sPrevious": "<span class='text'>Anterior</span>"
+                      "sFirst":    "<span class='glyphicon glyphicon-fast-backward'></span>",
+                      "sLast":     "<span class='glyphicon glyphicon-fast-forward'></span>",
+                      "sNext":     "<span class='glyphicon glyphicon-forward'></span>",
+                      "sPrevious": "<span class='glyphicon glyphicon-backward'></span>"
                   },
                   "oAria": {
                       "sSortAscending":  ": Activar para ordenar la columna de manera ascendente",
@@ -85,21 +86,23 @@
 	left: 0px;
 	right: 0px;
     background-repeat: round;
-}
+    }
+.hidden_thead thead{
+  display: none;
+  }
 </style>
 </head>
 <body>
     <div class="row" style="padding: 0.5em;">
-    	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('${contextpath}/static/resources/img/cabecera_publicacion.png');">
-  		<label class="alert alert-primary alert-info" style="position: absolute; z-index: 1;right:30px;top:140px"><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
+    	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('');">
+  		<label class="alert alert-primary alert-info" style=""><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
   		</div>
-  		<br/>  
   		  <div>
           <div class="table-responsive">
-            <table class="table table-hover" id="listaPublicacion">
+            <table class="table table-hover hidden_thead" id="listaPublicacion">
               <thead>
                 <tr>
-                  <th style="text-align: center" class="text alert alert-dismissible">N° FOJA</th>
+                  <th style="text-align: center" class="text alert alert-dismissible"></th>
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-list"> <b class="text">TRADUCCIÓN</b></span></th>
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-camera"> <b class="text">ANEXO</b></span></th>
                 </tr>
@@ -109,7 +112,7 @@
                <tr style="background-repeat: no-repeat;" background="${contextpath}/static/resources/img/fondo_publicacion.png">
 	                <td style="text-align: center;width: 10%;">
 	                	<b class="text">
-	                		<c:out value="${anexo.fojaTxt}"/>
+	                		<c:out value=""/>
 	                	</b>
 	                </td>
 	                <td style="width: 40%;">

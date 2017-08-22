@@ -75,4 +75,4 @@
         background-size: cover;
     }
 </style>
-<link type="text/css" id="colors" rel="stylesheet" href="${contextpath}/static/resources/principal/css/green.css">
+<!--link type="text/css" id="colors" rel="stylesheet" href="${contextpath}/static/resources/principal/css/green.css"-->

@@ -296,8 +296,8 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 			  <div class="row">
 			  	<input id="key" name="key" type="hidden" />
                 <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                 <button type="reset" id="reset" class="text btn btn-default"><span class="glyphicon glyphicon-refresh"></span> LIMPIAR</button>
-                <button type="submit" id="pagar" class="text btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> PAGAR AHORA</button>
+                 <button type="reset" id="reset" class="text btn btn-default"><span class=""></span> LIMPIAR</button>
+                <button type="submit" id="pagar" class="text btn btn-primary"><span class=""></span> COMPRAR</button>
                 </div>
             </div>
 			</form>

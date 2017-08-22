@@ -3,6 +3,7 @@ package com.bstore.services.controller;
 import com.bstore.services.batch.SessionTracker;
 import com.bstore.services.drools.DroolRuleAge;
 import com.bstore.services.drools.vo.UserTemp;
+import com.bstore.services.persistence.pojo.Coleccion;
 import com.bstore.services.persistence.pojo.Publicacion;
 import com.bstore.services.persistence.pojo.Usuario;
 import com.bstore.services.model.ErrorService;
@@ -11,6 +12,7 @@ import com.bstore.services.model.PublicacionActiva;
 import com.bstore.services.model.SessionConstants;
 import com.bstore.services.model.UserSession;
 import com.bstore.services.persistence.pojo.Sesion;
+import com.bstore.services.service.ColeccionService;
 import com.bstore.services.service.CompraService;
 import com.bstore.services.service.EnviarEmailService;
 import com.bstore.services.service.PropertyService;
@@ -71,6 +73,9 @@ public class LoginController {
     
     @Autowired
     private SesionService sesionService;
+    
+    @Autowired
+    private ColeccionService coleccionService;
 
     private final Logger log = Logger.getLogger(LoginController.class);
     private final String EMAIL_SYSTEM = "com.bstore.mail.app.bcc";
@@ -113,6 +118,9 @@ public class LoginController {
                     session.setAttribute(SessionConstants.USUARIO, usuario);
                     session.setAttribute(SessionConstants.TOKEN, cifrar);
                     session.setAttribute(SessionConstants.USER_NAME, usuario.getEmail());
+            		List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+            		log.info("Total colecciones encontradas: " + lista.size());
+            		model.addAttribute("colecciones", lista);
                     return "indexPrincipal";
                 } catch (Exception ex) {
                     ex.printStackTrace();
@@ -138,6 +146,10 @@ public class LoginController {
         UserSession usuario = (UserSession) session.getAttribute("usuario");
         List<PublicacionActiva> publicacionesActivas = this.publicacionService.getPublicacionesActivasModel(usuario.getId());                                        
         model.addAttribute("publicacionesActivas", publicacionesActivas);
+        
+        List<Coleccion> lista = this.coleccionService.getColeccionDao(true);
+		log.info("Total colecciones encontradas: " + lista.size());
+		model.addAttribute("colecciones", lista);
         return "indexPrincipal";
     }
 

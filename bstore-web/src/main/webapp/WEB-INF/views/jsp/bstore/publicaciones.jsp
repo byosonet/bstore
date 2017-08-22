@@ -14,7 +14,7 @@ $("#publicacion").gridalicious({
 $(".listaPublicaciones").select2({
 	theme: "classic",
 	language: "es",
-        width: '100%'
+        width: '37%'
 });
 
 $("#listaPub").change(function(){
@@ -38,7 +38,7 @@ $("#listaPub").change(function(){
 		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-info">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
                 </div>
                 <select class="listaPublicaciones" id="listaPub">
-			<option value="buscar" selected>Buscar</option>
+			<option value="buscar" selected>Buscar documentos</option>
 			<c:forEach var="publicacion" items="${publicaciones}">
 			  <c:choose>
     		 	<c:when test="${publicacion.comprada}">
@@ -62,13 +62,13 @@ $("#listaPub").change(function(){
     		 	<c:when test="${publicacion.comprada}">
     		 		<c:set var="valueName" value="Ver" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
-    		 		<c:set var="valueIcon" value="glyphicon glyphicon-book" />
+    		 		<c:set var="valueIcon" value="" />
     		 		<c:set var="valueColor" value="btn btn-info" />
     		 	</c:when>
     		 	<c:otherwise>
     		 		<c:set var="valueName" value="Comprar" />
     		 		<c:set var="valueUrl" value="${contextpath}/comprar/publicacion/${publicacion.id}" />
-    		 		<c:set var="valueIcon" value="glyphicon glyphicon-shopping-cart" />
+    		 		<c:set var="valueIcon" value="" />
     		 		<c:set var="valueColor" value="btn btn-primary" />
     		 	</c:otherwise>
     		 </c:choose>
@@ -167,7 +167,7 @@ $("#listaPub").change(function(){
 				        </div>
 				        <div class="modal-footer">
 					      <div class="col-md-12">
-					      	<button type="button" class="text btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-remove"></span> Cerrar</button>
+					      	<button type="button" class="text btn btn-default" data-dismiss="modal"><span class=""></span> Cerrar</button>
 					        <b><a href="${valueUrl}" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
 					      </div>
 				        </div>

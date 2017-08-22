@@ -21,7 +21,7 @@
                     <a href="${contextpath}/coleccion/${coleccion.id}"><img class="zoom" style="border-radius:10px;margin-top:-20px;width: 100%;" src="${coleccion.portadaUrl}"></a>
                     <div class="text" style="word-wrap: break-word;text-align: justify;"><c:out value="${coleccion.descripcion}"/></div>
                     <b><a href="${contextpath}/coleccion/${coleccion.id}" class="text btn btn-primary" style="width:100%;padding:5px;text-align:center;margin-bottom:-10px;margin-top:-20px;">
-                            <i class="fa fa-folder-open-o"></i> <c:out value="${empty coleccion.nombreMostrar?coleccion.nombre:coleccion.nombreMostrar}"/>
+                            <i class=""></i> <c:out value="${empty coleccion.nombreMostrar?coleccion.nombre:coleccion.nombreMostrar}"/>
                         </a></b>
 
                 </div> 

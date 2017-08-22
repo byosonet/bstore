@@ -127,7 +127,7 @@
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class="fa fa-user"></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
+                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class=""></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="text" href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
@@ -151,18 +151,18 @@
                 <div class="collapse navbar-collapse navbar-ex1-collapse">
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
-                            <a class="text" href="${contextpath}/equivira"><i class="fa fa-fw fa-home"></i> Inicio</a>
+                            <a class="text" href="${contextpath}/equivira"><i class=""></i> Inicio</a>
                         </li>
                         <li class="active">
-                            <a class="text" href="${contextpath}/colecciones"><i class="fa fa-fw fa-star"></i> Colecciones</a>
+                            <a class="text" href="${contextpath}/colecciones"><i class=""></i> Colecciones</a>
                         </li>
                         <c:forEach var="entry" items="${menu}">
                             <li class="active">
-                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class="fa fa-fw fa-floppy-o"></i> <c:out value="${entry.nombreCol}"/> </a>
+                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class=""></i> <c:out value="${entry.nombreCol}"/> </a>
                                 <ul id="${entry.idCol}" class="">
                                     <c:forEach var="publicacion" items="${entry.pubs}">
                                         <li>
-                                            <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class="fa fa-fw fa-book"></i> <c:out value="${publicacion.nombrePub}"/></a>
+                                            <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class=""></i> <c:out value="${publicacion.nombrePub}"/></a>
                                         </li>
                                     </c:forEach>
                                 </ul>
@@ -172,7 +172,7 @@
                         <!-- Menu del Admin -->
                         <c:if test="${sessionScope.usuario.perfil == 'ADMIN'}">
                             <li class="active">
-                                <a class="text" href="#" data-toggle="collapse" data-target="#admin"><i class="fa fa-fw fa-user"></i> Cat&aacute;logos</a>
+                                <a class="text" href="#" data-toggle="collapse" data-target="#admin"><i class=""></i> Cat&aacute;logos</a>
                                 <ul id="admin" class="">
                                     <li>
                                         <a class="text" style="color: white;" href="${contextpath}/coleccionAdmin"><i class="fa fa-fw fa-folder-open"></i> Colecciones</a>

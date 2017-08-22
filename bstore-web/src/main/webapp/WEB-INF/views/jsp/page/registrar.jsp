@@ -167,54 +167,54 @@
                     <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
 
                         <div class="form-group">
-                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info">CREAR NUEVA CUENTA EN NOVOHISPANO <span class="glyphicon glyphicon-user"></span></span></b></h4>
+                            <h3 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info"></span></b></h3>
                         </div>
                         </br>
                         </br>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;" for="login">Login:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="login"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="login" name="login" placeholder="Login">
                             </div>
 
-                            <label class="text control-label col-sm-2" style="color:black;" for="nombre">Nombre(s):</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="nombre"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Nombre">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;" for="apaterno">Apellido Paterno:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="apaterno"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Apellido paterno">
                             </div>
 
-                            <label class="text control-label col-sm-2" style="color:black;" for="amaterno">Apellido Materno:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="amaterno"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Apellido materno">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;" for="telefono">Tel&eacute;fono:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="telefono"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono">
                             </div>
 
-                            <label class="text control-label col-sm-2" style="color:black;" for="email">Email:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="email"></label>
                             <div class="col-sm-4">
                                 <input type="text" class="text form-control" id="email" name="email" placeholder="Email">
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;" for="email">Password:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="email"></label>
                             <div class="col-sm-4">
                                 <input type="password" class="text form-control" id="password" name="password" placeholder="Password">
                             </div>
 
-                            <label class="text control-label col-sm-2" style="color:black;" for="email">Confirmar password:</label>
+                            <label class="text control-label col-sm-2" style="color:black;" for="email"></label>
                             <div class="col-sm-4">
                                 <input type="password" class="text form-control" id="confPassword" name="confPassword" placeholder="Confirmar password">
                             </div>
@@ -274,12 +274,12 @@
                                 </div>
                             </div>
 
-                            <label class="control-label col-sm-2" style="color:black;"><a href="#" class="text" data-toggle="modal" data-target="#modalCondiciones">Acepto T&eacute;rminos y Condiciones:</a></label>
+                            <label class="control-label col-sm-2" style="color:black;"><a href="#" class="text" data-toggle="modal" data-target="#modalCondiciones">Acepto T&eacute;rminos y Condiciones</a></label>
                             <div class="col-sm-1">
                                 <div class="checkbox checkbox-primary">
                                     <input type="checkbox" value="SI" name="condiciones" id="condiciones">
                                     <label class="text" style="color:black;">
-                                        Sí
+                                        
                                     </label>
                                 </div>
                             </div>
@@ -292,8 +292,8 @@
                     </form>
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
-                            <button id="limpiar" class="text btn btn-default"><span class="glyphicon glyphicon-remove"></span> LIMPIAR</button>
-                            <button id="registrar" class="text btn btn-primary"><span class="glyphicon glyphicon-user"></span> REGISTRAR</button>
+                            <button id="limpiar" class="text btn btn-default"><span class=""></span> LIMPIAR</button>
+                            <button id="registrar" class="text btn btn-primary"><span class=""></span> CREAR CUENTA</button>
                         </div>
                     </div>
 

@@ -23,7 +23,7 @@ public class ColeccionDaoImpl extends HibernateDaoSupport implements ColeccionDa
 		}
 		return (List<Coleccion>) 
 				 HibernateUtil.getSessionFactory()
-				.createQuery("FROM Coleccion c WHERE c.estatus = :estatus order by c.ranking desc")
+				.createQuery("FROM Coleccion c WHERE c.estatus = :estatus order by c.nombre")
 				.setParameter("estatus", 1)
 				.list();
 	}
