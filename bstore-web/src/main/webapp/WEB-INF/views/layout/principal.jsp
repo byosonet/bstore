@@ -153,9 +153,6 @@
                         <li class="active">
                             <a class="text" href="${contextpath}/equivira"><i class=""></i> Inicio</a>
                         </li>
-                        <li class="active">
-                            <a class="text" href="${contextpath}/colecciones"><i class=""></i> Colecciones</a>
-                        </li>
                         <c:forEach var="entry" items="${menu}">
                             <li class="active">
                                 <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class=""></i> <c:out value="${entry.nombreCol}"/> </a>

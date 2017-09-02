@@ -9,7 +9,7 @@
 	
 	<definition name="indexPrincipal" extends="principal">
 		<put-attribute name="header" value="Bienvenido"/>
-		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/body.jsp"/>
+		<put-attribute name="contenido" value="/WEB-INF/views/jsp/bstore/colecciones.jsp"/>
 	</definition>
 	
 	<definition name="colecciones" extends="principal">

@@ -11,6 +11,7 @@
             $(function () {
 
                 $('select#dia').select2({
+                	theme: "classic",
                 	placeholder: 'Día',
                     allowClear: true,
                     language: {
@@ -20,6 +21,7 @@
                     }
                 });
                 $('select#anio').select2({
+                	theme: "classic",
                 	placeholder: 'Año',
                     allowClear: true,
                     language: {
@@ -29,6 +31,7 @@
                     }
                 });
                 $('select#mes').select2({
+                	theme: "classic",
                 	placeholder: 'Mes',
                     allowClear: true,
                     language: {
@@ -38,6 +41,7 @@
                     }
                 });
                 $('select#actividad').select2({
+                	theme: "classic",
                 	placeholder: 'Actividad',
                     allowClear: true,
                     language: {

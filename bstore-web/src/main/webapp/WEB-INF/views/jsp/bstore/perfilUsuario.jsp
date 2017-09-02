@@ -14,6 +14,7 @@
       $(function(){
     	$('select#dia option[value=${fechaNacimiento.substring(0,2)}]').attr('selected','selected'); 
     	$('select#dia').select2({
+    		theme: "classic",
     		placeholder: 'Día',
            
             language: {
@@ -25,6 +26,7 @@
         
     	$('select#anio option[value=${fechaNacimiento.substring(4,8)}]').attr('selected','selected'); 
         $('select#anio').select2({
+        	theme: "classic",
         	placeholder: 'Año',
             
             language: {
@@ -36,6 +38,7 @@
         
         $('select#mes option[value=${fechaNacimiento.substring(2,4)}]').attr('selected','selected'); 
         $('select#mes').select2({
+        	theme: "classic",
         	placeholder: 'Mes',
             
             language: {
@@ -47,6 +50,7 @@
         
         $('select#actividad option[value=${user.actividad}]').attr('selected','selected');
         $('select#actividad').select2({
+        	theme: "classic",
         	placeholder: 'Actividad',
            
             language: {

@@ -13,8 +13,13 @@ $("#publicacion").gridalicious({
 	
 $(".listaPublicaciones").select2({
 	theme: "classic",
-	language: "es",
-        width: '37%'
+	placeholder: 'Buscar documentos',
+    allowClear: true,
+    language: {
+        noResults: function(){
+            return "No se han encontrado resultados";
+        }
+    }
 });
 
 $("#listaPub").change(function(){
@@ -31,14 +36,15 @@ $("#listaPub").change(function(){
 <br/>
 <div class="container">
 	<div style="text-align: center;">
-                <div class="form-group" style="text-align: center;">
+      <div class="" style="width: 600px;position: relative;padding: 0;">
 		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-info">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
 		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-info">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-info">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
 		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-info">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
-                </div>
+       </div>
+       <div style="position: absolute;left: 300px;top: 135px;width: 100%">
                 <select class="listaPublicaciones" id="listaPub">
-			<option value="buscar" selected>Buscar documentos</option>
+			<option></option>
 			<c:forEach var="publicacion" items="${publicaciones}">
 			  <c:choose>
     		 	<c:when test="${publicacion.comprada}">
@@ -52,6 +58,7 @@ $("#listaPub").change(function(){
     		 </c:choose>
 		   </c:forEach>
 		</select>
+		</div>
    </div>
 </div>
 </c:if>    
