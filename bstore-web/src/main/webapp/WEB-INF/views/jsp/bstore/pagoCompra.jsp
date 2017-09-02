@@ -18,8 +18,8 @@ $(document).ready(function() {
 <title>Compra Exitosa</title>
 </head>
 <body>
-	<div class="row" style="padding: 0.5em;">
-  		<div class="col-md-12 alert alert-success" style="text-align: center"><b class="text">¡ FELICIDADES HAS COMPLETADO TU COMPRA !</b></div>
+	<div class="row col-sm-8 col-sm-offset-2 main" style="padding: 0.5em;">
+  		<div class="col-md-12 alert alert-info" style="text-align: center"><b class="text">¡ FELICIDADES HAS COMPLETADO TU COMPRA !</b></div>
   		
   			<div class="form-group">
   				<div class="col-md-4" style="padding: 0.5em;text-align: center;margin-top: -20px">
@@ -30,7 +30,7 @@ $(document).ready(function() {
 				  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th style="text-align: center;width: 30%;" class="text alert alert-info">Nombre de la publicaci&oacute;n</th>
+								<th style="text-align: center;width: 30%;" class="text alert alert-info">Publicaci&oacute;n</th>
 								<th style="text-align: center;" class="text alert alert-info">ISBN</th>
 								<th style="text-align: center;" class="text alert alert-info">Nº P&aacute;ginas</th>
 								<th style="text-align: center;" class="text alert alert-info">Link</th>
@@ -50,13 +50,13 @@ $(document).ready(function() {
 </div>
 
 
-    <div class="row">
+    <div class="row col-sm-8 col-sm-offset-2 main" style="padding: 0.5em;">
         <div class="col-sm-12 alert alert-info">
 			<form class="form-horizontal">
 			
 				<div class="form-group">
 					 <br>
-                    <label class="text control-label col-sm-6">DETALLE DE TU PAGO: </label>
+                    <label class="text control-label col-sm-6">Informaci&oacute;n de tu pago: </label>
                     <div class="col-sm-6" style="${publicacion.precio == '0.00'?'display:none;':''}">
                        <div class="">
                        		<c:choose>
