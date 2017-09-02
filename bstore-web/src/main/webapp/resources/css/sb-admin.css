@@ -6,16 +6,26 @@
 
 /* Global Styles */
 @font-face {
-    font-family: GaramondPremrPro;
-    src: url("/bstore/static/resources/fonts-librero/Garamond.otf") format("opentype");
+  font-family: 'GaramondPremrPro';
+  font-weight: bold;
+  src: local('GaramondPremrPro'), url('/bstore/static/resources/fonts-librero/Garamond.otf') format('truetype');
 }
 .text{
     font-family: GaramondPremrPro;
+    font-weight: bold;
+    font-size: 15px;
+}
+body {
+    font-family: GaramondPremrPro;
+    font-weight: bold;
     font-size: 15px;
 }
 @media(min-width:768px) {
     body {
         margin-top: 50px;
+        font-family: GaramondPremrPro;
+        font-weight: bold;
+        font-size: 15px;
     }
 }
 

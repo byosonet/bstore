@@ -21,9 +21,9 @@ function NacimientoModel() {
     self.years = ko.observableArray([]);
     self.activities = ko.observableArray([]);
     
-    var m = ["ENERO","FEBRERO","MARZO","ABRIL","MAYO","JUNIO",
-            "JULIO","AGOSTO","SEPTIEMBRE","OCTUBRE","NOVIEMBRE","DICIEMBRE"];
-    var act = ["ESTUDIANTE","PROFESIONISTA"];
+    var m = ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
+            "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
+    var act = ["Estudiante","Profesionista"];
     
     var d = new Date();
     var n = d.getFullYear()-17;

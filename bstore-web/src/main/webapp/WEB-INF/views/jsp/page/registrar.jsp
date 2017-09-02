@@ -10,10 +10,42 @@
         <script type="text/javascript">
             $(function () {
 
-                $('select#dia').select2();
-                $('select#anio').select2();
-                $('select#mes').select2();
-                $('select#actividad').select2();
+                $('select#dia').select2({
+                	placeholder: 'Día',
+                    allowClear: true,
+                    language: {
+                        noResults: function(){
+                            return "No se han encontrado resultados";
+                        }
+                    }
+                });
+                $('select#anio').select2({
+                	placeholder: 'Año',
+                    allowClear: true,
+                    language: {
+                        noResults: function(){
+                            return "No se han encontrado resultados";
+                        }
+                    }
+                });
+                $('select#mes').select2({
+                	placeholder: 'Mes',
+                    allowClear: true,
+                    language: {
+                        noResults: function(){
+                            return "No se han encontrado resultados";
+                        }
+                    }
+                });
+                $('select#actividad').select2({
+                	placeholder: 'Actividad',
+                    allowClear: true,
+                    language: {
+                        noResults: function(){
+                            return "No se han encontrado resultados";
+                        }
+                    }
+                });
 
                 var status;
                 $('input#masculino').click(function () {
@@ -98,13 +130,13 @@
                 function muestraMsjSistemaError(msjStatus) {
                     BootstrapDialog.show({
                         size: BootstrapDialog.SIZE_SMALL,
-                        title: "<span class='text'>Mensaje de Novohispano</span>",
+                        title: "<span class='text'>Mensaje de Novohispanorum</span>",
                         closable: false,
                         message: msjStatus,
                         type: BootstrapDialog.TYPE_DANGER,
                         cssClass: 'login-dialog',
                         buttons: [{
-                                icon: 'glyphicon glyphicon-check',
+                                icon: '',
                                 label: "<span class='text'>OK</span>",
                                 cssClass: 'btn-primary',
                                 action: function (dialog) {
@@ -117,13 +149,13 @@
                 function muestraMsjSistemaSuccess(msjStatus) {
                     BootstrapDialog.show({
                         size: BootstrapDialog.SIZE_SMALL,
-                        title: "<span class='text'>Mensaje de Novohispano</span>",
+                        title: "<span class='text'>Mensaje de Novohispanorum</span>",
                         closable: false,
                         message: msjStatus,
                         type: BootstrapDialog.TYPE_SUCCESS,
                         cssClass: 'login-dialog',
                         buttons: [{
-                                icon: 'glyphicon glyphicon-check',
+                                icon: '',
                                 label: "<span class='text'>CONTINUAR</span>",
                                 cssClass: 'btn-primary',
                                 action: function (dialog) {
@@ -162,8 +194,8 @@
 
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-11 col-md-offset-0 main">
-                    </br>
+                <div class="col-sm-9 col-sm-offset-1 main">
+                    
                     <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
 
                         <div class="form-group">
@@ -220,36 +252,42 @@
                             </div>
                         </div>
                         </br>
+                        <div class="row col-sm-12" style="margin-left: 250px;">
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;">Día:</label>
-                            <div class="col-sm-1">
+                           
+                            <div class="col-sm-2">
                                 <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
+                                    <option></option>
                                     <option data-bind="value: id,text:day"></option></select>
                             </div>
 
-                            <label class="text control-label col-sm-1" style="color:black;">Mes:</label>
+                            
                             <div class="col-sm-2">
                                 <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
+                                    <option></option>
                                     <option data-bind="value: id,text:mes"></option></select>
                             </div>
 
-                            <label class="text control-label col-sm-1" style="color:black;">Año:</label>
+                            
                             <div class="col-sm-2">
                                 <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
+                                    <option></option>
                                     <option data-bind="value: year,text:year"></option></select>
                             </div>
 
 
-                            <label class="text control-label col-sm-1" style="color:black;">Actividad:</label>
+                            
                             <div class="col-sm-2">
                                 <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
+                                    <option></option>
                                     <option data-bind="value: activity,text:activity"></option></select>
                             </div>
+                        </div>
                         </div>
 
 
                         <div class="form-group">
-                            <label class="text control-label col-sm-2" style="color:black;">Sexo:</label>
+                            <label class="text control-label col-sm-2" style="color:black;"></label>
                             <div class="col-sm-2">
                                 <div class="radio radio-info radio-inline">
                                     <input type="radio" id="masculino" name="sexo" value="M">
@@ -625,7 +663,7 @@
                                         </div>
                                         <div class="modal-footer">
                                             <div class="col-md-12">
-                                                <button type="button" class="text btn btn-default" data-dismiss="modal"><span class="glyphicon glyphicon-ok"></span> Aceptar</button>
+                                                <button type="button" class="text btn btn-default" data-dismiss="modal">Aceptar</button>
                                             </div>
                                         </div>
                                     </div>

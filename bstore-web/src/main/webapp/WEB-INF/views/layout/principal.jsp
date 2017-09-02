@@ -66,13 +66,13 @@
                     function muestraMsjSistemaSuccessIndex(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: "<span class='text'>Mensaje de Novohispano</span>",
+                            title: "<span class='text'>Mensaje de Novohispanorum</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_SUCCESS,
                             cssClass: 'login-dialog',
                             buttons: [{
-                                    icon: 'glyphicon glyphicon-ok',
+                                    icon: '',
                                     label: "<span class='text'>ACEPTAR</span>",
                                     cssClass: 'btn-primary',
                                     action: function (dialog) {

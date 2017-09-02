@@ -75,13 +75,13 @@
                     function muestraMsjSistemaError(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: "<span class='text'>Mensaje de Novohispano</span>",
+                            title: "<span class='text'>Mensaje de Novohispanorum</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_DANGER,
                             cssClass: 'login-dialog',
                             buttons: [{
-                                    icon: 'glyphicon glyphicon-check',
+                                    icon: '',
                                     label: "<span class='text'>OK</span>",
                                     cssClass: 'btn-primary',
                                     action: function (dialog) {
@@ -94,13 +94,13 @@
                     function muestraMsjSistemaSuccess(msjStatus) {
                         BootstrapDialog.show({
                             size: BootstrapDialog.SIZE_SMALL,
-                            title: "<span class='text'>Mensaje de Novohispano</span>",
+                            title: "<span class='text'>Mensaje de Novohispanorum</span>",
                             closable: false,
                             message: msjStatus,
                             type: BootstrapDialog.TYPE_SUCCESS,
                             cssClass: 'login-dialog',
                             buttons: [{
-                                    icon: 'glyphicon glyphicon-ok',
+                                    icon: '',
                                     label: "<span class='text'>CONTINUAR</span>",
                                     cssClass: 'btn-primary',
                                     action: function (dialog) {

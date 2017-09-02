@@ -1,6 +1,5 @@
 <%@ include file="../layout/taglibs.jsp"%>
 <c:set var="contextpath" value="<%=request.getContextPath()%>"/>
-<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/fonts-librero/Garamond.otf"/>
 <link rel="shortcut icon" type="image/x-icon" href="${contextpath}/static/resources/img/favicon.ico"/> 
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/jquery-ui.css">
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/font-awesome.css">

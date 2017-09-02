@@ -13,16 +13,48 @@
   <script type="text/javascript">
       $(function(){
     	$('select#dia option[value=${fechaNacimiento.substring(0,2)}]').attr('selected','selected'); 
-    	$('select#dia').select2();
+    	$('select#dia').select2({
+    		placeholder: 'Día',
+           
+            language: {
+                noResults: function(){
+                    return "No se han encontrado resultados";
+                }
+            }
+    	});
         
     	$('select#anio option[value=${fechaNacimiento.substring(4,8)}]').attr('selected','selected'); 
-        $('select#anio').select2();
+        $('select#anio').select2({
+        	placeholder: 'Año',
+            
+            language: {
+                noResults: function(){
+                    return "No se han encontrado resultados";
+                }
+            }
+        });
         
         $('select#mes option[value=${fechaNacimiento.substring(2,4)}]').attr('selected','selected'); 
-        $('select#mes').select2();
+        $('select#mes').select2({
+        	placeholder: 'Mes',
+            
+            language: {
+                noResults: function(){
+                    return "No se han encontrado resultados";
+                }
+            }
+        });
         
         $('select#actividad option[value=${user.actividad}]').attr('selected','selected');
-        $('select#actividad').select2();
+        $('select#actividad').select2({
+        	placeholder: 'Actividad',
+           
+            language: {
+                noResults: function(){
+                    return "No se han encontrado resultados";
+                }
+            }
+        });
           
         var status;
         $('input#masculino').click(function(){
@@ -102,13 +134,13 @@
 		        function muestraMsjSistemaError(msjStatus){
 		           BootstrapDialog.show({
 		            size: BootstrapDialog.SIZE_SMALL,
-		            title: "<span class='text'>Mensaje de Novohispano</span>",
+		            title: "<span class='text'>Mensaje de Novohispanorum</span>",
 		            closable: false,
 		            message: msjStatus,
 		            type: BootstrapDialog.TYPE_DANGER,
 		            cssClass: 'login-dialog',
 		            buttons: [{
-		                icon: 'glyphicon glyphicon-check',
+		                icon: '',
 		                label: "<span class='text'>OK</span>",
 		                cssClass: 'btn-primary',
 		                action: function(dialog) {
@@ -121,13 +153,13 @@
 		        function muestraMsjSistemaSuccess(msjStatus){
 		           BootstrapDialog.show({
 		            size: BootstrapDialog.SIZE_SMALL,
-		            title: "<span class='text'>Mensaje de Novohispano</span>",
+		            title: "<span class='text'>Mensaje de Novohispanorum</span>",
 		            closable: false,
 		            message: msjStatus,
 		            type: BootstrapDialog.TYPE_SUCCESS,
 		            cssClass: 'login-dialog',
 		            buttons: [{
-		                icon: 'glyphicon glyphicon-check',
+		                icon: '',
 		                label: "<span class='text'>CONTINUAR</span>",
 		                cssClass: 'btn-primary',
 		                action: function(dialog) {
@@ -149,18 +181,18 @@
 		        function muestraMsjSistemaSuccessCancelar(msjStatus){
 			           BootstrapDialog.show({
 			            size: BootstrapDialog.SIZE_SMALL,
-			            title: "<span class='text'>Mensaje de Novohispano</span>",
+			            title: "<span class='text'>Mensaje de Novohispanorum</span>",
 			            closable: false,
 			            message: msjStatus,
 			            type: BootstrapDialog.TYPE_DANGER,
 			            cssClass: 'login-dialog',
 			            buttons: [{
-			            	icon: 'glyphicon glyphicon-remove',
+			            	icon: '',
 			            	label: "<span class='text'>CANCELAR</span>",
 			            	action: function(dialog){
 			            		dialog.close();}
 			            	},{
-			                icon: 'glyphicon glyphicon-check',
+			                icon: '',
 			                label: "<span class='text'>CONTINUAR</span>",
 			                cssClass: 'btn-primary',
 			                action: function(dialog) {
@@ -199,56 +231,56 @@
     <body>
 
 <div class="container-fluid">
-    <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-11">
+    <div class="row col-sm-8 col-sm-offset-2 main">
+        <div class="">
             <form class="form-horizontal" id="formRegistrar">
             	<input type="hidden" name="idUsuario" value="${user.id}">
                 </br>
                 <div class="form-group">
-                    <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${user.nombre}" >
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="apaterno">Apellido Paterno:</label>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${user.APaterno}">
                     </div>
                     
                 </div>
                 
                  <div class="form-group">
-                    <label class="text control-label col-sm-2"  for="amaterno">Apellido Materno:</label>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${user.AMaterno}">
                     </div>
                     
-                    <label class="text control-label col-sm-1"  for="email">Email:</label>
-                    <div class="col-sm-5">
+                   
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email" value="${user.email}" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
-                	<label class="text control-label col-sm-2"  for="login">Usuario/Login:</label>
-                    <div class="col-sm-4">
+                	
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login" value="${user.login}">
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="telefono">Tel&eacute;fono:</label>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-6">
                         <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${user.telefono}">
                     </div>
                 </div>
 
                 <div class="form-group">
-                   <label class="text control-label col-sm-2"  for="pass1">Password:</label>
-                    <div class="col-sm-4">
+                   
+                    <div class="col-sm-6">
                         <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${user.password}">
                     </div>
                    
-                   <label class="text control-label col-sm-2"  for="pass2">Confirmar password:</label>
-                    <div class="col-sm-4">
+                   
+                    <div class="col-sm-6">
                         <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${user.password}">
                     </div>
                 </div>
@@ -256,32 +288,37 @@
                 
                 </br>
                 </br>
-                
+                <div class="row col-sm-12" style="margin-left: 140px;">
                 <div class="form-group">
-                    <label class="text control-label col-sm-2" >Día:</label>
-                    <div class="col-sm-1">
+                   
+                    <div class="col-sm-2">
                         <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
+                        
                         <option data-bind="value: id,text:day"></option></select>
                     </div>
                     
-                    <label class="text control-label col-sm-1" >Mes:</label>
+                    
                     <div class="col-sm-2">
                         <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
+                        
                         <option data-bind="value: id,text:mes"></option></select>
                     </div>
                     
-                    <label class="text control-label col-sm-1" >Año:</label>
-                    <div class="col-sm-1">
+                    
+                    <div class="col-sm-2">
                         <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
+                        
                         <option data-bind="value: year,text:year"></option></select>
                     </div>
                    
                     
-                    <label class="text control-label col-sm-1" >Actividad:</label>
+                    
                     <div class="col-sm-2">
                         <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
+                        
                         <option data-bind="value: activity,text:activity"></option></select>
                     </div>
+                </div>
                 </div>
                 
                 
@@ -329,8 +366,8 @@
                 </div>
             </form>
             <form id="perfil"></form>
-            <div class="row">
-                <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
+            <div class="">
+                <div class="" style="float: right;">
                 <button id="cancelar" class="text btn btn-danger"><span class=""></span> CANCELAR CUENTA</button>
                 <button id="actualizar" class="text btn btn-primary"><span class=""></span> ACTUALIZAR DATOS</button>
                 </div>
