@@ -145,7 +145,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 <title>Editoriales</title>
 </head>
 <body>
-	<div class="row" style="padding: 0.5em;">
+	<div class="${publicacion.precio != '0.00'? 'row col-sm-6':'col-sm-8 col-sm-offset-2 main'}">
 		<c:if test="${errorMessage}">
 			<div class="col-md-12 alert alert-danger" style="text-align: center">
 				<p><b class="text"><c:out value="${messageError}"/></b></p>
@@ -157,18 +157,18 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
   			<div class="form-group">
   				<div class="col-md-12 alert alert-success">
   				<span class="text"><b>Resumen:</b> ${publicacion.resumen}</span></div>
-  				<div class="col-md-4" style="padding: 0.5em;text-align: center;margin-top: -10px">
-  					<img style="width: 40%;height:auto;border-radius:5px;" src="${publicacion.portadaUrl}">
+  				<div class="col-md-2" style="padding: 0.5em;text-align: center;margin-top: -10px">
+  					<img style="width: 100%;height:auto;border-radius:5px;" src="${publicacion.portadaUrl}">
   				</div>
   				
-  				<div class="col-md-8" style="margin-top:30px;">
+  				<div class="col-md-10" style="margin-top:30px;">
 				  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%">
 						<thead>
 							<tr>
-								<th style="text-align: center;width: 30%;" class="text alert alert-success">Nombre de la publicaci&oacute;n</th>
+								<th style="text-align: center;width: 30%;" class="text alert alert-success">Publicaci&oacute;n</th>
 								<th style="text-align: center;" class="text alert alert-success">ISBN</th>
 								<th style="text-align: center;" class="text alert alert-success">Descuento</th>
-								<th style="text-align: center;" class="text alert alert-success">Precio Venta</th>
+								<th style="text-align: center;" class="text alert alert-success">Precio</th>
 							</tr>
 						</thead>
 						<tfoot>
@@ -195,27 +195,27 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 					</table>
 				</div>
   			</div>
-                        <div class="col-md-12 alert alert-info" style="text-align: right;${publicacion.precio != '0.00'? 'display: none;':''}">
+                        <div class="" style="float: right;${publicacion.precio != '0.00'? 'display: none;':''}">
                             <form class="form-horizontal" action="" method="POST" id="formPagarPublicacion">
                             </form>
-                            <button id="pagarPublicacion" class="text btn btn-primary"><span class="glyphicon glyphicon-credit-card"></span> COMPRAR</button>
+                            <button id="pagarPublicacion" class="text btn btn-primary">COMPRAR</button>
                         </div>
                                                                 
-                        <div class="col-md-12 alert alert-info" style="text-align: center;margin-top: 20px;${publicacion.precio == '0.00'? 'display: none;':''}"><b class="text">2.- ELIGE TU FORMA DE PAGO</b></div>
+                        
 </div>
 
 
-<div class="container-fluid" style="${publicacion.precio == '0.00'? 'display: none;':''}">
-    <div class="row">
-        <div class="col-sm-12 col-sm-offset-0 col-md-11">
+<div class="row col-sm-6" style="margin-left:30px;${publicacion.precio == '0.00'? 'display: none;':''}">
+    <div class="">
+        <div class="col-sm-12">
 			<form class="form-horizontal" action="" method="POST" id="card-form">
-			
+				<div class="col-md-12 alert alert-info" style="text-align: center;${publicacion.precio == '0.00'? 'display: none;':''}"><b class="text">2.- ELIGE TU FORMA DE PAGO</b></div>
 				<div class="form-group">
                     <label class="control-label col-sm-4" ></label>
                     <div class="col-sm-3">
                        <div class="radio radio-info radio-inline">
                            <input type="radio" id="visa" name="visa" value="visa">
-                           <label><img width="35%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-25px;"></label>
+                           <label><img width="35%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-10px;"></label>
                            
                         </div>
                     </div>
@@ -223,7 +223,7 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                     <div class="col-sm-3">
                        <div class="radio radio-info radio-inline">
                        		<input type="radio" id="mastercard" name="mastercard" value="mastercard">
-                       		<label><img width="35%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-25px;"></label>
+                       		<label><img width="35%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-10px;"></label>
                        		
                         </div>
                     </div>
@@ -231,64 +231,63 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
                 
                 
 				<div class="form-group">
-                    <label class="text control-label col-sm-2"  for="nombre">Nombre:</label>
-                    <div class="col-sm-4">
+                    <div class="col-sm-6">
                         <input data-conekta="card[name]" type="text" class="text form-control" id="nombre" maxlength="50" name="nombre" placeholder="Nombre del cuenta habiente" value="" >
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="numeroTarjeta">Numero tarjeta:</label>
-                    <div class="col-sm-4">
+                    
+                    <div class="col-sm-6">
                         <input data-conekta="card[number]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="numeroTarjeta" maxlength="16" name="numeroTarjeta" placeholder="N&uacute;mero de tarjeta" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
-                    <label class="text control-label col-sm-2"  for="cvv">CVC/CVV:</label>
-                    <div class="col-sm-2">
+
+                    <div class="col-sm-4">
                         <input data-conekta="card[cvc]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="cvv" maxlength="4" name="cvv" placeholder="CVC/CVV" value="" >
                     </div>
                     
-                    <label class="text control-label col-sm-4"  for="fechaExpiracionMes">Fecha de expiraci&oacute;n: MM/YYYY</label>
-                    <div class="col-sm-2">
+                   
+                    <div class="col-sm-4">
                         <input data-conekta="card[exp_month]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="fechaExpiracionMes" maxlength="2" name="fechaExpiracionMes" placeholder="MM" value="">
                     </div>
-                    <div class="col-sm-2">
+                    <div class="col-sm-4">
                     	<input data-conekta="card[exp_year]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="fechaExpiracionAnio" maxlength="4" name="fechaExpiracionAnio" placeholder="YYYY" value="">
                     </div>
                 </div>
 			
 				<div class="form-group">
-                    <label class="text control-label col-sm-2"  for="calle">Calle:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][street1]" type="text" class="text form-control" id="calle" maxlength="40" name="calle" placeholder="Calle" value="" >
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="colonia">Colonia:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][street2]" type="text" class="text form-control" id="colonia" maxlength="30" name="colonia" placeholder="Colonia" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text control-label col-sm-2"  for="ciudad">Ciudad:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][city]" type="text" class="text form-control" id="ciudad" maxlength="30" name="ciudad" placeholder="Ciudad" value="" >
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="estado">Estado:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][state]" type="text" class="text form-control" id="estado" maxlength="30" name="estado" placeholder="Estado" value="">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label class="text control-label col-sm-2"  for="codigo">C&oacute;digo Postal:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][zip]" type="text" onkeypress='return event.charCode >= 48 && event.charCode <= 57' class="text form-control" id="codigo" maxlength="5" name="codigo" placeholder="C&oacute;digo postal" value="" >
                     </div>
                     
-                    <label class="text control-label col-sm-2"  for="pais">Pa&iacute;s:</label>
-                    <div class="col-sm-4">
+
+                    <div class="col-sm-6">
                         <input data-conekta="card[address][country]" type="text" class="text form-control" id="pais" maxlength="25" name="pais" placeholder="Pa&iacute;s" value="">
                     </div>
                 </div>
@@ -304,8 +303,9 @@ Conekta.setPublicKey('key_Niwr5ccGztUVzNHPpFxWsGA');
 		</div>
 	</div>
 </div>
-<div class="row" style="padding: 0.5em;${publicacion.precio == '0.00'? 'display: none;':''}">
-		<div class="col-md-12 alert alert-danger" style="text-align: center">
+
+<div class="row col-md-12" style="padding:1em;${publicacion.precio == '0.00'? 'display: none;':''}">
+		<div class="alert alert-info" style="text-align: center">
                     <p class="text">En <b>Tarjetas de Cr&eacute;dito:</b> Aceptamos cualquier forma de pago con <b>VISA</b> y <b>MASTERCARD</b>.</p>
 			<p class="text">y en <b>Tarjetas de D&eacute;bito:</b> &uacute;nicamente Banamex, HSBC, Inbursa y Santander.</p>
 		</div>
