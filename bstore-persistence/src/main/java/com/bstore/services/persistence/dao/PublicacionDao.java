@@ -15,5 +15,8 @@ public interface PublicacionDao {
 	List<Publicacion> getPublicacionesPorNombreDesc(int idColeccion);
 	List<Publicacion> getPublicacionesPorPrecioAsc(int idColeccion);
 	List<Publicacion> getPublicacionesPorPrecioDesc(int idColeccion);
+	List<Publicacion> getPublicacionesCompradas(int idColeccion);
+	List<Publicacion> getPublicacionesGratis(int idColeccion);
+	List<Publicacion> getPublicacionesPorComprar(int idColeccion);
 	
 }

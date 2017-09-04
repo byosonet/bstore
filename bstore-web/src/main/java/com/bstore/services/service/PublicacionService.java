@@ -13,6 +13,9 @@ public interface PublicacionService {
 	List<Publicacion> getPublicacionesByNombreDesc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesByPrecioAsc(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesByPrecioDesc(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesCompradas(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesGratis(int idColeccion, int idUsuario);
+	List<Publicacion> getPublicacionesPorComprar(int idColeccion, int idUsuario);
 	List<Publicacion> getPublicacionesActivas(int idUsuario);
         List<PublicacionActiva> getPublicacionesActivasModel(int idUsuario);
 	Publicacion getPublicacion(int id);

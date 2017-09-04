@@ -407,6 +407,172 @@ public class PublicacionServiceImpl implements PublicacionService {
         log.info("Buscando publicaciones por idColeccion: " + idColeccion);
         return lista;
     }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Publicacion> getPublicacionesCompradas(int idColeccion, int idUsuario) {
+
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        List<Publicacion> comprados = new ArrayList<Publicacion>();
+        List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+        List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+        if (compras != null) {
+            if (compras.size() > 0) {
+                for (Compra c : compras) {
+                    idPublicacionCompra.add(c.getId().getIdPublicacion());
+                }
+            }
+        }
+        lista = this.publicacionDao.getPublicacionesCompradas(idColeccion);
+        if (idPublicacionCompra.size() > 0) {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+                idCompra:
+                for (int id : idPublicacionCompra) {
+                    if (pub.getId() == id) {
+                        pub.setComprada(true);
+                        
+                         /**
+                         * Buscando fecha de compra
+                         */
+                        CompraId idCompra = new CompraId();
+                        idCompra.setIdUsuario(idUsuario);
+                        idCompra.setIdPublicacion(pub.getId());
+                        Compra comp = this.compraDao.getCompra(idCompra);
+                        if (comp != null) {
+                            pub.setFechaCompraTemporal(comp.getFechaCompra());
+                        } else {
+                            pub.setFechaCompraTemporal(null);
+                        }
+                        
+                        break idCompra;
+                    }
+                }
+            }
+        } else {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+            }
+        }
+        for(Publicacion p: lista){
+        	if(p.isComprada()){
+        		comprados.add(p);
+        	}
+        }
+        log.info("Buscando publicaciones compradas por idColeccion: " + idColeccion);
+        return comprados;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Publicacion> getPublicacionesGratis(int idColeccion, int idUsuario) {
+
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        List<Publicacion> gratis = new ArrayList<Publicacion>();
+        List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+        List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+        if (compras != null) {
+            if (compras.size() > 0) {
+                for (Compra c : compras) {
+                    idPublicacionCompra.add(c.getId().getIdPublicacion());
+                }
+            }
+        }
+        lista = this.publicacionDao.getPublicacionesGratis(idColeccion);
+        if (idPublicacionCompra.size() > 0) {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+                idCompra:
+                for (int id : idPublicacionCompra) {
+                    if (pub.getId() == id) {
+                        pub.setComprada(true);
+                        
+                         /**
+                         * Buscando fecha de compra
+                         */
+                        CompraId idCompra = new CompraId();
+                        idCompra.setIdUsuario(idUsuario);
+                        idCompra.setIdPublicacion(pub.getId());
+                        Compra comp = this.compraDao.getCompra(idCompra);
+                        if (comp != null) {
+                            pub.setFechaCompraTemporal(comp.getFechaCompra());
+                        } else {
+                            pub.setFechaCompraTemporal(null);
+                        }
+                        
+                        break idCompra;
+                    }
+                }
+            }
+        } else {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+            }
+        }
+        for(Publicacion p: lista){
+        	if(!p.isComprada()){
+        		gratis.add(p);
+        	}
+        }
+        log.info("Buscando publicaciones gratis por idColeccion: " + idColeccion);
+        return gratis;
+    }
+    
+    @Override
+    @Transactional(readOnly = true)
+    public List<Publicacion> getPublicacionesPorComprar(int idColeccion, int idUsuario) {
+
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        List<Publicacion> porComprar = new ArrayList<Publicacion>();
+        List<Integer> idPublicacionCompra = new ArrayList<Integer>();
+        List<Compra> compras = this.compraDao.getComprasPorUsuario(idUsuario);
+        if (compras != null) {
+            if (compras.size() > 0) {
+                for (Compra c : compras) {
+                    idPublicacionCompra.add(c.getId().getIdPublicacion());
+                }
+            }
+        }
+        lista = this.publicacionDao.getPublicacionesPorComprar(idColeccion);
+        if (idPublicacionCompra.size() > 0) {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+                idCompra:
+                for (int id : idPublicacionCompra) {
+                    if (pub.getId() == id) {
+                        pub.setComprada(true);
+                        
+                         /**
+                         * Buscando fecha de compra
+                         */
+                        CompraId idCompra = new CompraId();
+                        idCompra.setIdUsuario(idUsuario);
+                        idCompra.setIdPublicacion(pub.getId());
+                        Compra comp = this.compraDao.getCompra(idCompra);
+                        if (comp != null) {
+                            pub.setFechaCompraTemporal(comp.getFechaCompra());
+                        } else {
+                            pub.setFechaCompraTemporal(null);
+                        }
+                        
+                        break idCompra;
+                    }
+                }
+            }
+        } else {
+            for (Publicacion pub : lista) {
+                pub.setPrecio(this.calculatePriceWithComissionConekta(pub.getPrecio()));
+            }
+        }
+        for(Publicacion p: lista){
+        	if(!p.isComprada()){
+        		porComprar.add(p);
+        	}
+        }
+        log.info("Buscando publicaciones por comprar por idColeccion: " + idColeccion);
+        return porComprar;
+    }
+
 
     @Override
     @Transactional(readOnly = true)

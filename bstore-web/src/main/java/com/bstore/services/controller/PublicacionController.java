@@ -237,6 +237,104 @@ public class PublicacionController {
 
         return "publicaciones";
     }
+    
+    @RequestMapping(value = "/coleccion/comprados/{id}", method = RequestMethod.GET)
+    public String coleccionesCompradas(Model model, @PathVariable("id") String id, HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        log.info("Cargando publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+        log.info("Cargando Service publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+
+        HttpSession session = (HttpSession) request.getSession(false);
+        String result = ValidarSesion.validarSesionUsuarioActual(session);
+        if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+            log.info(ValidarSesion.MSG_FORBIDDEN);
+            return "forbidden";
+        }
+        log.info("Sesion activa Token === " + result);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        try{
+            lista = this.publicacionService.getPublicacionesCompradas(Integer.valueOf(id).intValue(),
+                usuario.getId());
+        log.info("Total publicaciones encontradas: " + lista.size());
+        }catch(Exception ex){
+            ex.printStackTrace();
+            log.info("Error al procesar: /coleccion/precio/desc/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
+        
+        model.addAttribute("publicaciones", lista);
+        model.addAttribute("coleccionId", id);
+
+        return "publicaciones";
+    }
+
+    @RequestMapping(value = "/coleccion/gratis/{id}", method = RequestMethod.GET)
+    public String coleccionesGratis(Model model, @PathVariable("id") String id, HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        log.info("Cargando publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+        log.info("Cargando Service publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+
+        HttpSession session = (HttpSession) request.getSession(false);
+        String result = ValidarSesion.validarSesionUsuarioActual(session);
+        if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+            log.info(ValidarSesion.MSG_FORBIDDEN);
+            return "forbidden";
+        }
+        log.info("Sesion activa Token === " + result);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        try{
+            lista = this.publicacionService.getPublicacionesGratis(Integer.valueOf(id).intValue(),
+                usuario.getId());
+        log.info("Total publicaciones encontradas: " + lista.size());
+        }catch(Exception ex){
+            ex.printStackTrace();
+            log.info("Error al procesar: /coleccion/precio/desc/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
+        
+        model.addAttribute("publicaciones", lista);
+        model.addAttribute("coleccionId", id);
+
+        return "publicaciones";
+    }
+    
+    @RequestMapping(value = "/coleccion/porcomprar/{id}", method = RequestMethod.GET)
+    public String coleccionesPorComprar(Model model, @PathVariable("id") String id, HttpServletRequest request,
+            HttpServletResponse response) throws IOException {
+        log.info("Cargando publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+        log.info("Cargando Service publicacion: " + NAME_CONTROLLER + "/coleccion/{id}");
+
+        HttpSession session = (HttpSession) request.getSession(false);
+        String result = ValidarSesion.validarSesionUsuarioActual(session);
+        if (result.equalsIgnoreCase(ValidarSesion.FORBIDDEN)) {
+            log.info(ValidarSesion.MSG_FORBIDDEN);
+            return "forbidden";
+        }
+        log.info("Sesion activa Token === " + result);
+        UserSession usuario = (UserSession) session.getAttribute("usuario");
+        List<Publicacion> lista = new ArrayList<Publicacion>();
+        try{
+            lista = this.publicacionService.getPublicacionesPorComprar(Integer.valueOf(id).intValue(),
+                usuario.getId());
+        log.info("Total publicaciones encontradas: " + lista.size());
+        }catch(Exception ex){
+            ex.printStackTrace();
+            log.info("Error al procesar: /coleccion/precio/desc/{id}" + id);
+            model.addAttribute("mensajeError", "Lo sentimos el identificador enviado es inválido ["+id+"]");
+            return "muestraError";
+        }
+        
+        model.addAttribute("publicaciones", lista);
+        model.addAttribute("coleccionId", id);
+
+        return "publicaciones";
+    }
+
+
 
     @RequestMapping(value = "/publicacion/{id}", method = RequestMethod.GET)
     public String getPublicacionHTML(Model model, @PathVariable("id") String id, HttpServletRequest request,

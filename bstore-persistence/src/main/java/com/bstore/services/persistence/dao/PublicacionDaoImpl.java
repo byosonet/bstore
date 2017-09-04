@@ -77,6 +77,36 @@ public class PublicacionDaoImpl extends HibernateDaoSupport implements Publicaci
                 .setParameter("estatus", 1)
                 .list();
 	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesCompradas(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesGratis(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus and p.precio = 0.00")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	public List<Publicacion> getPublicacionesPorComprar(int idColeccion) {
+		this.log.info("Buscando Publicacion by coleccion id:: "+idColeccion);
+        return (List<Publicacion>) HibernateUtil.getSessionFactory()
+                .createQuery("FROM Publicacion p WHERE p.coleccion.id = :idColeccion and p.estatus = :estatus")
+                .setParameter("idColeccion", idColeccion)
+                .setParameter("estatus", 1)
+                .list();
+	}
 
 	@SuppressWarnings("unchecked")
 	public List<Publicacion> getAll() {

@@ -20,7 +20,7 @@
             <meta name="DC.Subject" content="Librero Novohispanorum">
             <meta name="DC.Description" content="Novohispanorum tiene como objetivo crear publicaciones digitales de documentos novohispanos inéditos del siglo XVI y XVII del Oficio de la Santa Inquisición del Virreinato de la Nueva España. ">
             <meta name="DC.Publisher" content="Ediciones Quivira, S.A. de C.V.">
-            <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Programación; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
+            <meta name="DC.Contributor" content=" Anneli Daniela Torres, Diseño ; Pudenciano Espinobarros Peralta, Sistemas ; Gustavo Ulises Trejo Armenta, Diseño, Programación, Sistemas; Arturo Sauza, Programación; Alí Albarrán, edición; Jesús Alfaro, Contenidos y paleografía ">
             <meta name="DC.Date" content="2017-05-15">
             <meta name="DC.Type" content="txt">
             <meta name="DC.Type" content="image">
@@ -153,18 +153,19 @@
                         <li class="active">
                             <a class="text" href="${contextpath}/equivira"><i class=""></i> Inicio</a>
                         </li>
+                        <li class="active">
+                        <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Mis documentos </a>
+                        <ul id="misDocumentos" class="text collapse">
                         <c:forEach var="entry" items="${menu}">
-                            <li class="active">
-                                <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class=""></i> <c:out value="${entry.nombreCol}"/> </a>
-                                <ul id="${entry.idCol}" class="text">
+                                
                                     <c:forEach var="publicacion" items="${entry.pubs}">
                                         <li>
-                                            <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class=""></i> <c:out value="${publicacion.nombrePub}"/></a>
+                                            <a class="text" style="color: white;font-size: 13.5px;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class=""></i> <c:out value="${publicacion.nombrePub}"/></a>
                                         </li>
-                                    </c:forEach>
-                                </ul>
-                            </li>
+                                    </c:forEach>                                                          
                         </c:forEach>
+                        </ul> 
+                        </li>
 
                         <!-- Menu del Admin -->
                         <c:if test="${sessionScope.usuario.perfil == 'ADMIN'}">

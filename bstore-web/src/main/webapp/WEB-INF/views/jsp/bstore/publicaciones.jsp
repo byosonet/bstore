@@ -54,11 +54,13 @@ $("#ordernarPub").change(function(){
 
       <div style="float: right;">
         <select class="ordenarPublicaciones" id="ordernarPub">
-        	<option></option>
-        	<option value="${contextpath}/coleccion/tema/asc/${coleccionId}">Por tema ascendente</option>
-        	<option value="${contextpath}/coleccion/tema/desc/${coleccionId}">Por tema descendente</option>
-        	<option value="${contextpath}/coleccion/precio/desc/${coleccionId}">Por mayor precio</option>
-        	<option value="${contextpath}/coleccion/precio/asc/${coleccionId}">Por menor precio</option>
+        	<option></option>        	        
+        	<option value="${contextpath}/coleccion/precio/desc/${coleccionId}">Mayor precio</option>
+        	<option value="${contextpath}/coleccion/precio/asc/${coleccionId}">Menor precio</option>
+        	<option value="${contextpath}/coleccion/comprados/${coleccionId}">Mis compras</option>        	
+        	<option value="${contextpath}/coleccion/porcomprar/${coleccionId}">Publicaciones por comprar</option>
+        	<option value="${contextpath}/coleccion/tema/asc/${coleccionId}">Tema ascendente</option>
+        	<option value="${contextpath}/coleccion/tema/desc/${coleccionId}">Tema descendente</option>
         </select>
        </div>
        <div style="float:right;top: 135px;margin-right:10px;">
@@ -101,20 +103,21 @@ $("#ordernarPub").change(function(){
              <div class="item banner-wrapper" style="${publicacion.comprada ? 'background-color:':''}">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
                  <!--<span class="text" style="float:left;margin-top: -20px;margin-left:20px;color:orange;font-size: 16px;"><b class=""><span class="glyphicon glyphicon-star"></span>68</b> <span class="label label-warning">Me gusta</span></span>-->
-                   <span class="text" style="float:left;margin-top: -10px;margin-left:40px;"><b class="">Autor/Fuente</b></span>
+                   <span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class="">Fuente</b></span>
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
-				   <span class="text" style="float:left;margin-bottom: -10px">Tema: <c:out value="${publicacion.nombre}"/></span>
+                   <span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class="">Publicaci&oacute;n</b></span>
+				   <span class="text" style="float:left;margin-bottom: -10px"><c:out value="${publicacion.nombre}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
 				   <span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span>
 				 <c:if test="${publicacion.descuento == '0.00' && valueName != 'Leer'}">
-             		<div class="text" style="padding:5px;text-align:center;margin-top:-20px"><b>$ ${publicacion.precio} MXN</b></div>
+             		<div class="text" style="padding:5px;text-align:center;margin-top:-10px"><b>$ ${publicacion.precio} MXN</b></div>
              	 </c:if>
 				 <c:if test="${publicacion.descuento != '0.00' && valueName != 'Leer'}">
 				 	<div class="text" style="padding:5px;text-align:center;margin-top:-20px"><b style="text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
              		<div class="text banner-title"> <b class="text">$ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
              	 </c:if>
 			  <c:if test="${publicacion.comprada}">
-			 	<span class="text label label-danger" style="float:left;margin-top: -50px;margin-left:12px;">Comprado <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy"/></span>
+			 	<span class="text label" style="color:black;float:left;margin-top: -50px;margin-left:12px;">Comprado <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy"/></span>
                          </c:if>	 
                         <b><a href="${valueUrl}" style="width:100%;padding:5px;text-align:center;margin-top:-50px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>

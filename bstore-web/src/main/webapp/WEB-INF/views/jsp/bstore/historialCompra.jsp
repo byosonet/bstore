@@ -15,24 +15,24 @@
 <c:set var="compra" value="${item}" />
 <c:set var="publicacion" value="${item.publicacion}" />
 <c:set var="count" value="${count + 1}" scope="page"/>
-	<div class="row" style="padding: 0.5em;">
+	<div class="row col-sm-9 col-sm-offset-2 main" style="padding: 0.5em;">
   			<div class="form-group">
-  				<div class="col-md-12" style="margin-top:5px;">
-				  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%">
+  				<div class="col-md-11" style="margin-top:5px;">
+				  		<table id="tablaDetalleVenta" class="table table-striped" cellspacing="0" width="100%" border="5">
 						<thead>
 							<tr>
-								<th style="text-align: center;width: 30%;" class="text alert alert-info">Nombre de la publicaci&oacute;n</th>
+								<th style="text-align: center;width: 50%;" class="text alert alert-info">Publicaci&oacute;n</th>
 								<th style="text-align: center;" class="text alert alert-info">ISBN</th>
-								<th style="text-align: center;" class="text alert alert-info">Nº P&aacute;ginas</th>
+								<th style="text-align: center;" class="text alert alert-info">Editorial</th>
 								<th style="text-align: center;" class="text alert alert-info">Link</th>
 							</tr>
 						</thead>
 						<tbody>
 							<tr>
-								<td style="text-align: left;"><b class="text">${count}.- ${publicacion.nombre}</b></td>
-								<td style="text-align: center;" class="text">${publicacion.isbn}</td>
-								<td style="text-align: center;" class="text">${publicacion.numeroPaginas}</td>
-                                                                <td style="text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-default"><span class="glyphicon glyphicon-book"></span> Ver</a></b></td>
+								<td style="border-width: 0.5px;border: medium;;text-align: left;"><b class="text">${publicacion.nombre}</b></td>
+								<td style="border-width: 0.5px;border: medium;text-align: center;" class="text">${publicacion.isbn}</td>
+								<td style="border-width: 0.5px;border: medium;text-align: center;" class="text">${publicacion.editorial.nombre}</td>
+                                <td style="border-width: 0.5px;border: medium;text-align: center;"><b><a href="${contextpath}/publicacion/${publicacion.id}" class="text btn btn-default"> Ver</a></b></td>
 							</tr>
 						</tbody>
 					</table>
@@ -41,7 +41,7 @@
 </div>
 
 
-    <div class="row">
+    <div class="row col-sm-9 col-sm-offset-2 main">
         <div class="col-sm-12">
 			<form class="form-horizontal">
 			
@@ -52,10 +52,10 @@
                        <div class="">
                        		<c:choose>
                        			<c:when test="${compra.brandCard == 'mc'}">
-                       				<label><img width="25%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-25px;"></label>
+                       				<label><img width="20%" height="auto" src="${contextpath}/static/resources/images/mastercard_icon.png" style="margin-top:-10px;"></label>
                        			</c:when>
                        			<c:otherwise>
-                       				 <label><img width="25%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-25px;"></label>
+                       				 <label><img width="20%" height="auto" src="${contextpath}/static/resources/images/visa_icon.png" style="margin-top:-10px;"></label>
                        			</c:otherwise>
                        		</c:choose>
                         </div>
@@ -76,7 +76,7 @@
                 </div>
 			
 				<div class="form-group">
-                    <span class="text control-label col-sm-2">Nº de Autorizaci&oacute;n:</span>
+                    <span class="text control-label col-sm-2">Nº Autorizaci&oacute;n:</span>
                     <div class="col-sm-4">
                         <label class="text control-label"><c:out value="${compra.authCodeCard != 'na'?compra.authCodeCard:'-'}"/></label>
                     </div>
@@ -105,7 +105,7 @@
                         <label class="text control-label"><c:out value="${compra.phoneUser}"/></label>
                     </div>
                     
-                    <span class="text control-label col-sm-2">Correo Electr&oacute;nico:</span>
+                    <span class="text control-label col-sm-2">Email:</span>
                     <div class="col-sm-4">
                         <label class="text control-label"><c:out value="${compra.emailUser}"/></label>
                     </div>
@@ -114,10 +114,10 @@
                 <div class="form-group">
                     <span class="text control-label col-sm-2">Fecha de Compra:</span>
                     <div class="col-sm-4">
-                        <label class="text control-label"><span class="label label-danger"><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></span></label>
+                        <label class="text control-label"><span class=""><fmt:formatDate value="${compra.fechaCompra}" pattern="dd/MM/yyyy HH:mm:ss"/></span></label>
                     </div>
                     
-                    <span class="text control-label col-sm-2">Estado de la Compra:</span>
+                    <span class="text control-label col-sm-2">Estado compra:</span>
                     <div class="col-sm-4">
                         <label class="text control-label">PAGADO</label>
                     </div>
