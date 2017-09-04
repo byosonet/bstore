@@ -72,6 +72,11 @@
                     var email = $('input#email');
                     var passw = $('input#password');
                     var confPassword = $('input#confPassword');
+                    var dia = $('select#dia');
+                    var mes = $('select#mes');
+                    var anio = $('select#anio');
+                    var actividad = $('select#actividad');
+                    
                     if (login.val() === "") {
                         muestraMsjSistemaError("<span class='text'>El login es requerido.</span>");
                         return false;
@@ -96,6 +101,12 @@
                     } else if (passw.val() != confPassword.val()) {
                         muestraMsjSistemaError("<span class='text'>El password no coincide.</span>");
                         return false;
+                    } else if(dia.val() === "" || mes.val() === "" || anio.val() === ""){
+                    	muestraMsjSistemaError("<span class='text'>Debes propocionar tu fecha de nacimiento.</span>");
+                    	return false;
+                    } else if(actividad.val() === ""){
+                    	muestraMsjSistemaError("<span class='text'>Debes elegir una actividad.</span>");
+                    	return false;
                     }
                     var m = $('input#masculino').filter(":checked").val();
                     var f = $('input#femenino').filter(":checked").val();
@@ -216,7 +227,7 @@
 
                             <label class="text control-label col-sm-2" style="color:black;" for="nombre"></label>
                             <div class="col-sm-4">
-                                <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Nombre">
+                                <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Nombre(s)">
                             </div>
                         </div>
 

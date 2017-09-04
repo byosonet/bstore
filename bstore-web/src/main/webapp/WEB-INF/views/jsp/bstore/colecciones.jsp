@@ -19,8 +19,14 @@
             <c:forEach var="coleccion" items="${colecciones}">
                 <div class="item">
                     <a href="${contextpath}/coleccion/${coleccion.id}"><img class="zoom" style="border-radius:10px;margin-top:-20px;width: 100%;" src="${coleccion.portadaUrl}"></a>
-                    <div class="text" style="word-wrap: break-word;text-align: justify;"><c:out value="${coleccion.descripcion}"/></div>
-                    <b><a href="${contextpath}/coleccion/${coleccion.id}" class="text btn btn-primary" style="width:100%;padding:5px;text-align:center;margin-bottom:-10px;margin-top:-20px;">
+                    
+                    <c:if test="${not empty coleccion.descripcion}">
+                    	<textarea class="text" rows="7" cols="28" id="aboutDescription" style="resize: none;margin-top:-40px;border: none">
+                    		<c:out value="${coleccion.descripcion}"/>
+                    	</textarea>
+                    </c:if>
+                    
+                    <b><a href="${contextpath}/coleccion/${coleccion.id}" class="text btn btn-primary" style="width:100%;padding:5px;text-align:center;margin-top:-40px;">
                             <i class=""></i> <c:out value="${empty coleccion.nombreMostrar?coleccion.nombre:coleccion.nombreMostrar}"/>
                         </a></b>
 

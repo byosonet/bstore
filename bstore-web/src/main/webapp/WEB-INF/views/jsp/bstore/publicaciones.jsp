@@ -22,7 +22,23 @@ $(".listaPublicaciones").select2({
     }
 });
 
+$(".ordenarPublicaciones").select2({
+	theme: "classic",
+	width: '200',
+	placeholder: 'Filtros de ordenamiento',
+    allowClear: true,
+    language: {
+        noResults: function(){
+            return "No se han encontrado resultados";
+        }
+    }
+});
+
 $("#listaPub").change(function(){
+    window.location.href = $(this).val();
+});
+
+$("#ordernarPub").change(function(){
     window.location.href = $(this).val();
 });
 
@@ -35,15 +51,18 @@ $("#listaPub").change(function(){
 <c:if test="${!empty publicaciones}">
 <br/>
 <div class="container">
-	<div style="text-align: center;">
-      <div class="" style="width: 600px;position: relative;padding: 0;">
-		<a href="${contextpath}/coleccion/tema/asc/${coleccionId}"><button class="text btn btn-info">Temas A <span class="glyphicon glyphicon-triangle-top"></span></button></a>
-		<a href="${contextpath}/coleccion/tema/desc/${coleccionId}"><button class="text btn btn-info">Tema Z <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/asc/${coleccionId}"><button class="text btn btn-info">Menor precio <span class="glyphicon glyphicon-triangle-bottom"></span></button></a>
-		<a href="${contextpath}/coleccion/precio/desc/${coleccionId}"><button class="text btn btn-info">Mayor precio <span class="glyphicon glyphicon-triangle-top"></span></button></a>
+
+      <div style="float: right;">
+        <select class="ordenarPublicaciones" id="ordernarPub">
+        	<option></option>
+        	<option value="${contextpath}/coleccion/tema/asc/${coleccionId}">Por tema ascendente</option>
+        	<option value="${contextpath}/coleccion/tema/desc/${coleccionId}">Por tema descendente</option>
+        	<option value="${contextpath}/coleccion/precio/desc/${coleccionId}">Por mayor precio</option>
+        	<option value="${contextpath}/coleccion/precio/asc/${coleccionId}">Por menor precio</option>
+        </select>
        </div>
-       <div style="position: absolute;left: 300px;top: 135px;width: 100%">
-                <select class="listaPublicaciones" id="listaPub">
+       <div style="float:right;top: 135px;margin-right:10px;">
+            <select class="listaPublicaciones" id="listaPub">
 			<option></option>
 			<c:forEach var="publicacion" items="${publicaciones}">
 			  <c:choose>
@@ -60,7 +79,7 @@ $("#listaPub").change(function(){
 		</select>
 		</div>
    </div>
-</div>
+
 </c:if>    
 <br>
     <div id="publicacion">
@@ -101,7 +120,7 @@ $("#listaPub").change(function(){
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">
-                                    <div class="modal-dialog">
+                    <div class="modal-dialog" style="width: 550px;">
 				      <div class="modal-content">
 				        <div class="modal-header">
 				          <button type="button" class="close" data-dismiss="modal">&times;</button>
@@ -110,70 +129,46 @@ $("#listaPub").change(function(){
 				        <div class="modal-body">
 				        
 				        <div class="row">
-				        	<div class="col-md-6">
+				        	<div class="col-sm-6">
 				        		<div style="text-align: center;">
-				          			<p><img style="border-radius:10px;width: 70%;" src="${publicacion.portadaUrl}"></p>
+				          			<p><img style="border-radius:10px;width: 60%;" src="${publicacion.portadaUrl}"></p>
 				          		</div>
 				        	</div>
-				        	<div class="col-md-6">
-				        		<h5 style="text-align: center;"><b class="text">Sinopsis</b></h5>
+				        	<div class="col-sm-6">
+				        		
 				          		<p class="text" style="text-indent: 2em;text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
 				        	</div>
 				        </div>
-                  <br/><!--h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5-->
+                  <!--h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5-->
 					         <div class="row">
-							      <div class="col-md-6">
-							        <b class="text">Autor/Fuente</b>
+							      <div class="col-sm-6">
+							        <b class="text">Fuente: </b><c:out value="${publicacion.fuente.autor}"/>
 							      </div>
-							      <div class="col-md-6">
-							        <b class="text">Tema</b>
-							      </div>
-						     </div>
-						     <div class="row">
-							      <div class="text col-md-6">
-							        <c:out value="${publicacion.fuente.autor}"/>
-							      </div>
-							      <div class="text col-md-6">
-							        <c:out value="${publicacion.nombre}"/>
+							      <div class="col-sm-6">
+							        <b class="text">Editorial: </b><c:out value="${publicacion.editorial.nombre}"/>
 							      </div>
 						     </div>
 						     <br>
 						     <div class="row">
-							      <div class="col-md-6">
-                                                                  <b class="text">ISBN</b>
+							      <div class="col-sm-6">
+                                    <b class="text">ISBN: </b><c:out value=" ${publicacion.isbn}"/>
 							      </div>
-							      <div class="col-md-6">
-							        <b class="text">P&aacute;ginas</b>
-							      </div>
-						     </div>
-						     <div class="row">
-							      <div class="text col-md-6">
-							        <c:out value="${publicacion.isbn}"/>
-							      </div>
-							      <div class="text col-md-6">
-							        <c:out value="${publicacion.numeroPaginas}"/>
+							      <div class="col-sm-6">
+							        <b class="text">P&aacute;ginas: </b><c:out value=" ${publicacion.numeroPaginas}"/>
 							      </div>
 						     </div>
 						     <br>
 						     <div class="row">
-							      <div class="col-md-6">
-                                                                  <b class="text">Precio p&uacute;blico</b>
+							      <div class="col-sm-6">
+                                    <b class="text">Descuento: </b>$ <c:out value=" ${publicacion.descuento}"/> MXN
 							      </div>
-							      <div class="col-md-6">
-							        <b class="text">Descuento disponible</b>
-							      </div>
-						     </div>
-						     <div class="row">
-							      <div class="text col-md-6">
-							        $ <c:out value="${publicacion.precio}"/> MXN
-							      </div>
-							      <div class="text col-md-6">
-							        $ <c:out value="${publicacion.descuento}"/> MXN
+							      <div class="col-sm-6">							        
+							        <b class="text">Precio: </b>$ <c:out value=" ${publicacion.precio}"/> MXN
 							      </div>
 						     </div>
 				        </div>
 				        <div class="modal-footer">
-					      <div class="col-md-12">
+					      <div class="col-sm-12">
 					      	<button type="button" class="text btn btn-default" data-dismiss="modal"><span class=""></span> Cerrar</button>
 					        <b><a href="${valueUrl}" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
 					      </div>

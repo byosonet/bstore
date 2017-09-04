@@ -243,12 +243,12 @@
                 <div class="form-group">
                     
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Ingresa tu nombre" value="${user.nombre}" >
+                        <input type="text" class="text form-control" id="nombre" name="nombre" placeholder="Nombre(s)" value="${user.nombre}" >
                     </div>
                     
                     
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Ingresa tu apellido paterno" value="${user.APaterno}">
+                        <input type="text" class="text form-control" id="apaterno" name="apaterno" placeholder="Apellido paterno" value="${user.APaterno}">
                     </div>
                     
                 </div>
@@ -256,36 +256,36 @@
                  <div class="form-group">
                     
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Ingresa tu apellido materno" value="${user.AMaterno}">
+                        <input type="text" class="text form-control" id="amaterno" name="amaterno" placeholder="Apellido materno" value="${user.AMaterno}">
                     </div>
                     
                    
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="email" name="email" placeholder="Ingesa tu email" value="${user.email}" readonly>
+                        <input type="text" class="text form-control" id="email" name="email" placeholder="Email" value="${user.email}" readonly>
                     </div>
                 </div>
                 
                 <div class="form-group">
                 	
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="login" name="login" placeholder="Ingesa tu login" value="${user.login}">
+                        <input type="text" class="text form-control" id="login" name="login" placeholder="Login" value="${user.login}">
                     </div>
                     
                     
                     <div class="col-sm-6">
-                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Ingesa tu tel&eacute;fono" value="${user.telefono}">
+                        <input type="text" class="text form-control" id="telefono" name="telefono" placeholder="Tel&eacute;fono" value="${user.telefono}">
                     </div>
                 </div>
 
                 <div class="form-group">
                    
                     <div class="col-sm-6">
-                        <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Ingesa tu password" value="${user.password}">
+                        <input type="password" class="text form-control" id="pass1" name="pass1" placeholder="Password" value="${user.password}">
                     </div>
                    
                    
                     <div class="col-sm-6">
-                        <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirma tu password" value="${user.password}">
+                        <input type="password" class="text form-control" id="pass2" name="pass2" placeholder="Confirmar password" value="${user.password}">
                     </div>
                 </div>
                 

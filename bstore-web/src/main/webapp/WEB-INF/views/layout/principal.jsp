@@ -122,12 +122,12 @@
                         <span class="icon-bar"></span>
                     </button>
 
-                    <a id="showMenu" class="text navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> Men&uacute;</a>
+                    <a id="showMenu" class="text navbar-brand" href="#" style="color: white;"><span class="glyphicon glyphicon-list" aria-hidden="true"></span> </a>
                 </div>
                 <!-- Top Menu Items -->
                 <ul class="nav navbar-right top-nav">
                     <li class="dropdown">
-                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text">Hola </span> <i class=""></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
+                        <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text"> </span> <i class=""></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             <li>
                                 <a class="text" href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
@@ -156,7 +156,7 @@
                         <c:forEach var="entry" items="${menu}">
                             <li class="active">
                                 <a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class=""></i> <c:out value="${entry.nombreCol}"/> </a>
-                                <ul id="${entry.idCol}" class="">
+                                <ul id="${entry.idCol}" class="text">
                                     <c:forEach var="publicacion" items="${entry.pubs}">
                                         <li>
                                             <a class="text" style="color: white;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class=""></i> <c:out value="${publicacion.nombrePub}"/></a>

@@ -23,7 +23,7 @@ function NacimientoModel() {
     
     var m = ["Enero","Febrero","Marzo","Abril","Mayo","Junio",
             "Julio","Agosto","Septiembre","Octubre","Noviembre","Diciembre"];
-    var act = ["Estudiante","Profesionista"];
+    var act = ["Estudiante","Profesionista", "Otro"];
     
     var d = new Date();
     var n = d.getFullYear()-17;
