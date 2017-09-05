@@ -182,8 +182,10 @@ $("#ordernarPub").change(function(){
 			</div>
           </c:forEach>
           <c:if test="${empty publicaciones}">
-		 	<div class="row alert alert-danger">
-                            <p style="text-align: center;"><b class="text">Aun no existen publicaciones asociadas a esta colecci&oacute;n, intente m&aacute;s tarde.</b></p>
+		 	<div class="row col-sm-5 col-sm-offset-4 main alert alert-success">
+                 <p style="text-align: center;"><b class="text">Aun no existen publicaciones asociadas a esta colecci&oacute;n, intente m&aacute;s tarde.</b>
+                 	<a href="${contextpath}/equivira" class="text btn btn-default">Continuar</a>
+                 </p>
 		 	</div>
 		 </c:if>          
      </div>

@@ -9,10 +9,11 @@ $(document).ready(function() {
 </script>
 </head>
 <body>
-<div class="row">
-    <div class="alert alert-danger">
-        <p style="text-align: center;" class="text"><b>${mensajeError}</b></p>
-    </div>
+<br/>
+<div class="row col-sm-4 col-sm-offset-4 main alert alert-success">
+        <p style="text-align: center;" class="text"><b>${mensajeError}</b>
+        	<a href="${contextpath}/equivira" class="text btn btn-default">Continuar</a>
+        </p>
 </div>
 </body>
 </html>

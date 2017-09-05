@@ -21,7 +21,7 @@
                     <a href="${contextpath}/coleccion/${coleccion.id}"><img class="zoom" style="border-radius:10px;margin-top:-20px;width: 100%;" src="${coleccion.portadaUrl}"></a>
                     
                     <c:if test="${not empty coleccion.descripcion}">
-                    	<textarea class="text" rows="7" cols="28" id="aboutDescription" style="resize: none;margin-top:-40px;border: none">
+                    	<textarea readonly="readonly" class="text" rows="7" cols="28" id="aboutDescription" style="white-space: pre-line;text-align: justify;resize: none;margin-top:-40px;border: none;">
                     		<c:out value="${coleccion.descripcion}"/>
                     	</textarea>
                     </c:if>
