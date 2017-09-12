@@ -103,12 +103,14 @@ $("#ordernarPub").change(function(){
              <div class="item banner-wrapper" style="${publicacion.comprada ? 'background-color:':''}">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
                  <!--<span class="text" style="float:left;margin-top: -20px;margin-left:20px;color:orange;font-size: 16px;"><b class=""><span class="glyphicon glyphicon-star"></span>68</b> <span class="label label-warning">Me gusta</span></span>-->
-                   <span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class="">Fuente</b></span>
+                   <!-- span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class="">Fuente</b></span -->
+                   <span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class=""></b></span>
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
-                   <span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class="">Publicaci&oacute;n</b></span>
+                   <!-- span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class="">Publicaci&oacute;n</b></span -->
+                   <span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class=""></b></span>
 				   <span class="text" style="float:left;margin-bottom: -10px"><c:out value="${publicacion.nombre}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
-				   <span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span>
+				   <!-- span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span -->
 				 <c:if test="${publicacion.descuento == '0.00' && valueName != 'Leer'}">
              		<div class="text" style="padding:5px;text-align:center;margin-top:-10px"><b>$ ${publicacion.precio} MXN</b></div>
              	 </c:if>
@@ -139,16 +141,19 @@ $("#ordernarPub").change(function(){
 				        	</div>
 				        	<div class="col-sm-6">
 				        		
-				          		<p class="text" style="text-indent: 2em;text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
+				          		<p class="text" style="text-align: justify;"><c:out value="${publicacion.resumen}"/></p>
 				        	</div>
 				        </div>
                   <!--h5 style="text-align: center;" class="alert alert-info text">Ultima fecha de actualizaci&oacute;n: <b class="text"><fmt:formatDate value="${publicacion.fechaUmodif}" pattern="dd-MM-yyyy HH:mm:ss"/></b></h5-->
 					         <div class="row">
 							      <div class="col-sm-6">
-							        <b class="text">Fuente: </b><c:out value="${publicacion.fuente.autor}"/>
+							        <b class="text"></b><c:out value="${publicacion.fuente.autor}"/>
 							      </div>
 							      <div class="col-sm-6">
-							        <b class="text">Editorial: </b><c:out value="${publicacion.editorial.nombre}"/>
+							        <b class="text">
+							        	
+							        </b>
+							        <!--  c:out value="${publicacion.editorial.nombre}"/ -->
 							      </div>
 						     </div>
 						     <br>
@@ -157,7 +162,7 @@ $("#ordernarPub").change(function(){
                                     <b class="text">ISBN: </b><c:out value=" ${publicacion.isbn}"/>
 							      </div>
 							      <div class="col-sm-6">
-							        <b class="text">N° p&aacute;ginas: </b><c:out value=" ${publicacion.numeroPaginas}"/>
+							        <b class="text">P&aacute;ginas: </b><c:out value=" ${publicacion.numeroPaginas}"/>
 							      </div>
 						     </div>
 						     <br>
