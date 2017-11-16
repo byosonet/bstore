@@ -101,7 +101,7 @@
 	</definition>
         
 	<definition name="registrar" extends="login">
-            <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/registrar.jsp"/>
+            <put-attribute name="contenido" value="/WEB-INF/views/jsp/page/crear-cuenta.jsp"/>
 	</definition>
 	
 	<definition name="activacion" extends="login">

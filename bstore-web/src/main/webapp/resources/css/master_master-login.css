@@ -1,0 +1,19 @@
+#u2682 {
+    background-color: transparent;
+}
+#u2874 {
+    border-width: 0px;
+    border-color: transparent;
+    background-color: transparent;
+}
+.SSFirstButton,
+.SSPreviousButton,
+.SSNextButton,
+.SSLastButton,
+.SSSlideLink,
+.SSCloseButton {
+    cursor: pointer;
+}
+.SSSlideLoading {
+    background: url("../images/loading.gif?crc=3815509949") no-repeat center center;
+}
