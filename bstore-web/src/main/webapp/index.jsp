@@ -134,35 +134,15 @@
 
         </script>
     </head>
-    <body style="">
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container-fluid">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+    <body background="${contextpath}/static/resources/imagesv2/novo.jpg">
 
-                </div>
-                <div style="height: 1px;" aria-expanded="false" class="navbar-collapse collapse" id="bs-example-navbar-collapse-1">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li class="dropdown">
-                            <a style="color:black;" aria-expanded="true" aria-haspopup="true" role="button" data-toggle="dropdown" class="navbar-brand dropdown-toggle" href="#"></a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="container-fluid" style="margin-top: 30px;">
+        <div class="container-fluid" style="margin-top:30px;">
             <div class="row">
                 <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
                     <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <div style="text-align:center;color:black"><h5><b class="text"></b></h5><br><img width="150px" height="150px" src="${contextpath}/static/resources/img/favicon.ico">
+                                <div style="text-align:center;color:black"><img width="200px" height="200px" src="${contextpath}/static/resources/imagesv2/logo-quivira.svg">
                                 </div>
                             </div>
                         </div>
@@ -180,13 +160,13 @@
 
                         <div class="form-group">
                             <label class="text col-sm-12" style="color:black;text-align: center;"> 
-                            	<a class="text" href="${contextpath}/password/recuperar">¿Olvidaste la cuenta?</a>
+                            	<a class="text" href="${contextpath}/password/recuperar" style="color: #A67C52;">¿Olvidaste la cuenta?</a>
                             </label>
                         </div>
                     </form>
                     <div class="row">
                         <div class="col-sm-12" style="text-align: center;">
-                            <button id="acceder" class="text btn btn-primary">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
+                            <button id="acceder" class="text btn btn-primary" style="background-color:#412020;border-color:#412020;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
                     </div>
                     <br>

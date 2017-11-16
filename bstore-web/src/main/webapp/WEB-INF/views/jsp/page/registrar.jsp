@@ -11,41 +11,41 @@
             $(function () {
 
                 $('select#dia').select2({
-                	theme: "classic",
-                	placeholder: 'Día',
+                    theme: "classic",
+                    placeholder: 'Día',
                     allowClear: true,
                     language: {
-                        noResults: function(){
+                        noResults: function () {
                             return "No se han encontrado resultados";
                         }
                     }
                 });
                 $('select#anio').select2({
-                	theme: "classic",
-                	placeholder: 'Año',
+                    theme: "classic",
+                    placeholder: 'Año',
                     allowClear: true,
                     language: {
-                        noResults: function(){
+                        noResults: function () {
                             return "No se han encontrado resultados";
                         }
                     }
                 });
                 $('select#mes').select2({
-                	theme: "classic",
-                	placeholder: 'Mes',
+                    theme: "classic",
+                    placeholder: 'Mes',
                     allowClear: true,
                     language: {
-                        noResults: function(){
+                        noResults: function () {
                             return "No se han encontrado resultados";
                         }
                     }
                 });
                 $('select#actividad').select2({
-                	theme: "classic",
-                	placeholder: 'Actividad',
+                    theme: "classic",
+                    placeholder: 'Actividad',
                     allowClear: true,
                     language: {
-                        noResults: function(){
+                        noResults: function () {
                             return "No se han encontrado resultados";
                         }
                     }
@@ -76,7 +76,7 @@
                     var mes = $('select#mes');
                     var anio = $('select#anio');
                     var actividad = $('select#actividad');
-                    
+
                     if (login.val() === "") {
                         muestraMsjSistemaError("<span class='text'>El login es requerido.</span>");
                         return false;
@@ -101,12 +101,12 @@
                     } else if (passw.val() != confPassword.val()) {
                         muestraMsjSistemaError("<span class='text'>El password no coincide.</span>");
                         return false;
-                    } else if(dia.val() === "" || mes.val() === "" || anio.val() === ""){
-                    	muestraMsjSistemaError("<span class='text'>Debes propocionar tu fecha de nacimiento.</span>");
-                    	return false;
-                    } else if(actividad.val() === ""){
-                    	muestraMsjSistemaError("<span class='text'>Debes elegir una actividad.</span>");
-                    	return false;
+                    } else if (dia.val() === "" || mes.val() === "" || anio.val() === "") {
+                        muestraMsjSistemaError("<span class='text'>Debes propocionar tu fecha de nacimiento.</span>");
+                        return false;
+                    } else if (actividad.val() === "") {
+                        muestraMsjSistemaError("<span class='text'>Debes elegir una actividad.</span>");
+                        return false;
                     }
                     var m = $('input#masculino').filter(":checked").val();
                     var f = $('input#femenino').filter(":checked").val();
@@ -205,19 +205,20 @@
 
         </script>
     </head>
-    <body>
+    <body background="${contextpath}/static/resources/imagesv2/novo.jpg">
 
-        <div class="container-fluid" style="margin-top: 30px;">
+        <div class="container-fluid" style="margin-top:-85px;">
             <div class="row">
-                <div class="col-sm-9 col-sm-offset-1 main">
-                    
+                <div class="col-sm-9 col-sm-offset-0 col-md-8 col-md-offset-1 main">
+
                     <form class="form-horizontal" id="formRegistrar" method="post" action="${contextpath}/registrar">
 
                         <div class="form-group">
-                            <h3 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info"></span></b></h3>
+                            <div class="col-sm-9 col-sm-offset-0 col-md-2 col-md-offset-5 main">
+                                <div style="text-align:center;"><img width="250px" height="250px" src="${contextpath}/static/resources/imagesv2/logo-quivira.svg">
+                                </div>
+                            </div>
                         </div>
-                        </br>
-                        </br>
 
                         <div class="form-group">
                             <label class="text control-label col-sm-2" style="color:black;" for="login"></label>
@@ -268,36 +269,36 @@
                         </div>
                         </br>
                         <div class="row col-sm-12" style="margin-left: 250px;">
-                        <div class="form-group">
-                           
-                            <div class="col-sm-2">
-                                <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
-                                    <option></option>
-                                    <option data-bind="value: id,text:day"></option></select>
-                            </div>
+                            <div class="form-group">
 
-                            
-                            <div class="col-sm-2">
-                                <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
-                                    <option></option>
-                                    <option data-bind="value: id,text:mes"></option></select>
-                            </div>
-
-                            
-                            <div class="col-sm-2">
-                                <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
-                                    <option></option>
-                                    <option data-bind="value: year,text:year"></option></select>
-                            </div>
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="dia" name="dia" data-bind="foreach: days, visible: days().length > 0">
+                                        <option></option>
+                                        <option data-bind="value: id,text:day"></option></select>
+                                </div>
 
 
-                            
-                            <div class="col-sm-2">
-                                <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
-                                    <option></option>
-                                    <option data-bind="value: activity,text:activity"></option></select>
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="mes" name="mes" data-bind="foreach: months, visible: months().length > 0">
+                                        <option></option>
+                                        <option data-bind="value: id,text:mes"></option></select>
+                                </div>
+
+
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="anio" name="anio" data-bind="foreach: years, visible: years().length > 0">
+                                        <option></option>
+                                        <option data-bind="value: year,text:year"></option></select>
+                                </div>
+
+
+
+                                <div class="col-sm-2">
+                                    <select class="form-control" id="actividad" name="actividad" data-bind="foreach: activities, visible: activities().length > 0">
+                                        <option></option>
+                                        <option data-bind="value: activity,text:activity"></option></select>
+                                </div>
                             </div>
-                        </div>
                         </div>
 
 
@@ -306,18 +307,18 @@
                             <div class="col-sm-2">
                                 <div class="radio radio-info radio-inline">
                                     <input type="radio" id="masculino" name="sexo" value="M">
-                                    <label class="text" style="color:black;"> Masculino </label>
+                                    <label class="text" style="color: #A67C52;"> Masculino </label>
                                 </div>
                             </div>
 
                             <div class="col-sm-2">
                                 <div class="radio radio-info radio-inline">
                                     <input type="radio" id="femenino" name="sexo" value="F">
-                                    <label class="text" style="color:black;"> Femenino </label>
+                                    <label class="text" style="color: #A67C52;"> Femenino </label>
                                 </div>
                             </div>
 
-                            <label class="text control-label col-sm-2" style="color:black;">Deseo recibir notificaciones:</label>
+                            <label class="text control-label col-sm-2" style="color: #A67C52;">Deseo recibir notificaciones:</label>
                             <div class="col-sm-1">
                                 <div class="checkbox checkbox-primary">
                                     <input type="checkbox" value="SI" name="notificar" id="notificar">
@@ -327,12 +328,12 @@
                                 </div>
                             </div>
 
-                            <label class="control-label col-sm-2" style="color:black;"><a href="#" class="text" data-toggle="modal" data-target="#modalCondiciones">Acepto T&eacute;rminos y Condiciones</a></label>
+                            <label class="control-label col-sm-2" style="color:black;"><a href="#" class="text" data-toggle="modal" data-target="#modalCondiciones" style="color: #A67C52;">Acepto T&eacute;rminos y Condiciones</a></label>
                             <div class="col-sm-1">
                                 <div class="checkbox checkbox-primary">
                                     <input type="checkbox" value="SI" name="condiciones" id="condiciones">
                                     <label class="text" style="color:black;">
-                                        
+
                                     </label>
                                 </div>
                             </div>
@@ -346,7 +347,7 @@
                     <div class="row">
                         <div class="col-sm-offset-2 col-sm-10" style="text-align: right;">
                             <button id="limpiar" class="text btn btn-default"><span class=""></span> LIMPIAR</button>
-                            <button id="registrar" class="text btn btn-primary"><span class=""></span> CREAR CUENTA</button>
+                            <button id="registrar" class="text btn btn-primary" style="background-color:#412020;border-color:#412020;"><span class=""></span> CREAR CUENTA</button>
                         </div>
                     </div>
 
@@ -371,16 +372,16 @@
                                                             <p>Febrero 15 de 2015.</p>
                                                             <br>
                                                             <p>
-                                                                <a class="text" href="#servicio">1. Servicio</a><br>
-                                                                <a class="text" href="#responsabilidad">1.1 Limitación de responsabilidad</a><br>
-                                                                <a class="text" href="#privacidad">2. Privacidad</a><br>
-                                                                <a class="text" href="#cuenta">2.1 Su cuenta</a><br>
-                                                                <a class="text" href="#seguimiento">2.2 Seguimiento</a><br>
-                                                                <a class="text" href="#contenido">3. Contenido</a><br>
-                                                                <a class="text" href="#disponibilidad">3.1 Disponibilidad</a><br>
-                                                                <a class="text" href="#reglas">3.2 Reglas de uso</a><br>
-                                                                <a class="text" href="#propiedad">3.3 Propiedad intelectual</a><br>
-                                                                <a class="text" href="#desarrollador">4. Sobre el desarrollador</a><br>
+                                                                <a class="text" href="#servicio" style="color: #A67C52;">1. Servicio</a><br>
+                                                                <a class="text" href="#responsabilidad" style="color: #A67C52;">1.1 Limitación de responsabilidad</a><br>
+                                                                <a class="text" href="#privacidad" style="color: #A67C52;">2. Privacidad</a><br>
+                                                                <a class="text" href="#cuenta" style="color: #A67C52;">2.1 Su cuenta</a><br>
+                                                                <a class="text" href="#seguimiento" style="color: #A67C52;">2.2 Seguimiento</a><br>
+                                                                <a class="text" href="#contenido" style="color: #A67C52;">3. Contenido</a><br>
+                                                                <a class="text" href="#disponibilidad" style="color: #A67C52;">3.1 Disponibilidad</a><br>
+                                                                <a class="text" href="#reglas" style="color: #A67C52;">3.2 Reglas de uso</a><br>
+                                                                <a class="text" href="#propiedad" style="color: #A67C52;">3.3 Propiedad intelectual</a><br>
+                                                                <a class="text" href="#desarrollador" style="color: #A67C52;">4. Sobre el desarrollador</a><br>
                                                                 <br>
                                                                 <br>
                                                             </p><h4 id="servicio" class="text">1. El servicio</h4>
@@ -512,7 +513,7 @@
                                                                 disposición, funcionalidad y experiencia que el "usuario" tiene con la 
                                                                 aplicación.
                                                                 <br> 
-                                                                Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a class="text" href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
+                                                                Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a style="color: #A67C52;" class="text" href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
                                                                 <br>
                                                             </p> 
                                                             <h4 id="contenido" class="text">3. Contenido</h4>
@@ -656,7 +657,7 @@
                                                                 cual tiene como objeto la publicación y distribución de publicaciones a 
                                                                 través de medios electrónicos e impresos sobre diversos temas.
                                                                 <br> 
-                                                                Si desea descargar una versión impresa de los términos y condiciones puede acceder a la página:  <a class="text" href="http://novohispanorum.mx/Novohispanorum/termsnovohipanorum.pdf">Términos y condiciones</a>
+                                                                Si desea descargar una versión impresa de los términos y condiciones puede acceder a la página:  <a style="color: #A67C52;" class="text" href="http://novohispanorum.mx/Novohispanorum/termsnovohipanorum.pdf">Términos y condiciones</a>
                                                                 <br>
                                                                 <br>
                                                                 También puede escribir a la dirección quivira@edicionesquivira.com para cualquier aclaración o comentario.

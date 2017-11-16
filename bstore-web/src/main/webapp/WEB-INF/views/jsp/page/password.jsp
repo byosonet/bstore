@@ -108,23 +108,20 @@
 
         </script>
     </head>
-    <body>  
+    <body background="${contextpath}/static/resources/imagesv2/novo.jpg">  
         <div class="container-fluid" style="margin-top: 30px;">
             <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-4 col-md-offset-4 main">
-                    </br>
-                    </br>
-                    </br>
+                <div class="col-sm-9 col-sm-offset-0 col-md-2 col-md-offset-5 main">
                     <form id="recuperar" class="form-horizontal">
                         <div class="form-group">
-                            <h4 class="control-label col-sm-12" style="text-align: center;color:black;"><b class="text"><span class="label label-info"></span></b></h4>
+                            <div class="col-sm-12">
+                                <div style="text-align:center;color:black"><img width="200px" height="200px" src="${contextpath}/static/resources/imagesv2/logo-quivira.svg">
+                                </div>
+                            </div>
                         </div>
-                        </br>
-                        </br>
-
                         <div class="form-group">
                             <div class="col-sm-12">
-                                <input type="text" class="text form-control" id="email" name="email" placeholder="Email de usuario">
+                                <input type="text" class="text form-control" id="email" name="email" placeholder="Email">
                             </div>
                         </div>
 
@@ -137,8 +134,7 @@
                     <form id="regresar"></form>
                     <div class="row">
                         <div class="col-sm-12" style="text-align: right;">
-                            <button id="limpiar" class="text btn btn-default"><span class=""></span> LIMPIAR</button>
-                            <button id="enviar" class="text btn btn-primary"><span class=""></span> RECUPERAR</button>
+                            <button id="enviar" class="text btn btn-primary" style="background-color:#412020;border-color:#412020;"><span class=""></span> ENVIAR</button>
                         </div>
                     </div>
                 </div>

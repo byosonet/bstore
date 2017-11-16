@@ -10,7 +10,6 @@
 <body style="">
     <div id="cuerpo">
         <div id="header">
-            <tiles:insertAttribute name="header" />
         </div>
         <div id="contenido">
             <tiles:insertAttribute name="contenido" />
