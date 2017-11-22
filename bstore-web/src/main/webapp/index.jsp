@@ -83,7 +83,8 @@
 
                     $('button#u1818-4').click(function () {
                         $.blockUI();
-                        var urlAction = '${contextpath}' + '/registrar/usuario';
+                        //var urlAction = '${contextpath}' + '/registrar/usuario';
+                        var urlAction = '${contextpath}' + '/crear-cuenta';
                         document.location.href = urlAction;
                     });
 
@@ -185,10 +186,11 @@
 	    </a>
 	    </form>
 	    <div class="clearfix colelem" id="pbuttonu1802"><!-- group -->
-	     	<a class="nonblock nontext Button rounded-corners clearfix grpelem" id="buttonu1802" href="inicio-de-sesion.html" data-visibility="changed" style="visibility:hidden"><!-- container box --><div class="clearfix grpelem" id="u1808-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true"><!-- content --><p>INICIO DE SESIÓN</p></div></a>
-	     	<button id="buttonu1802" class="nonblock nontext clearfix grpelem" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true">
-		     	<p>INICIO DE SESIÓN</p>
-		    </button>
+	     	<div class="clearfix grpelem" id="u1808-4" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true">
+	     		<button class="nonblock nontext Button rounded-corners clearfix grpelem" id="buttonu1802" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true">
+			     	<p>INICIO DE SESIÓN</p>
+			    </button>
+			</div>
 		     <div class="pointer_cursor Button rounded-corners clearfix grpelem" id="buttonu1817" data-visibility="changed" style="visibility:hidden"><!-- container box -->
 				  <button id="u1818-4" class="nonblock nontext clearfix grpelem" data-muse-temp-textContainer-sizePolicy="true" data-muse-temp-textContainer-pinning="true">
 			      	<p>CREAR CUENTA</p>

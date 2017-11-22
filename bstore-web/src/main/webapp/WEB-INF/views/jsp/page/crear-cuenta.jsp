@@ -227,7 +227,7 @@ if(typeof Muse == "undefined") window.Muse = {}; window.Muse.assets = {"required
     <div class="popup_anchor allow_click_through grpelem" data-col-pos="0" id="u2682popup">
      <div class="SlideShowContentPanel clearfix" data-col-pos="0" id="u2682"><!-- stack box -->
       <div class="SSSlide clip_frame grpelem" data-col-pos="0" id="u2874"><!-- image -->
-       <img class="ImageInclude" data-col-pos="0" id="u2874_img" data-src="images/novo.jpg?crc=4078125347" src="${contextpath}/static/resources/images/blank.gif?crc=4208392903" alt="" data-width="2268" data-height="1814"/>
+       <img class="ImageInclude" data-col-pos="0" id="u2874_img" data-src="${contextpath}/static/resources/images/novo.jpg?crc=4078125347" src="${contextpath}/static/resources/images/blank.gif?crc=4208392903" alt="" data-width="2268" data-height="1814"/>
       </div>
      </div>
     </div>

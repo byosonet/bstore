@@ -205,7 +205,7 @@ public class LoginController {
         return new ResponseEntity<ErrorService>(data, HttpStatus.NOT_FOUND);
     }
 
-    @RequestMapping(value = "/registrar/usuario", method = RequestMethod.GET)
+    @RequestMapping(value = "/crear-cuenta", method = RequestMethod.GET)
     public String registrarUsuario(Model model) {
         model.addAttribute("menu", "smenu");
         return "registrar";
