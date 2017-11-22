@@ -75,3 +75,23 @@
     }
 </style>
 <!--link type="text/css" id="colors" rel="stylesheet" href="${contextpath}/static/resources/principal/css/green.css"-->
+
+
+
+<!-- Se sobreescriben estilos para botones y dialogos de OK, para poner colores de Quivira (General) -->
+<style type="text/css">
+	.bootstrap-dialog.type-success .modal-header {
+	    background-color: #412020 !important;
+	}
+
+	.btn-primary {
+	    background-color: #412020;
+	    border-color: #412020;
+	    color: #fff;
+	}
+	.btn-primary:hover {
+	    background-color: #a67c52;
+	    border-color: #a67c52;
+	    color: #fff;
+	}
+</style>
