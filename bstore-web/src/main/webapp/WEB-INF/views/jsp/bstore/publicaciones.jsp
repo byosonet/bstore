@@ -91,7 +91,7 @@ $("#ordernarPub").change(function(){
     		 		<c:set var="valueName" value="Ver" />
     		 		<c:set var="valueUrl" value="${contextpath}/publicacion/${publicacion.id}" />
     		 		<c:set var="valueIcon" value="" />
-    		 		<c:set var="valueColor" value="btn btn-info" />
+    		 		<c:set var="valueColor" value="btn btn-primary" />
     		 	</c:when>
     		 	<c:otherwise>
     		 		<c:set var="valueName" value="Comprar" />

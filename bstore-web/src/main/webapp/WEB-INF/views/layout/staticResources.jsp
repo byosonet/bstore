@@ -89,9 +89,15 @@
 	    border-color: #412020;
 	    color: #fff;
 	}
-	.btn-primary:hover {
+	.btn-primary:hover, .btn-primary:focus, .btn-primary:active {
 	    background-color: #a67c52;
 	    border-color: #a67c52;
 	    color: #fff;
 	}
+	.alert-info, .alert-success{
+		background-color: #a67c52;
+		border-color: #a67c52;
+		color: black;
+	}
+	//row col-sm-5 col-sm-offset-4 main alert alert-success
 </style>
