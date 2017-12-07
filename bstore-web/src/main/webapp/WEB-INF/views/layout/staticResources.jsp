@@ -83,7 +83,6 @@
 	.bootstrap-dialog.type-success .modal-header {
 	    background-color: #412020 !important;
 	}
-
 	.btn-primary {
 	    background-color: #412020;
 	    border-color: #412020;
@@ -99,5 +98,8 @@
 		border-color: #a67c52;
 		color: black;
 	}
-	//row col-sm-5 col-sm-offset-4 main alert alert-success
+	.select2-container--classic .select2-results__option--highlighted[aria-selected]{
+		background-color: #a67c52;
+	    color: black;
+	}
 </style>

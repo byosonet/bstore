@@ -129,6 +129,7 @@
                     <li class="dropdown">
                         <a class="text" href="#" class="dropdown-toggle" data-toggle="dropdown" style="color: white;"><span class="text"> </span> <i class=""></i> <c:out value="${sessionScope.usuario.nombre}"/> <c:out value="${sessionScope.usuario.paterno}"/> <b class="caret"></b></a>
                         <ul class="dropdown-menu">
+                            <!--
                             <li>
                                 <a class="text" href="${contextpath}/perfil"><i class="fa fa-fw fa-user"></i> Mi perfil</a>
                             </li>
@@ -140,6 +141,7 @@
                                 </c:if>
                             </c:if>
                             <li class="divider"></li>
+                            -->
                             <li>
                                 <a class="text" href="#" id="exit"><i class="fa fa-fw fa-power-off"></i> Salir</a>
                             </li>
@@ -154,7 +156,7 @@
                             <a class="text" href="${contextpath}/equivira"><i class=""></i> Inicio</a>
                         </li>
                         <li class="active">
-                        <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Mis documentos </a>
+                        <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Documentos </a>
                         <ul id="misDocumentos" class="text collapse">
                         <c:forEach var="entry" items="${menu}">
                                 

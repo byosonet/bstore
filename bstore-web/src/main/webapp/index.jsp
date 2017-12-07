@@ -160,7 +160,7 @@
 
                         <div class="form-group">
                             <label class="text col-sm-12" style="color:black;text-align: center;"> 
-                            	<a class="text" href="${contextpath}/password/recuperar" style="color: #A67C52;">¿Olvidaste la cuenta?</a>
+                            	<a class="text" href="${contextpath}/password/recuperar" style="color: #A67C52;">Recuperar contraseña</a>
                             </label>
                         </div>
                     </form>
@@ -170,11 +170,11 @@
                         </div>
                     </div>
                     <br>
-                    <div class="row">
+                    <!-- div class="row">
                     	<div class="col-sm-12" style="text-align: center;">
                         	<button id="registrar" class="text btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREAR CUENTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
                         </div>
-                    </div>
+                    </div -->
                 </div>
             </div>    
         </div>

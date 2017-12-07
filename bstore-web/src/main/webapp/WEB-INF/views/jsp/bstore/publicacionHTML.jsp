@@ -94,15 +94,16 @@
 </head>
 <body>
     <div class="row" style="padding: 0.5em;">
-    	<div class="cabecera" style="text-align: center;height: 7em;border-radius: 15px;background-image: url('');">
-  		<label class="alert alert-primary alert-info" style=""><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
+    	<div class="cabecera" style="text-align: center;height: 2em;border-radius: 15px;background-image: url('');">
+  		<!-- label class="alert alert-primary alert-info" style=""><b class="text"><c:out value="${nombrePublicacion}"/></b></label -->
+  		<label><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
   		</div>
   		  <div>
           <div class="table-responsive">
             <table class="table table-hover hidden_thead" id="listaPublicacion">
               <thead>
                 <tr>
-                  <th style="text-align: center" class="text alert alert-dismissible"></th>
+                  <!-- th style="text-align: center" class="text alert alert-dismissible"></th -->
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-list"> <b class="text">TRADUCCIÓN</b></span></th>
                   <th style="text-align: center" class="alert alert-dismissible"><span class="glyphicon glyphicon-camera"> <b class="text">ANEXO</b></span></th>
                 </tr>
@@ -110,11 +111,11 @@
               <tbody>
                <c:forEach var="anexo" items="${anexos}">
                <tr style="background-repeat: no-repeat;" background="${contextpath}/static/resources/img/fondo_publicacion.png">
-	                <td style="text-align: center;width: 10%;">
+	                <!-- td style="text-align: center;width: 10%;">
 	                	<b class="text">
 	                		<c:out value=""/>
 	                	</b>
-	                </td>
+	                </td -->
 	                <td style="width: 40%;">
 	                	  <div class="estilo">
 	                	  	<c:out value="${anexo.traduccion.getCharacterStream()}" escapeXml="false"/>
