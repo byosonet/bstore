@@ -1,0 +1,202 @@
+    color: #0000F0;
+    background-color: #9FF326;
+}
+#page {
+    z-index: 1;
+    min-height: 1024px;
+    background-image: none;
+    border-width: 0px;
+    border-color: #000000;
+    background-color: transparent;
+    width: 100%;
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+}
+#slideshowu2671 {
+    z-index: 2;
+    position: relative;
+    margin-right: -10000px;
+    width: 100%;
+}
+#u2682 {
+    position: absolute;
+    width: 1280px;
+    height: 1814px;
+}
+#u2682popup {
+    z-index: 3;
+    width: 1280px;
+    height: 1814px;
+    margin-right: -10000px;
+}
+#u2874 {
+    z-index: 4;
+    width: 1280px;
+    height: 1814px;
+    margin-right: -10000px;
+    position: relative;
+}
+#pu2132 {
+    z-index: 33;
+    padding-bottom: 0px;
+    margin-right: -10000px;
+    margin-top: 62px;
+    width: 28.91%;
+    margin-left: 35.55%;
+}
+#u2132 {
+    z-index: 33;
+    background-color: transparent;
+    position: relative;
+    width: 74.6%;
+    margin-left: 12.71%;
+}
+#u2133 {
+    z-index: 34;
+    display: block;
+    width: 100%;
+}
+#u2012-4 {
+    z-index: 8;
+    min-height: 19px;
+    background-color: transparent;
+    color: #EBE3C7;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    margin-top: 72px;
+    position: relative;
+    width: 35.14%;
+}
+#u2002 {
+    z-index: 6;
+    background-color: #EBE3C7;
+    padding-bottom: 6px;
+    margin-top: 11px;
+    position: relative;
+    width: 100%;
+}
+#u2019-4 {
+    z-index: 20;
+    min-height: 10px;
+    background-color: transparent;
+    color: #A67C52;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    font-style: italic;
+    position: relative;
+    margin-right: -10000px;
+    margin-top: 7px;
+    width: 35.14%;
+    left: 2.17%;
+}
+#u2015-4 {
+    z-index: 16;
+    min-height: 19px;
+    background-color: transparent;
+    color: #EBE3C7;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    margin-top: 11px;
+    position: relative;
+    width: 35.14%;
+}
+#u2005 {
+    z-index: 7;
+    background-color: #EBE3C7;
+    padding-bottom: 6px;
+    margin-top: 11px;
+    position: relative;
+    width: 100%;
+}
+#u2022-4 {
+    z-index: 24;
+    min-height: 10px;
+    background-color: transparent;
+    color: #A67C52;
+    line-height: 14px;
+    font-size: 12px;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    font-style: italic;
+    position: relative;
+    margin-right: -10000px;
+    margin-top: 7px;
+    width: 35.14%;
+    left: 2.17%;
+}
+#u2013-4 {
+    z-index: 12;
+    min-height: 19px;
+    background-color: transparent;
+    color: #A67C52;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    margin-top: 22px;
+    position: relative;
+    width: 47.3%;
+}
+#buttonu2099 {
+    z-index: 28;
+    border-width: 0px;
+    background-color: #412020;
+    border-radius: 10px;
+    padding-bottom: 13px;
+    margin-top: 49px;
+    position: relative;
+    width: 54.06%;
+    margin-left: 22.98%;
+}
+#buttonu2099:hover {
+    background-color: #EBE3C7;
+    border-radius: 10px;
+    min-height: 0px;
+    width: 54.06%;
+    margin: 49px 0px 0px 22.972972972972975%;
+}
+#buttonu2088 {
+    z-index: 28;
+    border-width: 0px;
+    background-color: #412020;
+    border-radius: 10px;
+    padding-bottom: 13px;
+    margin-top: 49px;
+    position: relative;
+    width: 54.06%;
+    margin-left: 22.98%;
+}
+#buttonu2088:hover {
+    background-color: #EBE3C7;
+    border-radius: 10px;
+    min-height: 0px;
+    width: 54.06%;
+    margin: 49px 0px 0px 22.972972972972975%;
+}
+#u2100-4 {
+    z-index: 29;
+    min-height: 17px;
+    background-color: transparent;
+    text-align: center;
+    color: #EBE3C7;
+    font-family: Georgia, Palatino, Palatino Linotype, Times, Times New Roman, serif;
+    position: relative;
+    margin-right: -10000px;
+    margin-top: 10px;
+    width: 100%;
+}
+#buttonu2099:hover #u2100-4 {
+    padding-top: 0px;
+    padding-bottom: 0px;
+    min-height: 17px;
+    width: 100%;
+    margin: 10px -10000px 0px 0%;
+}
+#buttonu2099:hover #u2100-4 p {
+    color: #412020;
+    visibility: inherit;
+}
+#muse_css_mq,
+.html {
+    background-color: #FFFFFF;
+}
+body {
+    position: relative;
+    min-width: 1280px;
+}

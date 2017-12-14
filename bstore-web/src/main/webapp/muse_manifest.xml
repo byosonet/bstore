@@ -1,0 +1,90 @@
+<manifest alg="2" build="2017.1.0.379" opt="true" iceEnabled="true" iceMarkupVersion="2" iceEnabledOptions="link,responsive,cachebuster,textStyling" exportTarget="other" domain="novohispanorum.com" resolutions="1x" timestamp="1504819813464">
+  <folder name="css">
+    <file name="site_global.css" crc="444006867"/>
+    <file name="master_master-principal.css" crc="4246753930" ref="principal:piratas"/>
+    <file name="master_master-login.css" crc="3830722281" ref="index:contrasena:inicio-de-sesion:usuario:crear-cuenta:contacto"/>
+    <file name="index.css" crc="397366456" ref="index"/>
+    <file name="contrasena.css" crc="3896055439" ref="contrasena"/>
+    <file name="principal.css" crc="49482571" ref="principal"/>
+    <file name="inicio-de-sesion.css" crc="4037014310" ref="inicio-de-sesion"/>
+    <file name="usuario.css" crc="193840277" ref="usuario"/>
+    <file name="piratas.css" crc="3929684937" ref="piratas"/>
+    <file name="crear-cuenta.css" crc="64490092" ref="crear-cuenta"/>
+    <file name="contacto.css" crc="182774182" ref="contacto"/>
+  </folder>
+  <folder name="fonts">
+    <file name="fontawesome-webfont.woff" crc="462672289"/>
+    <file name="fontawesome-webfont.eot" crc="415170694"/>
+    <file name="fontawesome-webfont.svg" crc="3771442179"/>
+  </folder>
+  <folder name="assets">
+    <file name="logo150x150.png" crc="284628547" seo="true" mt="1504419853000"/>
+  </folder>
+  <folder name="scripts">
+    <file name="jquery-1.8.3.min.js" crc="209076791" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="museutils.js" crc="17924269" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="whatinput.js" crc="86476730" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="museconfig.js" crc="278381782" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="jquery.watch.js" crc="4240030481" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="webpro.js" crc="416662029" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="musewpslideshow.js" crc="4034900702" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="jquery.museoverlay.js" crc="528673841" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="touchswipe.js" crc="432264157" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="require.js" crc="3861931657" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="jquery.musepolyfill.bgsize.js" crc="3854337258" ref="principal"/>
+    <file name="jquery.musemenu.js" crc="4286030528" ref="principal:piratas"/>
+    <file name="html5shiv.js" crc="4241844378" ref="principal:contacto:piratas:usuario"/>
+  </folder>
+  <folder name="images">
+    <file name="novo.jpg" crc="4078125347" seo="true" ref="index:crear-cuenta:inicio-de-sesion:contrasena:contacto:usuario">
+      <caption webpage="index" alt=""/>
+      <caption webpage="inicio-de-sesion" alt=""/>
+      <caption webpage="contrasena" alt=""/>
+      <caption webpage="contacto" alt=""/>
+      <caption webpage="usuario" alt=""/>
+      <caption webpage="crear-cuenta" alt=""/>
+    </file>
+    <file name="blank.gif" crc="4208392903" ref="index:crear-cuenta:inicio-de-sesion:contrasena:principal:contacto:piratas:usuario"/>
+    <file name="loading.gif" crc="3815509949" ref="index:principal"/>
+    <file name="logo-quivira.svg" crc="253401112" seo="true" ref="index:crear-cuenta:inicio-de-sesion:contrasena:usuario">
+      <caption webpage="index" alt=""/>
+      <caption webpage="inicio-de-sesion" alt=""/>
+      <caption webpage="contrasena" alt=""/>
+      <caption webpage="usuario" alt=""/>
+      <caption webpage="crear-cuenta" alt=""/>
+    </file>
+    <file name="logo-quivira_poster_.png" crc="237389168" ref="index"/>
+    <file name="001.jpg" crc="103321008" seo="true" ref="principal:piratas">
+      <caption webpage="piratas" alt=""/>
+      <caption webpage="principal" alt=""/>
+    </file>
+    <file name="titulo_colecciones.svg" crc="147069766" seo="true" ref="principal">
+      <caption webpage="principal" alt=""/>
+    </file>
+    <file name="titulo_colecciones_poster_.png" crc="4095020667" ref="principal"/>
+    <file name="asset 1.svg" crc="4130303847" ref="principal"/>
+    <file name="asset 1_poster_u5318.png" crc="4264190318" ref="principal"/>
+    <file name="asset 2.svg" crc="237949323" ref="principal"/>
+    <file name="asset 2_poster_u5332.png" crc="4165405272" ref="principal"/>
+    <file name="asset 3.svg" crc="427858854" ref="principal"/>
+    <file name="asset 3_poster_u5352.png" crc="4040905955" ref="principal"/>
+    <file name="asset 4.svg" crc="157395255" ref="principal"/>
+    <file name="asset 4_poster_u5360.png" crc="3816316997" ref="principal"/>
+    <file name="asset 5.svg" crc="330923475" ref="principal"/>
+    <file name="asset 5_poster_u5380.png" crc="3990270241" ref="principal"/>
+    <file name="asset 6.svg" crc="3762974640" ref="principal"/>
+    <file name="asset 6_poster_u5388.png" crc="167418677" ref="principal"/>
+    <file name="asset-6.svg" crc="3762974640" seo="true" ref="piratas">
+      <caption webpage="piratas" alt=""/>
+    </file>
+    <file name="asset 6_poster_.png" crc="167418677" ref="piratas"/>
+  </folder>
+  <file name="index.html" crc="363977931" seo="true" mt="1504762536920" redirect="true"/>
+  <file name="crear-cuenta.html" crc="327663556" seo="true" mt="1504422798923" redirect="true"/>
+  <file name="inicio-de-sesion.html" crc="3772282833" seo="true" mt="1504422786043" redirect="true"/>
+  <file name="contrasena.html" crc="84527448" seo="true" mt="1504422071181" redirect="true"/>
+  <file name="principal.html" crc="471861434" seo="true" mt="1504762803168" redirect="true"/>
+  <file name="contacto.html" crc="266814023" seo="true" mt="1504422071181" redirect="true"/>
+  <file name="piratas.html" crc="414830609" seo="true" mt="1504762692363" redirect="true"/>
+  <file name="usuario.html" crc="3779320475" seo="true" mt="1504422251068" redirect="true"/>
+</manifest>
