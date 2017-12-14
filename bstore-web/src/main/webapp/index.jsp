@@ -176,7 +176,658 @@
                         </div>
                     </div -->
                 </div>
-            </div>    
+            </div>
+            
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            <br>
+            
+            <div class="row">
+            	<div align="center">
+            		<a href="#" class="text" data-toggle="modal" data-target="#modalSobreNosotros" style="color: #A67C52;">Sobre nosotros</a>
+            		&nbsp;|&nbsp;
+            		<a href="#" class="text" data-toggle="modal" data-target="#modalTerminosCondiciones" style="color: #A67C52;">T&eacute;rminos y condiciones</a>
+            		&nbsp;|&nbsp;
+            		<a href="#" class="text" data-toggle="modal" data-target="#modalAvisoPrivacidad" style="color: #A67C52;">Aviso de privacidad</a>
+            		&nbsp;|&nbsp;
+            		<a href="#" class="text" data-toggle="modal" data-target="#modalContacto" style="color: #A67C52;">Contacto</a>
+            	</div>
+            </div>
+            <br>
+            <div class="row">
+            	<div align="center">
+            		<label class="control-label" style="color:#A67C52;">Ediciones Quivira, S.A. de C.V.</label>
+            	</div>
+            </div>
+            <div class="row">
+            	<div align="center">
+            		<label class="control-label" style="color:#A67C52;">© Derechos reservados 2017</label>
+            	</div>
+            </div>
+            
+            
+            
+            
+            
+            <!-- Inician dialogos -->
+            <div class="container">
+			  <div class="modal fade" id="modalTerminosCondiciones" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><b class="text"><c:out value="TÉRMINOS Y CONDICIONES DE SERVICIO Y USO DE NOVOHISPANORUM"/></b></h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="row">
+                                  <table>
+                                      <tbody>
+                                          <tr>
+                                              <td width="50"></td>
+                                              <td width="800">
+                                                  <h5 class="text">ESTE ACUERDO LEGAL ENTRE USTED ("USUARIO") Y EDICIONES QUIVIRA, S.A.
+                                                      DE C.V. ("QUIVIRA") RIGE EL SERVICIO Y LAS REGLAS DE USO DE LA 
+                                                      APLICACIÓN NOVOHISPANORUM Y DE SUS CONTENIDOS.</h5>
+                                                  <p class="text" style="color: gray;">Fecha de actualizaci&oacute;n: 6 de febrero de 2017.</p>
+                                                  <br>
+                                                  <p>
+                                                      <a class="text" href="#servicio" style="color: #A67C52;">1. Servicio</a><br>
+                                                      <a class="text" href="#responsabilidad" style="color: #A67C52;">1.1 Limitación de responsabilidad</a><br>
+                                                      <a class="text" href="#privacidad" style="color: #A67C52;">2. Privacidad</a><br>
+                                                      <a class="text" href="#cuenta" style="color: #A67C52;">2.1 Su cuenta</a><br>
+                                                      <a class="text" href="#seguimiento" style="color: #A67C52;">2.2 Seguimiento</a><br>
+                                                      <a class="text" href="#contenido" style="color: #A67C52;">3. Contenido</a><br>
+                                                      <a class="text" href="#disponibilidad" style="color: #A67C52;">3.1 Disponibilidad</a><br>
+                                                      <a class="text" href="#reglas" style="color: #A67C52;">3.2 Reglas de uso</a><br>
+                                                      <a class="text" href="#propiedad" style="color: #A67C52;">3.3 Propiedad intelectual</a><br>
+                                                      <a class="text" href="#desarrollador" style="color: #A67C52;">4. Sobre el desarrollador</a><br>
+                                                      <br>
+                                                      <br>
+                                                  </p><h4 id="servicio" class="text">1. El servicio</h4>
+                                                  <br>
+                                                  <p class="text" style="text-align: justify; color: gray;">
+                                                      Quivira es una editorial establecida conforme las leyes mexicanas que le concede 
+                                                      un servicio de visualizaci&oacute;n, acceso y consulta del contenido digital de su colecci&oacute;n 
+                                                      Novohispanorum ("publicaciones"), de acuerdo al programa editorial y las gestiones de 
+                                                      derechos de reproducci&oacute;n como sigue:
+                                                      <br><br>
+                                                      (i) Un software gratuito que funciona para la organizaci&oacute;n, gesti&oacute;n y medio de 
+                                                      visualizaci&oacute;n de las "publicaciones" de acuerdo con la tem&aacute;tica a la que pertenezcan, 
+                                                      el cual estar&aacute; ligado a su cuenta personal.
+                                                      <br><br>
+                                                      (ii) "Publicaciones" que contendr&aacute;n la transcripci&oacute;n de un documento de archivo o 
+                                                      biblioteca, una reproducci&oacute;n digital del documento original del cual se hizo la transcripci&oacute;n, 
+                                                      un &iacute;ndice onom&aacute;stico y uno topon&iacute;mico, notas explicativas que hacen referencias a 
+                                                      t&eacute;rminos o arca&iacute;smos del español antiguo u otro idioma. La inclusi&oacute;n de estos &uacute;ltimos 
+                                                      en las "publicaciones" est&aacute; sujeta al contenido mismo del documento, por lo que no se asegura que todas 
+                                                      las "publicaciones" tengan uno propio.
+                                                      <br><br>
+                                                      (iii) La mayor&iacute;a de las "publicaciones" requieren de un pago para su descarga y consulta; aunque algunas 
+                                                      de ellas podr&aacute;n descargarse de manera gratuita. El uso de ambas queda sujeto a las reglas de uso y derechos 
+                                                      de la propiedad intelectual de estos t&eacute;rminos y condiciones.
+                                                      <br>
+                                                      <br>
+                                                  </p>
+                                                  <h4 id="responsabilidad" class="text">1.1 Limitaci&oacute;n de responsabilidad</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text"> 
+                                                      Quivira no garantiza ni declara que el uso del servicio estar&aacute; libre de error y sea ininterrumpido, lo cual 
+                                                      depende de su conexi&oacute;n a internet, de la capacidad de su computadora y de los conocimientos que usted tenga 
+                                                      sobre el uso de la misma. Quivira tampoco asegura que las “publicaciones” est&eacute;n libres de p&eacute;rdida, 
+                                                      corrupci&oacute;n, ataque o intervenci&oacute;n de hackers, virus o intrusi&oacute;n de seguridad, por lo que Quivira 
+                                                      renuncia a cualquier responsabilidad relacionada con las mencionadas anteriormente.
+                                                      <br>
+                                                      En ning&uacute;n caso Quivira y cualquiera de sus gerentes, empleados o distribuidor ser&aacute;n responsables por 
+                                                      cualquier daño indirecto, incidental o emergente derivado del uso que usted haga de las "publicaciones". De la misma 
+                                                      forma, Quivira renuncia a cualquier responsabilidad sobre cualquier error u omisi&oacute;n en el contenido de los 
+                                                      documentos, los cuales son reproducidos de forma fiel y publicados bajo estrictos lineamientos editoriales para 
+                                                      mantener un alto est&aacute;ndar de calidad en los mismos.
+                                                      <br>
+                                                      Quivira se deslinda de cualquier uso pol&iacute;tico, religioso, social, educativo, acad&eacute;mico o de cualquier 
+                                                      otro tipo que el "usuario" haga del contenido e interpretaci&oacute;n de las "publicaciones". Los contenidos y las 
+                                                      tem&aacute;ticas de las "publicaciones" de ninguna manera reflejan alguna postura ideol&oacute;gica, sea pol&iacute;tica, 
+                                                      religiosa, acad&eacute;mica o de cualquier otra &iacute;ndole de Quivira ni de alguno de sus gerentes o empleados.
+                                                      <br>
+                                                      Usted acepta expresamente el uso de todas las "publicaciones" tal y como se presentan, sean gratuitas o de pago, de 
+                                                      acuerdo con su disponibilidad, diseño, funcionalidades y contenido, sin garant&iacute;as de ninguna clase. Cualquier 
+                                                      falla en las publicaciones ser&aacute; actualizada y reparada de acuerdo al plan editorial de actualizaci&oacute;n 
+                                                      constante de las "publicaciones" de Quivira.
+                                                      <br>
+                                                      Estos T&eacute;rminos y condiciones de servicio y uso ser&aacute;n actualizados constantemente. Al usuario se le 
+                                                      notificar&aacute; en el apartado de mensajes de su cuenta en Novohispanorum, por lo que es su responsabilidad revisar y 
+                                                      leer los cambios y modificaciones que se hagan en ellos.
+                                                      <br>
+                                                      Usted libera a Quivira y cualquiera de sus gerentes, empleados y distribuidor por el mal uso de los contenidos y 
+                                                      materiales que contengan las "publicaciones", lo que derive en infracciones de la propiedad intelectual, derechos de 
+                                                      reproducci&oacute;n del contenido y derechos de autor, de acuerdo a las leyes vigentes del pa&iacute;s.
+                                                      <br>
+                                                      Quivira tiene autorizaci&oacute;n de reproducci&oacute;n y publicaci&oacute;n de las im&aacute;genes digitales de los 
+                                                      documentos en las "publicaciones", si usted hace mal uso o reproduce alguna de las im&aacute;genes, libera a Quivira de 
+                                                      cualquier responsabilidad por su reproducci&oacute;n no autorizada y mal uso. Usted acepta, en la medida m&aacute;xima 
+                                                      permitida por la ley, defender a Quivira, sus gerentes, cualquiera de sus empleados, distribuidor e inclusive terceros de 
+                                                      cualquier tipo de reclamo, demanda, procedimiento, p&eacute;rdidas, responsabilidades, daños, costos y gastos que devengan 
+                                                      y est&eacute;n relacionados del mal uso que el "usuario" haga del material.
+                                                      <br>
+                                                      <br>
+                                                  </p>
+                                                  <h4 id="privacidad" class="text">2. Privacidad</h4>
+                                                  <br>
+                                                  <h4 id="cuenta" class="text">2.1 Su cuenta</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      El pago, uso y acceso a las "publicaciones" es a trav&eacute;s de nuestra propia plataforma y est&aacute; relacionada con 
+                                                      una cuenta de correo electr&oacute;nico, por lo que usted necesita un correo electr&oacute;nico activo para poder crear 
+                                                      una cuenta en Novohispanorum. No revele la informaci&oacute;n de su cuenta a nadie. Usted es el &uacute;nico responsable 
+                                                      de mantener la informaci&oacute;n de su cuenta de manera confidencial y segura, as&iacute; como de todas las acciones y 
+                                                      actividades realizadas a trav&eacute;s de ella; usted acepta informar inmediatamente a los administradores de ella sobre 
+                                                      cualquier anormalidad o fallo en la seguridad de su cuenta, lo que est&aacute; regulado por los t&eacute;rminos y 
+                                                      condiciones de cada uno de los servicios de correo electr&oacute;nico. Cualquier mal uso que surja de las "publicaciones" 
+                                                      a trav&eacute;s de su cuenta ser&aacute; &uacute;nica y exclusivamente su responsabilidad.
+                                                      <br>
+                                                      Queda bajo su responsabilidad proporcionar informaci&oacute;n ver&iacute;dica en su cuenta de correo electr&oacute;nico y 
+                                                      actualizarla constantemente, mantener datos precisos y exactos facilitar&aacute; hacer los cargos y recibos de compra de 
+                                                      las "publicaciones" a su cuenta.
+                                                      <br>
+                                                      Quivira, sus gerentes o empleados no est&aacute;n autorizados a recibir pagos, en dinero o en especie ni de ninguna otra 
+                                                      forma por el acceso a las "publicaciones" que difiera de las establecidas por los sistemas de cobro establecidos en 
+                                                      nuestro sitio.
+                                                      <br>
+                                                      <br>
+                                                  </p> 
+                                                  <h4 id="seguimiento" class="text">2.2 Seguimiento</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Las "publicaciones" emplean la herramienta de seguimiento de uso de Google Analytics, la cual permite medir la forma en que 
+                                                      el "usuario" interact&uacute;a con el contenido de la aplicaci&oacute;n. Google Analytics emplea cookies para "recordar" lo 
+                                                      que el “usuario” ha hecho en el sitio anteriormente, proporcionando etiquetas JavaScript para su registro. NINGUNA 
+                                                      INFORMACI&Oacute;N PERSONAL, REFERENCIAL, DESCRIPTIVA, PUBLICITARIA, DE UBICACI&Oacute;N O IDENTIDAD del "usuario" es 
+                                                      recopilada por esta herramienta.
+                                                      <br>
+                                                      La herramienta proporciona datos estad&iacute;sticos del uso del sitio y su interacci&oacute;n con el “usuario”, para mejorar 
+                                                      la calidad, contenido, disposición, funcionalidad y experiencia que el "usuario" tiene con el sitio.
+                                                      <br>
+                                                      Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a style="color: #A67C52;" class="text" 
+                                                      href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">
+                                                      http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="contenido" class="text">3. Contenido</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira se compromete a publicar contenido fiable, ver&iacute;dico siguiendo est&aacute;ndares de alta calidad editorial que 
+                                                      constituyan una referencia, ayuda y soporte al desarrollo de actividades culturales, sociales y acad&eacute;micas del 
+                                                      "usuario" en las "publicaciones". As&iacute; mismo, Quivira se compromete tambi&eacute;n a mantener las "publicaciones" libres 
+                                                      de materiales textuales o im&aacute;genes de terceros que puedan ser considerados como publicidad.
+                                                      <br>
+                                                      La actualizaci&oacute;n de las "publicaciones", tanto en el software como en los contenidos ser&aacute; constante, lo que 
+                                                      constituir&aacute; una mejora en la funcionalidad y en la experiencia del "usuario". Cualquier actualizaci&oacute;n en el 
+                                                      contenido o software ser&aacute; notificada al "usuario" para que sea descargada.
+                                                      <br> 
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="disponibilidad" class="text">3.1 Disponibilidad del contenido</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira se reserva el derecho de cambiar el diseño, las opciones de contenido, las funcionalidades de las "publicaciones" 
+                                                      durante sus actualizaciones sin previo aviso, de acuerdo con su programa editorial y mejoramiento de las “publicaciones”. 
+                                                      Estos cambios no afectar&aacute;n el acceso a las "publicaciones" que el "usuario" ha descargado, por lo cual no se ver&aacute; 
+                                                      obligado a hacer un nuevo cargo una vez que haya cumplido con los requisitos de descarga, pues s&oacute;lo modificar&aacute; 
+                                                      el aspecto y la funcionalidad en cantidad m&iacute;nima.
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="reglas" class="text">3.2 Reglas de uso</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Usted acepta que el uso de las "publicaciones" est&aacute;n determinadas por las Reglas de Uso que establezca Quivira de acuerdo 
+                                                      con las leyes en materia de Derechos de Autor y Propiedad Intelectual vigentes. Cualquier otro uso puede constituir una 
+                                                      violaci&oacute;n de los derechos de autor. Quivira se reserva el derecho de modificar las reglas de uso en cualquier momento, 
+                                                      dando aviso al “usuario” cuando esto ocurra.
+                                                      <br>
+                                                      Usted acepta no violar, eludir, realizar ingenier&iacute;a inversa, decodificar, desmontar, alterar con cualquier tipo de 
+                                                      tecnolog&iacute;a la seguridad y la integridad de las "publicaciones" por ninguna raz&oacute;n, ni ayudar o asesorar a ninguna 
+                                                      persona para hacerlo. Usted acepta no acceder a las "publicaciones" por otro medio que no sea el sitio de Novohispanorum. Usted 
+                                                      acepta no modificar el software, la imagen visual y gr&aacute;fica, la interfaz y ninguno de los contenidos para ning&uacute;n 
+                                                      prop&oacute;sito.
+                                                      <br>
+                                                      Quivira puede controlar, supervisar e involucrarse en el cumplimiento de las Reglas de Uso y se reserva el derecho de hacerlas 
+                                                      cumplir sin notificarlo previamente. Quivira se reserva, a su criterio, negar, limitar o cancelar el uso de las "publicaciones" al 
+                                                      "usuario" si no cumple y viola las Reglas de Uso, si se detecta que el uso de la cuenta tiene alguna finalidad maliciosa que atente 
+                                                      en contra de los derechos de autor de las publicaciones o tenga finalidades de copia, reproducci&oacute;n ilegal de las 
+                                                      publicaciones o atente contra la integridad y seguridad del sitio y de los contenidos de Novohispanorum o Quivira, sin que haya 
+                                                      responsabilidad alguna frente al mismo ni haya reembolso alguno por la compra anterior de cualquiera de las "publicaciones".
+                                                      <br>
+                                                      Cualquier reproducci&oacute;n del contenido, imagen visual y gr&aacute;fica, la interfaz, logotipos, nombres, im&aacute;genes de 
+                                                      los documentos, etc&eacute;tera, deber&aacute; constar por escrito, con firma adjunta y aut&oacute;grafa del representante legal 
+                                                      de Quivira y de uno de sus gerentes.
+                                                      <br>
+                                                      (i) Usted acepta utilizar las "publicaciones" s&oacute;lo para uso personal, sin exclusividad alguna.
+                                                      <br>
+                                                      (ii) Su cuenta es intransferible a otra persona o usuario, no se puede revender, rentar o comercializar el acceso y consulta a 
+                                                      terceros por medio de suscripciones o venta directa para cualquier uso comercial.
+                                                      <br>
+                                                      (iii) La compra de las "publicaciones" no constituye una cesi&oacute;n, renuncia o limitaci&oacute;n de cualquiera de los derechos 
+                                                      de autor del propietario de los derechos de las “publicaciones”.
+                                                      <br>
+                                                      (iv) Usted no estar&aacute; autorizado a utilizar de forma comercial cualquier contenido de las "publicaciones", &iacute;ntegra o 
+                                                      parcialmente, como las transcripciones, los &iacute;ndices, las notas explicativas, la imagen visual y gr&aacute;fica, la interfaz, 
+                                                      los logotipos, los nombres de la colecci&oacute;n o Quivira y las im&aacute;genes de los documentos.
+                                                      <br>
+                                                      (v) La descarga y el pago por cualquiera de las "publicaciones" no lo autoriza a usted a reproducir y distribuir de cualquier forma 
+                                                      los contenidos de las "publicaciones" ni sus contenidos &iacute;ntegra o parcialmente, como las transcripciones, los &iacute;ndices, 
+                                                      las notas explicativas, la imagen visual y gr&aacute;fica, la interfaz, los logotipos, los nombres de la colecci&oacute;n o Quivira 
+                                                      y las im&aacute;genes de los documentos.
+                                                      <br>
+                                                      (vi) Usted podr&aacute; consultar las "publicaciones" en cualquier equipo a trav&eacute;s de su cuenta personal de Novohispanorum. 
+                                                      Cualquier mal uso de las "publicaciones" a trav&eacute;s de su cuenta son &uacute;nica y exclusivamente su responsabilidad. 
+                                                      Ver 2.1 SU CUENTA.
+                                                      <br>
+                                                      (vii) La reproducci&oacute;n no autorizada y el mal uso de las im&aacute;genes de los documentos antiguos que se incluyen en las 
+                                                      "publicaciones" constituyen una infracci&oacute;n de acuerdo con las leyes. Quivira no est&aacute; facultada para autorizar ni su 
+                                                      reproducci&oacute;n ni su uso. Cualquier violaci&oacute;n o reproducci&oacute;n no autorizada y mal uso pueden resultar en 
+                                                      responsabilidad civil o penal en contra del "usuario".
+                                                      <br>
+                                                      (viii) Ning&uacute;n documento, imagen, transcripci&oacute;n, &iacute;ndice, comentario, descripci&oacute;n o cualquier elemento del 
+                                                      sitio electr&oacute;nico o de cualquier publicaci&oacute;n, &iacute;ntegro o en partes, podr&aacute; ser reproducido, duplicado, 
+                                                      copiado, vendido, revendido, descargado para ser explotado de alguna forma, comercializado para fines propios o de terceros.
+                                                      <br>
+                                                      (ix) Queda prohibida tambi&eacute;n cualquier reproducci&oacute;n o copia de los logotipos, im&aacute;genes o cualquier otro elemento 
+                                                      del sitio de Novohispanorum o Ediciones Quivira sin consentimiento expreso y por escrito del representante legal, como se señala en 
+                                                      estos t&eacute;rminos y condiciones.
+                                                      <br>
+                                                      Las violaciones del sistema, la seguridad, su modificaci&oacute;n, alteraci&oacute;n en cualquier forma, así como la reproducci&oacute;n 
+                                                      &iacute;ntegra o parcial, distribuci&oacute;n, comercializaci&oacute;n de las transcripciones, los &iacute;ndices, las notas 
+                                                      explicativas, la imagen visual y gráfica, la interfaz, los logotipos, los nombres de la colecci&oacute;n o Quivira y las im&aacute;genes 
+                                                      de los documentos y la violaci&oacute;n de alguna de estas Reglas de Uso pueden resultar en responsabilidad civil o penal en contra del 
+                                                      "usuario".
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="propiedad" class="text">3.3 Propiedad intelectual</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Usted acepta que las "publicaciones" y todo su contenido editorial, gr&aacute;fico, visual, transcripciones, &iacute;ndices, notas 
+                                                      explicativas, interfaz, logotipos, nombres de la colecci&oacute;n o Quivira utilizados en las "publicaciones" es propiedad exclusiva de 
+                                                      Quivira, que est&acute; protegido por las leyes aplicables de propiedad intelectual y derechos de autor vigentes. Usted acepta que no 
+                                                      utilizar&aacute; este contenido o material de ninguna otra forma m&aacute;s que de la permitida por este contrato. Ninguna parte del 
+                                                      contenido fragmentada o &iacute;ntegra podr&aacute; reproducirse por ning&uacute;n medio impreso o digital con excepci&oacute;n de la 
+                                                      previa autorizaci&oacute;n, de acuerdo con las Reglas de Uso de este contrato. Usted acepta no modificar, rentar, arrendar, vender, 
+                                                      distribuir, comerciar de ninguna forma posible, ni crear trabajos derivados en las "publicaciones" de cualquier manera no autorizada, 
+                                                      sea enunciativa pero no limitativa mediante cualquier medio electr&oacute;nico o impreso.
+                                                      <br>
+                                                      Quivira se reserva el derecho de suspender o desactivar el servicio de las "publicaciones" al "usuario" cuando determine que se ha hecho 
+                                                      mal uso o se han violado las especificaciones de las reglas de Uso de este contrato, sin que haya, en cualquier caso, responsabilidad 
+                                                      alguna.
+                                                      <br>
+                                                      Quivira, Novohispanorum, sus logos, imagen visual y gr&aacute;fica son marcas comerciales registradas de Ediciones Quivira, S.A. de C.V. 
+                                                      Otras marcas, servicios, gr&aacute;ficos, interfaz y logotipos, por la cual se distribuyen las "publicaciones" son marcas comerciales de 
+                                                      sus respectivos dueños. No se le cede a usted ning&uacute;n derecho o licencia de uso de ning&uacute;n tipo con respecto a ninguna de 
+                                                      las marcas comerciales mencionadas.
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="desarrollador" class="text">4. Sobre el desarrollador</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira es una editorial constituida conforme las leyes mexicanas, la cual tiene como objeto la publicaci&oacute;n y distribuci&oacute;n 
+                                                      de publicaciones a trav&eacute;s de medios electr&oacute;nicos e impresos sobre diversos temas.
+                                                      <br>
+                                                      Si desea descargar una versi&oacute;n impresa de los t&eacute;rminos y condiciones puede acceder a la p&aacute;gina: 
+                                                      <a style="color: #A67C52;" class="text" href="http://edicionesquivira.com/Novohispanorum/termsnovohispanorum.pdf" target="blank">T&eacute;rminos y 
+                                                      condiciones</a>
+                                                      <br>
+                                                      <br>
+                                                      Tambi&eacute;n puede escribir a la direcci&oacute;n salve@novohispanorum.mx por cualquier aclaraci&oacute;n.
+                                                      <br>
+                                                      <br>
+                                                      Contacto:<br>
+                                                      Al&iacute; Albarr&aacute;n<br>
+                                                      ali@edicionesquivira.com<br>
+                                                      Ediciones Quivira, S.A. de C.V.<br>
+                                                      Excelsior 239, colonia Guadalupe Insurgentes<br>
+                                                      C. P. 07870<br>
+                                                      M&eacute;xico, D. F. <br>
+                                                  </p>
+                                              </td>
+                                              <td width="20">
+                                              </td>
+                                          </tr>
+                                      </tbody></table>
+                              </div>
+                              <div class="modal-footer">
+                                  <div class="col-md-12">
+                                      <button type="button" class="text btn btn-default" data-dismiss="modal">Aceptar</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              
+              
+              <div class="modal fade" id="modalAvisoPrivacidad" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><b class="text"><c:out value="AVISO DE PRIVACIDAD"/></b></h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="row">
+                                  <table>
+                                      <tbody>
+                                          <tr>
+                                              <td width="50"></td>
+                                              <td width="800">
+                                                  <h4 id="servicio" class="text">1. El servicio</h4>
+                                                  <br>
+                                                  <p class="text" style="text-align: justify; color: gray;">
+                                                      Quivira es una editorial establecida conforme las leyes mexicanas que le concede 
+                                                      un servicio de visualizaci&oacute;n, acceso y consulta del contenido digital de su colecci&oacute;n 
+                                                      Novohispanorum ("publicaciones"), de acuerdo al programa editorial y las gestiones de 
+                                                      derechos de reproducci&oacute;n como sigue:
+                                                      <br><br>
+                                                      (i) Un software gratuito que funciona para la organizaci&oacute;n, gesti&oacute;n y medio de 
+                                                      visualizaci&oacute;n de las "publicaciones" de acuerdo con la tem&aacute;tica a la que pertenezcan, 
+                                                      el cual estar&aacute; ligado a su cuenta personal.
+                                                      <br><br>
+                                                      (ii) "Publicaciones" que contendr&aacute;n la transcripci&oacute;n de un documento de archivo o 
+                                                      biblioteca, una reproducci&oacute;n digital del documento original del cual se hizo la transcripci&oacute;n, 
+                                                      un &iacute;ndice onom&aacute;stico y uno topon&iacute;mico, notas explicativas que hacen referencias a 
+                                                      t&eacute;rminos o arca&iacute;smos del español antiguo u otro idioma. La inclusi&oacute;n de estos &uacute;ltimos 
+                                                      en las "publicaciones" est&aacute; sujeta al contenido mismo del documento, por lo que no se asegura que todas 
+                                                      las "publicaciones" tengan uno propio.
+                                                      <br><br>
+                                                      (iii) La mayor&iacute;a de las "publicaciones" requieren de un pago para su descarga y consulta; aunque algunas 
+                                                      de ellas podr&aacute;n descargarse de manera gratuita. El uso de ambas queda sujeto a las reglas de uso y derechos 
+                                                      de la propiedad intelectual de estos t&eacute;rminos y condiciones.
+                                                      <br>
+                                                      <br>
+                                                  </p>
+                                                  <h4 id="responsabilidad" class="text">1.1 Limitaci&oacute;n de responsabilidad</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text"> 
+                                                      Quivira no garantiza ni declara que el uso del servicio estar&aacute; libre de error y sea ininterrumpido, lo cual 
+                                                      depende de su conexi&oacute;n a internet, de la capacidad de su computadora y de los conocimientos que usted tenga 
+                                                      sobre el uso de la misma. Quivira tampoco asegura que las “publicaciones” est&eacute;n libres de p&eacute;rdida, 
+                                                      corrupci&oacute;n, ataque o intervenci&oacute;n de hackers, virus o intrusi&oacute;n de seguridad, por lo que Quivira 
+                                                      renuncia a cualquier responsabilidad relacionada con las mencionadas anteriormente.
+                                                      <br>
+                                                      En ning&uacute;n caso Quivira y cualquiera de sus gerentes, empleados o distribuidor ser&aacute;n responsables por 
+                                                      cualquier daño indirecto, incidental o emergente derivado del uso que usted haga de las "publicaciones". De la misma 
+                                                      forma, Quivira renuncia a cualquier responsabilidad sobre cualquier error u omisi&oacute;n en el contenido de los 
+                                                      documentos, los cuales son reproducidos de forma fiel y publicados bajo estrictos lineamientos editoriales para 
+                                                      mantener un alto est&aacute;ndar de calidad en los mismos.
+                                                      <br>
+                                                      Quivira se deslinda de cualquier uso pol&iacute;tico, religioso, social, educativo, acad&eacute;mico o de cualquier 
+                                                      otro tipo que el "usuario" haga del contenido e interpretaci&oacute;n de las "publicaciones". Los contenidos y las 
+                                                      tem&aacute;ticas de las "publicaciones" de ninguna manera reflejan alguna postura ideol&oacute;gica, sea pol&iacute;tica, 
+                                                      religiosa, acad&eacute;mica o de cualquier otra &iacute;ndole de Quivira ni de alguno de sus gerentes o empleados.
+                                                      <br>
+                                                      Usted acepta expresamente el uso de todas las "publicaciones" tal y como se presentan, sean gratuitas o de pago, de 
+                                                      acuerdo con su disponibilidad, diseño, funcionalidades y contenido, sin garant&iacute;as de ninguna clase. Cualquier 
+                                                      falla en las publicaciones ser&aacute; actualizada y reparada de acuerdo al plan editorial de actualizaci&oacute;n 
+                                                      constante de las "publicaciones" de Quivira.
+                                                      <br>
+                                                      Estos T&eacute;rminos y condiciones de servicio y uso ser&aacute;n actualizados constantemente. Al usuario se le 
+                                                      notificar&aacute; en el apartado de mensajes de su cuenta en Novohispanorum, por lo que es su responsabilidad revisar y 
+                                                      leer los cambios y modificaciones que se hagan en ellos.
+                                                      <br>
+                                                      Usted libera a Quivira y cualquiera de sus gerentes, empleados y distribuidor por el mal uso de los contenidos y 
+                                                      materiales que contengan las "publicaciones", lo que derive en infracciones de la propiedad intelectual, derechos de 
+                                                      reproducci&oacute;n del contenido y derechos de autor, de acuerdo a las leyes vigentes del pa&iacute;s.
+                                                      <br>
+                                                      Quivira tiene autorizaci&oacute;n de reproducci&oacute;n y publicaci&oacute;n de las im&aacute;genes digitales de los 
+                                                      documentos en las "publicaciones", si usted hace mal uso o reproduce alguna de las im&aacute;genes, libera a Quivira de 
+                                                      cualquier responsabilidad por su reproducci&oacute;n no autorizada y mal uso. Usted acepta, en la medida m&aacute;xima 
+                                                      permitida por la ley, defender a Quivira, sus gerentes, cualquiera de sus empleados, distribuidor e inclusive terceros de 
+                                                      cualquier tipo de reclamo, demanda, procedimiento, p&eacute;rdidas, responsabilidades, daños, costos y gastos que devengan 
+                                                      y est&eacute;n relacionados del mal uso que el "usuario" haga del material.
+                                                      <br>
+                                                      <br>
+                                                  </p>
+                                                  <h4 id="privacidad" class="text">2. Privacidad</h4>
+                                                  <br>
+                                                  <h4 id="cuenta" class="text">2.1 Su cuenta</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      El pago, uso y acceso a las "publicaciones" es a trav&eacute;s de nuestra propia plataforma y est&aacute; relacionada con 
+                                                      una cuenta de correo electr&oacute;nico, por lo que usted necesita un correo electr&oacute;nico activo para poder crear 
+                                                      una cuenta en Novohispanorum. No revele la informaci&oacute;n de su cuenta a nadie. Usted es el &uacute;nico responsable 
+                                                      de mantener la informaci&oacute;n de su cuenta de manera confidencial y segura, as&iacute; como de todas las acciones y 
+                                                      actividades realizadas a trav&eacute;s de ella; usted acepta informar inmediatamente a los administradores de ella sobre 
+                                                      cualquier anormalidad o fallo en la seguridad de su cuenta, lo que est&aacute; regulado por los t&eacute;rminos y 
+                                                      condiciones de cada uno de los servicios de correo electr&oacute;nico. Cualquier mal uso que surja de las "publicaciones" 
+                                                      a trav&eacute;s de su cuenta ser&aacute; &uacute;nica y exclusivamente su responsabilidad.
+                                                      <br>
+                                                      Queda bajo su responsabilidad proporcionar informaci&oacute;n ver&iacute;dica en su cuenta de correo electr&oacute;nico y 
+                                                      actualizarla constantemente, mantener datos precisos y exactos facilitar&aacute; hacer los cargos y recibos de compra de 
+                                                      las "publicaciones" a su cuenta.
+                                                      <br>
+                                                      Quivira, sus gerentes o empleados no est&aacute;n autorizados a recibir pagos, en dinero o en especie ni de ninguna otra 
+                                                      forma por el acceso a las "publicaciones" que difiera de las establecidas por los sistemas de cobro establecidos en 
+                                                      nuestro sitio.
+                                                      <br>
+                                                      <br>
+                                                  </p> 
+                                                  <h4 id="seguimiento" class="text">2.2 Seguimiento</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Las "publicaciones" emplean la herramienta de seguimiento de uso de Google Analytics, la cual permite medir la forma en que 
+                                                      el "usuario" interact&uacute;a con el contenido de la aplicaci&oacute;n. Google Analytics emplea cookies para "recordar" lo 
+                                                      que el “usuario” ha hecho en el sitio anteriormente, proporcionando etiquetas JavaScript para su registro. NINGUNA 
+                                                      INFORMACI&Oacute;N PERSONAL, REFERENCIAL, DESCRIPTIVA, PUBLICITARIA, DE UBICACI&Oacute;N O IDENTIDAD del "usuario" es 
+                                                      recopilada por esta herramienta.
+                                                      <br>
+                                                      La herramienta proporciona datos estad&iacute;sticos del uso del sitio y su interacci&oacute;n con el “usuario”, para mejorar 
+                                                      la calidad, contenido, disposición, funcionalidad y experiencia que el "usuario" tiene con el sitio.
+                                                      <br>
+                                                      Para saber sobre esta herramienta puede consultar el sitio de Google Analytics: <a style="color: #A67C52;" class="text" 
+                                                      href="http://www.google.com.mx/intl/es_ALL/analytics/index.html" target="_blank">
+                                                      http://www.google.com.mx/intl/es_ALL/analytics/index.html</a>
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="contenido" class="text">3. Contenido</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira se compromete a publicar contenido fiable, ver&iacute;dico siguiendo est&aacute;ndares de alta calidad editorial que 
+                                                      constituyan una referencia, ayuda y soporte al desarrollo de actividades culturales, sociales y acad&eacute;micas del 
+                                                      "usuario" en las "publicaciones". As&iacute; mismo, Quivira se compromete tambi&eacute;n a mantener las "publicaciones" libres 
+                                                      de materiales textuales o im&aacute;genes de terceros que puedan ser considerados como publicidad.
+                                                      <br>
+                                                      La actualizaci&oacute;n de las "publicaciones", tanto en el software como en los contenidos ser&aacute; constante, lo que 
+                                                      constituir&aacute; una mejora en la funcionalidad y en la experiencia del "usuario". Cualquier actualizaci&oacute;n en el 
+                                                      contenido o software ser&aacute; notificada al "usuario" para que sea descargada.
+                                                      <br> 
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="disponibilidad" class="text">3.1 Disponibilidad del contenido</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira se reserva el derecho de cambiar el diseño, las opciones de contenido, las funcionalidades de las "publicaciones" 
+                                                      durante sus actualizaciones sin previo aviso, de acuerdo con su programa editorial y mejoramiento de las “publicaciones”. 
+                                                      Estos cambios no afectar&aacute;n el acceso a las "publicaciones" que el "usuario" ha descargado, por lo cual no se ver&aacute; 
+                                                      obligado a hacer un nuevo cargo una vez que haya cumplido con los requisitos de descarga, pues s&oacute;lo modificar&aacute; 
+                                                      el aspecto y la funcionalidad en cantidad m&iacute;nima.
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="reglas" class="text">3.2 Reglas de uso</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Usted acepta que el uso de las "publicaciones" est&aacute;n determinadas por las Reglas de Uso que establezca Quivira de acuerdo 
+                                                      con las leyes en materia de Derechos de Autor y Propiedad Intelectual vigentes. Cualquier otro uso puede constituir una 
+                                                      violaci&oacute;n de los derechos de autor. Quivira se reserva el derecho de modificar las reglas de uso en cualquier momento, 
+                                                      dando aviso al “usuario” cuando esto ocurra.
+                                                      <br>
+                                                      Usted acepta no violar, eludir, realizar ingenier&iacute;a inversa, decodificar, desmontar, alterar con cualquier tipo de 
+                                                      tecnolog&iacute;a la seguridad y la integridad de las "publicaciones" por ninguna raz&oacute;n, ni ayudar o asesorar a ninguna 
+                                                      persona para hacerlo. Usted acepta no acceder a las "publicaciones" por otro medio que no sea el sitio de Novohispanorum. Usted 
+                                                      acepta no modificar el software, la imagen visual y gr&aacute;fica, la interfaz y ninguno de los contenidos para ning&uacute;n 
+                                                      prop&oacute;sito.
+                                                      <br>
+                                                      Quivira puede controlar, supervisar e involucrarse en el cumplimiento de las Reglas de Uso y se reserva el derecho de hacerlas 
+                                                      cumplir sin notificarlo previamente. Quivira se reserva, a su criterio, negar, limitar o cancelar el uso de las "publicaciones" al 
+                                                      "usuario" si no cumple y viola las Reglas de Uso, si se detecta que el uso de la cuenta tiene alguna finalidad maliciosa que atente 
+                                                      en contra de los derechos de autor de las publicaciones o tenga finalidades de copia, reproducci&oacute;n ilegal de las 
+                                                      publicaciones o atente contra la integridad y seguridad del sitio y de los contenidos de Novohispanorum o Quivira, sin que haya 
+                                                      responsabilidad alguna frente al mismo ni haya reembolso alguno por la compra anterior de cualquiera de las "publicaciones".
+                                                      <br>
+                                                      Cualquier reproducci&oacute;n del contenido, imagen visual y gr&aacute;fica, la interfaz, logotipos, nombres, im&aacute;genes de 
+                                                      los documentos, etc&eacute;tera, deber&aacute; constar por escrito, con firma adjunta y aut&oacute;grafa del representante legal 
+                                                      de Quivira y de uno de sus gerentes.
+                                                      <br>
+                                                      (i) Usted acepta utilizar las "publicaciones" s&oacute;lo para uso personal, sin exclusividad alguna.
+                                                      <br>
+                                                      (ii) Su cuenta es intransferible a otra persona o usuario, no se puede revender, rentar o comercializar el acceso y consulta a 
+                                                      terceros por medio de suscripciones o venta directa para cualquier uso comercial.
+                                                      <br>
+                                                      (iii) La compra de las "publicaciones" no constituye una cesi&oacute;n, renuncia o limitaci&oacute;n de cualquiera de los derechos 
+                                                      de autor del propietario de los derechos de las “publicaciones”.
+                                                      <br>
+                                                      (iv) Usted no estar&aacute; autorizado a utilizar de forma comercial cualquier contenido de las "publicaciones", &iacute;ntegra o 
+                                                      parcialmente, como las transcripciones, los &iacute;ndices, las notas explicativas, la imagen visual y gr&aacute;fica, la interfaz, 
+                                                      los logotipos, los nombres de la colecci&oacute;n o Quivira y las im&aacute;genes de los documentos.
+                                                      <br>
+                                                      (v) La descarga y el pago por cualquiera de las "publicaciones" no lo autoriza a usted a reproducir y distribuir de cualquier forma 
+                                                      los contenidos de las "publicaciones" ni sus contenidos &iacute;ntegra o parcialmente, como las transcripciones, los &iacute;ndices, 
+                                                      las notas explicativas, la imagen visual y gr&aacute;fica, la interfaz, los logotipos, los nombres de la colecci&oacute;n o Quivira 
+                                                      y las im&aacute;genes de los documentos.
+                                                      <br>
+                                                      (vi) Usted podr&aacute; consultar las "publicaciones" en cualquier equipo a trav&eacute;s de su cuenta personal de Novohispanorum. 
+                                                      Cualquier mal uso de las "publicaciones" a trav&eacute;s de su cuenta son &uacute;nica y exclusivamente su responsabilidad. 
+                                                      Ver 2.1 SU CUENTA.
+                                                      <br>
+                                                      (vii) La reproducci&oacute;n no autorizada y el mal uso de las im&aacute;genes de los documentos antiguos que se incluyen en las 
+                                                      "publicaciones" constituyen una infracci&oacute;n de acuerdo con las leyes. Quivira no est&aacute; facultada para autorizar ni su 
+                                                      reproducci&oacute;n ni su uso. Cualquier violaci&oacute;n o reproducci&oacute;n no autorizada y mal uso pueden resultar en 
+                                                      responsabilidad civil o penal en contra del "usuario".
+                                                      <br>
+                                                      (viii) Ning&uacute;n documento, imagen, transcripci&oacute;n, &iacute;ndice, comentario, descripci&oacute;n o cualquier elemento del 
+                                                      sitio electr&oacute;nico o de cualquier publicaci&oacute;n, &iacute;ntegro o en partes, podr&aacute; ser reproducido, duplicado, 
+                                                      copiado, vendido, revendido, descargado para ser explotado de alguna forma, comercializado para fines propios o de terceros.
+                                                      <br>
+                                                      (ix) Queda prohibida tambi&eacute;n cualquier reproducci&oacute;n o copia de los logotipos, im&aacute;genes o cualquier otro elemento 
+                                                      del sitio de Novohispanorum o Ediciones Quivira sin consentimiento expreso y por escrito del representante legal, como se señala en 
+                                                      estos t&eacute;rminos y condiciones.
+                                                      <br>
+                                                      Las violaciones del sistema, la seguridad, su modificaci&oacute;n, alteraci&oacute;n en cualquier forma, así como la reproducci&oacute;n 
+                                                      &iacute;ntegra o parcial, distribuci&oacute;n, comercializaci&oacute;n de las transcripciones, los &iacute;ndices, las notas 
+                                                      explicativas, la imagen visual y gráfica, la interfaz, los logotipos, los nombres de la colecci&oacute;n o Quivira y las im&aacute;genes 
+                                                      de los documentos y la violaci&oacute;n de alguna de estas Reglas de Uso pueden resultar en responsabilidad civil o penal en contra del 
+                                                      "usuario".
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="propiedad" class="text">3.3 Propiedad intelectual</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Usted acepta que las "publicaciones" y todo su contenido editorial, gr&aacute;fico, visual, transcripciones, &iacute;ndices, notas 
+                                                      explicativas, interfaz, logotipos, nombres de la colecci&oacute;n o Quivira utilizados en las "publicaciones" es propiedad exclusiva de 
+                                                      Quivira, que est&acute; protegido por las leyes aplicables de propiedad intelectual y derechos de autor vigentes. Usted acepta que no 
+                                                      utilizar&aacute; este contenido o material de ninguna otra forma m&aacute;s que de la permitida por este contrato. Ninguna parte del 
+                                                      contenido fragmentada o &iacute;ntegra podr&aacute; reproducirse por ning&uacute;n medio impreso o digital con excepci&oacute;n de la 
+                                                      previa autorizaci&oacute;n, de acuerdo con las Reglas de Uso de este contrato. Usted acepta no modificar, rentar, arrendar, vender, 
+                                                      distribuir, comerciar de ninguna forma posible, ni crear trabajos derivados en las "publicaciones" de cualquier manera no autorizada, 
+                                                      sea enunciativa pero no limitativa mediante cualquier medio electr&oacute;nico o impreso.
+                                                      <br>
+                                                      Quivira se reserva el derecho de suspender o desactivar el servicio de las "publicaciones" al "usuario" cuando determine que se ha hecho 
+                                                      mal uso o se han violado las especificaciones de las reglas de Uso de este contrato, sin que haya, en cualquier caso, responsabilidad 
+                                                      alguna.
+                                                      <br>
+                                                      Quivira, Novohispanorum, sus logos, imagen visual y gr&aacute;fica son marcas comerciales registradas de Ediciones Quivira, S.A. de C.V. 
+                                                      Otras marcas, servicios, gr&aacute;ficos, interfaz y logotipos, por la cual se distribuyen las "publicaciones" son marcas comerciales de 
+                                                      sus respectivos dueños. No se le cede a usted ning&uacute;n derecho o licencia de uso de ning&uacute;n tipo con respecto a ninguna de 
+                                                      las marcas comerciales mencionadas.
+                                                      <br>
+                                                  </p>
+                                                  <br>
+                                                  <h4 id="desarrollador" class="text">4. Sobre el desarrollador</h4>
+                                                  <br>
+                                                  <p style="text-align: justify; color: gray;" class="text">
+                                                      Quivira es una editorial constituida conforme las leyes mexicanas, la cual tiene como objeto la publicaci&oacute;n y distribuci&oacute;n 
+                                                      de publicaciones a trav&eacute;s de medios electr&oacute;nicos e impresos sobre diversos temas.
+                                                      <br>
+                                                      Si desea descargar una versi&oacute;n impresa de los t&eacute;rminos y condiciones puede acceder a la p&aacute;gina: 
+                                                      <a style="color: #A67C52;" class="text" href="http://edicionesquivira.com/Novohispanorum/termsnovohispanorum.pdf" target="blank">T&eacute;rminos y 
+                                                      condiciones</a>
+                                                      <br>
+                                                      <br>
+                                                      Tambi&eacute;n puede escribir a la direcci&oacute;n salve@novohispanorum.mx por cualquier aclaraci&oacute;n.
+                                                      <br>
+                                                      <br>
+                                                      Contacto:<br>
+                                                      Al&iacute; Albarr&aacute;n<br>
+                                                      ali@edicionesquivira.com<br>
+                                                      Ediciones Quivira, S.A. de C.V.<br>
+                                                      Excelsior 239, colonia Guadalupe Insurgentes<br>
+                                                      C. P. 07870<br>
+                                                      M&eacute;xico, D. F. <br>
+                                                  </p>
+                                              </td>
+                                              <td width="20">
+                                              </td>
+                                          </tr>
+                                      </tbody></table>
+                              </div>
+                              <div class="modal-footer">
+                                  <div class="col-md-12">
+                                      <button type="button" class="text btn btn-default" data-dismiss="modal">Aceptar</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              
+              
+              <div class="modal fade" id="modalContacto" role="dialog">
+                  <div class="modal-dialog modal-lg">
+                      <div class="modal-content">
+                          <div class="modal-header">
+                              <button type="button" class="close" data-dismiss="modal">&times;</button>
+                              <h4 class="modal-title"><b class="text"><c:out value="CONTACTO"/></b></h4>
+                          </div>
+                          <div class="modal-body">
+                              <div class="row">
+                                  <table>
+                                      <tbody>
+                                          <tr>
+                                              <td width="50"></td>
+                                              <td width="800">
+                                              </td>
+                                              <td width="20">
+                                              </td>
+                                          </tr>
+                                      </tbody></table>
+                              </div>
+                              <div class="modal-footer">
+                                  <div class="col-md-12">
+                                      <button type="button" class="text btn btn-default" data-dismiss="modal">Aceptar</button>
+                                      <button type="button" class="text btn btn-default" data-dismiss="modal">Cancelar</button>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+              
+              
+			</div>
+			<!-- Terminan dialogos -->
+			
+			
+			
+			
         </div>
     </body>
 </html>
