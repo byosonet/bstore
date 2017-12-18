@@ -695,7 +695,7 @@
 				                        <div class="form-group">
 				                        	<span class="col-md-1 col-md-offset-1 text-center"><i class="fa fa-pencil-square-o bigicon"></i></span>
 				                            <div class="col-sm-9">
-				                                <textarea class="form-control" id="mensajeContacto" name="mensajeContacto" placeholder="Escriba su mensaje..." rows="7"></textarea>
+				                                <textarea class="form-control" id="mensajeContacto" name="mensajeContacto" placeholder="Escriba su mensaje..." rows="7" style="resize:none"></textarea>
 				                            </div>
 				                        </div>
 				                    </form>
