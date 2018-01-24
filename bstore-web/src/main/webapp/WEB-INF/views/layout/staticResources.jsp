@@ -102,4 +102,10 @@
 		background-color: #a67c52;
 	    color: black;
 	}
+	
+	/*Se agregan estilos para iconos en formulario de contacto*/
+	.bigicon {
+	    font-size: 35px;
+	    color: #36A0FF;
+	}
 </style>

@@ -669,51 +669,6 @@
               
               
               
-              
-              <!--
-              <div class="row">
-                <div class="col-sm-12 col-sm-offset-0 col-md-2 col-md-offset-5 main">
-                    <form id="ingresar" class="form-horizontal" method="POST" action="${contextpath}/equivira">
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <div style="text-align:center;color:black"><img width="200px" height="200px" src="${contextpath}/static/resources/imagesv2/logo-quivira.svg">
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="text" class="text form-control" id="login" name="user" placeholder="Cuenta">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <div class="col-sm-12">
-                                <input type="password" class="text form-control" id="password" name="password" placeholder="Contrase&ncaron;a">
-                            </div>
-                        </div>
-
-                        <div class="form-group">
-                            <label class="text col-sm-12" style="color:black;text-align: center;"> 
-                            	<a class="text" href="${contextpath}/password/recuperar" style="color: #A67C52;">Recuperar contraseña</a>
-                            </label>
-                        </div>
-                    </form>
-                    <div class="row">
-                        <div class="col-sm-12" style="text-align: center;">
-                            <button id="acceder" class="text btn btn-primary" style="background-color:#412020;border-color:#412020;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        </div>
-                    </div>
-                    <br>
-                    <div class="row">
-                    	<div class="col-sm-12" style="text-align: center;">
-                        	<button id="registrar" class="text btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREAR CUENTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            -->
-              
-              
               <div class="modal fade" id="modalContacto" role="dialog">
                   <div class="modal-dialog modal-lg">
                       <div class="modal-content">
@@ -725,6 +680,12 @@
                               <div class="row">
                                   <div class="col-sm-12 col-sm-offset-0">
 				                    <form id="contacto" class="form-horizontal" method="POST" action="${contextpath}/equivira">
+				                    	<div class="form-group">
+				                        	<span class="col-md-1 col-md-offset-1 text-center"><i class="fa fa-user bigicon"></i></span>
+				                            <div class="col-md-9">
+				                                <input type="text" class="text form-control" id="nombreContacto" name="nombreContacto" placeholder="Escriba su nombre...">
+				                            </div>
+				                        </div>
 				                        <div class="form-group">
 				                            <div class="col-sm-10">
 				                                <input type="text" class="text form-control" id="correoContacto" name="correoContacto" placeholder="Correo">
@@ -741,17 +702,6 @@
 				                            </div>
 				                        </div>
 				                    </form>
-				                    <!-- div class="row">
-				                        <div class="col-sm-12" style="text-align: center;">
-				                            <button id="acceder" class="text btn btn-primary" style="background-color:#412020;border-color:#412020;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;ENTRAR&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-				                        </div>
-				                    </div>
-				                    <br>
-				                    <div class="row">
-				                    	<div class="col-sm-12" style="text-align: center;">
-				                        	<button id="registrar" class="text btn btn-default">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CREAR CUENTA&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</button>
-				                        </div>
-				                    </div -->
 				                </div>
                               </div>
                               <div class="modal-footer">
