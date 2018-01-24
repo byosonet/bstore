@@ -726,12 +726,17 @@
                                   <div class="col-sm-12 col-sm-offset-0">
 				                    <form id="contacto" class="form-horizontal" method="POST" action="${contextpath}/equivira">
 				                        <div class="form-group">
-				                            <div class="col-sm-12">
+				                            <div class="col-sm-10">
 				                                <input type="text" class="text form-control" id="correoContacto" name="correoContacto" placeholder="Correo">
 				                            </div>
 				                        </div>
 				                        <div class="form-group">
-				                            <div class="col-sm-12">
+				                            <div class="col-sm-10">
+				                                <input type="text" class="text form-control" id="nombreContacto" name="nombreContacto" placeholder="Nombre">
+				                            </div>
+				                        </div>
+				                        <div class="form-group">
+				                            <div class="col-sm-10">
 				                                <input type="text" class="text form-control" id="nombreContacto" name="nombreContacto" placeholder="Nombre">
 				                            </div>
 				                        </div>

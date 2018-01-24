@@ -94,9 +94,11 @@
 </head>
 <body>
     <div class="row" style="padding: 0.5em;">
-    	<div class="cabecera" style="text-align: center;height: 2em;border-radius: 15px;background-image: url('');">
-  		<!-- label class="alert alert-primary alert-info" style=""><b class="text"><c:out value="${nombrePublicacion}"/></b></label -->
-  		<label><b class="text"><c:out value="${nombrePublicacion}"/></b></label>
+    	<div class="cabecera" style="text-align: justify;height: 3em;border-radius: 15px;background-image: url('');">
+  		<label><b class="text"><c:out value="${nombrePublicacion}"/> México: Ediciones Quivira, 2018.
+  			<br>Fuente: Archivo General de la Nación. México.
+  			</b>
+  		</label>
   		</div>
   		  <div>
           <div class="table-responsive">

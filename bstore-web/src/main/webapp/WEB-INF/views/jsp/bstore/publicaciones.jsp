@@ -102,26 +102,13 @@ $("#ordernarPub").change(function(){
     		 </c:choose>
              <div class="item banner-wrapper" style="${publicacion.comprada ? 'background-color:':''}">
                  <a href="#" data-toggle="modal" data-target="#modalPublicacion${publicacion.id}"><img class="zoom" style="border-radius:10px;margin-top:-30px;width: 100%;" src="${publicacion.portadaUrl}"></a>
-                 <!--<span class="text" style="float:left;margin-top: -20px;margin-left:20px;color:orange;font-size: 16px;"><b class=""><span class="glyphicon glyphicon-star"></span>68</b> <span class="label label-warning">Me gusta</span></span>-->
-                   <!-- span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class="">Fuente</b></span -->
-                   <span class="text" style="float:left;margin-top: -10px;margin-left:60px;"><b class=""></b></span>
                    <span class="text" style="float:left;margin-top: -10px"><c:out value="${publicacion.fuente.autor}"/></span>
                    <!-- span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class="">Publicaci&oacute;n</b></span -->
-                   <span class="text" style="float:left;margin-top: 5px;margin-left:45px;"><b class=""></b></span>
-				   <span class="text" style="float:left;margin-bottom: -10px"><c:out value="${publicacion.nombre}"/></span>
+                   <span class="text" style="float:left;margin-bottom: -10px"><c:out value="${publicacion.nombre}"/></span>
 				   <span class="text" style="float:left;margin-bottom: -10px">ISBN: <b><c:out value="${publicacion.isbn}"/></b></span>
 				   <!-- span class="text" style="float:left;margin-top: 10px;">Editorial: <c:out value="${publicacion.editorial.nombre}"/></span -->
-				 <c:if test="${publicacion.descuento == '0.00' && valueName != 'Leer'}">
-             		<div class="text" style="padding:5px;text-align:center;margin-top:-10px"><b>$ ${publicacion.precio} MXN</b></div>
-             	 </c:if>
-				 <c:if test="${publicacion.descuento != '0.00' && valueName != 'Leer'}">
-				 	<div class="text" style="padding:5px;text-align:center;margin-top:-20px"><b style="text-decoration:line-through;">$ ${publicacion.precio} MXN</b></div><br>
-             		<div class="text banner-title"> <b class="text">$ <c:out value="${publicacion.precio - publicacion.descuento}"/> MXN</b></div>
-             	 </c:if>
-			  <c:if test="${publicacion.comprada}">
-			 	<span class="text label" style="color:black;float:left;margin-top: -50px;margin-left:12px;">Comprado <fmt:formatDate value="${publicacion.fechaCompraTemporal}" pattern="dd/MM/yyyy"/></span>
-                         </c:if>	 
-                        <b><a href="${valueUrl}" style="width:100%;padding:5px;text-align:center;margin-top:-50px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
+				   	 
+              <b><a href="${valueUrl}" style="width:100%;padding:5px;text-align:center;margin-top:-50px" class="text ${valueColor}"><span class="${valueIcon}"></span> <c:out value="${valueName}"/></a></b>
              </div>
              <div class="container">
 				<div class="modal fade" id="modalPublicacion${publicacion.id}" role="dialog">
@@ -166,14 +153,14 @@ $("#ordernarPub").change(function(){
 							      </div>
 						     </div>
 						     <br>
-						     <div class="row">
+						     <!-- div class="row">
 							      <div class="col-sm-6">
                                     <b class="text">Descuento: </b>$ <c:out value=" ${publicacion.descuento}"/> MXN
 							      </div>
 							      <div class="col-sm-6">							        
 							        <b class="text">Precio: </b>$ <c:out value=" ${publicacion.precio}"/> MXN
 							      </div>
-						     </div>
+						     </div -->
 				        </div>
 				        <div class="modal-footer">
 					      <div class="col-sm-12">
