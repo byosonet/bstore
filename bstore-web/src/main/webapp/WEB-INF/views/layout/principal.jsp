@@ -37,7 +37,6 @@
                 
                 $('ul.nav.navbar-nav').hide();
                 $('#wrapper').css('padding-left', '0px');
-                $('a#showMenu').show();
 
                 $(document).ready(function () {
 
@@ -58,9 +57,15 @@
                     });
 
                     $('a#showMenu').click(function () {
-                        $('ul.nav.navbar-nav').show();
-                        $('#wrapper').css('padding-left', '');
-                        $('a#showMenu').hide();
+                    	var esVisible = $("ul.nav.navbar-nav").is(":visible");
+                        if(esVisible){
+                        	$('ul.nav.navbar-nav').hide();
+                        	$('#wrapper').css('padding-left', '0px');
+                        }else{
+                        	$('ul.nav.navbar-nav').show();
+                            $('#wrapper').css('padding-left', '');
+                        }
+                        //$('a#showMenu').hide();
                     });
 
                     function muestraMsjSistemaSuccessIndex(msjStatus) {
