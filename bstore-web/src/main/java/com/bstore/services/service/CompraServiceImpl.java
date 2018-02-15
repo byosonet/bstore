@@ -77,6 +77,7 @@ public class CompraServiceImpl implements CompraService, java.io.Serializable {
             }
 
             for (Coleccion coleccion : colecciones) {
+            	log.error("coleccion:X! "+coleccion.getNombreMostrar());
                 List<Publicacion> publicacion = new ArrayList<Publicacion>();
                 for (Compra c : lista) {
                     Publicacion p = this.publicacionDao.getPublicacion(c.getId().getIdPublicacion());

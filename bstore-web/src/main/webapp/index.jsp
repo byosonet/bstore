@@ -189,13 +189,16 @@
             
             <div class="row">
             	<div align="center">
-            		<a href="#" class="text" data-toggle="modal" data-target="#modalSobreNosotros" style="color: #A67C52;">Sobre nosotros</a>
+            		<!-- a href="#" class="text" data-toggle="modal" data-target="#modalSobreNosotros" style="color: #A67C52;">Sobre nosotros</a>
             		&nbsp;|&nbsp;
+            		-->
             		<a href="#" class="text" data-toggle="modal" data-target="#modalTerminosCondiciones" style="color: #A67C52;">T&eacute;rminos y condiciones</a>
             		&nbsp;|&nbsp;
             		<a href="#" class="text" data-toggle="modal" data-target="#modalAvisoPrivacidad" style="color: #A67C52;">Aviso de privacidad</a>
+            		<!-- 
             		&nbsp;|&nbsp;
             		<a href="#" class="text" data-toggle="modal" data-target="#modalContacto" style="color: #A67C52;">Contacto</a>
+            		-->
             	</div>
             </div>
             <br>
