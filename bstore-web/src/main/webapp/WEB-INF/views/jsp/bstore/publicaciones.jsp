@@ -55,10 +55,10 @@ $("#ordernarPub").change(function(){
       <div style="float: right;">
         <select class="ordenarPublicaciones" id="ordernarPub">
         	<option></option>        	        
-        	<option value="${contextpath}/coleccion/precio/desc/${coleccionId}">Mayor precio</option>
+        	<!-- option value="${contextpath}/coleccion/precio/desc/${coleccionId}">Mayor precio</option>
         	<option value="${contextpath}/coleccion/precio/asc/${coleccionId}">Menor precio</option>
         	<option value="${contextpath}/coleccion/comprados/${coleccionId}">Mis compras</option>        	
-        	<option value="${contextpath}/coleccion/porcomprar/${coleccionId}">Publicaciones por comprar</option>
+        	<option value="${contextpath}/coleccion/porcomprar/${coleccionId}">Publicaciones por comprar</option -->
         	<option value="${contextpath}/coleccion/tema/asc/${coleccionId}">Tema ascendente</option>
         	<option value="${contextpath}/coleccion/tema/desc/${coleccionId}">Tema descendente</option>
         </select>
