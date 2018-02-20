@@ -190,16 +190,18 @@
                         <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Documentos </a>
                         <ul id="misDocumentos" class="text collapse">
                         <c:forEach var="entry" items="${menu}">
-                        			<li><!-- li class="active"-->
+                        			<li class="active">
                         				<a class="text" href="#" data-toggle="collapse" data-target="#${entry.idCol}"><i class=""></i> ${entry.nombreCol} </a>
-                        			</li>
+                        			
                         			<ul id="${entry.idCol}" class="text collapse">
 	                                    <c:forEach var="publicacion" items="${entry.pubs}">
 	                                        <li>
 	                                            <a class="text" style="color: white;font-size: 13.5px;" href="${contextpath}/publicacion/${publicacion.idPub}"><i class=""></i> <c:out value="${publicacion.nombrePub}"/></a>
 	                                        </li>
 	                                    </c:forEach>
-                                    </ul>                                                           
+                                    </ul>
+                                    
+                                    </li>                                                           
                         </c:forEach>
                         </ul> 
                         </li>
