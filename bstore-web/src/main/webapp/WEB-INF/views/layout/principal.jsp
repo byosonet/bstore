@@ -131,7 +131,7 @@
                 </div>
                 <!-- Top Menu Items -->
                 <div class="nav navbar-right top-nav" style="padding-right:33px; padding-top:15px">
-                	<a class="text" href="#" id="exit" style="color: white;" ><i class="fa fa-fw fa-power-off"></i> Salir</a>
+                	<a class="text" href="#" id="exit" style="color: white;" ><i class="fa fa-fw fa-power-off"></i></a>
                 </div>
                 <ul class="nav navbar-right top-nav">
                 	<li class="dropdown">
@@ -187,7 +187,7 @@
                             <a class="text" href="${contextpath}/equivira"><i class=""></i> Inicio</a>
                         </li>
                         <li class="active">
-                        <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Documentos </a>
+                        <a class="text" href="#" data-toggle="collapse" data-target="#misDocumentos"><i class=""></i> Colecciones </a>
                         <ul id="misDocumentos" class="text collapse">
                         <c:forEach var="entry" items="${menu}">
                         			<li class="active">
