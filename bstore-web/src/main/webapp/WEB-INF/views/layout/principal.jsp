@@ -91,6 +91,19 @@
                                 }]
                         });
                     }
+
+                    /*Estilo para Tooltiptext en documentos*/
+                    $('.novo-tooltiptext').tipso({
+    					speed: 500,
+    					background  : '#9f7563',
+    					color: '#ffffff',
+    					titleColor: '#ffffff',
+    					position: 'top',
+    					tooltipHover: false,
+    					arrowWidth: 8,
+    					width: 120,
+    					maxWidth: '50%',
+    				});
                 }
                 );
         </script>

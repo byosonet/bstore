@@ -25,6 +25,8 @@
 <!-- datatables responsice css -->
 <link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/dataTables.responsive.css">
 
+<link rel="stylesheet" type="text/css" href="${contextpath}/static/resources/css/tipso.min.css">
+
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/jquery/jquery.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout-3.2.0.js"></script>
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/knockout.simpleGrid.3.0.js"></script>
@@ -57,6 +59,9 @@
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/dataTables.responsive.min.js"></script>
 <!-- zoom for image js -->
 <script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/elevatezoom.min.js"></script>
+<!-- Tooltiptext con mouseover en los html de los documentos -->
+<script type="text/javascript" language="javascript" src="${contextpath}/static/resources/js/tipso.min.js"></script>
+
 <style>
     body {
         margin-top: 100px;
@@ -108,4 +113,5 @@
 	    font-size: 35px;
 	    color: #36A0FF;
 	}
+
 </style>
