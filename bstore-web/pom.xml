@@ -252,7 +252,7 @@
                 <version>2.1.1</version>
                 <configuration>
                     <packagingExcludes>WEB-INF/web.xml</packagingExcludes>
-                    <packagingExcludes>
+                    <!-- packagingExcludes>
                         WEB-INF/lib/activation-1.1.jar,	       
                         WEB-INF/lib/commons-digester-2.0.jar,			   
                         WEB-INF/lib/jackson-core-2.4.1.jar,	
@@ -335,7 +335,7 @@
                         WEB-INF/lib/json-20090211.jar,
                         WEB-INF/lib/spring-test-4.1.4.RELEASE.jar,
                         WEB-INF/lib/commons-io-2.5.jar
-                    </packagingExcludes>
+                    </packagingExcludes -->
                 </configuration>
             </plugin>
         </plugins>
